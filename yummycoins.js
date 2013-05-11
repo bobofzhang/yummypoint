@@ -1,4 +1,19 @@
 
+// Prices = new Meteor.Collection("prices");
+// Datastores = new Meteor.Collection("datastores");
+
+// var dataArray = [];
+
+// var createDataArray = function() {
+//   var newData = Prices.find({}, {limit: 50}).fetch();
+//   var newDataArray = _.map(newData, function(obj) {
+//     var newObj = _.pick(obj, 'price', 'date');
+//     var newArray = _.values(newObj);
+//     dataArray.push(data);
+//   })
+//   console.log(dataArray);
+//   return newDataArray && dataArray;
+// }
 
 // if (Meteor.isServer) {
 //   Meteor.startup(function () {
