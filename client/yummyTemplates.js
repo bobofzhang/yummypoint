@@ -1,20 +1,19 @@
 
 var textArray = [];
 var text2Array = [];
+var text3Array = [];
 
 Template.yummy_coins.events({
   'click .text-slide': function () {
     $('.text-slide').remove();
     $('.chart-slide').remove();
     $('.liveData-slide').remove();
-    $('.make-start').append('<div class="create_graph"><input type="button" class="add_chart" value="Make a Chart!" /> </br> </br></div>');
-    $('.make-start').append('<div class="slide_inputs"> <div class="bullet_one"><input id="bullet_one" type="text" /> <input type="button" class="add" value="Make a Point" /> </br> </br></div> <div class="bullet_two"> <input id="bullet_two" type="text" /> <input type="button" class="add2" value="Make a Point" /> </br> <br> </div> <input type="button" class="save_slide_one" value="Save Slide One" /> </br> <br> </div>');
+    // $('.make-start').append('<div class="create_graph"><input type="button" class="add_chart" value="Make a Chart!" /> </br> </br></div>');
+    $('.make-start').append('<div class="slide_inputs"><div class="bullet_one"><input id="bullet_one" type="text" /> <input type="button" class="add" value="Make a Point" /> </br> </br></div> <div class="bullet_two"> <input id="bullet_two" type="text"/> <input type="button" class="add2" value="Make a Point" /> </br> <br> </div> <div class="bullet_three"><input id="bullet_three" type="text" /> <input type="button" class="add3" value="Make a Point" /> </br> </br></div> <input type="button" class="make_another_slide" value="Make Another Slide" /> </br> <br> <input type="button" class="save_slides" value="Save and Preview" /> </br> <br></div>');
   },
   'click input.add': function () {
     var bulletOne = document.getElementById("bullet_one").value;
-    console.log(bulletOne);
     textArray.push(bulletOne);
-    console.log(textArray);
     Slides.insert({
       bullet: 'first',
       text: bulletOne
@@ -23,30 +22,60 @@ Template.yummy_coins.events({
   },
   'click input.add2': function () {
     var bulletTwo = document.getElementById("bullet_two").value;
-    console.log(bulletTwo);
     text2Array.push(bulletTwo);
-    console.log(text2Array);
     Slides.insert({
       bullet: 'second',
       text: bulletTwo
     })
     return text2Array;
   },
-  'click input.save_slide_one': function () {
+  'click input.add3': function () {
+    var bulletThree = document.getElementById("bullet_three").value;
+    text3Array.push(bulletThree);
+    Slides.insert({
+      bullet: 'third',
+      text: bulletThree
+    })
+    return text3Array;
+  },
+  'click input.make_another_slide': function () {
       $('.bullet_one').remove();
       $('.bullet_two').remove();
-      $('.create_graph').remove();
-      $('.save_slide_one').remove();
+      // $('.create_graph').remove();
+      $('.make_another_slide').remove();
+      $('.save_slides').remove();
+      $('.slide_inputs').append('<div> <input type="button" class="start_yummy" value="ready to start the show?"/> </div>');
+    },
+    'click input.save_slides': function () {
+      $('.bullet_one').remove();
+      $('.bullet_two').remove();
+      $('.bullet_three').remove();
+      // $('.create_graph').remove();
+      $('.make_another_slide').remove();
+      $('.save_slides').remove();
       $('.slide_inputs').append('<div> <input type="button" class="start_yummy" value="ready to start the show?"/> </div>');
     },
   'click input.start_yummy': function () {
       $('.start_yummy').remove();
       // var firstBul = Slides.findOne({});
       var bulletObj = (Slides.find({bullet: 'first'}).fetch());
-      console.log(bulletObj);
       var bulletText = bulletObj[0]['text'];
-      console.log(bulletText);
-      $('.slide_inputs').append('<div class="bulletOneText"> <h3>' + bulletText +'</h3>');
+      var bullet2Obj = (Slides.find({bullet: 'second'}).fetch());
+      var bullet2Text = bullet2Obj[0]['text'];
+      $('.slide_inputs').append('<div class="bulletOneText"> <h2>' + bulletText +'</h2><h3>' + bullet2Text + '</h3></div>');
+    },
+  'click .bulletOneText': function () {
+      $('.bulletOneText').remove();
+      // var firstBul = Slides.findOne({});
+      var bulletObj = (Slides.find({bullet: 'second'}).fetch());
+      var bulletText = bulletObj[0]['text'];
+      $('.slide_inputs').append('<div class="bulletTwoText"> <h3>' + bulletText +'</h3></div>');
+    },
+    'click .bulletTwoText': function () {
+      $('.bulletTwoText').remove();
+      var bulletObj = (Slides.find({bullet: 'third'}).fetch());
+      var bulletText = bulletObj[0]['text'];
+      $('.slide_inputs').append('<div class="bulletThreeText"> <h3>' + bulletText +'</h3></div>');
     }
 })
 
