@@ -3,6 +3,13 @@ var textArray = [];
 var text2Array = [];
 
 Template.yummy_coins.events({
+  'click .text-slide': function () {
+    $('.text-slide').remove();
+    $('.chart-slide').remove();
+    $('.liveData-slide').remove();
+    $('.make-start').append('<div class="create_graph"><input type="button" class="add_chart" value="Make a Chart!" /> </br> </br></div>');
+    $('.make-start').append('<div class="slide_inputs"> <div class="bullet_one"><input id="bullet_one" type="text" /> <input type="button" class="add" value="Make a Point" /> </br> </br></div> <div class="bullet_two"> <input id="bullet_two" type="text" /> <input type="button" class="add2" value="Make a Point" /> </br> <br> </div> <input type="button" class="save_slide_one" value="Save Slide One" /> </br> <br> </div>');
+  },
   'click input.add': function () {
     var bulletOne = document.getElementById("bullet_one").value;
     console.log(bulletOne);

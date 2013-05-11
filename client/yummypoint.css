@@ -66,18 +66,18 @@ body {
 }
 
 .top_nav {
-  display: inline-block;
+/*  display: inline-block;
   float: right;
   margin-right: 20px;
   margin-left: 10px;
-  position: relative;
+  position: relative;*/
   width: 200px;
   height: 45px;
   background-color: #33485C;
   color: #DDDDDD;
   font-family: 'Arial';
 /*  margin: 2px 5px 2px auto;*/
-  margin-top: 25px;
+/*  margin-top: 25px;*/
   border-radius: 8px;
   font-size: 1.5em;
   box-shadow: -1px 1px 3px;
