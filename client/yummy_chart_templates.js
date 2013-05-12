@@ -1,4 +1,5 @@
 
+
 Meteor.methods({
   d3BubbleChart: function(){
     var dataPoint = function (value, r, g) {
@@ -9,11 +10,11 @@ Meteor.methods({
     }
 
     var dataset = [];
-    for (var i = 0; i < 30; i++) {           //Loop 25 times
+    for (var i = 0; i < 100; i++) {           //Loop 25 times
           var newNumber = Math.random() * 30;  //New random number (0-30)
           dataset = dataset.concat(newNumber); //Add new number to array
           var t = dataset[i];
-          var r = Math.random() * 130; 
+          var r = Math.random() * 230; 
           // var g = function(t) { return -r(t) * r(t) / 2.5; };       
           var g = (r*r/t / 2.5);   //gravity scale
           dataPoint(dataset[i], r, g);
@@ -25,16 +26,22 @@ Meteor.methods({
     h = 700;
     var m = 20;
     var center = { x : ( w - m ) / 2, y : ( h - m ) / 2};
+
+    var k = Math.sqrt(dataset.length / (w * h));
+    console.log(k);
     
-    var gravity  = -0.01; //gravity constants
+    var gravity  = 0.01; //gravity constants
+    // var gravity = (100 * k);
+    // var charge = (-10 / k);
     var damper   = 0.2;
-    var friction = 0.5;
+    var friction = 0.9;
+
     // var force = d3.layout.force()
     //                 .size([ w - m, h - m ]); //gravity engine
-    var force = d3.layout.force()
-                  .charge(function(d, i) { return i ? 0 : -2000; })
-                  .nodes(dataset)
-                  .size([ w - m, h - m ]); //gravity engine
+    // var force = d3.layout.force()
+    //               .charge(function(d, i) { return i ? 0 : -2000; })
+    //               .nodes(dataset)
+    //               .size([ w - m, h - m ]); //gravity engine
 
     var svg = d3.select("body")
                 .append("svg")
@@ -42,10 +49,10 @@ Meteor.methods({
                 .attr("width", w);//+ "px"); 
                 
 
-      // var force = d3.layout
-      //               .force()
-      //               .size([ w - m, h - m ])
-      //               .nodes(dataset); // data set was working value
+    var force = d3.layout
+                  .force()
+                  .size([ w - m, h - m ])
+                  .nodes(dataset); // data set was working value
 
     var circles = svg
                     .append("g")
@@ -56,8 +63,8 @@ Meteor.methods({
     force.nodes().forEach( function(dataset, i) {
       x = Math.random()* (w/2);
       y = 100 + (Math.random() * (h/2));
-      var r = Math.random() * 130; 
-      console.log(r);  
+      // var r = Math.random() * 130; 
+      // console.log(r);  
     });
 
     var node = circles.enter()
@@ -73,32 +80,48 @@ Meteor.methods({
     d3.selectAll("circle")
       .transition()
       .delay(function(dataset, i) { return i * 10; })
-      .duration( 1000 )
-      .attr("r", function(dataset) { return r( dataset ); });
+      .duration( 150 )
+      .attr("r", function(r) { return r; });//function(dataset) { return r( dataset ); });
 
-          //Loads gravity
-      loadGravity(moveCenter);
+      //     //Loads gravity
+      // loadGravity(moveCenter);
       var loadGravity = function(generator) {
+        // console.log('i am in the load');
         force
-            .gravity(gravity)
-            .charge( g * (Math.random()*2))
-            .friction(friction)
+            .gravity(100 * 0.011952286093343936)
+            .charge(-10/0.011952286093343936)
+            // .charge( g * (Math.random()*2))
+            .friction(0.5)
+            // .on("tick", function() {
+            //   node
+            //     .attr("cx", function(dataset) { return x; })
+            //     .attr("cy", function(dataset) { return y; });
+            //   })
+            // .start();
             .on("tick", function(e) {
               generator(e.alpha);
               node
-                .attr("cx", function(dataset) { return dataset.x; })
-                .attr("cy", function(dataset) { return dataset.y; });
+                .attr("cx", function(dataset) { return (x + (Math.random()*500)); })
+                .attr("cy", function(dataset) { return (y + (Math.random()*500)); })
             }).start();
+            //   node
+            //     .attr("cx", function(dataset) { return x; })
+            //     .attr("cy", function(dataset) { return y; });
+            // }).start();
       }
           // Generates a gravitational point in the middle
       var moveCenter = function(alpha) {
-        console.log('i am alpha');
-        console.log(alpha);
         force.nodes().forEach(function(dataset) {
-         dataset.x = dataset.x + (center.x - dataset.x) * (damper + 0.02) * alpha;
-          dataset.y = dataset.y + (center.y - dataset.y) * (damper + 0.02) * alpha;
+          x = Math.random()* (w/2);
+          y = 100 + (Math.random() * (h/2));
+          x = x + (center.x - x) * (damper + 0.02) * alpha;
+          y = y + (center.y - y) * (damper + 0.02) * alpha;
+         // dataset.x = dataset.x + (center.x - dataset.x) * (damper + 0.02) * alpha;
+         //  dataset.y = dataset.y + (center.y - dataset.y) * (damper + 0.02) * alpha;
+         console.log(x);
         });
       }
+      loadGravity(moveCenter);
     }
   })
 
@@ -124,6 +147,7 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'click .line-chart': function () {
+    // Meteor.call("getBitCoinData");
     return Meteor.call('D3testinit');
   }
 })

@@ -1,17 +1,36 @@
 
+var dataset;
+
+var setData = function (data) {
+  dataset = data;
+  return data;
+}
+
+var getData = function () {
+  return dataset;
+}
+
+Meteor.call("getBitCoinData", function(error, result) {
+  console.log('hi');
+  console.log(result);
+  var dataset = result;
+  return setData(result);
+});
+
 Meteor.methods({
 
   D3testinit: function() {
+    var dataset = getData();
 
-    var dataset = [];
-    var numDataPoints = 200;
-    var xRange = Math.random() * 1000;
-    var yRange = 1;
-    for (var i = 0; i < numDataPoints; i++) {
-        var newNumber1 = Math.round(Math.random() * xRange);
-        var newNumber2 = yRange++;
-        dataset.push([newNumber1, newNumber2]);
-    }
+    // var dataset = [];
+    // var numDataPoints = 200;
+    // var xRange = Math.random() * 1000;
+    // var yRange = 1;
+    // for (var i = 0; i < numDataPoints; i++) {
+    //     var newNumber1 = Math.round(Math.random() * xRange);
+    //     var newNumber2 = yRange++;
+    //     dataset.push([newNumber1, newNumber2]);
+    // }
 
     var margin = {
       top: 20, 
@@ -32,7 +51,7 @@ Meteor.methods({
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .ticks(50);
+        .ticks(5);
 
     var yAxis = d3.svg.axis()
         .scale(y)
