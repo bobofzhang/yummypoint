@@ -8,9 +8,12 @@ Template.yummy_coins.events({
   'click .text-slide': function () {
     $('.text-slide').remove();
     $('.chart-slide').remove();
-    $('.liveData-slide').remove();
+    // $('.liveData-slide').remove();
     // $('.make-start').append('<div class="create_graph"><input type="button" class="add_chart" value="Make a Chart!" /> </br> </br></div>');
-    $('.make-start').append('<div class="slide_inputs"><div class="slide-title"><input id="slide-title" type="text" /> <input type="button" class="add-title" value="Slide Title" /><div class="bullet_one"><input id="bullet_one" type="text" /> <input type="button" class="add" value="Make a Point" /> </br> </br></div> <div class="bullet_two"> <input id="bullet_two" type="text"/> <input type="button" class="add2" value="Make a Point" /> </br> <br> </div> <div class="bullet_three"><input id="bullet_three" type="text" /> <input type="button" class="add3" value="Make a Point" /> </br> </br></div> <input type="button" class="make_another_slide" value="Make Another Slide" /> </br> <br> <input type="button" class="save_slides" value="Save and Preview" /> </br> <br></div>');
+    $('.make-start').append('<div class="slide_inputs"><div class="slide-title"><input id="slide-title" class="slide-text" type="text" /><input type="button" class="add-title" value="Slide Title" /><div class="bullet_one"><input id="bullet_one" class="slide-text" type="text" /><input type="button" class="add" value="Make a Point" /> </br> </br></div> <div class="bullet_two"> <input id="bullet_two" class="slide-text" type="text"/> <input type="button" class="add2" value="Make a Point" /> </br> <br> </div> <div class="bullet_three"><input id="bullet_three" class="slide-text" type="text" /> <input type="button" class="add3" value="Make a Point" /> </br> </br></div> </div>');
+    $('.slide-preview').append('<div class="row slide-controls"><span class="span6"><input type="button" class="make_another_slide" value="Make Another Slide" /></span><span class="span6"><input type="button" class="save_slides" value="Save and Preview" /> </span></div>');
+    //$('.slide-preview').append('<input type="button" class="make_another_slide" value="Make Another Slide" /><input type="button" class="save_slides" value="Save and Preview" />');
+
   },
   'click input.add-title': function () {
     var slideTitle = document.getElementById("slide-title").value;
@@ -19,6 +22,9 @@ Template.yummy_coins.events({
       bullet: 'title',
       text: slideTitle
     })
+    var slideOneTitle = (Slides.find({bullet: 'title'}).fetch());
+    var slideOneTitleText = slideOneTitle[0]['text'];
+    $('.slide-preview').append('<div class="slide-one-title"> <h1>' + slideOneTitleText +'</h1></div>');
     return titleArray;
   },
   'click input.add': function () {
@@ -28,6 +34,9 @@ Template.yummy_coins.events({
       bullet: 'first',
       text: bulletOne
     })
+    var bulletObj = (Slides.find({bullet: 'first'}).fetch());
+    var bulletText = bulletObj[0]['text'];
+    $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + bulletText +'</h2></div>');
     return textArray;
   },
   'click input.add2': function () {
@@ -37,6 +46,9 @@ Template.yummy_coins.events({
       bullet: 'second',
       text: bulletTwo
     })
+    var bullet2Obj = (Slides.find({bullet: 'second'}).fetch());
+    var bullet2Text = bullet2Obj[0]['text'];
+    $('.slide-preview').append('<div class="bullet-second-slide-one"> <h2>' + bullet2Text +'</h2></div>');
     return text2Array;
   },
   'click input.add3': function () {
@@ -46,6 +58,9 @@ Template.yummy_coins.events({
       bullet: 'third',
       text: bulletThree
     })
+    var bullet3Obj = (Slides.find({bullet: 'third'}).fetch());
+    var bullet3Text = bullet3Obj[0]['text'];
+    $('.slide-preview').append('<div class="bullet-third-slide-one"> <h2>' + bullet3Text +'</h2></div>');
     return text3Array;
   },
   'click input.make_another_slide': function () {

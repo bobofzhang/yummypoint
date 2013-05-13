@@ -130,7 +130,7 @@ Template.yummy_coins.events({
     console.log('I am playing with charts');
     $('.text-slide').remove();
     $('.chart-slide').remove();
-    $('.liveData-slide').remove();
+    // $('.liveData-slide').remove();
     // $('.make-start').append('<div class="create_graph"><input type="button" class="add_chart" value="Make a Chart!" /> </br> </br></div>');
     // $('.top-body').append('<div class="create_graph"><div class="row"><div class=span12><span class="line-chart"> <p> Line Chart</p></span> </div></div></div>');
     $('.make-start').append('<div class="create_graph"><div class="row"><div class="span4"> <span class="line-chart"> <h1> Line Chart</h1></span></div><div class="span4"> <span class="bar-chart"> <h1> Bar Chart</h1></span></div><div class="span4"> <span class="bubble-chart"> <h1> Bubble Chart </h1> </span> </div> </div> </div>');
