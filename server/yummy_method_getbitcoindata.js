@@ -9,7 +9,7 @@ Meteor.methods({
     var result = Meteor.http.get('https://data.mtgox.com/api/1/BTCUSD/trades?raw');
     // var result = Meteor.http.get('http://data.mtgox.com/api/1/BTCUSD/ticker');
     var bitTrans = result.data;
-    for (var i = 0; i < 500; i++) {
+    for (var i = 0; i < 50; i++) {
       bitTran = bitTrans[i];
       var newDate = new Date(bitTran['date']*1000);
       dataset.push([bitTran['price'], newDate]);

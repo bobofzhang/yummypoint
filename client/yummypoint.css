@@ -27,10 +27,10 @@ div.bar {
     margin-right: 2px;
 }
 
-.chart rect {
+/*.chart rect {
   fill: steelblue;
   stroke: white;
-}
+}*/
 
 .chart {
   margin-left: 200px;

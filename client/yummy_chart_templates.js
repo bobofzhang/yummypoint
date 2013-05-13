@@ -140,7 +140,6 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'click .bubble-chart': function () {
-    console.log('bubble');
     return Meteor.call('d3BubbleChart');
   }
 })
