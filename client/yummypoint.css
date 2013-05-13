@@ -12,7 +12,8 @@ body {
 
 .slide_inputs {
 /*  text-align: center;*/
-  border: 1px solid black;
+  background-color: lightgrey;
+/*  border: 1px solid black;*/
 }
 
 .slide-preview {
@@ -21,6 +22,11 @@ body {
   background-color: whitesmoke;
   width: 100%;
   height: 100em;
+}
+
+#slide-links {
+  background-color: lightblue;
+  text-align: center;
 }
 
 .slide-preview .slide-one-title h1 {
@@ -43,15 +49,17 @@ body {
 }
 
 .make_another_slide {
-  height: 4em;
-  width: 60em;
+  height: 4em;  
+  margin: 0 40px;
   background-color: white;
+  padding-top: 1.5em;
+  font-size: 1.5em;
 }
-.save_slides {
+/*.save_slides {
  height: 4em;
  width: 60em;
  background-color: white;
-}
+}*/
 
 .slide-preview .bullet-second-slide-one h2 {
   border: 1px solid black;

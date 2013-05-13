@@ -1,5 +1,4 @@
 
-
 Meteor.methods({
   d3BubbleChart: function(){
     var dataPoint = function (value, r, g) {
