@@ -10,7 +10,15 @@ body {
     user-select: none;
 }
 
+.twitter h3 {
+  text-align: center;
+  background-color: pink; 
+}
 
+.bit-coins h3 {
+  text-align: center;
+  background-color: orange;
+}
 
 .slide_inputs {
 /*  text-align: center;*/
