@@ -19,6 +19,10 @@ body {
   text-align: center;
   background-color: orange;
 }
+.bitly h3 {
+  text-align: center;
+  background-color: brown;
+}
 
 .slide_inputs {
 /*  text-align: center;*/
