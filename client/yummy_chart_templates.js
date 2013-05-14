@@ -145,8 +145,11 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'click .line-chart': function () {
+    $('.create_graph').remove();
+    $('.make-start').append('<div class="line-chart-options"><div class="row"><div class="span12"> <span class="line-chart"> <h1> Line Chart</h1></span></div></div></div>');
+    $('.make-start').append('<div class="line-chart-data-sources"><div class="row"><div class="span6"> Upload a File </div><div class="span6"><span class="live-data-header"> <h3> Use Live Data Sources </h3> </span></br><span class="twitter-data"><p> Twitter</p></span> </div></div></div>');
     // Meteor.call("getBitCoinData");
-    return Meteor.call('D3testinit');
+    // return Meteor.call('D3testinit');
   }
 })
 
