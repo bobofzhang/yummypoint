@@ -177,8 +177,29 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'click .bar-chart': function () {
-    return Meteor.call('D3BarChart');
+    $('.create_graph').remove();
+    $('.make-start').append('<div class="bar-chart-options"><div class="row"><div class="span12"> <span class="bar-chart"> <h1> Bar Chart</h1></span></div></div></div>');
+    $('.make-start').append('<div class="bar-chart-data-sources"><div class="row"><div class="span6"> Upload a File </div><div class="span6"><span class="live-data-header"> <h3> Use Live Data Sources </h3> </span></div></div></div>');
+    $('.make-start').append('<div class="data-source-details"><div class="row"><div class="span6"></div><div class="span2"><span class="bar-twitter"> <h3> Twitter </h3> </span></div><div class="span2"><span class="bar-bit-coins"> <h3> Bit Coins </h3> </span></div><div class="span2"><span class="bar-bitly"> <h3> Bitly </h3> </span></div></div></div>');
+    // Meteor.call("getBitCoinData");
+    // return Meteor.call('D3testinit');
   }
 })
+
+Template.yummy_coins.events({
+  'click .bar-bitly': function () {
+    $('.bar-chart-data-sources').remove();
+    //$('.data-source-details').remove();
+    $('.make-start').append('<div class="chosen-data-source"><div class="row"><div class="span12"> <h3> Live Data </h3></span></div></div></div>');
+    //$('.make-start').append('<div class="data-source-details"><div class="row"><div class="span12"> <span class="bit-coins"> <h3> Bitly </h3> </span></div></div></div>');
+    return Deps.autorun(function(){ return Meteor.call('bitlyBarChartD3'); });
+  }
+})
+
+// Template.yummy_coins.events({
+//   'click .bar-chart': function () {
+//     return Meteor.call('D3BarChart');
+//   }
+// })
 
 

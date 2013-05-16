@@ -7,7 +7,7 @@ Meteor.methods({
     var rawData;
 
     //Deps.autorun(function(){
-    rawData = Hotbits.find({ phrase: "angelina jolie  " }).fetch();
+    rawData = Hotbits.find({ phrase: "angelina jolie" }).fetch();
       //return rawData;
     //})
     console.log(rawData);
@@ -81,97 +81,115 @@ Meteor.methods({
   }
 })
 
+var data = [];
 
-// Meteor.methods({
+Meteor.methods({
 
-//   bitlyBarChartD3: function() {
+  bitlyBarChartD3: function() {
 
-//     var data = getData();
-//     console.log('in barchar');
-//     console.log(data);
+    var rawData;
 
-//     // var t = 1297110663, // start time (seconds since epoch)
-//     // v = 70, // start value (subscribers)
-//     // data = d3.range(50).map(next); // starting dataset
+ 
+    rawData = Hotbits.find({ phrase: "angelina jolie" }, {limit: 50}).fetch();
+    // rawData = Hotbits.find({}).fetch();
 
-//     // function next() {
-//     //   return {
-//     //     time: ++t,
-//     //     value: v = ~~Math.max(10, Math.min(90, v + 10 * (Math.random() - .5)))
-//     //   };
-//     // }
+    // var data = [];
 
-//     // setInterval(function() {
-//     //   data.shift();
-//     //   data.push(next());
-//     //   redraw();
-//     // }, 1500);
+    for (var i = 0; i < rawData.length; i++) {
+      data.push(rawData[i].clickrate);//, rawData[i].time]);
+      console.log(data);
+      // console.log(data);
+    }
+    // var now = new Date();
+    // var t = now.getTime(); // start time (seconds since epoch)
+    // v = 70, // start value (subscribers)
 
-//     var w = 10,
-//         h = 120;
+    // data = d3.range(50);
 
-//     var x = d3.scale.linear()
-//     .domain([0, 1])
-//     .range([0, w]);
+    // function next() {
+    //   return {
+    //     time: ++t,
+    //     value: v = ~~Math.max(10, Math.min(90, v + 10 * (Math.random() - .5)))
+    //   };
+    // }
+    // console.log(data[3][0]);
+    // setInterval(function() {
+    //   data.shift();
+    //   data.push(next());
+    //   redraw();
+    // }, 1500);
 
-//     var y = d3.scale.linear()
-//     .domain([115, 118])
-//     .rangeRound([0, 120]);
+    var w = 20,
+        h = 240;
+        // x = 0;
 
-//     var chart = d3.select("body").append("svg")
-//       .attr("class", "chart")
-//       .style("border", "1px solid black")
-//       .attr("width", w * data.length - 1)
-//       .attr("height", h);
+    var x = d3.scale.linear()
+    .domain([0, 1])
+    .range([0, w]);
 
-//     chart.selectAll("rect")
-//       .data(data)
-//       .enter().append("rect")
-//       .attr("x", function(d, i) { return x(i) - .5; })
-//       .attr("y", function(d) { return h - y(d[0]); })
-//       .attr("width", w)
-//       .attr("height", function(d) { console.log(d[0]); return y(d[0]); })
-//       .style("fill", function(d) {
-//         var returnColor;
-//         if (d[0] === 116) { returnColor = "blue"; 
-//           } else if (d[0] > 116 &&  d[0] <= 116.27) { returnColor = "purple";
-//           // } else if (d.value > 8 && d.value <= 12 ) { returnColor = "yellow";
-//           // } else if (d.value > 4 && d.value <= 8 ) { returnColor = "green";
-//           } else if (d[0] > 116.27) { returnColor = "red"; }
-//           return returnColor;
-//         });
+    var y = d3.scale.linear()
+    .domain([d3.min(data), d3.max(data)])
+    .rangeRound([0, h]);
 
-//     chart.append("line")
-//       .attr("x1", 0)
-//       .attr("x2", w * data.length)
-//       .attr("y1", h - .5)
-//       .attr("y2", h - .5)
-//       .style("stroke", "#000");
+    var chart = d3.select("body").append("svg")
+      .attr("class", "chart")
+      .style("border", "1px solid black")
+      .attr("width", w * data.length - 1)
+      .attr("height", h);
 
-//     // function redraw() {
 
-//     //   var rect = chart.selectAll("rect")
-//     //       .data(data, function(d) { return d.time; });
 
-//     //   rect.enter().insert("rect", "line")
-//     //       .attr("x", function(d, i) { return x(i + 1) - .5; })
-//     //       .attr("y", function(d) { return h - y(d.value) - .5; })
-//     //       .attr("width", w)
-//     //       .attr("height", function(d) { return y(d.value); })
-//     //     .transition()
-//     //       .duration(1000)
-//     //       .attr("x", function(d, i) { return x(i) - .5; });
+    chart.selectAll("rect")
+      .data(data)
+      .enter().append("rect")
+      // .attr("x", function(d, i) { return x(i) - .5; })
+      // .attr("y", function(d) { return h - y(d[0]); })
+      .attr("x", function(d, i) { return x(i) - .5 ; })
+      .attr("y", function(d, i) { return h - y(data[i]) - .5 ; })
+      .attr("width", w)
+      // .attr("height", function(d) { return y(d[0]); })
+      .attr("height", function(d, i) { return y(data[i]); })
+      .style("fill", "black");//function(d) {
+        // var returnColor;
+        // if (d[0] === 116) { returnColor = "blue"; 
+        //   } else if (d[0] > 116 &&  d[0] <= 116.27) { returnColor = "purple";
+        //   // } else if (d.value > 8 && d.value <= 12 ) { returnColor = "yellow";
+        //   // } else if (d.value > 4 && d.value <= 8 ) { returnColor = "green";
+        //   } else if (d[0] > 116.27) { returnColor = "red"; }
+        //   return returnColor;
+        // });
 
-//     //   rect.transition()
-//     //       .duration(1000)
-//     //       .attr("x", function(d, i) { return x(i) - .5; });
+    chart.append("line")
+      .attr("x1", 0)
+      .attr("x2", w * data.length)
+      .attr("y1", h - .5)
+      .attr("y2", h - .5)
+      .style("stroke", "#000");
 
-//     //   rect.exit().transition()
-//     //       .duration(1000)
-//     //       .attr("x", function(d, i) { return x(i - 1) - .5; })
-//     //       .remove();
-//     // }
-//   }
-// })
+    // function redraw() {
+
+    //   var rect = chart.selectAll("rect")
+    //       .data(data, function(d) { return d.time; });
+
+    //   rect.enter().insert("rect", "line")
+    //       .attr("x", function(d, i) { return x(i + 1) - .5; })
+    //       .attr("y", function(d) { return h - y(d.value) - .5; })
+    //       .attr("width", w)
+    //       .attr("height", function(d) { return y(d.value); })
+    //     .transition()
+    //       .duration(1000)
+    //       .attr("x", function(d, i) { return x(i) - .5; });
+
+    //   rect.transition()
+    //       .duration(1000)
+    //       .attr("x", function(d, i) { return x(i) - .5; });
+
+    //   rect.exit().transition()
+    //       .duration(1000)
+    //       .attr("x", function(d, i) { return x(i - 1) - .5; })
+    //       .remove();
+    // }
+  }
+})
     
 
