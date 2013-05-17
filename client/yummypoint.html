@@ -22,10 +22,8 @@
         <a class="brand" href="#">Yummy Show</a>
         <ul class="nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
+          <!-- <li><a href="#">Link</a></li> -->
         </ul>
-        <a class="top_nav pull-right" href="#">{{loginButtons}}</a>
       </div>
     </div>
   </div> <!--NavBar Container -->
@@ -89,6 +87,31 @@
   <div class="d3chart">
   </div>
 </template>
+
+<template name="text_slide_inputs"> 
+  <div class="slide-inputs">
+    <div class="slide-title">
+      <input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />
+      <input type="button" class="add-title" value="Slide Title" />
+    </div>
+    <div class="bullet_one">
+      <input id="bullet_one" class="slide-text" type="text" />
+      <input type="button" class="add" value="Make a Point" />
+      </br> </br>
+    </div> 
+    <div class="bullet_two"> 
+      <input id="bullet_two" class="slide-text" type="text"/>
+      <input type="button" class="add2" value="Make a Point" />
+          </br> <br> 
+    </div> 
+    <div class="bullet_three">
+      <input id="bullet_three" class="slide-text" type="text" /> 
+      <input type="button" class="add3" value="Make a Point" /> </br> </br>
+    </div> 
+  </div>
+</template>
+
+<!-- <a class="top_nav pull-right" href="#">{{loginButtons}}</a>-->
 
 
 

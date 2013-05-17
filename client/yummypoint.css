@@ -24,7 +24,7 @@ body {
   background-color: brown;
 }
 
-.slide_inputs {
+.slide-inputs {
 /*  text-align: center;*/
   background-color: lightgrey;
 /*  border: 1px solid black;*/
@@ -109,7 +109,7 @@ body {
   font-size: 3em;
 }
 
-.slide_inputs .slide-text {
+.slide-inputs .slide-text {
   float: left;
   height: 3em;
   width: 50em;
@@ -128,7 +128,7 @@ body {
   margin: 20px 30px;
 }
 
-.slide_inputs .slide-one-title {
+.slide-inputs .slide-one-title {
   font-size: 50px;
   text-align: center;
 }
