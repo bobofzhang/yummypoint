@@ -1,13 +1,26 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 200;
-    margin: 50px 0;
     padding: 0;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+.navbar {
+  margin-top: 0.5em;
+}
+
+.navbar .brand {
+  font-family: 'Spin Cycle OT';
+}
+
+#slide-links {
+/*  background-color: lightblue;*/
+  text-align: center;
+  color: lightslategray;
 }
 
 .twitter h3 {
@@ -24,19 +37,37 @@ body {
   background-color: brown;
 }
 
-.slide-inputs {
-/*  text-align: center;*/
-  background-color: lightgrey;
-/*  border: 1px solid black;*/
+/* >>>>> TEXT SLIDES <<<<<<<<< */
+
+#slide-inputs .slide-text {
+/*  margin-left: 0.2em;*/
+  height: 2.5em;
+  width: 99%;
+  text-align: center;
+  font-size: 2em;
+  padding-top: 0.6em;
+  background-color: white;
+  color: black;
+  border-radius: 0.5em;
+  box-shadow: 3px 3px 25px;
+}
+
+/*#slide-text {
   color: white;
+}*/
+
+#slide-inputs .slide-text:hover {
+  background-color: lightgray;
+  color: white;
+  box-shadow: inset 3px 3px 45px;
 }
 
 .slide-preview {
-  margin-top: 5em;
+  margin-top: 0.5em;
   text-align: center;
   background-color: whitesmoke;
-  width: 100%;
-  height: 100em;
+  height: 50em;
+  border-radius: 1em;
 }
 
 .line-chart-options {
@@ -49,49 +80,62 @@ body {
   background-color: whitesmoke;
 }
 
-#slide-links {
-  background-color: lightblue;
+.make-start {
   text-align: center;
 }
 
+/* <<<<<<<< SLIDE ONE LIVE PREVIEW >>>>>>>>>>> */
+
 .slide-one-title h1 {
 /*  margin-top: 2em;*/
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
   font-size: 6em;
-  border: 1px solid black;
+/*  border: 1px solid black;*/
 }
 
 .bullet-first-slide-one h2 {
-  border: 1px solid black;
-  padding-top: 1em;
-  padding-bottom: 1em;
+/*  border: 1px solid black;*/
+  padding-top: 0.25em;
+  padding-bottom: 0.1em;
   font-size: 3em;
 }
 
-.slide-controls {
-  padding-top: 1em;
+.bullet-second-slide-one h2 {
+/*  border: 1px solid black;*/
+  padding-top: 0.25em;
+  padding-bottom: 0.1em;
+  font-size: 3em;
 }
 
-/*#bullet-one {
+.bullet-third-slide-one h2 {
+/*  border: 1px solid black;*/
+  padding-top: 0.25em;
+  padding-bottom: 0.1em;
+  font-size: 3em;
+}
+
+#slide-controls {
+  text-align: center;
+  height: 1em;  
+  background-color: lightslategray;
+  font-size: 1.5em;
   color: white;
-  font-size: 2em;
-}*/
-
-.make_first_slide {
-  height: 4em;  
-  margin: 5 40px;
-  background-color: white;
-  padding-top: 1.5em;
-  font-size: 1.5em;
+  margin-bottom: 0.75em;
+  border-radius: 0.75em;
 }
 
-.make_second_slide {
-  height: 4em;  
-  margin: 5 40px;
+.input-action-call {
+  text-align: center;
+  font-style: italic;
+}
+
+.make-second-slide {
+  height: 1em;  
+/*  margin: 5 40px;*/
   background-color: gray;
-  padding-top: 1.5em;
-  font-size: 1.5em;
+/*  padding-top: 1.5em;
+  font-size: 1.5em;*/
 }
 
 
@@ -101,26 +145,6 @@ body {
   border-radius: 3em;
 }
 
-.bullet-second-slide-one h2 {
-  border: 1px solid black;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  font-size: 3em;
-}
-
-.bullet-third-slide-one h2 {
-  border: 1px solid black;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  font-size: 3em;
-}
-
-.slide-inputs .slide-text {
-  float: left;
-  height: 3em;
-  width: 50em;
-  background-color: red;
-}
 .add-title {
   margin: 20px 40px;
 }
@@ -135,7 +159,7 @@ body {
 }
 
 .slide-inputs .slide-one-title {
-  font-size: 50px;
+  font-size: 5em;
   text-align: center;
 }
 
@@ -213,18 +237,11 @@ div.bar {
 }
 
 .top_nav {
-/*  display: inline-block;
-  float: right;
-  margin-right: 20px;
-  margin-left: 10px;
-  position: relative;*/
   width: 200px;
   height: 45px;
   background-color: #33485C;
   color: #DDDDDD;
   font-family: 'Arial';
-/*  margin: 2px 5px 2px auto;*/
-/*  margin-top: 25px;*/
   border-radius: 8px;
   font-size: 1.5em;
   box-shadow: -1px 1px 3px;
