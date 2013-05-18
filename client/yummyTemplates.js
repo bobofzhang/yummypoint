@@ -1,9 +1,4 @@
 
-// var titleArray = [];
-// var textArray = [];
-// var text2Array = [];
-// var text3Array = [];
-
 var slideCount = 1;
 
 Template.yummy_coins.events({
@@ -31,7 +26,7 @@ Template.yummy_coins.events({
         bullet: 'title',
         text: slideTitle
       })
-      var slideOneTitle = (Slides.find({slide: slideCount} && {bullet: 'title'}).fetch());
+      var slideOneTitle = (Slides.find({slide: slideCount}).fetch());
       var slideOneTitleText = slideOneTitle[0]['text'];
       $('.slide-preview').append('<div class="slide-one-title"> <h1>' + slideOneTitleText +'</h1></div>');
       $('.bullet-one').append('<input id="bullet-one" class="slide-text" type="text" placeholder="Make Your First Point" autofocus />');
@@ -49,8 +44,9 @@ Template.yummy_coins.events({
         bullet: 'first',
         text: bulletOne
       })
-      var bulletObj = (Slides.find({slide: slideCount} && {bullet: 'first'}).fetch());
-      var bulletText = bulletObj[0]['text'];
+      var bulletObj = (Slides.find({slide: slideCount}).fetch());
+      console.log(bulletObj);
+      var bulletText = bulletObj[1]['text'];
       $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + bulletText +'</h2></div>');
       $('.bullet-two').append('<input id="bullet-two" class="slide-text" type="text" placeholder="Enter Bullet Two Text Here" autofocus />');
       // $('#bullet-one').val('');
@@ -67,8 +63,9 @@ Template.yummy_coins.events({
         bullet: 'second',
         text: bulletTwo
       })
-      var bullet2Obj = (Slides.find({slide: slideCount} && {bullet: 'second'}).fetch());
-      var bullet2Text = bullet2Obj[0]['text'];
+      var bullet2Obj = (Slides.find({slide: slideCount}).fetch());
+      console.log(bullet2Obj);
+      var bullet2Text = bullet2Obj[2]['text'];
       $('.slide-preview').append('<div class="bullet-second-slide-one"> <h2>' + bullet2Text +'</h2></div>');
       $('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Enter Bullet Three Text Here" autofocus />');
       // $('#bullet-two').val('');
@@ -85,8 +82,8 @@ Template.yummy_coins.events({
         bullet: 'third',
         text: bulletThree
       })
-      var bullet3Obj = (Slides.find({slide: slideCount} && {bullet: 'third'}).fetch());
-      var bullet3Text = bullet3Obj[0]['text'];
+      var bullet3Obj = (Slides.find({slide: slideCount}).fetch());
+      var bullet3Text = bullet3Obj[3]['text'];
       $('.slide-preview').append('<div class="bullet-third-slide-one"> <h2>' + bullet3Text +'</h2></div>');
       //$('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Enter Bullet Three Text Here" />');
       // $('#bullet-three').val('');
