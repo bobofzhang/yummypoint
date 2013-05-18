@@ -14,10 +14,10 @@ Template.yummy_coins.events({
     $('.chart-slide').remove();
     $('.make-start').append('<div class="slide-inputs"></div>');
     $('.slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
-    $('.bullet-one').append('<input id="bullet-one" class="slide-text" type="text" /><input type="button" class="add" value="Make a Point" />');
-    $('.bullet-two').append('<input id="bullet-two" class="slide-text" type="text"/><input type="button" class="add2" value="Make a Point" />');
-    $('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" /><input type="button" class="add3" value="Make a Point" />');
+    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
+    $('.bullet-one').append('<input id="bullet-one" class="slide-text" type="text" placeholder="Enter Bullet Text Here" />');
+    // $('.bullet-two').append('<input id="bullet-two" class="slide-text" type="text"/><input type="button" class="add2" value="Make a Point" />');
+    // $('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" /><input type="button" class="add3" value="Make a Point" />');
     // $('.make-start').append('<div class="slide_inputs"><div class="slide-title"><input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus /><input type="button" class="add-title" value="Slide Title" /></div><div class="bullet-one"><input id="bullet-one" class="slide-text" type="text" /><input type="button" class="add" value="Make a Point" /> </br> </br></div> <div class="bullet-two"> <input id="bullet-two" class="slide-text" type="text"/> <input type="button" class="add2" value="Make a Point" /> </br> <br> </div> <div class="bullet-three"><input id="bullet-three" class="slide-text" type="text" /> <input type="button" class="add3" value="Make a Point" /> </br> </br></div> </div>');
     $('.slide-preview').append('<div id="slide-controls" class="row"><span class="span12"><p class="make_first_slide"> Make Another Slide </p></span></div>');
   },
@@ -33,52 +33,68 @@ Template.yummy_coins.events({
         slide: 'first',
         bullet: 'title',
         text: slideTitle
-     })
-     var slideOneTitle = (Slides.find({bullet: 'title'}).fetch());
+      })
+      var slideOneTitle = (Slides.find({bullet: 'title'}).fetch());
       var slideOneTitleText = slideOneTitle[0]['text'];
       $('.slide-preview').append('<div class="slide-one-title"> <h1>' + slideOneTitleText +'</h1></div>');
-      $('#slide-title').val('');
+      // $('#slide-title').val('');
+      $('#slide-title').remove();
       return slideTitle;
     }
   },
-  'click input.add': function () {
-    var bulletOne = document.getElementById("bullet-one").value;
-    // textArray.push(bulletOne);
-    Slides.insert({
-      slide: 'first',
-      bullet: 'first',
-      text: bulletOne
-    })
-    var bulletObj = (Slides.find({bullet: 'first'}).fetch());
-    var bulletText = bulletObj[0]['text'];
-    $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + bulletText +'</h2></div>');
-    return bulletOne;
+  'keypress #bullet-one': function (event) {
+    if (event.which == 13) {
+      var bulletOne = document.getElementById("bullet-one").value;
+      // textArray.push(bulletOne);
+      Slides.insert({
+        slide: 'first',
+        bullet: 'first',
+        text: bulletOne
+      })
+      var bulletObj = (Slides.find({bullet: 'first'}).fetch());
+      var bulletText = bulletObj[0]['text'];
+      $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + bulletText +'</h2></div>');
+      $('.bullet-two').append('<input id="bullet-two" class="slide-text" type="text" placeholder="Enter Bullet Two Text Here" />');
+      // $('#bullet-one').val('');
+      $('#bullet-one').remove();
+      return bulletOne;
+    }
   },
-  'click input.add2': function () {
-    var bulletTwo = document.getElementById("bullet-two").value;
-    // text2Array.push(bulletTwo);
-    Slides.insert({
-      slide: 'first',
-      bullet: 'second',
-      text: bulletTwo
-    })
-    var bullet2Obj = (Slides.find({bullet: 'second'}).fetch());
-    var bullet2Text = bullet2Obj[0]['text'];
-    $('.slide-preview').append('<div class="bullet-second-slide-one"> <h2>' + bullet2Text +'</h2></div>');
-    return bulletTwo;
+  'keypress #bullet-two': function (event) {
+    if (event.which == 13) {
+      var bulletTwo = document.getElementById("bullet-two").value;
+      // text2Array.push(bulletTwo);
+      Slides.insert({
+        slide: 'first',
+        bullet: 'second',
+        text: bulletTwo
+      })
+      var bullet2Obj = (Slides.find({bullet: 'second'}).fetch());
+      var bullet2Text = bullet2Obj[0]['text'];
+      $('.slide-preview').append('<div class="bullet-second-slide-one"> <h2>' + bullet2Text +'</h2></div>');
+      $('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Enter Bullet Three Text Here" />');
+      // $('#bullet-two').val('');
+      $('#bullet-two').remove();
+      return bulletTwo;
+    }
   },
-  'click input.add3': function () {
-    var bulletThree = document.getElementById("bullet-three").value;
-    // text3Array.push(bulletThree);
-    Slides.insert({ 
-      slide: 'first',
-      bullet: 'third',
-      text: bulletThree
-    })
-    var bullet3Obj = (Slides.find({bullet: 'third'}).fetch());
-    var bullet3Text = bullet3Obj[0]['text'];
-    $('.slide-preview').append('<div class="bullet-third-slide-one"> <h2>' + bullet3Text +'</h2></div>');
-    return bulletThree;
+  'keypress #bullet-three': function () {
+    if (event.which == 13) {
+      var bulletThree = document.getElementById("bullet-three").value;
+      // text3Array.push(bulletThree);
+      Slides.insert({ 
+        slide: 'first',
+        bullet: 'third',
+        text: bulletThree
+      })
+      var bullet3Obj = (Slides.find({bullet: 'third'}).fetch());
+      var bullet3Text = bullet3Obj[0]['text'];
+      $('.slide-preview').append('<div class="bullet-third-slide-one"> <h2>' + bullet3Text +'</h2></div>');
+      //$('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Enter Bullet Three Text Here" />');
+      // $('#bullet-three').val('');
+      $('#bullet-three').remove();
+      return bulletThree;
+    }
   },
 
   //>>>>>>>>>> SLIDE TWO INPUTS <<<<<<<<<

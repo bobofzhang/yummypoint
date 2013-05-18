@@ -28,6 +28,7 @@ body {
 /*  text-align: center;*/
   background-color: lightgrey;
 /*  border: 1px solid black;*/
+  color: white;
 }
 
 .slide-preview {
@@ -71,6 +72,11 @@ body {
 .slide-controls {
   padding-top: 1em;
 }
+
+/*#bullet-one {
+  color: white;
+  font-size: 2em;
+}*/
 
 .make_first_slide {
   height: 4em;  
