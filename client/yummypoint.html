@@ -50,11 +50,6 @@
             <h2>Chart</h2>
           </span>
        </div>
-<!--         <div class="span4">
-          <span class="liveData-slide">
-            <h2>Live Data</h2>
-          </span>
-        </div> -->
       </div> <!--Row-->
     </div><!--Make-Start-->
     <div class="slide-preview">
@@ -66,12 +61,6 @@
     <div class="d3_chart">
       {{D3test}}
     </div>
-
-  <div class="prices">
-    {{#each prices}}
-      {{> price}}
-    {{/each}}
-  </div>
 
 </template>
 
@@ -88,28 +77,6 @@
   </div>
 </template>
 
-<template name="text_slide_inputs"> 
-  <div class="slide-inputs">
-    <div class="slide-title">
-      <input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />
-      <input type="button" class="add-title" value="Slide Title" />
-    </div>
-    <div class="bullet_one">
-      <input id="bullet_one" class="slide-text" type="text" />
-      <input type="button" class="add" value="Make a Point" />
-      </br> </br>
-    </div> 
-    <div class="bullet_two"> 
-      <input id="bullet_two" class="slide-text" type="text"/>
-      <input type="button" class="add2" value="Make a Point" />
-          </br> <br> 
-    </div> 
-    <div class="bullet_three">
-      <input id="bullet_three" class="slide-text" type="text" /> 
-      <input type="button" class="add3" value="Make a Point" /> </br> </br>
-    </div> 
-  </div>
-</template>
 
 <!-- <a class="top_nav pull-right" href="#">{{loginButtons}}</a>-->
 

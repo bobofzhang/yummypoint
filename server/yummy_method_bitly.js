@@ -1,11 +1,11 @@
 
 
-Meteor.setInterval(function(){
-  Meteor.call("searchBitly", function(error, result) { 
-    console.log("search bitly called"); 
-    return result;
-  })
-}, 60000);
+// Meteor.setInterval(function(){
+//   Meteor.call("searchBitly", function(error, result) { 
+//     console.log("search bitly called"); 
+//     return result;
+//   })
+// }, 60000);
 
 Meteor.methods({
   searchBitly: function(){
