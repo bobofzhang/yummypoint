@@ -95,37 +95,44 @@ Template.yummy_coins.events({
 
   //>>>>>>>>>> SLIDE TWO INPUTS <<<<<<<<<
 
-    'click input.slide-two-add-title': function () {
-    var slideTitle = document.getElementById("slide-two-title").value;
-    Slides.insert({
-      slide: 'second',
-      bullet: 'title',
-      text: slideTitle
-    })
-    var slideTwoTitle = (Slides.find({ slide: 'second' }).fetch());
-    if (slideTwoTitle[0]['bullet'] === 'title') {
-      var slideTwoTitleText = slideTwoTitle[0]['text'];
+  'keypress #slide-two-slide-title': function (event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      var slideTitle = document.getElementById("slide-two-slide-title").value;
+      Slides.insert({
+        slide: 'second',
+        bullet: 'title',
+        text: slideTitle
+      })
+      var slideTwoTitle = (Slides.find({ slide: 'second' }).fetch());
+      if (slideTwoTitle[0]['bullet'] === 'title') {
+        var slideTwoTitleText = slideTwoTitle[0]['text'];
+      }
+      $('#slide-two-slide-title').remove();
+      $('.slide-preview').append('<div class="slide-one-title"> <h1>' + slideTwoTitleText +'</h1></div>');
+      $('.slide-two-bullet-one').append('<input id="slide-two-bullet-one" class="slide-text" type="text" placeholder="Make Your First Point" />');
+      return slideTwoTitleText;
     }
-    console.log(slideTwoTitleText);
-    $('.slide-preview').append('<div class="slide-one-title"> <h1>' + slideTwoTitleText +'</h1></div>');
-    return slideTwoTitleText;
   },
-  'click input.slide-two-add': function () {
-    var bulletOne = document.getElementById("slide-two-bullet-one").value;
-    console.log(bulletOne);
-    Slides.insert({
-      slide: 'second',
-      bullet: 'first',
-      text: bulletOne
-    })
-    var slideTwoBulletOne = (Slides.find({ slide: 'second' }).fetch());
-    console.log(slideTwoBulletOne);
-    if (slideTwoBulletOne[1]['bullet'] === 'first') {
-      var slideTwoBulletOneText = slideTwoBulletOne[1]['text'];
+  'keypress #slide-two-bullet-one': function (event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      var bulletOne = document.getElementById("slide-two-bullet-one").value;
+      console.log(bulletOne);
+      Slides.insert({
+        slide: 'second',
+        bullet: 'first',
+        text: bulletOne
+      })
+      var slideTwoBulletOne = (Slides.find({ slide: 'second' }).fetch());
+      console.log(slideTwoBulletOne);
+      if (slideTwoBulletOne[1]['bullet'] === 'first') {
+        var slideTwoBulletOneText = slideTwoBulletOne[1]['text'];
+      }
+      console.log(slideTwoBulletOneText);
+      $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + slideTwoBulletOneText + '</h2></div>');
+      return slideTwoBulletOneText;
     }
-    console.log(slideTwoBulletOneText);
-    $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + slideTwoBulletOneText + '</h2></div>');
-    return slideTwoBulletOneText;
   },
   'click input.slide-two-add2': function () {
     var bulletTwo = document.getElementById("slide-two-bullet-two").value;
