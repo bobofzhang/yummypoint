@@ -94,82 +94,82 @@ Template.yummy_coins.events({
 
   //>>>>>>>>>> SLIDE TWO INPUTS <<<<<<<<<
 
-  'keypress #slide-two-slide-title': function (event) {
-    if (event.which == 13) {
-      event.preventDefault();
-      var slideTitle = document.getElementById("slide-two-slide-title").value;
-      Slides.insert({
-        slide: 'second',
-        bullet: 'title',
-        text: slideTitle
-      })
-      var slideTwoTitle = (Slides.find({ slide: 'second' }).fetch());
-      if (slideTwoTitle[0]['bullet'] === 'title') {
-        var slideTwoTitleText = slideTwoTitle[0]['text'];
-      }
-      $('#slide-two-slide-title').remove();
-      $('.slide-preview').append('<div class="slide-one-title"> <h1>' + slideTwoTitleText +'</h1></div>');
-      $('.slide-two-bullet-one').append('<input id="slide-two-bullet-one" class="slide-text" type="text" placeholder="Make Your First Point" />');
-      return slideTwoTitleText;
-    }
-  },
-  'keypress #slide-two-bullet-one': function (event) {
-    if (event.which == 13) {
-      event.preventDefault();
-      var bulletOne = document.getElementById("slide-two-bullet-one").value;
-      console.log(bulletOne);
-      Slides.insert({
-        slide: 'second',
-        bullet: 'first',
-        text: bulletOne
-      })
-      var slideTwoBulletOne = (Slides.find({ slide: 'second' }).fetch());
-      if (slideTwoBulletOne[1]['bullet'] === 'first') {
-        var slideTwoBulletOneText = slideTwoBulletOne[1]['text'];
-      }
-      $('#slide-two-bullet-one').remove();
-      $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + slideTwoBulletOneText + '</h2></div>');
-      $('.slide-two-bullet-two').append('<input id="slide-two-bullet-two" class="slide-text" type="text" placeholder="Make Your Second Point" />');
-      return slideTwoBulletOneText;
-    }
-  },
-  'keypress #slide-two-bullet-two': function (event) {
-    if (event.which == 13) {
-      event.preventDefault();
-      var bulletTwo = document.getElementById("slide-two-bullet-two").value;
-      Slides.insert({
-        slide: 'second',
-        bullet: 'second',
-        text: bulletTwo
-      })
-      var slideTwoBulletTwo = (Slides.find({ slide: 'second' }).fetch());
-      if (slideTwoBulletTwo[2]['bullet'] === 'second') {
-        var slideTwoBulletTwoText = slideTwoBulletTwo[2]['text'];
-      }
-      $('#slide-two-bullet-two').remove();
-      $('.slide-preview').append('<div class="bullet-second-slide-one"> <h2>' + slideTwoBulletTwoText + '</h2></div>');
-      $('.slide-two-bullet-three').append('<input id="slide-two-bullet-three" class="slide-text" type="text" placeholder="Make Your Third Point" />');
-      return slideTwoBulletTwoText;
-    }
-  },
-  'keypress #slide-two-bullet-three': function (event) {
-    if (event.which == 13) {
-      event.preventDefault();
-      var bulletThree = document.getElementById("slide-two-bullet-three").value;
-      Slides.insert({ 
-        slide: 'second',
-        bullet: 'third',
-        text: bulletThree
-      })
-      var slideTwoBulletThree = (Slides.find({ slide: 'second' }).fetch());
-      if (slideTwoBulletThree[3]['bullet'] === 'third') {
-        var slideTwoBulletThreeText = slideTwoBulletThree[3]['text'];
-      }
-      $('#slide-two-bullet-three').remove();
-      $('.slide-preview').append('<div class="bullet-third-slide-one"> <h2>' + slideTwoBulletThreeText + '</h2></div>');
-      return slideTwoBulletThreeText;
-    }
-  },
+  // 'keypress #slide-two-slide-title': function (event) {
+  //   if (event.which == 13) {
+  //     event.preventDefault();
+  //     var slideTitle = document.getElementById("slide-two-slide-title").value;
+  //     Slides.insert({
+  //       slide: 'second',
+  //       bullet: 'title',
+  //       text: slideTitle
+  //     })
+  //     var slideTwoTitle = (Slides.find({ slide: 'second' }).fetch());
+  //     if (slideTwoTitle[0]['bullet'] === 'title') {
+  //       var slideTwoTitleText = slideTwoTitle[0]['text'];
+  //     }
+  //     $('#slide-two-slide-title').remove();
+  //     $('.slide-preview').append('<div class="slide-one-title"> <h1>' + slideTwoTitleText +'</h1></div>');
+  //     $('.slide-two-bullet-one').append('<input id="slide-two-bullet-one" class="slide-text" type="text" placeholder="Make Your First Point" />');
+  //     return slideTwoTitleText;
+  //   }
+  // },
+  // 'keypress #slide-two-bullet-one': function (event) {
+  //   if (event.which == 13) {
+  //     event.preventDefault();
+  //     var bulletOne = document.getElementById("slide-two-bullet-one").value;
+  //     console.log(bulletOne);
+  //     Slides.insert({
+  //       slide: 'second',
+  //       bullet: 'first',
+  //       text: bulletOne
+  //     })
+  //     var slideTwoBulletOne = (Slides.find({ slide: 'second' }).fetch());
+  //     if (slideTwoBulletOne[1]['bullet'] === 'first') {
+  //       var slideTwoBulletOneText = slideTwoBulletOne[1]['text'];
+  //     }
+  //     $('#slide-two-bullet-one').remove();
+  //     $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + slideTwoBulletOneText + '</h2></div>');
+  //     $('.slide-two-bullet-two').append('<input id="slide-two-bullet-two" class="slide-text" type="text" placeholder="Make Your Second Point" />');
+  //     return slideTwoBulletOneText;
+  //   }
+  // },
+  // 'keypress #slide-two-bullet-two': function (event) {
+  //   if (event.which == 13) {
+  //     event.preventDefault();
+  //     var bulletTwo = document.getElementById("slide-two-bullet-two").value;
+  //     Slides.insert({
+  //       slide: 'second',
+  //       bullet: 'second',
+  //       text: bulletTwo
+  //     })
+  //     var slideTwoBulletTwo = (Slides.find({ slide: 'second' }).fetch());
+  //     if (slideTwoBulletTwo[2]['bullet'] === 'second') {
+  //       var slideTwoBulletTwoText = slideTwoBulletTwo[2]['text'];
+  //     }
+  //     $('#slide-two-bullet-two').remove();
+  //     $('.slide-preview').append('<div class="bullet-second-slide-one"> <h2>' + slideTwoBulletTwoText + '</h2></div>');
+  //     $('.slide-two-bullet-three').append('<input id="slide-two-bullet-three" class="slide-text" type="text" placeholder="Make Your Third Point" />');
+  //     return slideTwoBulletTwoText;
+  //   }
+  // },
+  // 'keypress #slide-two-bullet-three': function (event) {
+  //   if (event.which == 13) {
+  //     event.preventDefault();
+  //     var bulletThree = document.getElementById("slide-two-bullet-three").value;
+  //     Slides.insert({ 
+  //       slide: 'second',
+  //       bullet: 'third',
+  //       text: bulletThree
+  //     })
+  //     var slideTwoBulletThree = (Slides.find({ slide: 'second' }).fetch());
+  //     if (slideTwoBulletThree[3]['bullet'] === 'third') {
+  //       var slideTwoBulletThreeText = slideTwoBulletThree[3]['text'];
+  //     }
+  //     $('#slide-two-bullet-three').remove();
+  //     $('.slide-preview').append('<div class="bullet-third-slide-one"> <h2>' + slideTwoBulletThreeText + '</h2></div>');
+  //     return slideTwoBulletThreeText;
+  //   }
+  // },
 
   //>>>>>>>>>> SHOW MAKER HELPERS <<<<<<<<<<<<<<<<<
   'click .slidelink': function(){
@@ -198,21 +198,21 @@ Template.yummy_coins.events({
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
       // $('#slide-inputs').append('<div class="slide-two-title"></div><div class="slide-two-bullet-one"></div><div class="slide-two-bullet-two"></div><div class="slide-two-bullet-three"></div>');
       // $('.slide-two-title').append('<input id="slide-two-slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
-      var slideOneTitle = (Slides.find({bullet: 'title'}).fetch());
-      var slideOneTitleText = slideOneTitle[0]['text'];
-      var bulletObj = (Slides.find({bullet: 'first'}).fetch());
-      var bulletText = bulletObj[0]['text'];
-      var bullet2Obj = (Slides.find({bullet: 'second'}).fetch());
-      var bullet2Text = bullet2Obj[0]['text'];
-      var bullet3Obj = (Slides.find({bullet: 'third'}).fetch());
-      var bullet3Text = bullet3Obj[0]['text'];
+      var slideTitle = (Slides.find({slide: slideCount}).fetch());
+      var slideTitleText = slideTitle[0]['text'];
+      var bulletOne = (Slides.find({slide: slideCount}).fetch());
+      var bulletOneText = bulletOne[1]['text'];
+      var bulletTwo = (Slides.find({slide: slideCount}).fetch());
+      var bulletTwoText = bulletTwo[2]['text'];
+      var bulletThree = (Slides.find({slide: slideCount}).fetch());
+      var bulletThreeText = bulletThree[3]['text'];
       Shows.insert([
         { slide: slideCount },
         { contents: [
-                    { bullet: 'title', text: slideOneTitleText },
-                    { bullet: 'first', text: bulletText },
-                    { bullet: 'second', text: bullet2Text },
-                    { bullet: 'third', text: bullet3Text }
+                    { bullet: 'title', text: slideTitleText },
+                    { bullet: 'first', text: bulletOneText },
+                    { bullet: 'second', text: bulletTwoText },
+                    { bullet: 'third', text: bulletThreeText }
                     ]
         }])
       slideCount++;
