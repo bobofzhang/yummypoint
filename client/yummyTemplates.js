@@ -172,10 +172,33 @@ Template.yummy_coins.events({
   // },
 
   //>>>>>>>>>> SHOW MAKER HELPERS <<<<<<<<<<<<<<<<<
-  'click .slidelink': function(){
+  'click .slidelink1': function(){
     $('.slide-inputs').remove();
-    var slideTitle = Shows.find({}, { slide: 'first'} ).fetch();
+    var slideTitle = Shows.find({}).fetch();
     var slideTextArray = slideTitle[0][1]['contents'];
+    console.log(slideTextArray);
+    var title = slideTextArray[0]['text'];
+    var firstBull = slideTextArray[1]['text'];
+    var secondBull = slideTextArray[2]['text'];
+    var thirdBull = slideTextArray[3]['text'];
+    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+  },
+  'click .slidelink2': function(){
+    $('.slide-inputs').remove();
+    var slideTitle = Shows.find({}).fetch();
+    console.log(slideTitle);
+    var slideTextArray = slideTitle[1][1]['contents'];
+    console.log(slideTextArray);
+    var title = slideTextArray[0]['text'];
+    var firstBull = slideTextArray[1]['text'];
+    var secondBull = slideTextArray[2]['text'];
+    var thirdBull = slideTextArray[3]['text'];
+    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+  },
+  'click .slidelink3': function(){
+    $('.slide-inputs').remove();
+    var slideTitle = Shows.find({}).fetch();
+    var slideTextArray = slideTitle[2][1]['contents'];
     var title = slideTextArray[0]['text'];
     var firstBull = slideTextArray[1]['text'];
     var secondBull = slideTextArray[2]['text'];
@@ -190,7 +213,7 @@ Template.yummy_coins.events({
       $('.bullet-first-slide-one').remove();
       $('.bullet-second-slide-one').remove();
       $('.bullet-third-slide-one').remove();
-      $('#slide-links').append('<div class="span1"><span class="slidelink"<p> Slide' + ' ' + slideCount + '</p></span></div>');
+      $('#slide-links').append('<div class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
       $('.make-start').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
       //$('.make-start').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-second-slide"> Save Slide and Continue </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
@@ -216,8 +239,6 @@ Template.yummy_coins.events({
                     ]
         }])
       slideCount++;
-      console.log("slidecount" + slideCount);
-
     },
     'click input.save_slides': function () {
       $('.bullet-one').remove();
@@ -249,12 +270,6 @@ Template.yummy_coins.events({
       var bullet3Text = bullet3Obj[0]['text'];
       $('.slide-inputs').append('<div class="slideOneBullets"> <h2>' + bulletText +'</h2><h2>' + bullet2Text + '</h2><h2>' + bullet3Text + '</h2></div>');
     }
-    // 'click .bulletTwoText': function () {
-    //   $('.bulletTwoText').remove();
-    //   var bulletObj = (Slides.find({bullet: 'third'}).fetch());
-    //   var bulletText = bulletObj[0]['text'];
-    //   $('.slide_inputs').append('<div class="bulletThreeText"> <h3>' + bulletText +'</h3></div>');
-    // }
 })
 
 // Template.yummy_coins.D3test = function () {
