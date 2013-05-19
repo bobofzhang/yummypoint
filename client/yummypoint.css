@@ -23,6 +23,31 @@ body {
   color: lightslategray;
 }
 
+.create-show-input {
+  margin-bottom: 1.5em;
+}
+
+#create-show-input {
+  width: 98%;
+  height: 3em;
+  text-align: center;
+  font-size: 2em;
+  color: black;
+  box-shadow: 8px 8px 60px;
+}
+
+#create-show-input:hover {
+  background-color: lightgray;
+  color: white;
+  box-shadow: inset 10px 10px 50px;
+  border: 2px solid white;
+  border-radius: 0.4em;
+}
+
+.current-show {
+  text-shadow: 2px 2px #ff0000;
+}
+
 .twitter h3 {
   text-align: center;
   background-color: pink; 

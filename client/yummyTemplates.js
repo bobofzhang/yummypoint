@@ -1,5 +1,6 @@
 
 var slideCount = 1;
+var currentShow;
 
 Template.yummy_coins.events({
   'click .text-slide': function () {
@@ -20,8 +21,10 @@ Template.yummy_coins.events({
   'keypress #slide-title': function (event) {
     if (event.which == 13) {
       event.preventDefault();
+      console.log(currentShow);
       var slideTitle = document.getElementById("slide-title").value;
       Slides.insert({
+        show: currentShow,
         slide: slideCount,
         bullet: 'title',
         text: slideTitle
@@ -91,85 +94,6 @@ Template.yummy_coins.events({
       return bulletThree;
     }
   },
-
-  //>>>>>>>>>> SLIDE TWO INPUTS <<<<<<<<<
-
-  // 'keypress #slide-two-slide-title': function (event) {
-  //   if (event.which == 13) {
-  //     event.preventDefault();
-  //     var slideTitle = document.getElementById("slide-two-slide-title").value;
-  //     Slides.insert({
-  //       slide: 'second',
-  //       bullet: 'title',
-  //       text: slideTitle
-  //     })
-  //     var slideTwoTitle = (Slides.find({ slide: 'second' }).fetch());
-  //     if (slideTwoTitle[0]['bullet'] === 'title') {
-  //       var slideTwoTitleText = slideTwoTitle[0]['text'];
-  //     }
-  //     $('#slide-two-slide-title').remove();
-  //     $('.slide-preview').append('<div class="slide-one-title"> <h1>' + slideTwoTitleText +'</h1></div>');
-  //     $('.slide-two-bullet-one').append('<input id="slide-two-bullet-one" class="slide-text" type="text" placeholder="Make Your First Point" />');
-  //     return slideTwoTitleText;
-  //   }
-  // },
-  // 'keypress #slide-two-bullet-one': function (event) {
-  //   if (event.which == 13) {
-  //     event.preventDefault();
-  //     var bulletOne = document.getElementById("slide-two-bullet-one").value;
-  //     console.log(bulletOne);
-  //     Slides.insert({
-  //       slide: 'second',
-  //       bullet: 'first',
-  //       text: bulletOne
-  //     })
-  //     var slideTwoBulletOne = (Slides.find({ slide: 'second' }).fetch());
-  //     if (slideTwoBulletOne[1]['bullet'] === 'first') {
-  //       var slideTwoBulletOneText = slideTwoBulletOne[1]['text'];
-  //     }
-  //     $('#slide-two-bullet-one').remove();
-  //     $('.slide-preview').append('<div class="bullet-first-slide-one"> <h2>' + slideTwoBulletOneText + '</h2></div>');
-  //     $('.slide-two-bullet-two').append('<input id="slide-two-bullet-two" class="slide-text" type="text" placeholder="Make Your Second Point" />');
-  //     return slideTwoBulletOneText;
-  //   }
-  // },
-  // 'keypress #slide-two-bullet-two': function (event) {
-  //   if (event.which == 13) {
-  //     event.preventDefault();
-  //     var bulletTwo = document.getElementById("slide-two-bullet-two").value;
-  //     Slides.insert({
-  //       slide: 'second',
-  //       bullet: 'second',
-  //       text: bulletTwo
-  //     })
-  //     var slideTwoBulletTwo = (Slides.find({ slide: 'second' }).fetch());
-  //     if (slideTwoBulletTwo[2]['bullet'] === 'second') {
-  //       var slideTwoBulletTwoText = slideTwoBulletTwo[2]['text'];
-  //     }
-  //     $('#slide-two-bullet-two').remove();
-  //     $('.slide-preview').append('<div class="bullet-second-slide-one"> <h2>' + slideTwoBulletTwoText + '</h2></div>');
-  //     $('.slide-two-bullet-three').append('<input id="slide-two-bullet-three" class="slide-text" type="text" placeholder="Make Your Third Point" />');
-  //     return slideTwoBulletTwoText;
-  //   }
-  // },
-  // 'keypress #slide-two-bullet-three': function (event) {
-  //   if (event.which == 13) {
-  //     event.preventDefault();
-  //     var bulletThree = document.getElementById("slide-two-bullet-three").value;
-  //     Slides.insert({ 
-  //       slide: 'second',
-  //       bullet: 'third',
-  //       text: bulletThree
-  //     })
-  //     var slideTwoBulletThree = (Slides.find({ slide: 'second' }).fetch());
-  //     if (slideTwoBulletThree[3]['bullet'] === 'third') {
-  //       var slideTwoBulletThreeText = slideTwoBulletThree[3]['text'];
-  //     }
-  //     $('#slide-two-bullet-three').remove();
-  //     $('.slide-preview').append('<div class="bullet-third-slide-one"> <h2>' + slideTwoBulletThreeText + '</h2></div>');
-  //     return slideTwoBulletThreeText;
-  //   }
-  // },
 
   //>>>>>>>>>> SHOW MAKER HELPERS <<<<<<<<<<<<<<<<<
   'click .slidelink1': function(){
@@ -241,7 +165,6 @@ Template.yummy_coins.events({
     var thirdBull = slideTextArray[3]['text'];
     $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
   },
-
   'click .make-first-slide': function () {
       console.log(slideCount);
       $('#slide-inputs').remove();      
@@ -307,6 +230,18 @@ Template.yummy_coins.events({
       var bullet3Text = bullet3Obj[0]['text'];
       $('.slide-inputs').append('<div class="slideOneBullets"> <h2>' + bulletText +'</h2><h2>' + bullet2Text + '</h2><h2>' + bullet3Text + '</h2></div>');
     }
+})
+
+Template.yummy_coins.events({
+  'keypress #create-show-input': function (event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      var showName = document.getElementById("create-show-input").value;
+      currentShow = showName;
+      $('.create-show-input').remove();
+      $('#create-show').append('<span class="current-show"><h2>' + showName + '</h2></span>');
+    }
+  }
 })
 
 // Template.yummy_coins.D3test = function () {
