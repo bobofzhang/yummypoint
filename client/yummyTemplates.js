@@ -174,6 +174,7 @@ Template.yummy_coins.events({
   //>>>>>>>>>> SHOW MAKER HELPERS <<<<<<<<<<<<<<<<<
   'click .slidelink1': function(){
     $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
     var slideTextArray = slideTitle[0][1]['contents'];
     console.log(slideTextArray);
@@ -185,6 +186,7 @@ Template.yummy_coins.events({
   },
   'click .slidelink2': function(){
     $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var slideTextArray = slideTitle[1][1]['contents'];
@@ -197,6 +199,7 @@ Template.yummy_coins.events({
   },
   'click .slidelink3': function(){
     $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
     var slideTextArray = slideTitle[2][1]['contents'];
     var title = slideTextArray[0]['text'];
@@ -205,6 +208,40 @@ Template.yummy_coins.events({
     var thirdBull = slideTextArray[3]['text'];
     $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
   },
+  'click .slidelink4': function(){
+    $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
+    var slideTitle = Shows.find({}).fetch();
+    var slideTextArray = slideTitle[3][1]['contents'];
+    var title = slideTextArray[0]['text'];
+    var firstBull = slideTextArray[1]['text'];
+    var secondBull = slideTextArray[2]['text'];
+    var thirdBull = slideTextArray[3]['text'];
+    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+  },
+  'click .slidelink5': function(){
+    $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
+    var slideTitle = Shows.find({}).fetch();
+    var slideTextArray = slideTitle[4][1]['contents'];
+    var title = slideTextArray[0]['text'];
+    var firstBull = slideTextArray[1]['text'];
+    var secondBull = slideTextArray[2]['text'];
+    var thirdBull = slideTextArray[3]['text'];
+    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+  },
+  'click .slidelink6': function(){
+    $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
+    var slideTitle = Shows.find({}).fetch();
+    var slideTextArray = slideTitle[5][1]['contents'];
+    var title = slideTextArray[0]['text'];
+    var firstBull = slideTextArray[1]['text'];
+    var secondBull = slideTextArray[2]['text'];
+    var thirdBull = slideTextArray[3]['text'];
+    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+  },
+
   'click .make-first-slide': function () {
       console.log(slideCount);
       $('#slide-inputs').remove();      
