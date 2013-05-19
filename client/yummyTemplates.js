@@ -212,12 +212,15 @@ Template.yummy_coins.events({
     },
 
     //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
-  'click input.start_yummy': function () {
-      $('.start_yummy').remove();
-      // var firstBul = Slides.findOne({});
-      var slideOneTitle = (Slides.find({bullet: 'title'}).fetch());
-      var slideOneTitleText = slideOneTitle[0]['text'];
-      $('.slide-inputs').append('<div class="slide-one-title"> <h1>' + slideOneTitleText +'</h1></div>');
+  'click .start-current-show': function () {
+      $('#navbar').remove();
+      $('#yummy-shows').remove();
+      $('#slide-index').remove();
+      $('.make-start').remove();
+      $('#slide-preview').remove();
+      var currentShowSlides = (Slides.find({show: currentShow}).fetch());
+      var showSlideOneTitle = currentShowSlides[0]['text'];
+      $('#body-row').append('<div class="span12 slide-one-title"><span class="title"><h1>' + showSlideOneTitle +'</h1></span></div>');
     },
   'click .slide-one-title': function () {
       // $('.slideOneTitle').remove();
@@ -238,8 +241,10 @@ Template.yummy_coins.events({
       event.preventDefault();
       var showName = document.getElementById("create-show-input").value;
       currentShow = showName;
-      $('.create-show-input').remove();
-      $('#create-show').append('<span class="current-show"><h2>' + showName + '</h2></span>');
+      // $('.create-show-input').remove();
+      $('#create-show').remove();
+      $('#show-row').append('<div><div class="span8"><span class="current-show"><h2>' + showName + '</h2></span></div><div class="span3"><span class="start-current-show"><p> Start' + ' ' + showName + '</p></span></div></div>');
+      //$('#create-show').append('<div class="span8"><span class="current-show"><h2>' + showName + '</h2></span></div><div class="span4"><span class="start-current-show"><p> Start' + ' ' + showName + '</p></span><div>');
     }
   }
 })
