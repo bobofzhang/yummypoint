@@ -9,6 +9,10 @@ body {
     user-select: none;
 }
 
+.hot-bits {
+  font-size: small;
+}
+
 /*.yummy-shows {
   border: 1px solid slategray;
 }*/

@@ -8,11 +8,9 @@ Meteor.methods({
     var rawData;
 
     //Deps.autorun(function(){
-    rawData = Hotbits.find({ phrase: "justin bieber" }).fetch();
+    rawData = Hotbits.find({ phrase: "nancy binay" }).fetch();
       //return rawData;
     //})
-    console.log(rawData);
-
     var data = [];
 
     for (var i = 0; i < rawData.length; i++) {
@@ -80,7 +78,7 @@ Meteor.methods({
         .attr("class", "line")
         .attr("d", line);
 
-    return console.log(data);
+    return data;
   }
 })
 
