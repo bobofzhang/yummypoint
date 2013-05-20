@@ -3,11 +3,12 @@
 Meteor.methods({
   bitlyLineChartD3: function() {
     console.log('i am in the bitly line graph method');
+    $('.bitly-chart').remove();
 
     var rawData;
 
     //Deps.autorun(function(){
-    rawData = Hotbits.find({ phrase: "angelina jolie" }).fetch();
+    rawData = Hotbits.find({ phrase: "justin bieber" }).fetch();
       //return rawData;
     //})
     console.log(rawData);
@@ -51,6 +52,7 @@ Meteor.methods({
     var svg = d3.select("body").append("svg")
                               .attr("width", width + margin.left + margin.right)
                               .attr("height", height + margin.top + margin.bottom)
+                              .attr("class", "bitly-chart")
                               .append("g")
                               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -77,6 +79,7 @@ Meteor.methods({
         .datum(data)
         .attr("class", "line")
         .attr("d", line);
+
     return console.log(data);
   }
 })
@@ -97,7 +100,7 @@ Meteor.methods({
 
     for (var i = 0; i < rawData.length; i++) {
       data.push(rawData[i].clickrate);//, rawData[i].time]);
-      console.log(data);
+      // console.log(data);
       // console.log(data);
     }
     // var now = new Date();

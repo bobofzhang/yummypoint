@@ -211,7 +211,17 @@ Template.yummy_coins.events({
       $('.slide-inputs').append('<div><input type="button" class="start_yummy" value="ready to start the show?"/> </div>');
     },
 
-    //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
+//>>>>>>>>>>>> Line-Chart Events <<<<<<<<<<<<<<
+
+    'click .save-bitly-slide': function() {
+      console.log('you are saving a bitly slide');
+      Charts.insert({
+        show: currentShow, 
+        slide: slideCount, 
+        chart: "Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); });"
+      })
+    },
+//>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
   'click .start-current-show': function () {
       $('#navbar').remove();
       $('#yummy-shows').remove();

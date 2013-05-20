@@ -11,4 +11,5 @@ Tweets = new Meteor.Collection("tweets");
 
 Hotbits = new Meteor.Collection("hotbits");
 
+Charts = new Meteor.Collection("charts");
 
