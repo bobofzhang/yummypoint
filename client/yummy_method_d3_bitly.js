@@ -8,7 +8,7 @@ Meteor.methods({
     var rawData;
 
     //Deps.autorun(function(){
-    rawData = Hotbits.find({ phrase: "kevin durant" }).fetch();
+    rawData = Hotbits.find({ phrase: "nba draft" }).fetch();
       //return rawData;
     //})
     var data = [];

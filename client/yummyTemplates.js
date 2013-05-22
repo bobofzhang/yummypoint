@@ -194,6 +194,7 @@ Template.yummy_coins.events({
       var bulletThree = (Slides.find({slide: slideCount}).fetch());
       var bulletThreeText = bulletThree[3]['text'];
       Shows.insert([
+        { show: currentShow },
         { slide: slideCount },
         { contents: [
                     { bullet: 'title', text: slideTitleText },
@@ -234,14 +235,20 @@ Template.yummy_coins.events({
       // // $('#create-text').remove();
       // // $('#create-chart').remove();
       $('#slide-preview').remove();
-      currentYummyShow = (Slides.find({show: currentShow}).fetch());
-      var showSlideOneTitle = currentYummyShow[0]['text'];
-      $('#body-row').append('<div class="the-show"><div id="show-title" class="span12 show-title"><span class="title"><h1>' + showSlideOneTitle +'</h1></span></div></div>');
+      currentYummyShow = (Shows.find({ 0 : { show: currentShow }}).fetch());
+      var yummyTitleText = currentYummyShow[0]['2']['contents'][0]['text'];
+      $('#body-row').append('<div class="the-show"><div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
     },
   'click #show-title': function () {
     console.log(currentYummyShow[1]['text']);
-    var showBulletOne = currentYummyShow[1]['text'];
+    var showBulletOne = currentYummyShow[1]['content']['text'];
     $('.the-show').append('<div id="show-bullet-one" class="span12 show-bullet-one"><span class="show-bullet-one"><h2>' + showBulletOne +'</h2></span></div></div>');
+      //$('.slide-inputs').append('<div class="slideOneBullets"> <h2>' + bulletText +'</h2><h2>' + bullet2Text + '</h2><h2>' + bullet3Text + '</h2></div>');
+    },
+  'click #show-bullet-one': function () {
+    console.log(currentYummyShow[2]['text']);
+    var showBulletTwo = currentYummyShow[2]['content']['text'];
+    $('.the-show').append('<div id="show-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2>' + showBulletTwo +'</h2></span></div></div>');
       //$('.slide-inputs').append('<div class="slideOneBullets"> <h2>' + bulletText +'</h2><h2>' + bullet2Text + '</h2><h2>' + bullet3Text + '</h2></div>');
     }
     // 'click #slide-one-title': function () {
