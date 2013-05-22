@@ -1,14 +1,14 @@
 
 
 Meteor.methods({
-  bitlyLineChartD3: function() {
+  bitlyLineChartD3: function(hotbit) {
     console.log('i am in the bitly line graph method');
     $('.bitly-chart').remove();
 
     var rawData;
 
     //Deps.autorun(function(){
-    rawData = Hotbits.find({ phrase: "nancy binay" }).fetch();
+    rawData = Hotbits.find({ phrase: "kevin durant" }).fetch();
       //return rawData;
     //})
     var data = [];
