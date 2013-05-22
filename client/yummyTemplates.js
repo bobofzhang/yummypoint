@@ -2,6 +2,7 @@
 var slideCount = 1;
 var currentShow;
 var currentYummyShow;
+var yummyShowSlideIndex = 0;
 
 Template.yummy_coins.events({
   'click .text-slide': function () {
@@ -236,30 +237,31 @@ Template.yummy_coins.events({
       // // $('#create-chart').remove();
       $('#slide-preview').remove();
       currentYummyShow = (Shows.find({ 0 : { show: currentShow }}).fetch());
-      var yummyTitleText = currentYummyShow[0]['2']['contents'][0]['text'];
+      console.log(currentYummyShow);
+      var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
       $('#body-row').append('<div class="the-show"><div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
     },
   'click #show-title': function () {
-    console.log(currentYummyShow[1]['text']);
-    var showBulletOne = currentYummyShow[1]['content']['text'];
-    $('.the-show').append('<div id="show-bullet-one" class="span12 show-bullet-one"><span class="show-bullet-one"><h2>' + showBulletOne +'</h2></span></div></div>');
-      //$('.slide-inputs').append('<div class="slideOneBullets"> <h2>' + bulletText +'</h2><h2>' + bullet2Text + '</h2><h2>' + bullet3Text + '</h2></div>');
+    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
+    $('.the-show').append('<div id="show-bullet-one" class="span12 show-bullet-one"><span class="show-bullet-one"><h2>' + yummyBulletOneText +'</h2></span></div></div>');
     },
   'click #show-bullet-one': function () {
-    console.log(currentYummyShow[2]['text']);
-    var showBulletTwo = currentYummyShow[2]['content']['text'];
-    $('.the-show').append('<div id="show-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2>' + showBulletTwo +'</h2></span></div></div>');
-      //$('.slide-inputs').append('<div class="slideOneBullets"> <h2>' + bulletText +'</h2><h2>' + bullet2Text + '</h2><h2>' + bullet3Text + '</h2></div>');
+    var yummyBulletTwoText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][2]['text'];
+    $('.the-show').append('<div id="show-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2>' + yummyBulletTwoText +'</h2></span></div></div>');
+    },
+  'click #show-bullet-two': function () {
+    var yummyBulletThreeText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][3]['text'];
+    $('.the-show').append('<div id="show-bullet-three" class="span12 show-bullet-three"><span class="show-bullet-three"><h2>' + yummyBulletThreeText +'</h2></span></div></div>');
+    },
+  'click #show-bullet-three': function () {
+    yummyShowSlideIndex++;
+    $('#show-title').remove();
+    $('#show-bullet-one').remove();
+    $('#show-bullet-two').remove();
+    $('#show-bullet-three').remove();
+    var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
     }
-    // 'click #slide-one-title': function () {
-    //   var bulletObj = (Slides.find({bullet: 'first'}).fetch());
-    //   var bulletText = bulletObj[0]['text'];
-    //   var bullet2Obj = (Slides.find({bullet: 'second'}).fetch());
-    //   var bullet2Text = bullet2Obj[0]['text'];
-    //   var bullet3Obj = (Slides.find({bullet: 'third'}).fetch());
-    //   var bullet3Text = bullet3Obj[0]['text'];
-    //   $('.slide-inputs').append('<div class="slideOneBullets"> <h2>' + bulletText +'</h2><h2>' + bullet2Text + '</h2><h2>' + bullet3Text + '</h2></div>');
-    // }
 })
 
 Template.yummy_coins.events({
