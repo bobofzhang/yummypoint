@@ -2,7 +2,7 @@
 Meteor.methods({
   renderHotBits: function(){
     var bitTags = Hotbits.find({}, { sort: { time: -1, rate: -1 }, limit: 20 }).fetch();
-    console.log(bitTags);
+    // console.log(bitTags);
     $('.hot-bits').remove();
     $('.make-start').append('<div id="hot-bit-1" class="span1"><span class="hot-bits"><p id="hot-bit1">' + bitTags[0]['phrase'] + '</p></span></div>');
     $('.make-start').append('<div id="hot-bit-2" class="span1"><span class="hot-bits"><p>' + bitTags[1]['phrase'] + '</p></span></div>');
@@ -47,23 +47,7 @@ Template.yummy_coins.events({
     $('.data-source-details').remove();
     //$('.make-start').append('<div class="chosen-data-source"><div class="row"><div class="span12"> <h3> Live Data </h3></span></div></div></div>');
     $('.make-start').append('<div class="data-source-details"><div class="row"><div class="span12"> <span class="bitly-hot"> <h3> Bitly </h3> </span></div></div></div>');
-    $('.make-start').append('<div class="save-bitly-slide"><div class="row"><div class="span12"> <span class="save-bitly-slide"> <p> That Looks Sick. Put that in Yummy </p> </span></div></div></div>');
-    // var bitTags;
-    // // Deps.autorun(function(){
-    // //   bitTags = Hotbits.find({}, { sort: { time: -1 }, limit: 6 }).fetch();
-    // //   return bitTags;
-    // // });
-    // Meteor.setInterval(function(){
-    //   bitTags = Hotbits.find({}, { sort: { time: -1 }, limit: 6 }).fetch();
-    //   return bitTags;
-    // }, 10000);
-    // console.log(bitTags);
-    // $('.make-start').append('<div class="span2"><span class="hot-bits"><p>' + bitTags[0]['phrase'] + '</p></span></div>');
-    // $('.make-start').append('<div class="span2"><span class="hot-bits"><p>' + bitTags[1]['phrase'] + '</p></span></div>');
-    // $('.make-start').append('<div class="span2"><span class="hot-bits"><p>' + bitTags[2]['phrase'] + '</p></span></div>');
-    // $('.make-start').append('<div class="span2"><span class="hot-bits"><p>' + bitTags[3]['phrase'] + '</p></span></div>');
-    // $('.make-start').append('<div class="span2"><span class="hot-bits"><p>' + bitTags[4]['phrase'] + '</p></span></div>'); Deps.autorun(function(){ return Meteor.call('renderHotBits'); })
-    // $('.make-start').append('<div class="span2"><span class="hot-bits"><p>' + bitTags[5]['phrase'] + '</p></span></div>'); Meteor.setInterval(function(){ Meteor.call("renderHotBits") }, 10000);
+    $('.make-start').append('<div id="save-bitly-slide" class="save-bitly-slide"><div class="row"><div class="span12"> <span class="save-bitly-slide"> <p> That Looks Sick. Put that in Yummy </p> </span></div></div></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.setInterval(function(){ Meteor.call("renderHotBits") }, 10000) && Meteor.call("renderHotBits");
   }
 })
@@ -78,16 +62,7 @@ Template.yummy_coins.events({
   }
 })
 
-// Template.yummy_coins.events({
-//   'click .save-bitly-slide': function() {
-//     console.log('you are saving a bitly slide');
-//     Charts.insert({
-//       show: currentShow, 
-//       slide: slideCount
 
-//     })
-//   }
-// })
 
 
 

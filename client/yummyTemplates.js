@@ -4,6 +4,15 @@ var currentShow;
 var currentYummyShow;
 var yummyShowSlideIndex = 0;
 
+
+// Meteor.methods({
+//   tickSlideCount: function () {
+//     slideCount++
+//     console.log(slideCount);
+//     return slideCount;
+//   }
+// })
+
 Template.yummy_coins.events({
   'click .text-slide': function () {
     $('.text-slide').remove();
@@ -203,7 +212,10 @@ Template.yummy_coins.events({
                     { bullet: 'second', text: bulletTwoText },
                     { bullet: 'third', text: bulletThreeText }
                     ]
-        }])
+        },
+        { slideType: "text" },
+        { dataSource: "text" }
+        ])
       slideCount++;
     },
     // 'click input.save_slides': function () {
@@ -219,14 +231,14 @@ Template.yummy_coins.events({
 
 //>>>>>>>>>>>> Line-Chart Events <<<<<<<<<<<<<<
 
-    'click .save-bitly-slide': function() {
-      console.log('you are saving a bitly slide');
-      Charts.insert({
-        show: currentShow, 
-        slide: slideCount, 
-        chart: "Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); });"
-      })
-    },
+    // 'click .save-bitly-slide': function() {
+    //   console.log('you are saving a bitly slide');
+    //   Charts.insert({
+    //     show: currentShow, 
+    //     slide: slideCount, 
+    //     chart: "Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); });"
+    //   })
+    // },
 //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
   'click .start-current-show': function () {
       // $('#navbar').remove();
@@ -270,6 +282,7 @@ Template.yummy_coins.events({
       event.preventDefault();
       var showName = document.getElementById("create-show-input").value;
       currentShow = showName;
+      Meteor.call('passShowName', currentShow);
       // $('.create-show-input').remove();
       $('#create-show').remove();
       $('#show-row').append('<div><div class="span8"><span class="current-show"><h2>' + showName + '</h2></span></div><div class="span3"><span class="start-current-show"><p> Start' + ' ' + showName + '</p></span></div></div>');

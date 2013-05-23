@@ -3,7 +3,6 @@
 
 Template.yummy_coins.events({
   'click .chart-slide': function () {
-    console.log('I am playing with charts');
     $('.text-slide').remove();
     $('.chart-slide').remove();
     $('.slide-preview').remove();

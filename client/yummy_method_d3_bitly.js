@@ -1,14 +1,51 @@
 
+var bitPhrase = "xbox one";
+var thisShow;
+var slideNumber;
 
 Meteor.methods({
-  bitlyLineChartD3: function(hotbit) {
+  passShowName: function (showName) {
+    console.log('in the passShowName');
+    thisShow = showName;
+    return thisShow;
+  }
+})
+
+Template.yummy_coins.events({
+  'click #save-bitly-slide': function() {
+    console.log('saving bitly chart');
+    console.log(thisShow);
+    Shows.insert([
+      { show: thisShow },
+      { slide: "chart" },
+      { contents: 'Deps.autorun(function(){ return Meteor.call("bitlyLineChartD3", ' + bitPhrase + '); }) && Meteor.setInterval(function(){ Meteor.call("renderHotBits") }, 10000) && Meteor.call("renderHotBits");' },
+      { slideType: "chart" },
+      { dataSource: "bitly" },
+    ]);
+    $('#yummy-shows').append('<div id="start-chart" class="span 4"><span class="start-chart"><h3> Start Chart </h3></span></div>');
+  },
+  'click #start-chart': function() {
+    var showSlide = (Shows.find({ 0 : { show: thisShow }}).fetch());
+    console.log(showSlide);
+    $('.make-start').remove();
+    var type = showSlide[0]['1']['slide'];
+    if (type === "chart") {
+      var func = showSlide[0]['2']['contents'];
+      console.log(func);
+      return func;
+    }
+  }
+})
+
+Meteor.methods({
+  bitlyLineChartD3: function(hotbits) {
     console.log('i am in the bitly line graph method');
     $('.bitly-chart').remove();
 
     var rawData;
 
     //Deps.autorun(function(){
-    rawData = Hotbits.find({ phrase: "nba draft" }).fetch();
+    rawData = Hotbits.find({ phrase: bitPhrase }).fetch();
       //return rawData;
     //})
     var data = [];
