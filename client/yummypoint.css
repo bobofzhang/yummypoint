@@ -117,11 +117,14 @@ body .navbar .brand {
 
 #session-show {
   margin-left: 2em;
+  background-color: yellow;
 }
 
-.start-current-show {
-  font-size: 2em;
-  margin-top: 1em;
+#start-this-show {
+  background-color: teal;
+  color: white;
+  float: right;
+  text-align: right;
 }
 
 .twitter h3 {
@@ -266,8 +269,12 @@ body .navbar .brand {
 }
 
 .slide-inputs .slide-one-title {
-  font-size: 5em;
+  font-size: 1.5em;
   text-align: center;
+}
+
+#bullet-one, #bullet-two, #bullet-three {
+  margin-top: 1.5em;
 }
 
 div.bar {
