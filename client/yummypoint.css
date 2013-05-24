@@ -13,6 +13,23 @@ body {
   font-size: small;
 }
 
+#marketing-text {
+  background-color: whitesmoke;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+#call-2-action {
+  background-color: lightslategray;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.current-show-plug {
+  font-size: 1.5em;
+  color: purple; 
+}
+
 /*.yummy-shows {
   border: 1px solid slategray;
 }*/
@@ -23,6 +40,26 @@ body {
 
 .text-slide h2, .chart-slide h2 {
   text-shadow: -3px -3px 5px #ffffff;
+}
+
+#create-chart {
+  background-color: silver;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#create-text {
+  background-color: lightblue;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#text-bullets, #chart-bullets {
+  text-align: center;
+}
+
+#bullet-prompts {
+  border: 1px solid black;
 }
 
 .navbar {
@@ -37,12 +74,23 @@ body .navbar .brand {
 
 #slide-links {
   text-align: center;
-  color: lightslategray;
+  margin-bottom: 1em;
 }
 
-.create-show-input {
-  margin-bottom: 1.5em;
+#slide-instruct {
+  text-align: center;
+  background-color: tomato;
+  color: white;
+  margin-bottom: 1em;
 }
+
+#create-show {
+  margin-bottom: 2em;
+}
+
+/*.create-show-input {
+  margin-bottom: 2em;
+}*/
 
 #create-show-input {
   width: 98%;
@@ -65,6 +113,10 @@ body .navbar .brand {
 
 .current-show {
   text-shadow: 2px 2px #ff0000;
+}
+
+#session-show {
+  margin-left: 2em;
 }
 
 .start-current-show {
@@ -160,12 +212,37 @@ body .navbar .brand {
 
 #slide-controls {
   text-align: center;
-  height: 1em;  
+  height: 3em;  
   background-color: lightslategray;
   font-size: 1.5em;
   color: white;
   margin-bottom: 0.75em;
   border-radius: 0.75em;
+}
+
+#create-chart-sub {
+  text-align: center;
+  height: 3em;  
+  background-color: indianred;
+  font-size: 1.5em;
+  color: white;
+  margin-bottom: 0.75em;
+  border-radius: 0.75em;
+}
+
+#img-back-upload {
+  text-align: center;
+  height: 3em;  
+  background-color: powderblue;
+  font-size: 1.5em;
+  color: white;
+  margin-bottom: 0.75em;
+  border-radius: 0.75em;
+}
+
+#saved-slide {
+  background-color: mediumseagreen;
+  color: white;
 }
 
 .input-action-call {

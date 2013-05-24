@@ -1,3 +1,5 @@
+
+
 // Meteor.call("checkTwitter", function(error, result) {
 //   console.log("check twitter called"); 
 //   // return result.data; 
