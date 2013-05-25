@@ -5,13 +5,13 @@ var currentYummyShow;
 var yummyShowSlideIndex = 0;
 
 
-// Meteor.methods({
-//   tickSlideCount: function () {
-//     slideCount++
-//     console.log(slideCount);
-//     return slideCount;
-//   }
-// })
+Meteor.methods({
+  tickSlideCount: function () {
+    slideCount++
+    console.log(slideCount);
+    return slideCount;
+  }
+})
 
 Template.yummy_coins.events({
   'click .text-slide': function () {
