@@ -231,6 +231,7 @@ Template.yummy_coins.events({
         { dataSource: "text" }
         ])
       slideCount++;
+      Meteor.call('passSlideCount', slideCount);
     },
 
 // >>>>>>>>>>> UPLOAD FILE <<<<<<<<<<<<<<<<<
@@ -255,8 +256,6 @@ Template.yummy_coins.events({
       $('#yummy-shows').remove();
       $('#slide-index').remove();
       $('.make-start').remove();
-      // // $('#create-text').remove();
-      // // $('#create-chart').remove();
       $('#slide-preview').remove();
       currentYummyShow = (Shows.find({ 0 : { show: currentShow }}).fetch());
       console.log(currentYummyShow);
@@ -281,9 +280,19 @@ Template.yummy_coins.events({
     $('#show-bullet-one').remove();
     $('#show-bullet-two').remove();
     $('#show-bullet-three').remove();
-    var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-    $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+    var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = currentYummyShow[yummyShowSlideIndex]['2']['contents'];
+      console.log(func);
+      return func;
+    } else {
+      var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+      $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
     }
+    //var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    //$('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+  }
 })
 
 Template.yummy_coins.events({
@@ -305,4 +314,6 @@ Template.yummy_coins.events({
     } 
   }
 })
+
+
 

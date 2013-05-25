@@ -126,15 +126,16 @@ body .navbar .brand {
   text-align: right;
 }
 
-.twitter h3 {
+#twitter-switch, .twitter h3 {
   text-align: center;
   background-color: pink; 
 }
 
-.bit-coins h3 {
+#bitcoin-switch, .bit-coins h3 {
   text-align: center;
   background-color: orange;
 }
+
 .bitly h3 {
   text-align: center;
   background-color: brown;
@@ -280,6 +281,16 @@ body .navbar .brand {
   text-align: center;
   height: 3em; 
   font-size: 1.5em;
+  margin-bottom: 0.75em;
+  border-radius: 0.75em;
+}
+
+#save-bitly-slide {
+  text-align: center;
+  height: 3em;  
+  background-color: chocolate;
+  font-size: 1.5em;
+  color: white;
   margin-bottom: 0.75em;
   border-radius: 0.75em;
 }

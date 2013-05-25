@@ -52,9 +52,15 @@ Template.yummy_coins.events({
   'click .bitly': function () {
     $('.line-chart-data-sources').remove();
     $('.data-source-details').remove();
-    //$('.make-start').append('<div class="chosen-data-source"><div class="row"><div class="span12"> <h3> Live Data </h3></span></div></div></div>');
-    $('.make-start').append('<div class="data-source-details"><div class="row"><div class="span12"> <span class="bitly-hot"> <h3> Bitly </h3> </span></div></div></div>');
-    $('.make-start').append('<div id="save-bitly-slide" class="save-bitly-slide"><div class="row"><div class="span12"> <span class="save-bitly-slide"> <p> That Looks Sick. Put that in Yummy </p> </span></div></div></div>');
+    $('#slide-controls').remove();
+    $('#create-text-sub').remove();
+    $('#bar-chart-switch').remove();
+    $('#bubble-chart-switch').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save this sick Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
+    $('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
+    $('.make-start').append('<div class="data-source-details"><div class="row"><div id="twitter-switch" class="span6"> <span class="twitter"> <h3> Switch to Twitter Data </h3> </span></div><div id="bitcoin-switch" class="span6"> <span class="bitcoin"> <h3> Switch to Bitcoin Data </h3> </span></div></div></div>');
+    //$('.make-start').append('<div class="data-source-details"><div class="row"><div id="bitly-data" class="span12"> <span class="bitly-hot"> <h3> Bitly </h3> </span></div></div></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.setInterval(function(){ Meteor.call("renderHotBits") }, 10000) && Meteor.call("renderHotBits");
   }
 })

@@ -1,5 +1,5 @@
 
-var bitPhrase = "xbox one";
+var bitPhrase = "jennifer aniston";
 var thisShow;
 var slideNumber;
 
@@ -11,24 +11,34 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  passSlideCount: function (count) {
+    console.log('in passSlideCount');
+    slideNumber = count;
+    console.log(slideNumber);
+    return slideNumber;
+  }
+})
+
 Template.yummy_coins.events({
   'click #save-bitly-slide': function() {
     console.log('saving bitly chart');
     console.log(thisShow);
     Shows.insert([
       { show: thisShow },
-      { slide: "chart" },
+      { slide: slideNumber },
       { contents: 'Deps.autorun(function(){ return Meteor.call("bitlyLineChartD3", ' + bitPhrase + '); }) && Meteor.setInterval(function(){ Meteor.call("renderHotBits") }, 10000) && Meteor.call("renderHotBits");' },
       { slideType: "chart" },
       { dataSource: "bitly" },
     ]);
-    $('#yummy-shows').append('<div id="start-chart" class="span 4"><span class="start-chart"><h3> Start Chart </h3></span></div>');
+    $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumber + '"<p> Slide' + ' ' + slideNumber + '</p></span></div>');
+    //$('#yummy-shows').append('<div id="start-chart" class="span 4"><span class="start-chart"><h3> Start Chart </h3></span></div>');
   },
   'click #start-chart': function() {
     var showSlide = (Shows.find({ 0 : { show: thisShow }}).fetch());
     console.log(showSlide);
     $('.make-start').remove();
-    var type = showSlide[0]['1']['slide'];
+    var type = showSlide[0]['1']['slideType'];
     if (type === "chart") {
       var func = showSlide[0]['2']['contents'];
       console.log(func);
