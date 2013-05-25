@@ -2,7 +2,7 @@
 
 
 Template.yummy_coins.events({
-  'click .chart-slide': function () {
+  'click #create-chart-sub': function () {
     $('.text-slide').remove();
     $('.chart-slide').remove();
     $('.slide-preview').remove();
@@ -13,3 +13,4 @@ Template.yummy_coins.events({
     // $('.make-start').append('<div class="slide_inputs"><div class="slide-title"><input id="slide-title" type="text" /> <input type="button" class="add-title" value="Slide Title" /><div class="bullet_one"><input id="bullet_one" type="text" /> <input type="button" class="add" value="Make a Point" /> </br> </br></div> <div class="bullet_two"> <input id="bullet_two" type="text"/> <input type="button" class="add2" value="Make a Point" /> </br> <br> </div> <div class="bullet_three"><input id="bullet_three" type="text" /> <input type="button" class="add3" value="Make a Point" /> </br> </br></div> <input type="button" class="make_another_slide" value="Make Another Slide" /> </br> <br> <input type="button" class="save_slides" value="Save and Preview" /> </br> <br></div>');
   }
 })
+
