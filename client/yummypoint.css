@@ -172,6 +172,18 @@ body .navbar .brand {
   border-radius: 1em;
 }
 
+#line-chart-nav {
+  background-color: linen;
+}
+
+#bar-chart-nav {
+  background-color: slateblue;
+}
+
+#bubble-chart-nav {
+  background-color: coral;
+}
+
 .line-chart-options {
   text-align: center;
   background-color: silver;
@@ -226,6 +238,16 @@ body .navbar .brand {
   text-align: center;
   height: 3em;  
   background-color: indianred;
+  font-size: 1.5em;
+  color: white;
+  margin-bottom: 0.75em;
+  border-radius: 0.75em;
+}
+
+#create-text-sub {
+  text-align: center;
+  height: 3em;  
+  background-color: goldenrod;
   font-size: 1.5em;
   color: white;
   margin-bottom: 0.75em;
