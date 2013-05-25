@@ -32,6 +32,14 @@ Template.yummy_coins.events({
     $('#make-slide-options').remove();
     $('#text-bullets').remove();
     $('#chart-bullets').remove();
+    $('#save-bitly-slide').remove();
+    $('#create-text-sub').remove();
+    $('#bar-chart-switch').remove();
+    $('#bubble-chart-switch').remove();
+    $('#slide-controls').remove();
+    $('#line-chart-nav').remove();
+    $('#bar-chart-nav').remove();
+    $('#bubble-chart-nav').remove();
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
