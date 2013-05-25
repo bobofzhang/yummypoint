@@ -60,11 +60,12 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'click .bit-coins': function () {
-    $('.line-chart-data-sources').remove();
-    $('.data-source-details').remove();
-    $('.make-start').append('<div class="chosen-data-source"><div class="row"><div class="span12"> <h3> Live Data </h3></span></div></div></div>');
-    $('.make-start').append('<div class="data-source-details"><div class="row"><div class="span12"> <span class="bit-coins"> <h3> Bit Coins </h3> </span></div></div></div>');
-    return Meteor.call('D3testinit');
+    alert('nice try... bit coin data connected soon');
+    // $('.line-chart-data-sources').remove();
+    // $('.data-source-details').remove();
+    // //$('.make-start').append('<div class="chosen-data-source"><div class="row"><div class="span12"> <h3> Live Data </h3></span></div></div></div>');
+    // $('.make-start').append('<div class="data-source-details"><div class="row"><div class="span12"> <span class="bit-coins"> <h3> Bit Coins </h3> </span></div></div></div>');
+    // return Meteor.call('D3testinit');
   }
 })
 
