@@ -264,6 +264,26 @@ body .navbar .brand {
   border-radius: 0.75em;
 }
 
+#bar-chart-switch {
+  background-color: peru;
+  color: white;
+  text-align: center;
+  height: 3em; 
+  font-size: 1.5em;
+  margin-bottom: 0.75em;
+  border-radius: 0.75em;
+}
+
+#bubble-chart-switch {
+  background-color: olive;
+  color: white;
+  text-align: center;
+  height: 3em; 
+  font-size: 1.5em;
+  margin-bottom: 0.75em;
+  border-radius: 0.75em;
+}
+
 #saved-slide {
   background-color: mediumseagreen;
   color: white;

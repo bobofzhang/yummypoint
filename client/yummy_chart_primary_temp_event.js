@@ -6,6 +6,8 @@ Template.yummy_coins.events({
     $('#slide-instruct').remove();
     $('.slide-title').remove();
     $('#create-chart-sub').remove();
+    $('#img-back-upload').remove();
+    //$('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
     $('.make-start').append('<div class="create_graph"><div id="create-graph-row" class="row"></div></div>');
     $('#create-graph-row').append('<div id="line-chart-nav" class="span4"> <span class="line-chart"> <h1> Line Chart</h1></span></div>');
     $('#create-graph-row').append('<div id="bar-chart-nav" class="span4"> <span class="bar-chart"> <h1> Bar Chart</h1></span></div>');
