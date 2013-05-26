@@ -3,6 +3,7 @@ var slideCount = 1;
 var currentShow;
 var currentYummyShow;
 var yummyShowSlideIndex = 0;
+var savedShowSlideIndex = 0;
 
 
 Meteor.methods({
@@ -136,12 +137,21 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
-    var slideTextArray = slideTitle[0][2]['contents'];
-    var title = slideTextArray[0]['text'];
-    var firstBull = slideTextArray[1]['text'];
-    var secondBull = slideTextArray[2]['text'];
-    var thirdBull = slideTextArray[3]['text'];
-    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    console.log(slideTitle);
+    var type = slideTitle[0]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[0]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[0][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
   },
   'click .slidelink2': function(){
     $('.slide-inputs').remove();
@@ -168,45 +178,181 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
-    var slideTextArray = slideTitle[2][2]['contents'];
-    var title = slideTextArray[0]['text'];
-    var firstBull = slideTextArray[1]['text'];
-    var secondBull = slideTextArray[2]['text'];
-    var thirdBull = slideTextArray[3]['text'];
-    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    console.log(slideTitle);
+    var type = slideTitle[2]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[2]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[2][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
   },
   'click .slidelink4': function(){
     $('.slide-inputs').remove();
     $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
-    var slideTextArray = slideTitle[3][2]['contents'];
-    var title = slideTextArray[0]['text'];
-    var firstBull = slideTextArray[1]['text'];
-    var secondBull = slideTextArray[2]['text'];
-    var thirdBull = slideTextArray[3]['text'];
-    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    console.log(slideTitle);
+    var type = slideTitle[3]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[3]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[3][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
   },
   'click .slidelink5': function(){
     $('.slide-inputs').remove();
     $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
-    var slideTextArray = slideTitle[4][2]['contents'];
-    var title = slideTextArray[0]['text'];
-    var firstBull = slideTextArray[1]['text'];
-    var secondBull = slideTextArray[2]['text'];
-    var thirdBull = slideTextArray[3]['text'];
-    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    console.log(slideTitle);
+    var type = slideTitle[4]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[4]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[4][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
   },
   'click .slidelink6': function(){
     $('.slide-inputs').remove();
     $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
-    var slideTextArray = slideTitle[5][2]['contents'];
-    var title = slideTextArray[0]['text'];
-    var firstBull = slideTextArray[1]['text'];
-    var secondBull = slideTextArray[2]['text'];
-    var thirdBull = slideTextArray[3]['text'];
-    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    console.log(slideTitle);
+    var type = slideTitle[5]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[5]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[5][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
+  },
+  'click .slidelink7': function(){
+    $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
+    var slideTitle = Shows.find({}).fetch();
+    console.log(slideTitle);
+    var type = slideTitle[6]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[6]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[6][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
+  },
+  'click .slidelink8': function(){
+    $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
+    var slideTitle = Shows.find({}).fetch();
+    console.log(slideTitle);
+    var type = slideTitle[7]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[7]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[7][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
+  },
+  'click .slidelink9': function(){
+    $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
+    var slideTitle = Shows.find({}).fetch();
+    console.log(slideTitle);
+    var type = slideTitle[8]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[8]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[8][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
+  },
+  'click .slidelink10': function(){
+    $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
+    var slideTitle = Shows.find({}).fetch();
+    console.log(slideTitle);
+    var type = slideTitle[9]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[9]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[9][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
+  },
+  'click .slidelink11': function(){
+    $('.slide-inputs').remove();
+    $('.saved-slide-preview').remove();
+    var slideTitle = Shows.find({}).fetch();
+    console.log(slideTitle);
+    var type = slideTitle[10]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[10]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[10][2]['contents'];
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
   },
   'click #slide-controls': function () { //>>>>>>> SAVE SLIDE <<<<<<<<<
       console.log(slideCount);
@@ -224,7 +370,7 @@ Template.yummy_coins.events({
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
       $('#slide-instruct').append('<span class="instruct-title"><h2>Enter your slide title above </h2></span>');
       $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + currentShow + '</h2></span><div>');
-      $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
+      $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
       var slideTitle = (Slides.find({slide: slideCount}).fetch());
       var slideTitleText = slideTitle[0]['text'];
       var bulletOne = (Slides.find({slide: slideCount}).fetch());
@@ -259,14 +405,7 @@ Template.yummy_coins.events({
 
 //>>>>>>>>>>>> Line-Chart Events <<<<<<<<<<<<<<
 
-    // 'click .save-bitly-slide': function() {
-    //   console.log('you are saving a bitly slide');
-    //   Charts.insert({
-    //     show: currentShow, 
-    //     slide: slideCount, 
-    //     chart: "Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); });"
-    //   })
-    // },
+
 //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
   'click .start-current-show': function () {
       // $('#navbar').remove();

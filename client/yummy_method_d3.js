@@ -62,34 +62,32 @@ Template.yummy_coins.events({
   }
 })
 
-Meteor.setInterval(function(){
-  Meteor.call("getBitCoinData", function(error, result) {
-    console.log('hi');
-    // console.log(result);
-    var dataset = result;
-    return setData(result);
-  })
-}, 60000);
+// Meteor.setInterval(function(){
+//   Meteor.call("getBitCoinData", function(error, result) {
+//     console.log('hi');
+//     // console.log(result);
+//     var dataset = result;
+//     return setData(result);
+//   })
+// }, 60000);
 
 Meteor.methods({
 
   D3testinit: function() {
     // var dataset = getData();
+    $('.bitcoin-chart').remove();
     var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
     console.log(checkBitTime);
 
     var rawData;
-    rawData = Prices.find({}, { sort: { date: -1 }, limit: 200 }).fetch();
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 1000 }).fetch();
     //rawData = Prices.find({}, { sort: { time: -1 }, limit: 10 }).fetch();
     // console.log(rawData);
-    // var dataPoint = rawData[0]['price'];
-    // console.log(dataPoint);
 
     var dataset = [];
 
     for (var i = 0; i < rawData.length; i++) {
       dataset.push([rawData[i]['price'], rawData[i]['time']]);
-      //console.log(rawData[i]['price']);
     }
 
     var margin = {

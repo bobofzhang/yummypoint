@@ -14,18 +14,22 @@ var lastTradeID;
 Meteor.methods({
 
   getBitCoinData: function (){
-    var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
-    if (checkBitTime[0] == null) {
-      lastBitTime = 1;
-    } else {
-      lastBitTime = checkBitTime[0]['date'];
-    }
+    // var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
+    // if (checkBitTime[0] == null) {
+    //   lastBitTime = 1;
+    // } else {
+    //   lastBitTime = checkBitTime[0]['date'];
+    // }
     this.unblock();
+    var checkLastTrade = Prices.find({}, { sort: { transId: -1 }, limit: 1 }).fetch();
+    var lastTradeID = checkLastTrade[0]['transId'];
+    console.log(lastTradeID);
     //var result = Meteor.http.get('https://data.mtgox.com/api/1/BTCUSD/trades?raw');
     var result = Meteor.http.get('http://data.mtgox.com/api/1/BTCUSD/trades/fetch');
     var bitTrans = result.data['return'];
     var dataLength = bitTrans.length;
     console.log(dataLength);
+
     // var dataLength = result.data.length; //>>>> USED WITH RAW <<<<<<<<
     // var bitTrans = result.data;   //>>>> USED WITH RAW <<<<<<<<
     // console.log(bitTrans)
@@ -43,8 +47,8 @@ Meteor.methods({
         //console.log('hi i am in the loop');
         // console.log('baseline');
         // console.log( newDate - lastBitTime );
-        lastBitTime = newDate;
-        lastTradeID = tradeID;
+        // lastBitTime = newDate;
+        // lastTradeID = tradeID;
         // dataset.push([bitTran['price'], newDate]);
         Prices.insert({
           date: newDate,
