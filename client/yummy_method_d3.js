@@ -74,20 +74,21 @@ Meteor.setInterval(function(){
 Meteor.methods({
 
   D3testinit: function() {
-    var dataset = getData();
+    // var dataset = getData();
 
-    // var rawData;
+    var rawData;
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 100 }).fetch();
+    //rawData = Prices.find({}, { sort: { time: -1 }, limit: 10 }).fetch();
+    console.log(rawData);
+    // var dataPoint = rawData[0]['price'];
+    // console.log(dataPoint);
 
-    // //Deps.autorun(function(){
-    // rawData = Hotbits.find({ phrase: bitPhrase }).fetch();
-    //   //return rawData;
-    // //})
-    // var data = [];
+    var dataset = [];
 
-    // for (var i = 0; i < rawData.length; i++) {
-    //   data.push([rawData[i].clickrate, rawData[i].time]);
-    //   console.log(rawData[i].clickrate);
-    // }
+    for (var i = 0; i < rawData.length; i++) {
+      dataset.push([rawData[i]['price'], rawData[i]['time']]);
+      console.log(rawData[i]['price']);
+    }
 
     var margin = {
       top: 20, 
