@@ -69,17 +69,19 @@ Meteor.setInterval(function(){
     var dataset = result;
     return setData(result);
   })
-}, 30000);
+}, 60000);
 
 Meteor.methods({
 
   D3testinit: function() {
     // var dataset = getData();
+    var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
+    console.log(checkBitTime);
 
     var rawData;
-    rawData = Prices.find({}, { sort: { date: -1 }, limit: 100 }).fetch();
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 200 }).fetch();
     //rawData = Prices.find({}, { sort: { time: -1 }, limit: 10 }).fetch();
-    console.log(rawData);
+    // console.log(rawData);
     // var dataPoint = rawData[0]['price'];
     // console.log(dataPoint);
 
@@ -87,7 +89,7 @@ Meteor.methods({
 
     for (var i = 0; i < rawData.length; i++) {
       dataset.push([rawData[i]['price'], rawData[i]['time']]);
-      console.log(rawData[i]['price']);
+      //console.log(rawData[i]['price']);
     }
 
     var margin = {
