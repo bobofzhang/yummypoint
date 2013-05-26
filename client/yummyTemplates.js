@@ -148,13 +148,21 @@ Template.yummy_coins.events({
     $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
-    var slideTextArray = slideTitle[1][2]['contents'];
-    console.log(slideTextArray);
-    var title = slideTextArray[0]['text'];
-    var firstBull = slideTextArray[1]['text'];
-    var secondBull = slideTextArray[2]['text'];
-    var thirdBull = slideTextArray[3]['text'];
-    $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    var type = slideTitle[1]['3']['slideType'];
+    console.log(type);
+    if (type === "chart") {
+      var func = slideTitle[1]['2']['contents'];
+      console.log(func);
+      return func; 
+    } else {
+      var slideTextArray = slideTitle[1][2]['contents'];
+      console.log(slideTextArray);
+      var title = slideTextArray[0]['text'];
+      var firstBull = slideTextArray[1]['text'];
+      var secondBull = slideTextArray[2]['text'];
+      var thirdBull = slideTextArray[3]['text'];
+      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+    }
   },
   'click .slidelink3': function(){
     $('.slide-inputs').remove();
@@ -240,6 +248,7 @@ Template.yummy_coins.events({
         ])
       slideCount++;
       Meteor.call('passSlideCount', slideCount);
+      Meteor.call('passSlideCountBitCoin', slideCount);
     },
 
 // >>>>>>>>>>> UPLOAD FILE <<<<<<<<<<<<<<<<<
@@ -310,6 +319,7 @@ Template.yummy_coins.events({
       var showName = document.getElementById("create-show-input").value;
       currentShow = showName;
       Meteor.call('passShowName', currentShow);
+      Meteor.call('passShowNameBitCoin', currentShow);
       $('#create-show').remove();
       $('#marketing-text').remove();
       $('#call-2-action').remove();

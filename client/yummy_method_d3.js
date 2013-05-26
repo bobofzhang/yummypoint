@@ -10,26 +10,83 @@ var getData = function () {
   return dataset;
 }
 
-// Meteor.call("getBitCoinData", function(error, result) {
-//   console.log('hi');
-//   console.log(result);
-//   var dataset = result;
-//   return setData(result);
-// });
+var thisShowBitCoin;
+var slideNumberBitCoin;
+
+Meteor.methods({
+  passShowNameBitCoin: function (showName) {
+    console.log('in the passShowNameBitCoin');
+    thisShowBitCoin = showName;
+    return thisShowBitCoin;
+  }
+})
+
+Meteor.methods({
+  passSlideCountBitCoin: function (count) {
+    console.log('in passSlideCountBitCoin');
+    slideNumberBitCoin = count;
+    return slideNumberBitCoin;
+  }
+})
+
+Template.yummy_coins.events({
+  'click #save-bitcoin-slide': function() {
+    console.log('saving bitcoin chart');
+    console.log(thisShowBitCoin);
+    Shows.insert([
+      { show: thisShowBitCoin },
+      { slide: slideNumberBitCoin },
+      { contents: 'Deps.autorun(function(){ return Meteor.call("D3testinit");' },
+      { slideType: "chart" },
+      { dataSource: "bitcoin" },
+    ]);
+    $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumberBitCoin + '"<p> Slide' + ' ' + slideNumberBitCoin + '</p></span></div>');
+    $('.bitly-chart').remove();
+    $('.bitcoin-chart').remove();
+    $('#slide-instruct').remove();
+    $('#twitter-switch').remove();
+    $('#bitly-switch').remove();
+    $('#save-bitcoin-slide').remove();
+    $('#create-text-sub').remove();
+    $('#bar-chart-switch').remove();
+    $('#bubble-chart-switch').remove();
+    $('#slide-inputs').remove();
+    $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
+    $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
+    $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
+    $('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
+    Meteor.call('tickSlideCount');
+    //Meteor.clearInterval("renderHotBits"); showNameEED TO FIGURE OUT HOW TO ACCESS THE SET INTERVAL HANDLE
+    //$('#yummy-shows').append('<div id="start-chart" class="span 4"><span class="start-chart"><h3> Start Chart </h3></span></div>');
+  }
+})
+
+Meteor.setInterval(function(){
+  Meteor.call("getBitCoinData", function(error, result) {
+    console.log('hi');
+    // console.log(result);
+    var dataset = result;
+    return setData(result);
+  })
+}, 30000);
 
 Meteor.methods({
 
   D3testinit: function() {
     var dataset = getData();
 
-    // var dataset = [];
-    // var numDataPoints = 200;
-    // var xRange = Math.random() * 1000;
-    // var yRange = 1;
-    // for (var i = 0; i < numDataPoints; i++) {
-    //     var newNumber1 = Math.round(Math.random() * xRange);
-    //     var newNumber2 = yRange++;
-    //     dataset.push([newNumber1, newNumber2]);
+    // var rawData;
+
+    // //Deps.autorun(function(){
+    // rawData = Hotbits.find({ phrase: bitPhrase }).fetch();
+    //   //return rawData;
+    // //})
+    // var data = [];
+
+    // for (var i = 0; i < rawData.length; i++) {
+    //   data.push([rawData[i].clickrate, rawData[i].time]);
+    //   console.log(rawData[i].clickrate);
     // }
 
     var margin = {
@@ -64,6 +121,7 @@ Meteor.methods({
     var svg = d3.select("body").append("svg")
                               .attr("width", width + margin.left + margin.right)
                               .attr("height", height + margin.top + margin.bottom)
+                              .attr("class", "bitcoin-chart")
                               .append("g")
                               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -90,7 +148,9 @@ Meteor.methods({
         .datum(dataset)
         .attr("class", "line")
         .attr("d", line);
-    return console.log(dataset);
+
+    return dataset;
+    // return console.log(dataset);
   }
 })
 

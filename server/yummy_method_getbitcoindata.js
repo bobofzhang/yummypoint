@@ -1,4 +1,11 @@
 
+// Meteor.setInterval(function(){
+//   Meteor.call("getBitCoinData", function(error, result) { 
+//     console.log("get getBitCoinData called"); 
+//     return result;
+//   })
+// }, 10000);
+
 
 Meteor.methods({
 
@@ -8,8 +15,14 @@ Meteor.methods({
     this.unblock();
     var result = Meteor.http.get('https://data.mtgox.com/api/1/BTCUSD/trades?raw');
     // var result = Meteor.http.get('http://data.mtgox.com/api/1/BTCUSD/ticker');
+    var dataLength = result.data.length;
+    console.log(dataLength);
+    // var bitLimit = result.length;
+    // console.log(bitLimit);
     var bitTrans = result.data;
-    for (var i = 0; i < 50; i++) {
+    // console.log(bitTrans)
+    // for (var i = 0; i < 50; i++) {
+    for (var i = dataLength-50; i < dataLength; i++) {
       bitTran = bitTrans[i];
       var newDate = new Date(bitTran['date']*1000);
       dataset.push([bitTran['price'], newDate]);

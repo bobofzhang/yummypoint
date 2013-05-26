@@ -1,5 +1,5 @@
 
-var bitPhrase = "jennifer aniston";
+var bitPhrase = "cosmetic surgery";
 var thisShow;
 var slideNumber;
 
@@ -27,7 +27,7 @@ Template.yummy_coins.events({
     Shows.insert([
       { show: thisShow },
       { slide: slideNumber },
-      { contents: 'Deps.autorun(function(){ return Meteor.call("bitlyLineChartD3", ' + bitPhrase + '); }) && Meteor.setInterval(function(){ Meteor.call("renderHotBits") }, 10000) && Meteor.call("renderHotBits");' },
+      { contents: 'Deps.autorun(function(){ return Meteor.call("bitlyLineChartD3", ' + bitPhrase + '); }) && Meteor.call("renderHotBits");' },
       { slideType: "chart" },
       { dataSource: "bitly" },
     ]);

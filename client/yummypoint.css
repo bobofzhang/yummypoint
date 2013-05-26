@@ -136,7 +136,7 @@ body .navbar .brand {
   background-color: orange;
 }
 
-.bitly h3 {
+#bitly-switch, .bitly h3 {
   text-align: center;
   background-color: brown;
 }
@@ -285,7 +285,7 @@ body .navbar .brand {
   border-radius: 0.75em;
 }
 
-#save-bitly-slide {
+#save-bitly-slide, #save-bitcoin-slide {
   text-align: center;
   height: 3em;  
   background-color: chocolate;
