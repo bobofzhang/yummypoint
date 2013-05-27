@@ -459,11 +459,13 @@ Template.yummy_coins.events({
     $('#show-bullet-two').remove();
     $('#show-bullet-three').remove();
     var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+    var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = currentYummyShow[yummyShowSlideIndex]['2']['contents'];
-      console.log(func);
-      return func;
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3');
     } else {
       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
       $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
