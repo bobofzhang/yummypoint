@@ -1,5 +1,5 @@
 
-var bitPhrase = "cosmetic surgery";
+var bitPhrase = "nascar race";
 var thisShow;
 var slideNumber;
 

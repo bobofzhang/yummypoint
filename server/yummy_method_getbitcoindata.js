@@ -1,11 +1,4 @@
 
-// Meteor.setInterval(function(){
-//   Meteor.call("getBitCoinData", function(error, result) { 
-//     console.log("get getBitCoinData called"); 
-//     return result;
-//   })
-// }, 10000);
-
 var lastBitTime;
 var dataset = [];
 var lastTradeID;

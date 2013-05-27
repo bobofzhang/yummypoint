@@ -139,11 +139,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[0]['3']['slideType'];
+    var source = slideTitle[0]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[0]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideTitle[0][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -159,11 +161,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[1]['3']['slideType'];
+    var source = slideTitle[1]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[1]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideTitle[1][2]['contents'];
       console.log(slideTextArray);
@@ -180,11 +184,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[2]['3']['slideType'];
+    var source = slideTitle[2]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[2]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideTitle[2][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -200,11 +206,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[3]['3']['slideType'];
+    var source = slideTitle[3]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[3]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[3][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -220,11 +228,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[4]['3']['slideType'];
+    var source = slideTitle[4]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[4]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[4][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -240,11 +250,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[5]['3']['slideType'];
+    var source = slideTitle[5]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[5]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideTitle[5][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -260,11 +272,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[6]['3']['slideType'];
+    var source = slideTitle[6]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[6]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[6][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -280,11 +294,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[7]['3']['slideType'];
+    var source = slideTitle[7]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[7]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[7][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -300,11 +316,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[8]['3']['slideType'];
+    var source = slideTitle[8]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[8]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[8][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -320,11 +338,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[9]['3']['slideType'];
+    var source = slideTitle[9]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[9]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideTitle[9][2]['contents'];
       var title = slideTextArray[0]['text'];
@@ -340,11 +360,13 @@ Template.yummy_coins.events({
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[10]['3']['slideType'];
+    var source = slideTitle[10]['4']['dataSource'];
     console.log(type);
-    if (type === "chart") {
-      var func = slideTitle[10]['2']['contents'];
-      console.log(func);
-      return func; 
+    if (type === "chart" && source === "bitcoin") {
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[10][2]['contents'];
       var title = slideTextArray[0]['text'];

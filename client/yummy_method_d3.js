@@ -29,6 +29,13 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  showBitCoinLine: function (func) {
+    console.log('in showBitCoinLine bitch');
+    return func;
+  }
+})
+
 Template.yummy_coins.events({
   'click #save-bitcoin-slide': function() {
     console.log('saving bitcoin chart');
@@ -36,7 +43,7 @@ Template.yummy_coins.events({
     Shows.insert([
       { show: thisShowBitCoin },
       { slide: slideNumberBitCoin },
-      { contents: 'Deps.autorun(function(){ return Meteor.call("D3testinit");' },
+      { contents: "Meteor.call('D3testinit')" },
       { slideType: "chart" },
       { dataSource: "bitcoin" },
     ]);
@@ -62,14 +69,14 @@ Template.yummy_coins.events({
   }
 })
 
-// Meteor.setInterval(function(){
-//   Meteor.call("getBitCoinData", function(error, result) {
-//     console.log('hi');
-//     // console.log(result);
-//     var dataset = result;
-//     return setData(result);
-//   })
-// }, 60000);
+Meteor.setInterval(function(){
+  Meteor.call("getBitCoinData", function(error, result) {
+    console.log('hi');
+    // console.log(result);
+    var dataset = result;
+    return setData(result);
+  })
+}, 60000);
 
 Meteor.methods({
 
@@ -80,7 +87,7 @@ Meteor.methods({
     console.log(checkBitTime);
 
     var rawData;
-    rawData = Prices.find({}, { sort: { date: -1 }, limit: 1000 }).fetch();
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 100 }).fetch();
     //rawData = Prices.find({}, { sort: { time: -1 }, limit: 10 }).fetch();
     // console.log(rawData);
 

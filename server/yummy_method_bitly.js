@@ -1,10 +1,10 @@
 
-// Meteor.setInterval(function(){
-//   Meteor.call("searchBitly", function(error, result) { 
-//     console.log("search bitly called"); 
-//     return result;
-//   })
-// }, 10000);
+Meteor.setInterval(function(){
+  Meteor.call("searchBitly", function(error, result) { 
+    console.log("search bitly called"); 
+    return result;
+  })
+}, 10000);
 
 Meteor.methods({
   searchBitly: function(){
