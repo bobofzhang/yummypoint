@@ -5,6 +5,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore.js"></script>
   <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+  <!--<script type="text/javascript" src="http://api.filepicker.io/v1/filepicker.js"></script>-->
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 </head>
 
@@ -76,9 +77,13 @@
 
   <hr>
 
-    <div class="d3_chart">
+<!--   <div class="file-picker">
+      {{> pickFile}}
+  </div> -->
+
+  <div class="d3_chart">
       {{D3test}}
-    </div>
+  </div>
 
 </template>
 
@@ -92,6 +97,18 @@
 
 <template name="D3test">
   <div class="d3chart">
+  </div>
+</template>
+
+<template name="pickFile">
+  <div id="fileTest" class="letsTest">
+    <form>
+      <input id="files-upload" type="file" />
+      <output id="list"></output>
+  <!--<div>
+        <input id="files-submit" type="submit" value="Upload File"/>
+      </div>-->
+    </form>
   </div>
 </template>
 

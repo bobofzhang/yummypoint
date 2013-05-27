@@ -13,6 +13,15 @@ var getData = function () {
 var thisShowBitCoin;
 var slideNumberBitCoin;
 
+Meteor.setInterval(function(){
+  Meteor.call("getBitCoinData", function(error, result) {
+    console.log('hi');
+    // console.log(result);
+    var dataset = result;
+    return setData(result);
+  })
+}, 60000);
+
 Meteor.methods({
   passShowNameBitCoin: function (showName) {
     console.log('in the passShowNameBitCoin');
@@ -69,14 +78,6 @@ Template.yummy_coins.events({
   }
 })
 
-Meteor.setInterval(function(){
-  Meteor.call("getBitCoinData", function(error, result) {
-    console.log('hi');
-    // console.log(result);
-    var dataset = result;
-    return setData(result);
-  })
-}, 60000);
 
 Meteor.methods({
 
@@ -87,7 +88,7 @@ Meteor.methods({
     console.log(checkBitTime);
 
     var rawData;
-    rawData = Prices.find({}, { sort: { date: -1 }, limit: 100 }).fetch();
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 1000 }).fetch();
     //rawData = Prices.find({}, { sort: { time: -1 }, limit: 10 }).fetch();
     // console.log(rawData);
 

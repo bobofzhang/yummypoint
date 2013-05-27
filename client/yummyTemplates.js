@@ -14,6 +14,37 @@ Meteor.methods({
   }
 })
 
+Template.pickFile.events({
+  'change #files-upload': function (event, tmpl) {
+    event.preventDefault();
+    console.log('im in the bitch');
+    var fileInput = document.getElementById("files-upload").value;
+    console.log(fileInput);
+    var fileVal = tmpl.find('input[type=file]');
+    var form = event.currentTarget;
+    console.log(form);
+    var theFile = fileVal.files[0];
+    console.log(theFile);
+    //var theFile = event.target.files; // FileList object
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    output.push('<li><strong>', escape(theFile.name), '</strong> (', theFile.type || 'n/a', ') - ',
+                  theFile.size, ' bytes, last modified: ',
+                  theFile.lastModifiedDate ? theFile.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+    var reader = new FileReader();
+    Files.insert({
+      file: theFile
+    })
+    var testImg = Files.find({}).fetch();
+    console.log(testImg);
+    var testTest = testImg[0]['file']['name']
+    console.log(testTest);
+    $('#fileTest').append('<img src=' + testTest + '>');
+  }
+})
+
 Template.yummy_coins.events({
   'click .text-slide': function () {
     $('#create-chart').remove();
@@ -431,6 +462,8 @@ Template.yummy_coins.events({
 //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
   'click .start-current-show': function () {
       // $('#navbar').remove();
+      $('.bitcoin-chart').remove();
+      $('.bitly-chart').remove();
       $('#yummy-shows').remove();
       $('#slide-index').remove();
       $('.make-start').remove();
@@ -503,7 +536,6 @@ Template.yummy_coins.events({
   }
 })
 
-
 Template.yummy_coins.events({
   'keypress #create-show-input': function (event) {
     if (event.which == 13) {
@@ -524,6 +556,7 @@ Template.yummy_coins.events({
     } 
   }
 })
+
 
 
 
