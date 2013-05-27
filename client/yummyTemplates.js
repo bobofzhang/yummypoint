@@ -465,9 +465,11 @@ Template.yummy_coins.events({
     var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
+      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
       // var func = slideTitle[1]['2']['contents'];
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
     } else {
       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
@@ -477,6 +479,30 @@ Template.yummy_coins.events({
     //$('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
   }
 })
+
+Template.yummy_coins.events({
+  'click #chart-control': function (){
+    yummyShowSlideIndex++;
+    $('#chart-control').remove();
+    $('.bitly-chart').remove();
+    $('.bitcoin-chart').remove();
+    var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+    var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
+    console.log(type);
+    if (type === "chart" && source === "bitcoin") {
+      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+      return Meteor.call('bitlyLineChartD3');
+    } else {
+      var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+      $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+    }
+  }
+})
+
 
 Template.yummy_coins.events({
   'keypress #create-show-input': function (event) {

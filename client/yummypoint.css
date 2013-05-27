@@ -9,6 +9,10 @@ body {
     user-select: none;
 }
 
+#chart-control {
+  height: 30px;
+}
+
 .hot-bits {
   font-size: small;
 }
