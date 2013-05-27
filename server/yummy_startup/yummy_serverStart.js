@@ -6,6 +6,7 @@ Meteor.startup(function () {
   Shows.remove({});
   //Hotbits.remove({});
   //Prices.remove({});
+  //Files.remove({});
   if (dataArray.length == null || dataArray.length < 1) {
     var newData = Prices.find({}, {limit: 150}).fetch();
     var newDataArray = _.map(newData, function(obj) {
