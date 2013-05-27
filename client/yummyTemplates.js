@@ -435,6 +435,9 @@ Template.yummy_coins.events({
       $('#slide-index').remove();
       $('.make-start').remove();
       $('#slide-preview').remove();
+      $('#img-back-upload').remove();
+      $('#slide-controls').remove();
+      $('#create-chart-sub').remove();
       currentYummyShow = (Shows.find({ 0 : { show: currentShow }}).fetch());
       console.log(currentYummyShow);
       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
