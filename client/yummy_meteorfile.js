@@ -152,6 +152,7 @@ Template.pickFile.events({
     //function handleFileSelect(event) {
       var files = event.target.files; // FileList object
       var file = files[0];
+      console.log
 
       // read the file metadata
       var output = ''
@@ -173,8 +174,13 @@ Template.pickFile.events({
       reader.readAsText(file);
       reader.onload = function(event){
         var csv = event.target.result;
-        console.log(csv);
+        //console.log(csv);
         var data = $.csv.toArrays(csv);
+        console.log(data);
+        Files.insert({
+          name: file.name,
+          file: data
+        })
         var html = '';
         for(var row in data) {
           html += '<tr>\r\n';
