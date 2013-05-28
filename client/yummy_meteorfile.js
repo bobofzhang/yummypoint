@@ -152,7 +152,6 @@ Template.pickFile.events({
     //function handleFileSelect(event) {
       var files = event.target.files; // FileList object
       var file = files[0];
-      console.log
 
       // read the file metadata
       var output = ''
