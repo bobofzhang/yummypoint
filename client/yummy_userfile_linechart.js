@@ -106,16 +106,21 @@ Template.yummy_coins.events({
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
     }
-  return Meteor.call('userFileLineChart');
+  return $('#inputs').remove() &&  $('.make-start').append('<div id="render-userFile" class="span12 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data </p></span></div>')
   }
 })
 
-
+Template.yummy_coins.events({
+  'click #render-userFile': function () {
+    Meteor.call('userFileLineChart');
+  }
+})
 
 Meteor.methods({
   userFileLineChart: function() {
     console.log('i am in the userFileLineChart line graph method');
     $('.bitly-chart').remove();
+    $('.userFile-chart').remove();
 
     var rawData;
 
@@ -128,6 +133,7 @@ Meteor.methods({
     for (var i = 0; i < myData.length; i++) {
       data.push([myData[i][0], myData[i][1]]);
       console.log(myData[i][0]);
+      console.log(myData[i][1]);
     }
 
     var margin = {
@@ -144,6 +150,7 @@ Meteor.methods({
         .range([0, width]);
 
     var y = d3.scale.linear()
+        // .domain([d3.min(data), d3.max(data)])
         .range([height, 0]);
 
     var xAxis = d3.svg.axis()
@@ -162,7 +169,7 @@ Meteor.methods({
     var svg = d3.select("body").append("svg")
                               .attr("width", width + margin.left + margin.right)
                               .attr("height", height + margin.top + margin.bottom)
-                              .attr("class", "bitly-chart")
+                              .attr("class", "userFile-chart")
                               .append("g")
                               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
