@@ -517,6 +517,7 @@ Template.yummy_coins.events({
       $('#create-show').remove();
       $('#marketing-text').remove();
       $('#call-2-action').remove();
+      $('#myCarousel').remove();
       $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h2> Make a slide for your Yummy Show <span class="current-show-plug">' + ' ' + currentShow + '</span></span>');
       $('.make-start').append('<div id="create-text" class="span6"><span class="text-slide"><h2>Text</h2></span></div>');
       $('.make-start').append('<div id="create-chart" class="span6"> <span class="chart-slide"><h2>Chart</h2></span></div>');
