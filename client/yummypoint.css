@@ -9,6 +9,16 @@ body {
     user-select: none;
 }
 
+#describe-yummy {
+  background-color: lightblue;
+}
+
+.show-title-slide {
+ height: 800px;
+ background-color: linen;
+ border-radius: 2em;
+}
+
 #chart-control {
   height: 30px;
 }
@@ -169,6 +179,10 @@ body .navbar .brand {
   box-shadow: inset 3px 3px 45px;
 }
 
+/*#title-slide-title {
+  margin-top: 150px;
+}*/
+
 .slide-preview {
   margin-top: 0.5em;
   text-align: center;
@@ -325,6 +339,15 @@ body .navbar .brand {
 }
 
 .slide-inputs .slide-one-title {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.title-slide-title {
+  margin-top: 150px;
+}
+
+.slide-inputs .title-slide-title {
   font-size: 1.5em;
   text-align: center;
 }
