@@ -546,12 +546,11 @@ Template.yummy_coins.events({
       $('#call-2-action').remove();
       $('#myCarousel').remove();
       $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + showName + '</h2></span></div>'); 
+      $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h2> Make a title slide for your Yummy Show <span class="current-show-plug">' + ' ' + currentShow + '</span></span>');
       $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
       $('#slide-inputs').append('<div class="title-slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.title-slide-title').append('<input id="title-slide-title" class="slide-text" type="text" placeholder="Enter cover slide title here" autofocus />');
-      $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h2> Make a title slide for your Yummy Show <span class="current-show-plug">' + ' ' + currentShow + '</span></span>');
-      // $('.make-start').append('<div id="describe-yummy" class="span4 first"> <span class="decribe-one"><h2> Keep it simple </h2>three bullets></h2></span></div><div id="describe-yummy" class="span4 second"> <span class="decribe-two"><h2> Be Cool </h2></span></div><div id="describe-yummy" class="span4 third"> <span class="decribe-three"><h2> Focus on the Intel </h2></span></div>');
-      $('.make-start').append('<div id="describe-yummy" class="span6 first"> <span class="decribe-one"><h2> Yummy Show titles slides are simple -- Title, Subtitle and Date </h2></span></div><div id="describe-yummy" class="span6 second"> <span class="decribe-two"><h2> Be Cool </h2></span></div>');
+      //$('.make-start').append('<div id="describe-yummy" class="span6 first"> <span class="decribe-one"><h2> Yummy Show titles slides are simple -- Title, Subtitle and Date </h2></span></div><div id="describe-yummy" class="span6 second"> <span class="decribe-two"><h2> Be Cool </h2></span></div>');
       //$('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
     } 
   },
@@ -570,10 +569,50 @@ Template.yummy_coins.events({
       var slideOneTitleText = slideOneTitle[0]['text'];
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
+      $('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
       //$('#slide-instruct').append('<span class="instruct-bullet-one"><h2>Enter bullet text above </h2></span>')
-      $('.slide-title').append('<div class="title-slide-title"> <h1>' + slideOneTitleText +'</h1></div>');
-      $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter your SubTitle here" autofocus />');
+      $('.title-slide-title').append('<div class="title-slideTitle"> <h1>' + slideOneTitleText +'</h1></div>');
+      $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter your sub title here" autofocus />');
       return slideTitle;
+    }
+  },
+  'keypress #title-slide-sub-title': function (event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      var bulletOne = document.getElementById("title-slide-sub-title").value;
+      Slides.insert({
+        show: currentShow,
+        slide: slideCount,
+        bullet: 'first',
+        text: bulletOne
+      })
+      var bulletObj = (Slides.find({slide: slideCount}).fetch());
+      console.log(bulletObj);
+      var subTitleText = bulletObj[1]['text'];
+      $('#title-slide-sub-title').remove();
+      $('.bullet-one').append('<div class="title-sub-title"> <h2>' + subTitleText +'</h2></div>');
+      $('.bullet-two').append('<input id="title-slide-sub-sub" class="slide-text" type="text" placeholder="Enter additional details here" autofocus />');
+      return bulletOne;
+    }
+  },
+  'keypress #title-slide-sub-sub': function (event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      var bulletTwo = document.getElementById("title-slide-sub-sub").value;
+      Slides.insert({
+        show: currentShow,
+        slide: slideCount,
+        bullet: 'second',
+        text: bulletTwo
+      })
+      var bullet2Obj = (Slides.find({slide: slideCount}).fetch());
+      console.log(bullet2Obj);
+      var subSubTitleText = bullet2Obj[2]['text'];
+      $('#title-slide-sub-sub').remove();
+      $('#slide-controls').remove();
+      $('.bullet-two').append('<div class="title-sub-sub"> <h3>' + subSubTitleText +'</h3></div>');
+      $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      return bulletTwo;
     }
   }
 })

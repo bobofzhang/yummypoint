@@ -13,8 +13,16 @@ body {
   background-color: lightblue;
 }
 
+.title-slideTitle h1 {
+  font-size: 6em;
+}
+
+.title-sub-title h2 {
+  font-size: 3em;
+}
+
 .show-title-slide {
- height: 800px;
+ height: 600px;
  background-color: linen;
  border-radius: 2em;
 }
@@ -344,7 +352,8 @@ body .navbar .brand {
 }
 
 .title-slide-title {
-  margin-top: 150px;
+  margin-top: 200px;
+  margin-bottom: 2em;
 }
 
 .slide-inputs .title-slide-title {
