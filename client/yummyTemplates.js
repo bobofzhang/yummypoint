@@ -378,45 +378,107 @@ Template.yummy_coins.events({
   },
   'click #slide-controls': function () { //>>>>>>> SAVE SLIDE <<<<<<<<<
       console.log(slideCount);
+      $('#slide-controls').remove();
       $('#slide-inputs').remove();      
       $('.slide-one-title').remove();
       $('.bullet-first-slide-one').remove();
       $('.bullet-second-slide-one').remove();
       $('.bullet-third-slide-one').remove();
       $('#slide-instruct').remove();
-      //$('.instruct-bullet-one').remove();
+      $('.instruct-bullet-one').remove();
       $('#start-this-show').remove();
+      $('#make-slide-options').remove();
+      $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
-      $('#slide-instruct').append('<span class="instruct-title"><h2>Enter your slide title above </h2></span>');
+      //$('#slide-instruct').append('<span class="instruct-title"><h2>Enter your slide title above </h2></span>');
       $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + currentShow + '</h2></span><div>');
       $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
       var slideTitle = (Slides.find({slide: slideCount}).fetch());
       var slideTitleText = slideTitle[0]['text'];
-      var bulletOne = (Slides.find({slide: slideCount}).fetch());
-      var bulletOneText = bulletOne[1]['text'];
-      var bulletTwo = (Slides.find({slide: slideCount}).fetch());
-      var bulletTwoText = bulletTwo[2]['text'];
-      var bulletThree = (Slides.find({slide: slideCount}).fetch());
-      var bulletThreeText = bulletThree[3]['text'];
-      Shows.insert([
-        { show: currentShow },
-        { slide: slideCount },
-        { contents: [
-                    { bullet: 'title', text: slideTitleText },
-                    { bullet: 'first', text: bulletOneText },
-                    { bullet: 'second', text: bulletTwoText },
-                    { bullet: 'third', text: bulletThreeText }
-                    ]
-        },
-        { slideType: "text" },
-        { dataSource: "text" }
-        ])
-      slideCount++;
-      Meteor.call('passSlideCount', slideCount);
-      Meteor.call('passSlideCountBitCoin', slideCount);
+      if (slideTitle[1] == null) {
+        alert('that sucker 1 is null');
+        Shows.insert([
+          { show: currentShow },
+          { slide: slideCount },
+          { contents: [
+                      { bullet: 'title', text: slideTitleText },
+                      { bullet: 'first', text: "" },
+                      { bullet: 'second', text: "" },
+                      { bullet: 'third', text: "" }
+                      ]
+          },
+          { slideType: "text" },
+          { dataSource: "text" }
+          ])
+        slideCount++;
+        return Meteor.call('passSlideCount', slideCount) && Meteor.call('passSlideCountBitCoin', slideCount);
+      } else {
+        var bulletOneText = slideTitle[1]['text'];
+      }
+      if (slideTitle[2] == null) {
+        alert('that sucker 2 is null');
+        Shows.insert([
+          { show: currentShow },
+          { slide: slideCount },
+          { contents: [
+                      { bullet: 'title', text: slideTitleText },
+                      { bullet: 'first', text: bulletOneText },
+                      { bullet: 'second', text: "" },
+                      { bullet: 'third', text: "" }
+                      ]
+          },
+          { slideType: "text" },
+          { dataSource: "text" }
+          ])
+        slideCount++;
+        return Meteor.call('passSlideCount', slideCount) && Meteor.call('passSlideCountBitCoin', slideCount);
+        // Meteor.call('passSlideCount', slideCount);
+        // Meteor.call('passSlideCountBitCoin', slideCount);
+      } else {
+        var bulletTwoText = slideTitle[2]['text'];
+      } 
+      if (slideTitle[3] == null) {
+        alert('that sucker 3 is null');
+        Shows.insert([
+          { show: currentShow },
+          { slide: slideCount },
+          { contents: [
+                      { bullet: 'title', text: slideTitleText },
+                      { bullet: 'first', text: bulletOneText },
+                      { bullet: 'second', text: bulletTwoText },
+                      { bullet: 'third', text: "" }
+                      ]
+          },
+          { slideType: "text" },
+          { dataSource: "text" }
+          ])
+        slideCount++;
+        return Meteor.call('passSlideCount', slideCount) && Meteor.call('passSlideCountBitCoin', slideCount);
+        // Meteor.call('passSlideCount', slideCount);
+        // Meteor.call('passSlideCountBitCoin', slideCount);
+      } else {
+        var bulletThreeText = slideTitle[3]['text'];
+        Shows.insert([
+          { show: currentShow },
+          { slide: slideCount },
+          { contents: [
+                      { bullet: 'title', text: slideTitleText },
+                      { bullet: 'first', text: bulletOneText },
+                      { bullet: 'second', text: bulletTwoText },
+                      { bullet: 'third', text: bulletThreeText }
+                      ]
+          },
+          { slideType: "text" },
+          { dataSource: "text" }
+          ])
+        slideCount++;
+        return Meteor.call('passSlideCount', slideCount) && Meteor.call('passSlideCountBitCoin', slideCount);
+        // Meteor.call('passSlideCount', slideCount);
+        // Meteor.call('passSlideCountBitCoin', slideCount);
+      }
     },
 
 // >>>>>>>>>>> UPLOAD FILE <<<<<<<<<<<<<<<<<
@@ -569,7 +631,7 @@ Template.yummy_coins.events({
       var slideOneTitleText = slideOneTitle[0]['text'];
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
-      $('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
+      $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
       //$('#slide-instruct').append('<span class="instruct-bullet-one"><h2>Enter bullet text above </h2></span>')
       $('.title-slide-title').append('<div class="title-slideTitle"> <h1>' + slideOneTitleText +'</h1></div>');
       $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter your sub title here" autofocus />');
@@ -611,7 +673,7 @@ Template.yummy_coins.events({
       $('#title-slide-sub-sub').remove();
       $('#slide-controls').remove();
       $('.bullet-two').append('<div class="title-sub-sub"> <h3>' + subSubTitleText +'</h3></div>');
-      $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
       return bulletTwo;
     }
   }

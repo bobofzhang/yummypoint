@@ -21,7 +21,13 @@ body {
   font-size: 3em;
 }
 
-.show-title-slide {
+/*.show-title-slide {
+ height: 600px;
+ background-color: linen;
+ border-radius: 2em;
+}*/
+
+#slide-inputs {
  height: 600px;
  background-color: linen;
  border-radius: 2em;
