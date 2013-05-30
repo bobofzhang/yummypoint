@@ -21,11 +21,22 @@ body {
   font-size: 3em;
 }
 
+.slide-title {
+  margin-top: 50px;
+  margin-bottom: 75px;
+}
+
 /*.show-title-slide {
  height: 600px;
  background-color: linen;
  border-radius: 2em;
 }*/
+
+
+
+#make-slide-options {
+  border: 1px solid black;
+}
 
 #slide-inputs {
  height: 600px;
@@ -239,13 +250,13 @@ body .navbar .brand {
   font-size: 6em;
 }
 
-.bullet-first-slide-one h2 {
+.bullet-first-slide-one h2, .bullet-second-slide-one h2, .bullet-third-slide-one h2 {
   padding-top: 0.25em;
   padding-bottom: 0.1em;
-  font-size: 3em;
+  font-size: 4em;
 }
 
-.bullet-second-slide-one h2 {
+/*.bullet-second-slide-one h2 {
   padding-top: 0.25em;
   padding-bottom: 0.1em;
   font-size: 3em;
@@ -255,7 +266,7 @@ body .navbar .brand {
   padding-top: 0.25em;
   padding-bottom: 0.1em;
   font-size: 3em;
-}
+}*/
 
 #slide-controls {
   text-align: center;
