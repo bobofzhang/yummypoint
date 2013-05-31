@@ -44,13 +44,14 @@ Template.yummy_coins.events({
     $('#preview-slide-inputs').remove();
     $('#slide-inputs').remove();
     $('#slide-nav-row').remove();
+    $('.saved-slide-preview').remove();
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
     //$('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-    //$('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
-    $('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
+    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
+    //$('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
   },
 
   //>>>>>>> SLIDE ONE INPUTS <<<<<<<<<
@@ -155,8 +156,12 @@ Template.yummy_coins.events({
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideTitle[1][2]['contents'];
@@ -184,8 +189,12 @@ Template.yummy_coins.events({
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideTitle[2][2]['contents'];
@@ -212,8 +221,12 @@ Template.yummy_coins.events({
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[3][2]['contents'];
@@ -240,8 +253,12 @@ Template.yummy_coins.events({
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[4][2]['contents'];
@@ -268,8 +285,12 @@ Template.yummy_coins.events({
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideTitle[5][2]['contents'];
@@ -296,8 +317,12 @@ Template.yummy_coins.events({
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[6][2]['contents'];
@@ -324,8 +349,12 @@ Template.yummy_coins.events({
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[7][2]['contents'];
@@ -352,8 +381,12 @@ Template.yummy_coins.events({
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('bitlyLineChartD3');
     } else {
       var slideTextArray = slideTitle[8][2]['contents'];

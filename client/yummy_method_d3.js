@@ -20,7 +20,7 @@ var bitcoinInterval = Meteor.setInterval(function(){
     var dataset = result;
     return setData(result);
   })
-}, 10000);
+}, 30000);
 
 //Session.set("bitcoinInterval", bitcoinInterval);
 
