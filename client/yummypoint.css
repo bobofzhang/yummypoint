@@ -379,8 +379,9 @@ body .navbar .brand {
 
 .saved-slide-preview {
   text-align: center;
-  background-color: silver;
+  background-color: oldlace;
   border-radius: 3em;
+  height: 600px;
 }
 
 .slide-inputs .slide-one-title {

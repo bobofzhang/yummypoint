@@ -137,6 +137,7 @@ Template.yummy_coins.events({
   //>>>>>>>>>> SHOW MAKER HELPERS <<<<<<<<<<<<<<<<<
   'click .slidelink2': function(){
     $('.slide-inputs').remove();
+    $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
@@ -661,6 +662,8 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('#create-chart-sub').remove();
+    $('#edit-current-slide').remove();
+    $('#create-text-sub').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[0]['3']['slideType'];
