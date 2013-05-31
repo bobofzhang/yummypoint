@@ -14,7 +14,11 @@ body {
 }
 
 .title-slideTitle h1 {
-  font-size: 6em;
+  font-size: 6em; 
+}
+
+.preview-title-slideTitle h1 {
+  font-size: 6em; 
 }
 
 .title-sub-title h2 {
@@ -41,6 +45,12 @@ body {
 #slide-inputs {
  height: 600px;
  background-color: linen;
+ border-radius: 2em;
+}
+
+#preview-slide-inputs {
+ height: 600px;
+ background-color: lightslategray;
  border-radius: 2em;
 }
 
@@ -369,6 +379,11 @@ body .navbar .brand {
 }
 
 .title-slide-title {
+  margin-top: 200px;
+  margin-bottom: 2em;
+}
+
+#preview-slide-inputs .preview-title-slideTitle {
   margin-top: 200px;
   margin-bottom: 2em;
 }

@@ -154,7 +154,9 @@ Template.yummy_coins.events({
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
       var thirdBull = slideTextArray[3]['text'];
-      $('.make-start').append('<div class="saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+      $('.make-start').append('<div id="preview-slide-inputs" class="span12"></div>');
+      // $('#preview-slide-inputs').append('<div class="preview-title-slide-title"></div>'); 
+      $('#preview-slide-inputs').append('<div class="preview-title-slideTitle"> <h1>' + title + '</h1></div><div class="title-sub-title"><h2>' + firstBull + '</h2></div><div class="title-sub-sub"> <h3>' + secondBull + '</h3></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
     }
   },
   'click .slidelink2': function(){
@@ -404,7 +406,6 @@ Template.yummy_coins.events({
       var slideTitle = (Slides.find({slide: slideCount}).fetch());
       var slideTitleText = slideTitle[0]['text'];
       if (slideTitle[1] == null) {
-        alert('that sucker 1 is null');
         Shows.insert([
           { show: currentShow },
           { slide: slideCount },
@@ -424,7 +425,6 @@ Template.yummy_coins.events({
         var bulletOneText = slideTitle[1]['text'];
       }
       if (slideTitle[2] == null) {
-        alert('that sucker 2 is null');
         Shows.insert([
           { show: currentShow },
           { slide: slideCount },
@@ -446,7 +446,6 @@ Template.yummy_coins.events({
         var bulletTwoText = slideTitle[2]['text'];
       } 
       if (slideTitle[3] == null) {
-        alert('that sucker 3 is null');
         Shows.insert([
           { show: currentShow },
           { slide: slideCount },
