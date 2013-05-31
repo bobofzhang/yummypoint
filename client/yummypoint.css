@@ -258,6 +258,8 @@ body .navbar .brand {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   font-size: 6em;
+  margin-top: 50px;
+  margin-bottom: 75px;
 }
 
 .bullet-first-slide-one h2, .bullet-second-slide-one h2, .bullet-third-slide-one h2 {
