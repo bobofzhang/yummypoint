@@ -446,7 +446,9 @@ Template.yummy_coins.events({
           { dataSource: "text" }
           ])
         slideCount++;
-        return Meteor.call('passSlideCount', slideCount) && Meteor.call('passSlideCountBitCoin', slideCount);
+        Meteor.call('passSlideCount', slideCount);
+        Meteor.call('passSlideCountBitCoin', slideCount);
+        return slideTitleText;
       } else {
         var bulletOneText = slideTitle[1]['text'];
       }
@@ -465,9 +467,9 @@ Template.yummy_coins.events({
           { dataSource: "text" }
           ])
         slideCount++;
-        return Meteor.call('passSlideCount', slideCount) && Meteor.call('passSlideCountBitCoin', slideCount);
-        // Meteor.call('passSlideCount', slideCount);
-        // Meteor.call('passSlideCountBitCoin', slideCount);
+        Meteor.call('passSlideCount', slideCount);
+        Meteor.call('passSlideCountBitCoin', slideCount);
+        return bulletOneText;
       } else {
         var bulletTwoText = slideTitle[2]['text'];
       } 
@@ -486,9 +488,9 @@ Template.yummy_coins.events({
           { dataSource: "text" }
           ])
         slideCount++;
-        return Meteor.call('passSlideCount', slideCount) && Meteor.call('passSlideCountBitCoin', slideCount);
-        // Meteor.call('passSlideCount', slideCount);
-        // Meteor.call('passSlideCountBitCoin', slideCount);
+        Meteor.call('passSlideCount', slideCount);
+        Meteor.call('passSlideCountBitCoin', slideCount);
+        return bulletTwoText;
       } else {
         var bulletThreeText = slideTitle[3]['text'];
         Shows.insert([
@@ -505,9 +507,9 @@ Template.yummy_coins.events({
           { dataSource: "text" }
           ])
         slideCount++;
-        return Meteor.call('passSlideCount', slideCount) && Meteor.call('passSlideCountBitCoin', slideCount);
-        // Meteor.call('passSlideCount', slideCount);
-        // Meteor.call('passSlideCountBitCoin', slideCount);
+        Meteor.call('passSlideCount', slideCount);
+        Meteor.call('passSlideCountBitCoin', slideCount);
+        return bulletThreeText;
       }
     },
 

@@ -49,40 +49,45 @@ Template.yummy_coins.events({
 })
 
 Template.yummy_coins.events({
-  'click .bitly': function () {
+  'click #bitly-line-chart-nav': function () {
     $('.line-chart-data-sources').remove();
     $('.data-source-details').remove();
     $('#slide-controls').remove();
     $('#create-text-sub').remove();
     $('#bar-chart-switch').remove();
     $('#bubble-chart-switch').remove();
+    $('.chart-data-sources-types').remove();
     $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save this sick Line Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
     $('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
     $('.make-start').append('<div class="data-source-details"><div class="row"><div id="twitter-switch" class="span6"> <span class="twitter"> <h3> Switch to Twitter Data </h3> </span></div><div id="bitcoin-switch" class="span6"> <span class="bitcoin"> <h3> Switch to Bitcoin Data </h3> </span></div></div></div>');
-    //$('.make-start').append('<div class="data-source-details"><div class="row"><div id="bitly-data" class="span12"> <span class="bitly-hot"> <h3> Bitly </h3> </span></div></div></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.call("renderHotBits");
     //return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.setInterval(function(){ Meteor.call("renderHotBits") }, 10000) && Meteor.call("renderHotBits");
   }
 })
 
 Template.yummy_coins.events({
-  'click .bit-coins': function () {
-    //alert('nice try... bit coin data connected soon');
+  'click #coin-line-chart-nav': function () {
     $('.line-chart-data-sources').remove();
     $('.data-source-details').remove();
     $('#slide-controls').remove();
     $('#create-text-sub').remove();
     $('#bar-chart-switch').remove();
     $('#bubble-chart-switch').remove();
+    $('.chart-data-sources-types').remove();
+    $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
     $('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
     $('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
-    $('.make-start').append('<div class="data-source-details"><div class="row"><div id="twitter-switch" class="span6"> <span class="twitter"> <h3> Switch to Twitter Data </h3> </span></div><div id="bitly-switch" class="span6"> <span class="bitly"> <h3> Switch to Bitly Data </h3> </span></div></div></div>');
-    //$('.make-start').append('<div class="chosen-data-source"><div class="row"><div class="span12"> <h3> Live Data </h3></span></div></div></div>');
-    //$('.make-start').append('<div class="data-source-details"><div class="row"><div class="span12"> <span class="bit-coins"> <h3> Bit Coins </h3> </span></div></div></div>');
+    //$('.make-start').append('<div class="data-source-details"><div class="row"><div id="twitter-switch" class="span6"> <span class="twitter"> <h3> Switch to Twitter Data </h3> </span></div><div id="bitly-switch" class="span6"> <span class="bitly"> <h3> Switch to Bitly Data </h3> </span></div></div></div>');
     return Deps.autorun(function(){ return Meteor.call('D3testinit'); });
   }
+})
+
+Template.yummy_coins.events({
+    'click #twit-line-chart-nav': function () {
+        alert('Thanks for trying. Feature coming soon.');
+    }
 })
 
 

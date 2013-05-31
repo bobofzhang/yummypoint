@@ -51,6 +51,7 @@ Template.yummy_coins.events({
   'click #save-bitcoin-slide': function() {
     console.log('saving bitcoin chart');
     console.log(thisShowBitCoin);
+    console.log(slideNumberBitCoin);
     Shows.insert([
       { show: thisShowBitCoin },
       { slide: slideNumberBitCoin },
@@ -101,14 +102,14 @@ Meteor.methods({
     }
 
     var margin = {
-      top: 20, 
+      top: 50, 
       right: 50, 
       bottom: 30, 
       left: 50
     };
 
-    var width = 960 - margin.left - margin.right;
-    var height = 500 - margin.top - margin.bottom;
+    var width = 950 - margin.left - margin.right;
+    var height = 550 - margin.top - margin.bottom;
 
     var x = d3.time.scale()
         .range([0, width]);
@@ -129,7 +130,7 @@ Meteor.methods({
         .x(function(d) { return x(d[1]); })
         .y(function(d) { return y(d[0]); });
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#slide-inputs").append("svg")
                               .attr("width", width + margin.left + margin.right)
                               .attr("height", height + margin.top + margin.bottom)
                               .attr("class", "bitcoin-chart")
