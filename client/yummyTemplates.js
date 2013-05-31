@@ -41,10 +41,15 @@ Template.yummy_coins.events({
     $('#line-chart-nav').remove();
     $('#bar-chart-nav').remove();
     $('#bubble-chart-nav').remove();
+    $('#preview-slide-inputs').remove();
+    $('#slide-inputs').remove();
+    $('#slide-nav-row').remove();
+    $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-    $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    //$('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    //$('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
     $('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
   },
 
@@ -535,7 +540,7 @@ Template.yummy_coins.events({
 //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
   'click .start-current-show': function () {
       // $('#navbar').remove();
-      Meteor.clearInterval(Session.get("bitcoinInterval"));
+      //Meteor.clearInterval(Session.get("bitcoinInterval"));
       $('.bitcoin-chart').remove();
       $('.bitly-chart').remove();
       $('#yummy-shows').remove();
