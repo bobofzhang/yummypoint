@@ -50,7 +50,7 @@ body {
 
 #preview-slide-inputs {
  height: 600px;
- background-color: lightslategray;
+ background-color: papayawhip;
  border-radius: 2em;
 }
 
@@ -302,6 +302,16 @@ body .navbar .brand {
   text-align: center;
   height: 3em;  
   background-color: goldenrod;
+  font-size: 1.5em;
+  color: white;
+  margin-bottom: 0.75em;
+  border-radius: 0.75em;
+}
+
+#edit-current-slide {
+  text-align: center;
+  height: 3em;  
+  background-color: mediumseagreen;
   font-size: 1.5em;
   color: white;
   margin-bottom: 0.75em;
