@@ -142,6 +142,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[1]['3']['slideType'];
@@ -170,6 +171,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[2]['3']['slideType'];
@@ -197,6 +199,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[3]['3']['slideType'];
@@ -224,6 +227,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[4]['3']['slideType'];
@@ -251,6 +255,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[5]['3']['slideType'];
@@ -278,6 +283,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[6]['3']['slideType'];
@@ -305,6 +311,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[7]['3']['slideType'];
@@ -332,6 +339,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[8]['3']['slideType'];
@@ -359,6 +367,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[9]['3']['slideType'];
@@ -386,6 +395,7 @@ Template.yummy_coins.events({
     $('.slide-inputs').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[10]['3']['slideType'];
@@ -715,6 +725,7 @@ Template.yummy_coins.events({
     $('#create-chart-sub').remove();
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
+    $('.chart-data-sources-types').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[0]['3']['slideType'];
