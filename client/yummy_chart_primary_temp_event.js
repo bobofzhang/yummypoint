@@ -12,6 +12,8 @@ Template.yummy_coins.events({
     $('#chart-bullets').remove();
     $('#slide-inputs').remove();
     $('.slide-controls').remove();
+    $('#save-bitcoin-slide').remove();
+    $('#create-text-sub').remove();
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
     $('.make-start').append('<div class="chart-data-sources-types"></div>');
     $('.chart-data-sources-types').append('<div id="user-data-row" class="row"></div><div id="user-chart-options-row" class="row"></div>');
