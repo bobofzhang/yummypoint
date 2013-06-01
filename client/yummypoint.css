@@ -17,16 +17,28 @@ body {
   border-radius: 2em;
 }
 
-.the-show #show-titleSlide-title {
-  font-size: 1.5em;
+#show-titleSlide-title {
   text-align: center;
+  margin-top: 200px;
+  margin-bottom: 0.5em;
 }
 
-#show-titleSlide-title, 
+#show-titleSlide-title h1 {
+  font-size: 6em;
+}
+
+#show-titleSlide-bullet-one h2 {
+  font-size: 3em;
+}
+
+#show-titleSlide-bullet-two h2 {
+  font-size: 1.5em;
+}
+
 #show-titleSlide-bullet-one, 
 #show-titleSlide-bullet-two, 
 #show-titleSlide-bullet-three {
-  color: red;
+  text-align: center;
 }
 
 #describe-yummy {
@@ -273,6 +285,20 @@ body .navbar .brand {
 }
 
 /* <<<<<<<< SLIDE ONE LIVE PREVIEW >>>>>>>>>>> */
+
+#show-title h1 {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 6em;
+  margin-top: 50px;
+  margin-bottom: 75px;
+}
+
+#show-bullet-one h2, #show-bullet-two h2, #show-bullet-three h2 {
+  padding-top: 0.25em;
+  padding-bottom: 0.1em;
+  font-size: 4em;
+}
 
 .slide-one-title h1 {
   padding-top: 0.25em;

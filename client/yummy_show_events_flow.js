@@ -31,7 +31,8 @@ Template.yummy_coins.events({
       currentYummyShow = (Shows.find({ 0 : { show: thisCurrentShow }}).fetch());
       console.log(currentYummyShow);
       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-      $('#body-row').append('<div class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+      //$('#body-row').append('<div class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+      $('.make-start').append('<div class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
   },
 
   'click #show-titleSlide-title': function () {
