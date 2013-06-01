@@ -31,8 +31,121 @@ Template.yummy_coins.events({
       currentYummyShow = (Shows.find({ 0 : { show: thisCurrentShow }}).fetch());
       console.log(currentYummyShow);
       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-      $('#body-row').append('<div class="the-show"><div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
-    },
+      $('#body-row').append('<div class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+  },
+
+  'click #show-titleSlide-title': function () {
+    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
+    if (yummyBulletOneText) {
+      $('.the-show').append('<div id="show-titleSlide-bullet-one" class="span12 show-bullet-one"><span class="show-bullet-one"><h2>' + yummyBulletOneText +'</h2></span></div></div>');
+    } else {
+      yummyShowSlideIndex++;
+      $('#show-titleSlide-title').remove();
+      // $('#show-bullet-one').remove();
+      // $('#show-bullet-two').remove();
+      // $('#show-bullet-three').remove();
+      var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+      var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
+      console.log(type);
+      if (type === "chart" && source === "bitcoin") {
+        $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+        $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+        // var func = slideTitle[1]['2']['contents'];
+        return Meteor.call('D3testinit'); 
+      } else if (type === "chart" && source === "bitly") {
+        $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+        $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+        return Meteor.call('bitlyLineChartD3');
+      } else {
+        var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+        $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+      }
+    }
+  },
+  'click #show-titleSlide-bullet-one': function () {
+    var yummyBulletTwoText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][2]['text'];
+    if (yummyBulletTwoText) {
+      $('.the-show').append('<div id="show-titleSlide-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2>' + yummyBulletTwoText +'</h2></span></div></div>');
+    } else {
+      yummyShowSlideIndex++;
+      $('#show-titleSlide-title').remove();
+      $('#show-titleSlide-bullet-one').remove();
+      // $('#show-bullet-two').remove();
+      // $('#show-bullet-three').remove();
+      var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+      var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
+      console.log(type);
+      if (type === "chart" && source === "bitcoin") {
+        $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+        $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+        // var func = slideTitle[1]['2']['contents'];
+        return Meteor.call('D3testinit'); 
+      } else if (type === "chart" && source === "bitly") {
+        $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+        $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+        return Meteor.call('bitlyLineChartD3');
+      } else {
+        var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+        $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+      }
+    }
+  },
+  'click #show-titleSlide-bullet-two': function () {
+    var yummyBulletThreeText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][3]['text'];
+    if (yummyBulletThreeText) {
+      $('.the-show').append('<div id="show-titleSlide-bullet-three" class="span12 show-bullet-three"><span class="show-bullet-three"><h2>' + yummyBulletThreeText +'</h2></span></div></div>');
+    } else {
+      yummyShowSlideIndex++;
+      $('#show-titleSlide-title').remove();
+      $('#show-titleSlide-bullet-one').remove();
+      $('#show-titleSlide-bullet-two').remove();
+      // $('#show-bullet-three').remove();
+      var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+      var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
+      console.log(type);
+      if (type === "chart" && source === "bitcoin") {
+        $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+        $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+        // var func = slideTitle[1]['2']['contents'];
+        return Meteor.call('D3testinit'); 
+      } else if (type === "chart" && source === "bitly") {
+        $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+        $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+        return Meteor.call('bitlyLineChartD3');
+      } else {
+        var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+        $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+      }
+    }
+  },
+  'click #show-titleSlide-bullet-three': function () {
+    yummyShowSlideIndex++;
+    $('#show-titleSlide-title').remove();
+    $('#show-titleSlide-bullet-one').remove();
+    $('#show-titleSlide-bullet-two').remove();
+    $('#show-titleSlide-bullet-three').remove();
+    var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+    var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
+    console.log(type);
+    if (type === "chart" && source === "bitcoin") {
+      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+      // var func = slideTitle[1]['2']['contents'];
+      return Meteor.call('D3testinit'); 
+    } else if (type === "chart" && source === "bitly") {
+      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+      $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+      return Meteor.call('bitlyLineChartD3');
+    } else {
+      var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+      $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+    }
+    //var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    //$('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+  },
+
+//>>>>>>>>>>>>>>>>> SHOW BODY SLIDES <<<<<<<<<<<<<<<<<
+
   'click #show-title': function () {
     var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
     if (yummyBulletOneText) {

@@ -9,6 +9,26 @@ body {
     user-select: none;
 }
 
+/* >>>>>>> YUMMY SHOW PRESENTATION <<<<<<<<<<<< */
+
+.the-show {
+  height: 600px;
+  background-color: navajowhite;
+  border-radius: 2em;
+}
+
+.the-show #show-titleSlide-title {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+#show-titleSlide-title, 
+#show-titleSlide-bullet-one, 
+#show-titleSlide-bullet-two, 
+#show-titleSlide-bullet-three {
+  color: red;
+}
+
 #describe-yummy {
   background-color: lightblue;
 }
