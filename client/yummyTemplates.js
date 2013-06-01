@@ -250,116 +250,90 @@ Template.yummy_coins.events({
 
     'click #img-back-upload': function () {
       alert('Dont you wish!');
-    },
+    }
+  })
 
 //>>>>>>>>>>>> Line-Chart Events <<<<<<<<<<<<<<
 
 
 //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
-  'click .start-current-show': function () {
-      // $('#navbar').remove();
-      //Meteor.clearInterval(Session.get("bitcoinInterval"));
-      $('.bitcoin-chart').remove();
-      $('.bitly-chart').remove();
-      $('#yummy-shows').remove();
-      $('#slide-index').remove();
-      $('.make-start').remove();
-      $('#slide-preview').remove();
-      $('#img-back-upload').remove();
-      $('#slide-controls').remove();
-      $('#create-chart-sub').remove();
-      currentYummyShow = (Shows.find({ 0 : { show: currentShow }}).fetch());
-      console.log(currentYummyShow);
-      var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-      $('#body-row').append('<div class="the-show"><div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
-    },
-  'click #show-title': function () {
-    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
-    $('.the-show').append('<div id="show-bullet-one" class="span12 show-bullet-one"><span class="show-bullet-one"><h2>' + yummyBulletOneText +'</h2></span></div></div>');
-    },
-  'click #show-bullet-one': function () {
-    var yummyBulletTwoText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][2]['text'];
-    $('.the-show').append('<div id="show-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2>' + yummyBulletTwoText +'</h2></span></div></div>');
-    },
-  'click #show-bullet-two': function () {
-    var yummyBulletThreeText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][3]['text'];
-    $('.the-show').append('<div id="show-bullet-three" class="span12 show-bullet-three"><span class="show-bullet-three"><h2>' + yummyBulletThreeText +'</h2></span></div></div>');
-    },
-  'click #show-bullet-three': function () {
-    yummyShowSlideIndex++;
-    $('#show-title').remove();
-    $('#show-bullet-one').remove();
-    $('#show-bullet-two').remove();
-    $('#show-bullet-three').remove();
-    var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-    var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-    console.log(type);
-    if (type === "chart" && source === "bitcoin") {
-      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-      // var func = slideTitle[1]['2']['contents'];
-      return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
-      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-      return Meteor.call('bitlyLineChartD3');
-    } else {
-      var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-      $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
-    }
-    //var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-    //$('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
-  }
-})
-
-Template.yummy_coins.events({
-  'click #chart-control': function (){
-    yummyShowSlideIndex++;
-    $('#chart-control').remove();
-    $('.bitly-chart').remove();
-    $('.bitcoin-chart').remove();
-    var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-    var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-    console.log(type);
-    if (type === "chart" && source === "bitcoin") {
-      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-      // var func = slideTitle[1]['2']['contents'];
-      return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
-      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-      return Meteor.call('bitlyLineChartD3');
-    } else {
-      var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-      $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
-    }
-  }
-})
-
-// Template.yummy_coins.events({
-//   'keypress #create-show-input': function (event) {
-//     if (event.which == 13) {
-//       event.preventDefault();
-//       var showName = document.getElementById("create-show-input").value;
-//       currentShow = showName;
-//       Meteor.call('passShowName', currentShow);
-//       Meteor.call('passShowNameBitCoin', currentShow);
-//       $('#create-show').remove();
-//       $('#marketing-text').remove();
-//       $('#call-2-action').remove();
-//       $('#myCarousel').remove();
-//       //$('.make-start').append('<div id="create-text" class="span6"><span class="text-slide"><h2>Text</h2></span></div>');
-//       //$('.make-start').append('<div id="create-chart" class="span6"> <span class="chart-slide"><h2>Chart</h2></span></div>');
-//       //$('.make-start').append('<div id="text-bullets" class="span6"> <span class="text-bullets"><p>Put Text Bullets Here </br> more bullets </br> and even more </p></span></div><div id="chart-bullets" class="span6"> <span class="chart-bullets"><p>Put Chart Bullets Here </br> more bullets </br> and even more </p></span></div>');
-//       $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + showName + '</h2></span></div>'); //<div class="span3"><span class="start-current-show"><p> Start' + ' ' + showName + '</p></span></div></div>');
-//       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
-//       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-//       //$('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-//       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
-//       $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h2> Make a title slide for your Yummy Show <span class="current-show-plug">' + ' ' + currentShow + '</span></span>');
-//       // $('.make-start').append('<div id="describe-yummy" class="span4 first"> <span class="decribe-one"><h2> Keep it simple </h2>three bullets></h2></span></div><div id="describe-yummy" class="span4 second"> <span class="decribe-two"><h2> Be Cool </h2></span></div><div id="describe-yummy" class="span4 third"> <span class="decribe-three"><h2> Focus on the Intel </h2></span></div>');
-//       $('.make-start').append('<div id="describe-yummy" class="span6 first"> <span class="decribe-one"><h2> Yummy Show titles slides are simple -- Title, Subtitle and Date </h2></span></div><div id="describe-yummy" class="span6 second"> <span class="decribe-two"><h2> Be Cool </h2></span></div>');
-//       //$('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
-//     } 
+//   'click .start-current-show': function () {
+//       // $('#navbar').remove();
+//       //Meteor.clearInterval(Session.get("bitcoinInterval"));
+//       $('.bitcoin-chart').remove();
+//       $('.bitly-chart').remove();
+//       $('#yummy-shows').remove();
+//       $('#slide-index').remove();
+//       $('.make-start').remove();
+//       $('#slide-preview').remove();
+//       $('#img-back-upload').remove();
+//       $('#slide-controls').remove();
+//       $('#create-chart-sub').remove();
+//       currentYummyShow = (Shows.find({ 0 : { show: currentShow }}).fetch());
+//       console.log(currentYummyShow);
+//       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+//       $('#body-row').append('<div class="the-show"><div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+//     },
+//   'click #show-title': function () {
+//     var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
+//     $('.the-show').append('<div id="show-bullet-one" class="span12 show-bullet-one"><span class="show-bullet-one"><h2>' + yummyBulletOneText +'</h2></span></div></div>');
+//     },
+//   'click #show-bullet-one': function () {
+//     var yummyBulletTwoText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][2]['text'];
+//     $('.the-show').append('<div id="show-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2>' + yummyBulletTwoText +'</h2></span></div></div>');
+//     },
+//   'click #show-bullet-two': function () {
+//     var yummyBulletThreeText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][3]['text'];
+//     $('.the-show').append('<div id="show-bullet-three" class="span12 show-bullet-three"><span class="show-bullet-three"><h2>' + yummyBulletThreeText +'</h2></span></div></div>');
+//     },
+//   'click #show-bullet-three': function () {
+//     yummyShowSlideIndex++;
+//     $('#show-title').remove();
+//     $('#show-bullet-one').remove();
+//     $('#show-bullet-two').remove();
+//     $('#show-bullet-three').remove();
+//     var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+//     var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
+//     console.log(type);
+//     if (type === "chart" && source === "bitcoin") {
+//       $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+//       // var func = slideTitle[1]['2']['contents'];
+//       return Meteor.call('D3testinit'); 
+//     } else if (type === "chart" && source === "bitly") {
+//       $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+//       return Meteor.call('bitlyLineChartD3');
+//     } else {
+//       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+//       $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+//     }
+//     //var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+//     //$('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
 //   }
 // })
+
+// Template.yummy_coins.events({
+//   'click #chart-control': function (){
+//     yummyShowSlideIndex++;
+//     $('#chart-control').remove();
+//     $('.bitly-chart').remove();
+//     $('.bitcoin-chart').remove();
+//     var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+//     var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
+//     console.log(type);
+//     if (type === "chart" && source === "bitcoin") {
+//       $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+//       // var func = slideTitle[1]['2']['contents'];
+//       return Meteor.call('D3testinit'); 
+//     } else if (type === "chart" && source === "bitly") {
+//       $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+//       return Meteor.call('bitlyLineChartD3');
+//     } else {
+//       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+//       $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+//     }
+//   }
+// })
+
 Template.yummy_coins.events({
   'keypress #create-show-input': function (event) {
     if (event.which == 13) {
@@ -368,6 +342,7 @@ Template.yummy_coins.events({
       currentShow = showName;
       Meteor.call('passShowName', currentShow);
       Meteor.call('passShowNameBitCoin', currentShow);
+      Meteor.call('passCurrentShowName', currentShow);
       $('#create-show').remove();
       $('#marketing-text').remove();
       $('#call-2-action').remove();
