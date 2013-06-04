@@ -89,6 +89,9 @@ Meteor.methods({
   D3testinit: function() {
     // var dataset = getData();
     $('.bitcoin-chart').remove();
+    $('.the-show').remove();
+    $('#slide-inputs').remove();
+    $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
     var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
     console.log(checkBitTime);
 
