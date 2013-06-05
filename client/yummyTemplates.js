@@ -15,18 +15,18 @@ Meteor.methods({
 })
 
 Template.yummy_coins.events({
-  'click .text-slide': function () {
-    $('#create-chart').remove();
-    $('#create-text').remove();
-    $('#make-slide-options').remove();
-    $('#text-bullets').remove();
-    $('#chart-bullets').remove();
-    $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
-    $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-    $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
-    $('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
-  },
+  // 'click .text-slide': function () {
+  //   $('#create-chart').remove();
+  //   $('#create-text').remove();
+  //   $('#make-slide-options').remove();
+  //   $('#text-bullets').remove();
+  //   $('#chart-bullets').remove();
+  //   $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
+  //   $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
+  //   $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+  //   $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
+  //   $('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
+  // },
   'click #create-text-sub': function () {
     $('#create-chart').remove();
     $('#create-text').remove();
@@ -45,6 +45,7 @@ Template.yummy_coins.events({
     $('#slide-inputs').remove();
     $('#slide-nav-row').remove();
     $('.saved-slide-preview').remove();
+    $('.chart-data-sources-types').remove();
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
