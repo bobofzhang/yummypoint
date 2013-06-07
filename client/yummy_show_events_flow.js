@@ -214,7 +214,6 @@ Template.yummy_coins.events({
 //>>>>>>>>>>>>>>>>> SHOW BODY SLIDES <<<<<<<<<<<<<<<<<
 
   'click #show-content-title': function () {
-    alert(yummyShowSlideIndex);
     $('.the-show').remove();
     var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
     var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
@@ -346,11 +345,14 @@ Template.yummy_coins.events({
 })
 
 Template.yummy_coins.events({
-  'click #chart-control': function (){
+  'click #slide-inputs-chart': function (){
     yummyShowSlideIndex++;
     $('#chart-control').remove();
     $('.bitly-chart').remove();
     $('.bitcoin-chart').remove();
+    $('.the-show').remove();
+    $('#slide-inputs-chart').remove();
+    $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
     var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
     var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
     console.log(type);

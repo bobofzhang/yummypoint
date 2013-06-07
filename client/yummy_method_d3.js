@@ -13,16 +13,16 @@ var getData = function () {
 var thisShowBitCoin;
 var slideNumberBitCoin;
 
-var bitcoinInterval = Meteor.setInterval(function(){
-  Meteor.call("getBitCoinData", function(error, result) {
-    console.log('hi');
-    // console.log(result);
-    var dataset = result;
-    return setData(result);
-  })
-}, 30000);
+// var bitcoinInterval = Meteor.setInterval(function(){
+//   Meteor.call("getBitCoinData", function(error, result) {
+//     console.log('hi');
+//     // console.log(result);
+//     var dataset = result;
+//     return setData(result);
+//   })
+// }, 30000);
 
-Session.set("bitcoinInterval", bitcoinInterval);
+//Session.set("bitcoinInterval", bitcoinInterval);
 
 Meteor.methods({
   passShowNameBitCoin: function (showName) {
@@ -71,6 +71,7 @@ Template.yummy_coins.events({
     $('#bubble-chart-switch').remove();
     $('#create-chart-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
@@ -91,7 +92,8 @@ Meteor.methods({
     $('.bitcoin-chart').remove();
     $('.the-show').remove();
     $('#slide-inputs').remove();
-    $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+    $('#slide-inputs-chart').remove();
+    $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
     console.log(checkBitTime);
 
@@ -135,7 +137,7 @@ Meteor.methods({
         .x(function(d) { return x(d[1]); })
         .y(function(d) { return y(d[0]); });
 
-    var svg = d3.select("#slide-inputs").append("svg")
+    var svg = d3.select("#slide-inputs-chart").append("svg")
                               .attr("width", width + margin.left + margin.right)
                               .attr("height", height + margin.top + margin.bottom)
                               .attr("class", "bitcoin-chart")

@@ -143,7 +143,8 @@ Template.yummy_coins.events({
   'click #slide-controls': function () { //>>>>>>> SAVE SLIDE <<<<<<<<<
       console.log(slideCount);
       $('#slide-controls').remove();
-      $('#slide-inputs').remove();      
+      $('#slide-inputs').remove();  
+      $('#slide-inputs-chart').remove();    
       $('.slide-one-title').remove();
       $('.bullet-first-slide-one').remove();
       $('.bullet-second-slide-one').remove();

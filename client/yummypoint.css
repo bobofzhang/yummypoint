@@ -80,6 +80,12 @@ body {
  border-radius: 2em;
 }
 
+#slide-inputs-chart {
+ height: 600px;
+ background-color: linen;
+ border-radius: 2em;
+}
+
 #preview-slide-inputs {
  height: 600px;
  background-color: papayawhip;

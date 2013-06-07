@@ -76,7 +76,7 @@ Template.yummy_coins.events({
     $('#bar-chart-switch').remove();
     $('#bubble-chart-switch').remove();
     $('.chart-data-sources-types').remove();
-    $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+    $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     $('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch back to Create Chart Slide home </p></span></div>');
