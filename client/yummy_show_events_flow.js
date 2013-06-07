@@ -24,7 +24,10 @@ Template.yummy_coins.events({
       $('#yummy-shows').remove();
       $('#slide-index').remove();
       $('#slide-inputs').remove();
+      $('#slide-inputs-chart').remove();
+      $('#slide-nav-row').remove();
       //$('.make-start').remove();
+      $('.saved-slide-preview').remove();
       $('#slide-preview').remove();
       $('#img-back-upload').remove();
       $('#slide-controls').remove();

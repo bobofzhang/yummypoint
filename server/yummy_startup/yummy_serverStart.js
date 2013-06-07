@@ -2,6 +2,7 @@
 var dataArray = [];
 
 Meteor.startup(function () {
+  console.log('i started but not farted');
   Slides.remove({});
   Shows.remove({});
   //Hotbits.remove({});

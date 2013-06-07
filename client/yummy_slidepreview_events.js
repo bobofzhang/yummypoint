@@ -5,6 +5,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -38,6 +39,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -70,6 +72,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -102,6 +105,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -134,6 +138,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -166,6 +171,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -198,6 +204,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -230,6 +237,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -262,6 +270,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
@@ -290,6 +299,7 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('#preview-slide-inputs').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();

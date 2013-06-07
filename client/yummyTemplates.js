@@ -421,6 +421,7 @@ Template.yummy_coins.events({
   },
   'click .slidelink1': function(){
     $('.slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
     $('.saved-slide-preview').remove();
     $('#create-chart-sub').remove();
     $('#edit-current-slide').remove();
