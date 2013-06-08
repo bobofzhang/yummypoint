@@ -13,14 +13,14 @@ var getData = function () {
 var thisShowBitCoin;
 var slideNumberBitCoin;
 
-// var bitcoinInterval = Meteor.setInterval(function(){
-//   Meteor.call("getBitCoinData", function(error, result) {
-//     console.log('hi');
-//     // console.log(result);
-//     var dataset = result;
-//     return setData(result);
-//   })
-// }, 30000);
+var bitcoinInterval = Meteor.setInterval(function(){
+  Meteor.call("getBitCoinData", function(error, result) {
+    console.log('hi');
+    // console.log(result);
+    var dataset = result;
+    return setData(result);
+  })
+}, 30000);
 
 //Session.set("bitcoinInterval", bitcoinInterval);
 
@@ -98,7 +98,7 @@ Meteor.methods({
     console.log(checkBitTime);
 
     var rawData;
-    rawData = Prices.find({}, { sort: { date: -1 }, limit: 100 }).fetch();
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 500 }).fetch();
     //rawData = Prices.find({}, { sort: { time: -1 }, limit: 10 }).fetch();
     // console.log(rawData);
 

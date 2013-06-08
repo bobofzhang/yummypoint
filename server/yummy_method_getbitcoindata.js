@@ -7,12 +7,6 @@ var lastTradeID;
 Meteor.methods({
 
   getBitCoinData: function (){
-    // var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
-    // if (checkBitTime[0] == null) {
-    //   lastBitTime = 1;
-    // } else {
-    //   lastBitTime = checkBitTime[0]['date'];
-    // }
     this.unblock();
     var checkLastTrade = Prices.find({}, { sort: { transId: -1 }, limit: 1 }).fetch();
     var lastTradeID = checkLastTrade[0]['transId'];
@@ -22,11 +16,10 @@ Meteor.methods({
     var bitTrans = result.data['return'];
     var dataLength = bitTrans.length;
     console.log(dataLength);
-
     // var dataLength = result.data.length; //>>>> USED WITH RAW <<<<<<<<
     // var bitTrans = result.data;   //>>>> USED WITH RAW <<<<<<<<
-    // console.log(bitTrans)
-    for (var i = 0; i < dataLength; i++) {
+    // for (var i = 0; i < dataLength; i++) {
+    for(var i = (dataLength - 1000); i < dataLength; i++) {
       bitTran = bitTrans[i];
       var newTime = new Date(bitTran['date']*1000);
       var newDate = bitTran['date'];
@@ -37,7 +30,6 @@ Meteor.methods({
       // }
       // if (newDate > lastBitTime || lastBitTime == null) {
       if (tradeID > lastTradeID || lastTradeID == null) {
-        //console.log('hi i am in the loop');
         // console.log('baseline');
         // console.log( newDate - lastBitTime );
         // lastBitTime = newDate;
