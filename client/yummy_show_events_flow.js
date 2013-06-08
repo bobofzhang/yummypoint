@@ -359,19 +359,29 @@ Template.yummy_coins.events({
     $('.the-show').remove();
     $('#slide-inputs-chart').remove();
     $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-    var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-    var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-    console.log(type);
-    if (type === "chart" && source === "bitcoin") {
-      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-      // var func = slideTitle[1]['2']['contents'];
-      return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
-      $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-      return Meteor.call('bitlyLineChartD3');
-    } else {
-      var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-      $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+    if (currentYummyShow[yummyShowSlideIndex] == null) {
+      $('.the-show').remove();
+      $('#yummy-shows').append('<div id="show-row" class="row"></div>');
+      $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+      $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+      yummyShowSlideIndex = 0;
+      yummySlideBulletCount = 0
+      return
+    } else { 
+      var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
+      var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
+      console.log(type);
+      if (type === "chart" && source === "bitcoin") {
+        $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+        // var func = slideTitle[1]['2']['contents'];
+        return Meteor.call('D3testinit'); 
+      } else if (type === "chart" && source === "bitly") {
+        $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+        return Meteor.call('bitlyLineChartD3');
+      } else {
+        var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+        $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+      }
     }
   }
 })
