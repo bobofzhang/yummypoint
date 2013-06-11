@@ -18,8 +18,8 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#inputs').remove();
     $('#slide-nav-row').append('<div id="create-text-sub" class="span12"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
-    $('.make-start').append('<div class="chart-data-sources-types"></div>');
-    $('.chart-data-sources-types').append('<div id="user-data-row" class="row"></div>');
+    $('.make-start').append('<div class="row chart-data-sources-types"></div>');
+    $('.chart-data-sources-types').append('<div id="user-data-row" class="span12"></div>');
     $('#user-data-row').append('<div id="userFile-chart" class="span12"><span class="line-chart-upload"><h3> Upload Your Own Data </h3><span></div>');
     $('#user-data-row').append('<div id="user-chart-options-row" class="span12"></div>');
     $('#user-chart-options-row').append('<div id="line-chart-nav" class="span12"> <span class="line-chart"> <h4> Line Chart</h4></span></div>');

@@ -16,6 +16,12 @@ body {
   background-color: pink;
 }
 
+#render-userFile {
+  height: 100px;
+  font-weight: bold;
+  background-color: indianred;
+}
+
 /* >>>>>>> YUMMY SHOW PRESENTATION <<<<<<<<<<<< */
 
 .the-show {

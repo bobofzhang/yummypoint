@@ -2,67 +2,6 @@
 var thisShow;
 var slideNumber;
 
-// Meteor.methods({
-//   passShowName: function (showName) {
-//     console.log('in the passShowName');
-//     thisShow = showName;
-//     return thisShow;
-//   }
-// })
-
-// Meteor.methods({
-//   passSlideCount: function (count) {
-//     console.log('in passSlideCount');
-//     slideNumber = count;
-//     console.log(slideNumber);
-//     return slideNumber;
-//   }
-// })
-
-// Template.yummy_coins.events({
-//   'click #save-userFile-slide': function() {
-//     console.log('saving userFile chart');
-//     console.log(thisShow);
-//     Shows.insert([
-//       { show: thisShow },
-//       { slide: slideNumber },
-//       { contents: 'Deps.autorun(function(){ return Meteor.call("bitlyLineChartD3", ' + bitPhrase + '); }) && Meteor.call("renderHotBits");' },
-//       { slideType: "chart" },
-//       { dataSource: "bitly" },
-//     ]);
-//     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumber + '"<p> Slide' + ' ' + slideNumber + '</p></span></div>');
-//     $('.bitly-chart').remove();
-//     $('.hot-bits').remove();
-//     $('#slide-instruct').remove();
-//     $('#twitter-switch').remove();
-//     $('#bitcoin-switch').remove();
-//     $('#save-bitly-slide').remove();
-//     $('#create-text-sub').remove();
-//     $('#bar-chart-switch').remove();
-//     $('#bubble-chart-switch').remove();
-//     $('#slide-inputs').remove();
-//     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
-//     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-//     $('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-//     $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
-//     $('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
-//     Meteor.call('tickSlideCount');
-//     //Meteor.clearInterval("renderHotBits"); showNameEED TO FIGURE OUT HOW TO ACCESS THE SET INTERVAL HANDLE
-//     //$('#yummy-shows').append('<div id="start-chart" class="span 4"><span class="start-chart"><h3> Start Chart </h3></span></div>');
-//   },
-//   'click #start-chart': function() {
-//     var showSlide = (Shows.find({ 0 : { show: thisShow }}).fetch());
-//     console.log(showSlide);
-//     $('.make-start').remove();
-//     var type = showSlide[0]['1']['slideType'];
-//     if (type === "chart") {
-//       var func = showSlide[0]['2']['contents'];
-//       console.log(func);
-//       return func;
-//     }
-//   }
-// })
-
 Template.yummy_coins.events({
   'click #line-chart-nav': function() {
     $('.line-chart-data-sources').remove();
@@ -133,6 +72,10 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'click #render-userFile': function () {
+    //$('#row chart-data-sources-types').remove();
+    $('#user-data-row').remove();
+    // $('#render-userFile').remove();
+    // $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     Meteor.call('userFileLineChart');
   }
 })
@@ -142,7 +85,10 @@ Meteor.methods({
     console.log('i am in the userFileLineChart line graph method');
     $('.bitly-chart').remove();
     $('.userFile-chart').remove();
-
+    $('#user-data-row').remove();
+    $('#render-userFile').remove();
+    $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
+    
     var rawData;
 
     rawData = Files.find({}).fetch();
@@ -187,7 +133,7 @@ Meteor.methods({
         .x(function(d) { return x(d[1]); })
         .y(function(d) { return y(d[0]); });
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#slide-inputs-chart").append("svg")
                               .attr("width", width + margin.left + margin.right)
                               .attr("height", height + margin.top + margin.bottom)
                               .attr("class", "userFile-chart")

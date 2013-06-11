@@ -39,14 +39,14 @@ Meteor.methods({
 
 var priceFlush = Meteor.setInterval(function(){
     Meteor.call("clearPriceDB");
-  }, 10000);
+  }, 360000);
 
 Meteor.startup(function () {
   Slides.remove({});
   Shows.remove({});
   //Hotbits.remove({});
   //Prices.remove({});
-  //Files.remove({});
+  Files.remove({});
 
   var pricesSet = Prices.findOne({});
   if (pricesSet == null) {
