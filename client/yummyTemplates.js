@@ -34,6 +34,8 @@ Template.yummy_coins.events({
     $('#slide-nav-row').remove();
     $('.saved-slide-preview').remove();
     $('.chart-data-sources-types').remove();
+    $('#slide-inputs-chart').remove();
+    $('#save-userfile-slide').remove();
     $('#inputs').remove();
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
@@ -328,6 +330,8 @@ Template.yummy_coins.events({
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
     $('.chart-data-sources-types').remove();
+    $('#save-userfile-slide').remove();
+    $('#save-bitcoin-slide').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[0]['3']['slideType'];

@@ -1,6 +1,7 @@
 
 var thisShow;
 var slideNumber;
+var fileCount = 0;
 
 Template.yummy_coins.events({
   'click #line-chart-nav': function() {
@@ -43,30 +44,27 @@ Template.yummy_coins.events({
   'change #inputs': function (event, tmpl) {
     console.log('i feel you');
     // event.preventDefault();
-    // $('#files').bind('change', handleFileSelect);
+    var files = event.target.files; // FileList object
+    var file = files[0];
+    printTable(file);
 
-    //function handleFileSelect(event) {
-      var files = event.target.files; // FileList object
-      var file = files[0];
-      printTable(file);
-
-      function printTable(file) {
+    function printTable(file) {
       console.log('i am in printTable');
       var reader = new FileReader();
       reader.readAsText(file);
       reader.onload = function(event){
         var csv = event.target.result;
-        //console.log(csv);
         var data = $.csv.toArrays(csv);
         console.log(data);
         Files.insert({
           name: file.name,
+          count: fileCount,
           file: data
         })
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
     }
-  return $('#inputs').remove() &&  $('.make-start').append('<div id="render-userFile" class="span12 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data </p></span></div>')
+    return $('#inputs').remove() &&  $('.make-start').append('<div id="render-userFile" class="span12 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data </p></span></div>')
   }
 })
 
@@ -87,20 +85,26 @@ Meteor.methods({
     $('.userFile-chart').remove();
     $('#user-data-row').remove();
     $('#render-userFile').remove();
+    $('#create-chart-sub').remove();
+    $('#create-text-sub').remove();
+    $('#slide-nav-row').append('<div id="save-userfile-slide" class="span4 save-userfile-chart"> <span class="save-userfile"> <p> Save this sick Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
     $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     
     var rawData;
 
     rawData = Files.find({}).fetch();
-    var myData = rawData[0]['file'];
-    console.log(myData);
+    console.log(rawData)
+    var myData = rawData[fileCount]['file'];
+    //console.log(myData);
 
     var data = [];
 
     for (var i = 0; i < myData.length; i++) {
       data.push([myData[i][0], myData[i][1]]);
-      console.log(myData[i][0]);
-      console.log(myData[i][1]);
+      // console.log(myData[i][0]);
+      // console.log(myData[i][1]);
     }
 
     var margin = {
@@ -164,7 +168,7 @@ Meteor.methods({
         .attr("class", "line")
         .attr("d", line);
 
-    return data;
+    return data && fileCount++;
   }
 })
 
