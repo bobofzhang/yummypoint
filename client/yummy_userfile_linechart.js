@@ -2,6 +2,25 @@
 var thisShow;
 var slideNumber;
 var fileCount = 0;
+var thisShowName;
+var thisSlideNumber;
+
+
+Meteor.methods({
+  passShowNameUserData: function (showName) {
+    console.log('in the passShowNameUserData');
+    thisShowName = showName;
+    return thisShowName;
+  }
+})
+
+Meteor.methods({
+  passSlideCountUserData: function (count) {
+    console.log('in passSlideCountUserData');
+    thisSlideNumber = count;
+    return thisSlideNumber;
+  }
+})
 
 Template.yummy_coins.events({
   'click #line-chart-nav': function() {
@@ -89,6 +108,40 @@ Template.yummy_coins.events({
     // $('#render-userFile').remove();
     // $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     Meteor.call('userFileLineChart');
+  }
+})
+
+Template.yummy_coins.events({
+  'click #save-userfile-slide': function () {
+    alert('i felt that');
+    console.log(thisShowName);
+    console.log(thisSlideNumber);
+    Shows.insert([
+      { show: thisShowName },
+      { slide: thisSlideNumber },
+      { contents: "Meteor.call('userFileLineChart')" },
+      { slideType: "chart" },
+      { dataSource: "userfile" },
+    ]);
+    $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + thisSlideNumber + '"<p> Slide' + ' ' + thisSlideNumber + '</p></span></div>');
+    $('.bitly-chart').remove();
+    $('.bitcoin-chart').remove();
+    $('#slide-instruct').remove();
+    $('#twitter-switch').remove();
+    $('#bitly-switch').remove();
+    $('#save-bitcoin-slide').remove();
+    $('#save-userfile-slide').remove();
+    $('#create-text-sub').remove();
+    $('#bar-chart-switch').remove();
+    $('#bubble-chart-switch').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
+    $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
+    $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
+    Meteor.call('tickSlideCount');
   }
 })
 

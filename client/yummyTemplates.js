@@ -167,6 +167,7 @@ Template.yummy_coins.events({
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
+        Meteor.call('passSlideCountUserData', slideCount);
         return slideTitleText;
       } else {
         var bulletOneText = slideTitle[1]['text'];
@@ -188,6 +189,7 @@ Template.yummy_coins.events({
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
+        Meteor.call('passSlideCountUserData', slideCount);
         return bulletOneText;
       } else {
         var bulletTwoText = slideTitle[2]['text'];
@@ -209,6 +211,7 @@ Template.yummy_coins.events({
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
+        Meteor.call('passSlideCountUserData', slideCount);
         return bulletTwoText;
       } else {
         var bulletThreeText = slideTitle[3]['text'];
@@ -228,6 +231,7 @@ Template.yummy_coins.events({
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
+        Meteor.call('passSlideCountUserData', slideCount);
         return bulletThreeText;
       }
     },
@@ -251,6 +255,7 @@ Template.yummy_coins.events({
       Meteor.call('passShowName', currentShow);
       Meteor.call('passShowNameBitCoin', currentShow);
       Meteor.call('passCurrentShowName', currentShow);
+      Meteor.call('passShowNameUserData', currentShow);
       $('#create-show').remove();
       $('#marketing-text').remove();
       $('#call-2-action').remove();

@@ -415,7 +415,9 @@ body .navbar .brand {
   border-radius: 0.75em;
 }
 
-#save-bitly-slide, #save-bitcoin-slide {
+#save-bitly-slide, 
+#save-bitcoin-slide, 
+#save-userfile-slide {
   text-align: center;
   height: 3em;  
   background-color: chocolate;
