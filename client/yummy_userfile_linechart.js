@@ -43,6 +43,20 @@ Template.yummy_coins.events({
 Template.yummy_coins.events({
   'change #inputs': function (event, tmpl) {
     console.log('i feel you');
+    $('.line-chart-data-sources').remove();
+    $('.data-source-details').remove();
+    $('#slide-controls').remove();
+    $('#create-text-sub').remove();
+    $('#bar-chart-switch').remove();
+    $('#bubble-chart-switch').remove();
+    $('#public-data-row').remove();
+    $('#twitter-data-row').remove();
+    $('#bitcoin-data-row').remove();
+    $('#bitly-data-row').remove();
+    $('.chart-data-sources-types').remove();
+    //$('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
     // event.preventDefault();
     var files = event.target.files; // FileList object
     var file = files[0];

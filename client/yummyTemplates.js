@@ -332,6 +332,7 @@ Template.yummy_coins.events({
     $('.chart-data-sources-types').remove();
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
+    $('#render-userFile').remove();
     var slideTitle = Shows.find({}).fetch();
     console.log(slideTitle);
     var type = slideTitle[0]['3']['slideType'];
