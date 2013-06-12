@@ -4,6 +4,7 @@ var currentShow;
 var currentYummyShow;
 var yummyShowSlideIndex = 0;
 var savedShowSlideIndex = 0;
+var currentUser = Meteor.userId();
 
 
 Meteor.methods({
@@ -56,9 +57,12 @@ Template.yummy_coins.events({
         show: currentShow,
         slide: slideCount,
         bullet: 'title',
-        text: slideTitle
+        text: slideTitle,
+        meteorUser: Meteor.userId()
       })
-      var slideOneTitle = (Slides.find({slide: slideCount}).fetch());
+      //var slideOneTitle = (Slides.find({slide: slideCount}).fetch());
+      var slideOneTitle = Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch();
+      console.log(slideOneTitle);
       var slideOneTitleText = slideOneTitle[0]['text'];
       $('#slide-title').remove();
       $('.instruct-title').remove();
@@ -77,9 +81,10 @@ Template.yummy_coins.events({
         show: currentShow,
         slide: slideCount,
         bullet: 'first',
-        text: bulletOne
+        text: bulletOne, 
+        meteorUser: Meteor.userId()
       })
-      var bulletObj = (Slides.find({slide: slideCount}).fetch());
+      var bulletObj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
       console.log(bulletObj);
       var bulletText = bulletObj[1]['text'];
       $('#bullet-one').remove();
@@ -96,9 +101,10 @@ Template.yummy_coins.events({
         show: currentShow,
         slide: slideCount,
         bullet: 'second',
-        text: bulletTwo
+        text: bulletTwo,
+        meteorUser: Meteor.userId()
       })
-      var bullet2Obj = (Slides.find({slide: slideCount}).fetch());
+      var bullet2Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
       console.log(bullet2Obj);
       var bullet2Text = bullet2Obj[2]['text'];
       $('#bullet-two').remove();
@@ -115,16 +121,15 @@ Template.yummy_coins.events({
         show: currentShow,
         slide: slideCount,
         bullet: 'third',
-        text: bulletThree
+        text: bulletThree,
+        meteorUser: Meteor.userId()
       })
-      var bullet3Obj = (Slides.find({slide: slideCount}).fetch());
+      var bullet3Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
       var bullet3Text = bullet3Obj[3]['text'];
       $('#bullet-three').remove();
       $('.instruct-bullet-one').remove();
       $('.bullet-three').append('<div class="bullet-third-slide-one"> <h2>' + bullet3Text +'</h2></div>');
       //$('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Enter Bullet Three Text Here" />');
-      // $('#bullet-three').val('');
-
       return bulletThree;
     }
   },
@@ -150,7 +155,7 @@ Template.yummy_coins.events({
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
       $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + currentShow + '</h2></span><div>');
       $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
-      var slideTitle = (Slides.find({slide: slideCount}).fetch());
+      var slideTitle = (Slides.find({slide: slideCount}, {meteorUser: this.userId}).fetch());
       var slideTitleText = slideTitle[0]['text'];
       if (slideTitle[1] == null) {
         Shows.insert([
@@ -165,7 +170,8 @@ Template.yummy_coins.events({
           },
           { slideType: "text" },
           { dataSource: "text" },
-          { fileNum: ""}
+          { fileNum: "" }, 
+          { meteorUser: Meteor.userId() }
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
@@ -187,7 +193,9 @@ Template.yummy_coins.events({
                       ]
           },
           { slideType: "text" },
-          { dataSource: "text" }
+          { dataSource: "text" }, 
+          { fileNum: "" }, 
+          { meteorUser: Meteor.userId() }
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
@@ -209,7 +217,9 @@ Template.yummy_coins.events({
                       ]
           },
           { slideType: "text" },
-          { dataSource: "text" }
+          { dataSource: "text" },
+          { fileNum: "" }, 
+          { meteorUser: Meteor.userId() }
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
@@ -229,7 +239,9 @@ Template.yummy_coins.events({
                       ]
           },
           { slideType: "text" },
-          { dataSource: "text" }
+          { dataSource: "text" },
+          { fileNum: "" }, 
+          { meteorUser: Meteor.userId() }
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
@@ -255,6 +267,7 @@ Template.yummy_coins.events({
       event.preventDefault();
       var showName = document.getElementById("create-show-input").value;
       currentShow = showName;
+      alert(Meteor.userId());
       Meteor.call('passShowName', currentShow);
       Meteor.call('passShowNameBitCoin', currentShow);
       Meteor.call('passCurrentShowName', currentShow);
@@ -279,9 +292,12 @@ Template.yummy_coins.events({
         show: currentShow,
         slide: slideCount,
         bullet: 'title',
-        text: slideTitle
+        text: slideTitle,
+        meteorUser: Meteor.userId()
       })
-      var slideOneTitle = (Slides.find({slide: slideCount}).fetch());
+      //var slideOneTitle = (Slides.find({slide: slideCount}).fetch());
+      var slideOneTitle = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
+      console.log(slideOneTitle);
       var slideOneTitleText = slideOneTitle[0]['text'];
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
@@ -299,9 +315,10 @@ Template.yummy_coins.events({
         show: currentShow,
         slide: slideCount,
         bullet: 'first',
-        text: bulletOne
+        text: bulletOne,
+        meteorUser: Meteor.userId()
       })
-      var bulletObj = (Slides.find({slide: slideCount}).fetch());
+      var bulletObj = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
       console.log(bulletObj);
       var subTitleText = bulletObj[1]['text'];
       $('#title-slide-sub-title').remove();
@@ -318,9 +335,10 @@ Template.yummy_coins.events({
         show: currentShow,
         slide: slideCount,
         bullet: 'second',
-        text: bulletTwo
+        text: bulletTwo,
+        meteorUser: Meteor.userId()
       })
-      var bullet2Obj = (Slides.find({slide: slideCount}).fetch());
+      var bullet2Obj = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
       console.log(bullet2Obj);
       var subSubTitleText = bullet2Obj[2]['text'];
       $('#title-slide-sub-sub').remove();
@@ -341,7 +359,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     console.log(slideTitle);
     var type = slideTitle[0]['3']['slideType'];
     var source = slideTitle[0]['4']['dataSource'];

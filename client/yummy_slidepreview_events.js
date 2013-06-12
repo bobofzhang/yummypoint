@@ -12,7 +12,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     console.log(slideTitle);
     var type = slideTitle[1]['3']['slideType'];
     var source = slideTitle[1]['4']['dataSource'];
@@ -54,7 +54,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     console.log(slideTitle);
     var type = slideTitle[2]['3']['slideType'];
     var source = slideTitle[2]['4']['dataSource'];
@@ -96,7 +96,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     var type = slideTitle[3]['3']['slideType'];
     var source = slideTitle[3]['4']['dataSource'];
     var fileCount = slideTitle[3]['5']['fileNum'];
@@ -137,7 +137,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     var type = slideTitle[4]['3']['slideType'];
     var source = slideTitle[4]['4']['dataSource'];
     var fileCount = slideTitle[4]['5']['fileNum'];
@@ -177,7 +177,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     var type = slideTitle[5]['3']['slideType'];
     var source = slideTitle[5]['4']['dataSource'];
     var fileCount = slideTitle[5]['5']['fileNum'];
@@ -217,7 +217,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     var type = slideTitle[6]['3']['slideType'];
     var source = slideTitle[6]['4']['dataSource'];
     var fileCount = slideTitle[6]['5']['fileNum'];
@@ -257,7 +257,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     var type = slideTitle[7]['3']['slideType'];
     var source = slideTitle[7]['4']['dataSource'];
     var fileCount = slideTitle[7]['5']['fileNum'];
@@ -297,7 +297,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();    
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     var type = slideTitle[8]['3']['slideType'];
     var source = slideTitle[8]['4']['dataSource'];
     var fileCount = slideTitle[8]['5']['fileNum'];
@@ -336,7 +336,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     var type = slideTitle[9]['3']['slideType'];
     var source = slideTitle[9]['4']['dataSource'];
     var fileCount = slideTitle[9]['5']['fileNum'];
@@ -375,7 +375,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}).fetch();
+    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
     var type = slideTitle[10]['3']['slideType'];
     var source = slideTitle[10]['4']['dataSource'];
     var fileCount = slideTitle[10]['5']['fileNum'];
