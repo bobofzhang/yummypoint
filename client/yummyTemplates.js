@@ -9,7 +9,9 @@ var savedShowSlideIndex = 0;
 Meteor.methods({
   tickSlideCount: function () {
     slideCount++
-    console.log(slideCount);
+    Meteor.call('passSlideCount', slideCount);
+    Meteor.call('passSlideCountBitCoin', slideCount);
+    Meteor.call('passSlideCountUserData', slideCount);
     return slideCount;
   }
 })
