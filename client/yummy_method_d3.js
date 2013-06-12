@@ -58,6 +58,7 @@ Template.yummy_coins.events({
       { contents: "Meteor.call('D3testinit')" },
       { slideType: "chart" },
       { dataSource: "bitcoin" },
+      { fileNum: ""}
     ]);
     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumberBitCoin + '"<p> Slide' + ' ' + slideNumberBitCoin + '</p></span></div>');
     $('.bitly-chart').remove();

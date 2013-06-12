@@ -30,6 +30,7 @@ Template.yummy_coins.events({
       { contents: 'Deps.autorun(function(){ return Meteor.call("bitlyLineChartD3", ' + bitPhrase + '); }) && Meteor.call("renderHotBits");' },
       { slideType: "chart" },
       { dataSource: "bitly" },
+      { fileNum: ""}
     ]);
     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumber + '"<p> Slide' + ' ' + slideNumber + '</p></span></div>');
     $('.bitly-chart').remove();

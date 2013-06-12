@@ -162,7 +162,8 @@ Template.yummy_coins.events({
                       ]
           },
           { slideType: "text" },
-          { dataSource: "text" }
+          { dataSource: "text" },
+          { fileNum: ""}
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
