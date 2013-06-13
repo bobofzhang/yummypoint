@@ -1,4 +1,14 @@
 
+var previewShowName;
+
+Meteor.methods({
+  passShowNamePreview: function (showName) {
+    console.log('in the pass Show Name Preview Yippee Yippee');
+    previewShowName = showName;
+    return previewShowName;
+  }
+})
+
 Template.yummy_coins.events({
   'click .slidelink2': function(){
     $('#create-chart-sub').remove();
@@ -12,7 +22,9 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
+    //var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
+    var slideTitle = Shows.find({meteorUser: this.userId}).fetch();
+    //var slideTitle = Shows.find({ meteorUser: Meteor.userId() }).fetch();
     console.log(slideTitle);
     var type = slideTitle[1]['3']['slideType'];
     var source = slideTitle[1]['4']['dataSource'];
@@ -32,7 +44,20 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTextArray = slideTitle[1][2]['contents'];
+      // var slideTitleMap = _.map(slideTitle, function(obj) {
+      //   if (obj[0]['show'] === previewShowName) {
+      //     console.log(obj[0]['show']);
+      //     return obj;
+      //   }
+      // })
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[1][2]['contents'];
       console.log(slideTextArray);
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
@@ -55,6 +80,7 @@ Template.yummy_coins.events({
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
     var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
+    //var slideTitle = Shows.find( { meteorUser: Meteor.userId() } ).fetch();
     console.log(slideTitle);
     var type = slideTitle[2]['3']['slideType'];
     var source = slideTitle[2]['4']['dataSource'];

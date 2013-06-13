@@ -159,7 +159,7 @@ Template.yummy_coins.events({
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
       $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + currentShow + '</h2></span><div>');
       $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
-      var slideTitle = (Slides.find({slide: slideCount}, {meteorUser: this.userId}).fetch());
+      var slideTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       var slideTitleText = slideTitle[0]['text'];
       if (slideTitle[1] == null) {
         Shows.insert([
@@ -276,6 +276,7 @@ Template.yummy_coins.events({
       Meteor.call('passShowNameBitCoin', currentShow);
       Meteor.call('passCurrentShowName', currentShow);
       Meteor.call('passShowNameUserData', currentShow);
+      Meteor.call('passShowNamePreview', currentShow);
       $('#create-show').remove();
       $('#marketing-text').remove();
       $('#call-2-action').remove();
@@ -323,7 +324,8 @@ Template.yummy_coins.events({
         text: bulletOne,
         meteorUser: Meteor.userId()
       })
-      var bulletObj = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
+      //var bulletObj = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
+      var bulletObj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bulletObj);
       var subTitleText = bulletObj[1]['text'];
       $('#title-slide-sub-title').remove();
@@ -343,7 +345,8 @@ Template.yummy_coins.events({
         text: bulletTwo,
         meteorUser: Meteor.userId()
       })
-      var bullet2Obj = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
+      //var bullet2Obj = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
+      var bullet2Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bullet2Obj);
       var subSubTitleText = bullet2Obj[2]['text'];
       $('#title-slide-sub-sub').remove();
@@ -364,7 +367,9 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
+    //var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
+    var slideTitle = Shows.find({meteorUser: this.userId}).fetch();
+    //var slideTitle = Shows.find({ meteorUser: Meteor.userId() }).fetch();  //CONSOLE LOGS UNDEFINED
     console.log(slideTitle);
     var type = slideTitle[0]['3']['slideType'];
     var source = slideTitle[0]['4']['dataSource'];
@@ -375,7 +380,21 @@ Template.yummy_coins.events({
     } else if (type === "chart" && source === "bitly") {
       return Meteor.call('bitlyLineChartD3'); 
     } else {
-      var slideTextArray = slideTitle[0][2]['contents'];
+      // var slideTitleMap = _.map(slideTitle, function(obj) {
+      //   if (obj[0]['show'] === currentShow) {
+      //     console.log(obj[0]['show']);
+      //     return obj;
+      //   }
+      // })
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === currentShow) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      //var slideTextArray = slideTitle[0][2]['contents'];
+      var slideTextArray = slideTitleMap[0][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
