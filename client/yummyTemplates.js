@@ -61,7 +61,8 @@ Template.yummy_coins.events({
         meteorUser: Meteor.userId()
       })
       //var slideOneTitle = (Slides.find({slide: slideCount}).fetch());
-      var slideOneTitle = Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch();
+      //var slideOneTitle = Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch();
+      var slideOneTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(slideOneTitle);
       var slideOneTitleText = slideOneTitle[0]['text'];
       $('#slide-title').remove();
@@ -84,7 +85,8 @@ Template.yummy_coins.events({
         text: bulletOne, 
         meteorUser: Meteor.userId()
       })
-      var bulletObj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
+      //var bulletObj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
+      var bulletObj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bulletObj);
       var bulletText = bulletObj[1]['text'];
       $('#bullet-one').remove();
@@ -104,7 +106,8 @@ Template.yummy_coins.events({
         text: bulletTwo,
         meteorUser: Meteor.userId()
       })
-      var bullet2Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
+      //var bullet2Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
+      var bullet2Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bullet2Obj);
       var bullet2Text = bullet2Obj[2]['text'];
       $('#bullet-two').remove();
@@ -124,7 +127,8 @@ Template.yummy_coins.events({
         text: bulletThree,
         meteorUser: Meteor.userId()
       })
-      var bullet3Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
+      //var bullet3Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
+      var bullet3Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       var bullet3Text = bullet3Obj[3]['text'];
       $('#bullet-three').remove();
       $('.instruct-bullet-one').remove();
@@ -296,7 +300,8 @@ Template.yummy_coins.events({
         meteorUser: Meteor.userId()
       })
       //var slideOneTitle = (Slides.find({slide: slideCount}).fetch());
-      var slideOneTitle = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
+      //var slideOneTitle = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
+      var slideOneTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(slideOneTitle);
       var slideOneTitleText = slideOneTitle[0]['text'];
       $('#title-slide-title').remove();
