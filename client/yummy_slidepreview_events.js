@@ -101,7 +101,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTextArray = slideTitle[2][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[2][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -142,7 +149,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTextArray = slideTitle[3][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[3][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -182,7 +196,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTextArray = slideTitle[4][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[4][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -222,7 +243,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return; 
     } else {
-      var slideTextArray = slideTitle[5][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[5][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -262,7 +290,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return; 
     } else {
-      var slideTextArray = slideTitle[6][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[6][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -302,7 +337,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTextArray = slideTitle[7][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[7][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -341,7 +383,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTextArray = slideTitle[8][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[8][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -380,7 +429,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return; 
     } else {
-      var slideTextArray = slideTitle[9][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[9][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -419,7 +475,14 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTextArray = slideTitle[10][2]['contents'];
+      var slideTitleMap = [];
+      for (var i = 0; i < slideTitle.length; i++) {
+        if (slideTitle[i][0]['show'] === previewShowName) {
+          slideTitleMap.push(slideTitle[i]);
+        }
+      }
+      console.log(slideTitleMap);
+      var slideTextArray = slideTitleMap[10][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
