@@ -17,6 +17,27 @@ Meteor.methods({
   }
 })
 
+
+Template.yummy_coins.userShows = function () {
+  var showQuery = Shows.find().fetch();
+  console.log(showQuery);
+  var thisUser = Meteor.userId();
+  var showsExist;
+  _.find(showQuery, function (obj) {
+    if (obj[6]['meteorUser'] === thisUser) {
+      showsExist = "My Yummy Shows";
+    }
+  })
+  // for (var i = 0; i < showQuery.length; i++) {
+  //   if (showQuery[i][6]['meteorUser'] === thisUser) {
+  //   }
+  // }
+  // var showNum = Prices.find().count();
+  // console.log(showNum);
+  //return showNum;
+  return showsExist;
+};
+
 Template.yummy_coins.events({
   'click #create-text-sub': function () {
     $('#create-chart').remove();

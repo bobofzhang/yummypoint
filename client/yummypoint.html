@@ -18,18 +18,19 @@
 
 <template name="yummy_coins">
 
-  <div id="navbar" class="container navbar">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <a class="brand" href="#">Yummy Show</a>
-        <a class="top_nav pull-right"> {{loginButtons}} </a>
-<!--         <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Link</a></li>
-        </ul> -->
+  <div id="user" class="container user-details">
+    <div id="user-row" class="row">
+      <div id="user-login" class="span4">
+          {{loginButtons}}
+      </div>
+      <div id="all-user-shows" class="span4">
+          {{userShows}}
+      </div>
+      <div id="yummy-brand" class="span4 brand">
+          <span> Yummy Show </span> 
       </div>
     </div>
-  </div> <!--NavBar Container -->
+  </div> <!-- USER CONTAINER -->
 
   <div id="yummy-shows" class="container yummy-shows">
     <div id="show-row" class="row"> 
@@ -97,26 +98,26 @@
     <p class="pull-right">&copy; 2013 Mission Reds, LLC </p>
   </footer>
 
-<!--   <hr> -->
-
-  <div class="d3_chart">
-      {{D3test}}
-  </div>
-
 </template>
 
-<template name="price">
+<!-- <template name="price">
   <div class="price">
     <span class="spot_price"> {{price}} </span>
     <span class="currency"> {{currency}} </span>
     <span class="date"> {{date}} </span>
   </div>
-</template>
+</template> -->
 
-<template name="D3test">
-  <div class="d3chart">
+<template name='userShows'>
+  <div id="user-show-template" class="user-show-link">
+    <span class="user-show-text-link"> {{showNum}} </span>
   </div>
 </template>
+
+<!-- <template name="D3test">
+  <div class="d3chart">
+  </div>
+</template> -->
 
 <template name="pickFile">
   <div id="inputs" class="clearfix">
@@ -130,6 +131,7 @@
 </template>
 
 <!-- <a class="top_nav pull-right" href="#">{{loginButtons}}</a>-->
+<!--<a class="top_nav pull-right"> {{loginButtons}} </a> -->
 
 
 
