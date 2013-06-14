@@ -70,7 +70,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var thisUser = Meteor.userId();
+    //var thisUser = Meteor.userId();
     //var slideTitle = Shows.find({"meteorUser": thisUser}).fetch();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
@@ -84,7 +84,6 @@ Template.yummy_coins.events({
     var source = slideShowMap[2]['4']['dataSource'];
     var fileCount = slideShowMap[2]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
-      // var func = slideTitle[1]['2']['contents'];
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
@@ -99,13 +98,6 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      // var slideTitleMap = [];
-      // for (var i = 0; i < slideTitle.length; i++) {
-      //   if (slideTitle[i][0]['show'] === previewShowName) {
-      //     slideTitleMap.push(slideTitle[i]);
-      //   }
-      // }
-      // console.log(slideTitleMap);
       var slideTextArray = slideShowMap[2][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
@@ -127,12 +119,18 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var type = slideTitle[3]['3']['slideType'];
-    var source = slideTitle[3]['4']['dataSource'];
-    var fileCount = slideTitle[3]['5']['fileNum'];
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === previewShowName) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[3]['3']['slideType'];
+    var source = slideShowMap[3]['4']['dataSource'];
+    var fileCount = slideShowMap[3]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
-      // var func = slideTitle[1]['2']['contents'];
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
@@ -147,14 +145,7 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === previewShowName) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      console.log(slideTitleMap);
-      var slideTextArray = slideTitleMap[3][2]['contents'];
+      var slideTextArray = slideShowMap[3][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -175,12 +166,18 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var type = slideTitle[4]['3']['slideType'];
-    var source = slideTitle[4]['4']['dataSource'];
-    var fileCount = slideTitle[4]['5']['fileNum'];
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === previewShowName) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[4]['3']['slideType'];
+    var source = slideShowMap[4]['4']['dataSource'];
+    var fileCount = slideShowMap[4]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
-      // var func = slideTitle[1]['2']['contents'];
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
@@ -194,14 +191,7 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === previewShowName) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      console.log(slideTitleMap);
-      var slideTextArray = slideTitleMap[4][2]['contents'];
+      var slideTextArray = slideShowMap[4][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -222,10 +212,17 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var type = slideTitle[5]['3']['slideType'];
-    var source = slideTitle[5]['4']['dataSource'];
-    var fileCount = slideTitle[5]['5']['fileNum'];
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === previewShowName) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[5]['3']['slideType'];
+    var source = slideShowMap[5]['4']['dataSource'];
+    var fileCount = slideShowMap[5]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
@@ -241,14 +238,7 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return; 
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === previewShowName) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      console.log(slideTitleMap);
-      var slideTextArray = slideTitleMap[5][2]['contents'];
+      var slideTextArray = slideShowMap[5][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -269,12 +259,18 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var type = slideTitle[6]['3']['slideType'];
-    var source = slideTitle[6]['4']['dataSource'];
-    var fileCount = slideTitle[6]['5']['fileNum'];
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === previewShowName) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[6]['3']['slideType'];
+    var source = slideShowMap[6]['4']['dataSource'];
+    var fileCount = slideShowMap[6]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
-      // var func = slideTitle[1]['2']['contents'];
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       return Meteor.call('D3testinit'); 
@@ -288,14 +284,7 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return; 
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === previewShowName) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      console.log(slideTitleMap);
-      var slideTextArray = slideTitleMap[6][2]['contents'];
+      var slideTextArray = slideShowMap[6][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -316,10 +305,17 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var type = slideTitle[7]['3']['slideType'];
-    var source = slideTitle[7]['4']['dataSource'];
-    var fileCount = slideTitle[7]['5']['fileNum'];
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === previewShowName) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[7]['3']['slideType'];
+    var source = slideShowMap[7]['4']['dataSource'];
+    var fileCount = slideShowMap[7]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
       // var func = slideTitle[1]['2']['contents'];
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
@@ -335,14 +331,7 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === previewShowName) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      console.log(slideTitleMap);
-      var slideTextArray = slideTitleMap[7][2]['contents'];
+      var slideTextArray = slideShowMap[7][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -363,10 +352,17 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();    
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var type = slideTitle[8]['3']['slideType'];
-    var source = slideTitle[8]['4']['dataSource'];
-    var fileCount = slideTitle[8]['5']['fileNum'];
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === previewShowName) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[8]['3']['slideType'];
+    var source = slideShowMap[8]['4']['dataSource'];
+    var fileCount = slideShowMap[8]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
@@ -381,14 +377,7 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === previewShowName) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      console.log(slideTitleMap);
-      var slideTextArray = slideTitleMap[8][2]['contents'];
+      var slideTextArray = slideShowMap[8][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -409,10 +398,17 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var type = slideTitle[9]['3']['slideType'];
-    var source = slideTitle[9]['4']['dataSource'];
-    var fileCount = slideTitle[9]['5']['fileNum'];
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === previewShowName) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[9]['3']['slideType'];
+    var source = slideShowMap[9]['4']['dataSource'];
+    var fileCount = slideShowMap[9]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
@@ -427,14 +423,7 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return; 
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === previewShowName) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      console.log(slideTitleMap);
-      var slideTextArray = slideTitleMap[9][2]['contents'];
+      var slideTextArray = slideShowMap[9][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -455,10 +444,17 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
-    var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var type = slideTitle[10]['3']['slideType'];
-    var source = slideTitle[10]['4']['dataSource'];
-    var fileCount = slideTitle[10]['5']['fileNum'];
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === previewShowName) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[10]['3']['slideType'];
+    var source = slideShowMap[10]['4']['dataSource'];
+    var fileCount = slideShowMap[10]['5']['fileNum'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
@@ -473,14 +469,7 @@ Template.yummy_coins.events({
       $('#save-userfile-slide').remove();
       return;
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === previewShowName) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      console.log(slideTitleMap);
-      var slideTextArray = slideTitleMap[10][2]['contents'];
+      var slideTextArray = slideShowMap[10][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
