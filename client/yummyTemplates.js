@@ -300,8 +300,6 @@ Template.yummy_coins.events({
         text: slideTitle,
         meteorUser: Meteor.userId()
       })
-      //var slideOneTitle = (Slides.find({slide: slideCount}).fetch());
-      //var slideOneTitle = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
       var slideOneTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(slideOneTitle);
       var slideOneTitleText = slideOneTitle[0]['text'];
@@ -324,7 +322,6 @@ Template.yummy_coins.events({
         text: bulletOne,
         meteorUser: Meteor.userId()
       })
-      //var bulletObj = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
       var bulletObj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bulletObj);
       var subTitleText = bulletObj[1]['text'];
@@ -345,7 +342,6 @@ Template.yummy_coins.events({
         text: bulletTwo,
         meteorUser: Meteor.userId()
       })
-      //var bullet2Obj = (Slides.find({meteorUser: Meteor.userId()}, {slide: slideCount}).fetch());
       var bullet2Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bullet2Obj);
       var subSubTitleText = bullet2Obj[2]['text'];
@@ -375,25 +371,16 @@ Template.yummy_coins.events({
     var source = slideTitle[0]['4']['dataSource'];
     console.log(type);
     if (type === "chart" && source === "bitcoin") {
-      // var func = slideTitle[1]['2']['contents'];
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
       return Meteor.call('bitlyLineChartD3'); 
     } else {
-      // var slideTitleMap = _.map(slideTitle, function(obj) {
-      //   if (obj[0]['show'] === currentShow) {
-      //     console.log(obj[0]['show']);
-      //     return obj;
-      //   }
-      // })
       var slideTitleMap = [];
       for (var i = 0; i < slideTitle.length; i++) {
         if (slideTitle[i][0]['show'] === currentShow) {
           slideTitleMap.push(slideTitle[i]);
         }
       }
-      console.log(slideTitleMap);
-      //var slideTextArray = slideTitle[0][2]['contents'];
       var slideTextArray = slideTitleMap[0][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];

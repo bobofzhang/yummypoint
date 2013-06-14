@@ -45,7 +45,6 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'change #inputs': function (event, tmpl) {
-    console.log('i feel you');
     $('.line-chart-data-sources').remove();
     $('.data-source-details').remove();
     $('#slide-controls').remove();
@@ -77,7 +76,8 @@ Template.yummy_coins.events({
         Files.insert({
           name: file.name,
           count: fileCount,
-          file: data
+          file: data,
+          meteorUser: Meteor.userId()
         })
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
@@ -88,10 +88,7 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'click #render-userFile': function () {
-    //$('#row chart-data-sources-types').remove();
     $('#user-data-row').remove();
-    // $('#render-userFile').remove();
-    // $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     Meteor.call('userFileLineChart', fileCount);
   }
 })
@@ -107,6 +104,7 @@ Template.yummy_coins.events({
       { slideType: "chart" },
       { dataSource: "userfile" },
       { fileNum: fileCount },
+      { meteorUser: Meteor.userId() }
     ]);
     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + thisSlideNumber + '"<p> Slide' + ' ' + thisSlideNumber + '</p></span></div>');
     $('.bitly-chart').remove();

@@ -15,8 +15,6 @@ var slideNumberBitCoin;
 
 var bitcoinInterval = Meteor.setInterval(function(){
   Meteor.call("getBitCoinData", function(error, result) {
-    console.log('hi');
-    // console.log(result);
     var dataset = result;
     return setData(result);
   })
@@ -34,7 +32,6 @@ Meteor.methods({
 
 Meteor.methods({
   passSlideCountBitCoin: function (count) {
-    console.log('in passSlideCountBitCoin');
     slideNumberBitCoin = count;
     return slideNumberBitCoin;
   }
@@ -49,16 +46,16 @@ Meteor.methods({
 
 Template.yummy_coins.events({
   'click #save-bitcoin-slide': function() {
-    console.log('saving bitcoin chart');
-    console.log(thisShowBitCoin);
-    console.log(slideNumberBitCoin);
+    // console.log(thisShowBitCoin);
+    // console.log(slideNumberBitCoin);
     Shows.insert([
       { show: thisShowBitCoin },
       { slide: slideNumberBitCoin },
       { contents: "Meteor.call('D3testinit')" },
       { slideType: "chart" },
       { dataSource: "bitcoin" },
-      { fileNum: ""}
+      { fileNum: ""},
+      { meteorUser: Meteor.userId() }
     ]);
     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumberBitCoin + '"<p> Slide' + ' ' + slideNumberBitCoin + '</p></span></div>');
     $('.bitly-chart').remove();
@@ -78,7 +75,6 @@ Template.yummy_coins.events({
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
     //$('#slide-nav-row').append('<div id="img-back-upload" class="span4"> <span class="back-img"><p> Upload background image </p></span></div><div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
     $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
-    //$('.make-start').append('<div id="slide-instruct" class="span12 slide-inputs"><span class="instruct-title"><h2>Enter your slide title above </h2></span></div>');
     Meteor.call('tickSlideCount');
     //Meteor.clearInterval("renderHotBits"); showNameEED TO FIGURE OUT HOW TO ACCESS THE SET INTERVAL HANDLE
     //$('#yummy-shows').append('<div id="start-chart" class="span 4"><span class="start-chart"><h3> Start Chart </h3></span></div>');
@@ -170,7 +166,6 @@ Meteor.methods({
         .attr("d", line);
 
     return dataset;
-    // return console.log(dataset);
   }
 })
 
