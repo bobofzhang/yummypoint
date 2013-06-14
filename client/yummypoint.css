@@ -188,13 +188,34 @@ body {
   margin: .5em 0;
 }
 
+#user-login {
+  text-align: center;
+  background-color: coral;
+}
 
-body #user .brand {
+#all-user-shows {
+  text-align: center;
+  background-color: lawngreen;
+}
+
+#current-show {
+  text-align: center;
+  background-color: thistle;
+}
+
+#yummy-brand {
+  text-align: center;
   font-family: 'Spin Cycle OT';
-  font-size: 3em;
-  margin: 0.2em 0 0.1em 0;
+  font-size: 2em;
   float: right;
 }
+
+/*body #user .brand {
+  font-family: 'Spin Cycle OT';
+  font-size: 1.5em;*/
+/*  margin: 0.2em 0 0.1em 0;*/
+/*  text-align: right;*/
+/*}*/
 
 #slide-links {
   text-align: center;

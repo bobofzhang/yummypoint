@@ -20,83 +20,91 @@
 
   <div id="user" class="container user-details">
     <div id="user-row" class="row">
-      <div id="user-login" class="span4">
+      <div id="user-login" class="span3">
           {{loginButtons}}
       </div>
-      <div id="all-user-shows" class="span4">
-          {{userShows}}
+      {{# constant}}
+      <div id="current-show" class="span2">
       </div>
-      <div id="yummy-brand" class="span4 brand">
-          <span> Yummy Show </span> 
+      {{/constant}}
+      <div id="all-user-shows" class="span2">
+          {{> userShows}}
+      </div>
+      <div id="yummy-brand" class="span4">
+          <span class="brand"> Yummy Show </span> 
       </div>
     </div>
   </div> <!-- USER CONTAINER -->
 
-  <div id="yummy-shows" class="container yummy-shows">
-    <div id="show-row" class="row"> 
-      <div id="create-show" class="span12 create-show">
-        <span class="create-show-input">
-          <input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>
-      </div>
-    </div><!--ROW-->
-  </div><!--CONTAINER-->
+  <div id="contant-div" class="freeze-reactive-changes">
 
-      <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="http://24.media.tumblr.com/tumblr_m2jgt82hf51rtufbao1_400.png" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Finger Canvas</h1>
-              <p class="lead"> Reimagining kids edutainment with webRTC. </p>
+    <div id="yummy-shows" class="container yummy-shows">
+      <div id="show-row" class="row"> 
+        <div id="create-show" class="span12 create-show">
+          <span class="create-show-input">
+            <input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>
+        </div>
+      </div><!--ROW-->
+    </div><!--CONTAINER-->
+
+        <!-- Carousel
+      ================================================== -->
+      <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="http://24.media.tumblr.com/tumblr_m2jgt82hf51rtufbao1_400.png" alt="">
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Finger Canvas</h1>
+                <p class="lead"> Reimagining kids edutainment with webRTC. </p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="http://24.media.tumblr.com/tumblr_m2jgt82hf51rtufbao1_400.png" alt="">
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Yummy Show</h1>
+                <p class="lead">Innovating cloud hosted business presentation software with reactive data</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="item">
-          <img src="http://24.media.tumblr.com/tumblr_m2jgt82hf51rtufbao1_400.png" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Yummy Show</h1>
-              <p class="lead">Innovating cloud hosted business presentation software with reactive data</p>
-            </div>
-          </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      </div><!-- /.carousel -->
+
+    <div id="slide-nav" class="container">
+      <div id="slide-nav-row" class="row">
+      </div><!--ROW-->
+    </div><!--CONTAINER-->
+
+    <div id="slide-index" class="container slide-index">
+      <div class="row">
+        <div id="slide-links" class="span12 slide-links">
         </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->
-
-  <div id="slide-nav" class="container">
-    <div id="slide-nav-row" class="row">
-    </div><!--ROW-->
-  </div><!--CONTAINER-->
-
-  <div id="slide-index" class="container slide-index">
-    <div class="row">
-      <div id="slide-links" class="span12 slide-links">
-      </div>
-    </div><!--ROW-->
-  </div><!--CONTAINER-->
+      </div><!--ROW-->
+    </div><!--CONTAINER-->
 
 
-  <div id="body" class="container body">
-    <div id="body-row" class="row">
-      <div class="body-buffer">
-        <div class="make-start">
-        </div><!--Make-Start-->
-      </div>
-    </div>  <!-- BODY ROW -->
-  </div><!--Body Container -->
+    <div id="body" class="container body">
+      <div id="body-row" class="row">
+        <div class="body-buffer">
+          <div class="make-start">
+          </div><!--Make-Start-->
+        </div>
+      </div>  <!-- BODY ROW -->
+    </div><!--Body Container -->
 
-  <!-- ====================== FOOTER =========================== -->
-  <hr>
-  
-  <footer>
-    <p class="pull-left"> A Yummy Corp Invention </p>
-    <p class="pull-right">&copy; 2013 Mission Reds, LLC </p>
-  </footer>
+    <!-- ====================== FOOTER =========================== -->
+    <hr>
+    
+    <footer>
+      <p class="pull-left"> A Yummy Corp Invention </p>
+      <p class="pull-right">&copy; 2013 Mission Reds, LLC </p>
+    </footer>
+
+  </div> <!-- CONSTANT CONTAINER -->
 
 </template>
 
@@ -110,7 +118,7 @@
 
 <template name='userShows'>
   <div id="user-show-template" class="user-show-link">
-    <span class="user-show-text-link"> {{showNum}} </span>
+    <span class="user-show-text-link"> {{allUserShows}} </span>
   </div>
 </template>
 

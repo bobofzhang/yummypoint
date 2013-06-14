@@ -18,7 +18,7 @@ Meteor.methods({
 })
 
 
-Template.yummy_coins.userShows = function () {
+Template.userShows.allUserShows = function () {
   var showQuery = Shows.find().fetch();
   console.log(showQuery);
   var thisUser = Meteor.userId();
@@ -28,13 +28,6 @@ Template.yummy_coins.userShows = function () {
       showsExist = "My Yummy Shows";
     }
   })
-  // for (var i = 0; i < showQuery.length; i++) {
-  //   if (showQuery[i][6]['meteorUser'] === thisUser) {
-  //   }
-  // }
-  // var showNum = Prices.find().count();
-  // console.log(showNum);
-  //return showNum;
   return showsExist;
 };
 
@@ -158,7 +151,8 @@ Template.yummy_coins.events({
       return bulletThree;
     }
   },
-  'click #slide-controls': function () { //>>>>>>> SAVE SLIDE <<<<<<<<<
+  'click #slide-controls': function (event) { //>>>>>>> SAVE SLIDE <<<<<<<<<
+      event.preventDefault();
       console.log(slideCount);
       $('#slide-controls').remove();
       $('#slide-inputs').remove();  
@@ -292,7 +286,6 @@ Template.yummy_coins.events({
       event.preventDefault();
       var showName = document.getElementById("create-show-input").value;
       currentShow = showName;
-      alert(Meteor.userId());
       Meteor.call('passShowName', currentShow);
       Meteor.call('passShowNameBitCoin', currentShow);
       Meteor.call('passCurrentShowName', currentShow);
@@ -302,8 +295,9 @@ Template.yummy_coins.events({
       $('#marketing-text').remove();
       $('#call-2-action').remove();
       $('#myCarousel').remove();
-      $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + showName + '</h2></span></div>'); 
+      // $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + showName + '</h2></span></div>'); 
       $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h2> Make a title slide for your Yummy Show <span class="current-show-plug">' + ' ' + currentShow + '</span></span>');
+      $('#current-show').append('<span id="user-session-show" class="span-session-show">' + showName + '</span>')
       $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
       $('#slide-inputs').append('<div class="title-slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.title-slide-title').append('<input id="title-slide-title" class="slide-text" type="text" placeholder="Enter cover slide title here" autofocus />');
