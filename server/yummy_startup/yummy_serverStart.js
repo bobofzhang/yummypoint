@@ -47,6 +47,7 @@ Meteor.startup(function () {
   //Hotbits.remove({});
   //Prices.remove({});
   Files.remove({});
+  Shownames.remove({});
 
   var pricesSet = Prices.findOne({});
   if (pricesSet == null) {

@@ -8,6 +8,7 @@
   <script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
   <!--<script src="../lib/jquery-csv.js"></script>-->
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -23,10 +24,8 @@
       <div id="user-login" class="span3">
           {{loginButtons}}
       </div>
-      {{# constant}}
       <div id="current-show" class="span2">
       </div>
-      {{/constant}}
       <div id="all-user-shows" class="span2">
           {{> userShows}}
       </div>
@@ -35,6 +34,11 @@
       </div>
     </div>
   </div> <!-- USER CONTAINER -->
+
+  <div id="user-shows-list" class="container">
+    <div id="show-list-row" class="row">
+    </div>
+  </div>
 
   <div id="contant-div" class="freeze-reactive-changes">
 

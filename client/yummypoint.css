@@ -29,6 +29,28 @@ body {
   background-color: burlywood;
 }
 
+#current-show {
+  text-align: center;
+}
+
+#user-session-show {
+  text-align: center;
+}
+
+#user-login {
+  font-family: 'Balthazar', serif;
+  font-size: 1.25em;
+}
+
+#user-show-name {
+  text-align: center;
+  background-color: aquamarine;
+}
+
+#user-shows-list {
+  margin-bottom: .25em;
+}
+
 /* >>>>>>> YUMMY SHOW PRESENTATION <<<<<<<<<<<< */
 
 .the-show {

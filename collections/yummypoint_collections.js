@@ -15,3 +15,5 @@ Charts = new Meteor.Collection("charts");
 
 Files = new Meteor.Collection("files");
 
+Shownames = new Meteor.Collection("shownames");
+

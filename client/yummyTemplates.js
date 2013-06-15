@@ -17,6 +17,27 @@ Meteor.methods({
   }
 })
 
+Template.userShows.events({
+  'click #user-show-template': function () {
+    var showFind = Shownames.find().fetch();
+    console.log(showFind);
+    userShowsMap = [];
+    // var userShowMap = _.map(showFind, function (obj) {
+    //   if (obj[1])
+    // })
+    for (var i = 0; i < showFind.length; i++) {
+      if (showFind[i]['meteorUser'] === currentUser) {
+        userShowsMap.push(showFind[i]['show']);
+      }
+    }
+    _.each(userShowsMap, function (name) {
+      if (name) {
+        $('#show-list-row').append('<div id="user-show-name" class="span2">' + name + '</div>');
+      }
+    })
+  }
+})
+
 
 Template.userShows.allUserShows = function () {
   var showQuery = Shows.find().fetch();
@@ -172,7 +193,7 @@ Template.yummy_coins.events({
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
-      $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + currentShow + '</h2></span><div>');
+      //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + currentShow + '</h2></span><div>');
       $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
       var slideTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       var slideTitleText = slideTitle[0]['text'];
@@ -296,6 +317,10 @@ Template.yummy_coins.events({
       $('#call-2-action').remove();
       $('#myCarousel').remove();
       // $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + showName + '</h2></span></div>'); 
+      Shownames.insert({
+        show: showName,
+        meteorUser: currentUser
+      })
       $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h2> Make a title slide for your Yummy Show <span class="current-show-plug">' + ' ' + currentShow + '</span></span>');
       $('#current-show').append('<span id="user-session-show" class="span-session-show">' + showName + '</span>')
       $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -379,24 +404,29 @@ Template.yummy_coins.events({
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
     //var slideTitle = Shows.find({}, {meteorUser: this.userId}).fetch();
-    var slideTitle = Shows.find({meteorUser: this.userId}).fetch();
     //var slideTitle = Shows.find({ meteorUser: Meteor.userId() }).fetch();  //CONSOLE LOGS UNDEFINED
-    console.log(slideTitle);
-    var type = slideTitle[0]['3']['slideType'];
-    var source = slideTitle[0]['4']['dataSource'];
-    console.log(type);
+    var slideTitle = Shows.find().fetch();
+    var slideShowMap = [];
+    for (var i = 0; i < slideTitle.length; i++) {
+      if (slideTitle[i][0]['show'] === currentShow) {
+        slideShowMap.push(slideTitle[i]);
+      }
+    }
+    console.log(slideShowMap);
+    var type = slideShowMap[0]['3']['slideType'];
+    var source = slideShowMap[0]['4']['dataSource'];
     if (type === "chart" && source === "bitcoin") {
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
       return Meteor.call('bitlyLineChartD3'); 
     } else {
-      var slideTitleMap = [];
-      for (var i = 0; i < slideTitle.length; i++) {
-        if (slideTitle[i][0]['show'] === currentShow) {
-          slideTitleMap.push(slideTitle[i]);
-        }
-      }
-      var slideTextArray = slideTitleMap[0][2]['contents'];
+      // var slideTitleMap = [];
+      // for (var i = 0; i < slideTitle.length; i++) {
+      //   if (slideTitle[i][0]['show'] === currentShow) {
+      //     slideTitleMap.push(slideTitle[i]);
+      //   }
+      // }
+      var slideTextArray = slideShowMap[0][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
