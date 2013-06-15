@@ -99,7 +99,12 @@ Template.yummy_coins.events({
       //var slideOneTitle = Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch();
       var slideOneTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(slideOneTitle);
-      var slideOneTitleText = slideOneTitle[0]['text'];
+      var userSlideMap = _.filter(slideOneTitle, function (obj) {
+        if (obj['show'] === currentShow) {
+          return obj;
+        }
+      })
+      var slideOneTitleText = userSlideMap[0]['text'];
       $('#slide-title').remove();
       $('.instruct-title').remove();
       $('#create-chart-sub').remove();
@@ -123,7 +128,12 @@ Template.yummy_coins.events({
       //var bulletObj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
       var bulletObj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bulletObj);
-      var bulletText = bulletObj[1]['text'];
+      var userSlideMap = _.filter(bulletObj, function (obj) {
+        if (obj['show'] === currentShow) {
+          return obj;
+        }
+      })
+      var bulletText = userSlideMap[1]['text'];
       $('#bullet-one').remove();
       $('.bullet-one').append('<div class="bullet-first-slide-one"> <h2>' + bulletText +'</h2></div>');
       $('.bullet-two').append('<input id="bullet-two" class="slide-text" type="text" placeholder="Enter Bullet Two Text Here" autofocus />');
@@ -144,7 +154,12 @@ Template.yummy_coins.events({
       //var bullet2Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
       var bullet2Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bullet2Obj);
-      var bullet2Text = bullet2Obj[2]['text'];
+      var userSlideMap = _.filter(bullet2Obj, function (obj) {
+        if (obj['show'] === currentShow) {
+          return obj;
+        }
+      })
+      var bullet2Text = userSlideMap[2]['text'];
       $('#bullet-two').remove();
       $('.bullet-two').append('<div class="bullet-second-slide-one"> <h2>' + bullet2Text +'</h2></div>');
       $('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Enter Bullet Three Text Here" autofocus />');
@@ -164,7 +179,12 @@ Template.yummy_coins.events({
       })
       //var bullet3Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
       var bullet3Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
-      var bullet3Text = bullet3Obj[3]['text'];
+      var userSlideMap = _.filter(bullet3Obj, function (obj) {
+        if (obj['show'] === currentShow) {
+          return obj;
+        }
+      })
+      var bullet3Text = userSlideMap[3]['text'];
       $('#bullet-three').remove();
       $('.instruct-bullet-one').remove();
       $('.bullet-three').append('<div class="bullet-third-slide-one"> <h2>' + bullet3Text +'</h2></div>');
@@ -342,7 +362,13 @@ Template.yummy_coins.events({
       })
       var slideOneTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(slideOneTitle);
-      var slideOneTitleText = slideOneTitle[0]['text'];
+      var userSlideMap = _.filter(slideOneTitle, function (obj) {
+        if (obj['show'] === currentShow) {
+          return obj;
+        }
+      })
+      console.log(userSlideMap);
+      var slideOneTitleText = userSlideMap[0]['text'];
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
@@ -364,7 +390,12 @@ Template.yummy_coins.events({
       })
       var bulletObj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bulletObj);
-      var subTitleText = bulletObj[1]['text'];
+      var userSlideMap = _.filter(bulletObj, function (obj) {
+        if (obj['show'] === currentShow) {
+          return obj;
+        }
+      })
+      var subTitleText = userSlideMap[1]['text'];
       $('#title-slide-sub-title').remove();
       $('.bullet-one').append('<div class="title-sub-title"> <h2>' + subTitleText +'</h2></div>');
       $('.bullet-two').append('<input id="title-slide-sub-sub" class="slide-text" type="text" placeholder="Enter additional details here" autofocus />');
@@ -384,7 +415,12 @@ Template.yummy_coins.events({
       })
       var bullet2Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       console.log(bullet2Obj);
-      var subSubTitleText = bullet2Obj[2]['text'];
+      var userSlideMap = _.filter(bullet2Obj, function (obj) {
+        if (obj['show'] === currentShow) {
+          return obj;
+        }
+      })
+      var subSubTitleText = userSlideMap[2]['text'];
       $('#title-slide-sub-sub').remove();
       $('#slide-controls').remove();
       $('.bullet-two').append('<div class="title-sub-sub"> <h3>' + subSubTitleText +'</h3></div>');
