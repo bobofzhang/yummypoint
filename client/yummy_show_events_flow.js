@@ -37,14 +37,59 @@ Template.yummy_coins.events({
       yummySlideBulletCount++;
   },
   'click #user-show-name-1': function () {
-    //var thisShowName = document.getElementById("user-show-name");
     var thisShowName = $('#user-show-name-1').text()
-    //alert(thisShowName.innerHTML);
-    alert(thisShowName);
+    //alert(thisShowName);
+    $('.bitcoin-chart').remove();
+    $('.bitly-chart').remove();
+    // $('#yummy-shows').remove();
+    $('#show-row').remove();
+    $('#slide-index').remove();
+    $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
+    $('#slide-nav-row').remove();
+    $('.saved-slide-preview').remove();
+    $('#slide-preview').remove();
+    $('#img-back-upload').remove();
+    $('#slide-controls').remove();
+    $('#create-chart-sub').remove();
+    currentYummyShow = Shows.find().fetch();
+    //console.log(currentYummyShow);
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
+    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
+    $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
+    yummySlideBulletCount++;
   },
   'click #user-show-name-2': function () {
     var thisShowName = $('#user-show-name-2').text()
-    alert(thisShowName);
+    $('.bitcoin-chart').remove();
+    $('.bitly-chart').remove();
+    // $('#yummy-shows').remove();
+    $('#show-row').remove();
+    $('#slide-index').remove();
+    $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
+    $('#slide-nav-row').remove();
+    $('.saved-slide-preview').remove();
+    $('#slide-preview').remove();
+    $('#img-back-upload').remove();
+    $('#slide-controls').remove();
+    $('#create-chart-sub').remove();
+    currentYummyShow = Shows.find().fetch();
+    //console.log(currentYummyShow);
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
+    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
+    $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
+    yummySlideBulletCount++;
   },
   'click #the-show-title': function () {
     var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];

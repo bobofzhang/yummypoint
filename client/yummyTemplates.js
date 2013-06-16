@@ -214,9 +214,16 @@ Template.yummy_coins.events({
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
       //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + currentShow + '</h2></span><div>');
       $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
-      var slideTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
-      var slideTitleText = slideTitle[0]['text'];
-      if (slideTitle[1] == null) {
+      // var slideTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
+      var slideTitle = Slides.find().fetch();
+      var slideFilter = _.filter(slideTitle, function (obj) {
+        if (obj['slide'] === slideCount && obj['show'] === currentShow) {
+          return obj;
+        }
+      })
+      console.log(slideFilter);
+      var slideTitleText = slideFilter[0]['text'];
+      if (slideFilter[1] == null) {
         Shows.insert([
           { show: currentShow },
           { slide: slideCount },
@@ -238,9 +245,9 @@ Template.yummy_coins.events({
         Meteor.call('passSlideCountUserData', slideCount);
         return slideTitleText;
       } else {
-        var bulletOneText = slideTitle[1]['text'];
+        var bulletOneText = slideFilter[1]['text'];
       }
-      if (slideTitle[2] == null) {
+      if (slideFilter[2] == null) {
         Shows.insert([
           { show: currentShow },
           { slide: slideCount },
@@ -262,9 +269,9 @@ Template.yummy_coins.events({
         Meteor.call('passSlideCountUserData', slideCount);
         return bulletOneText;
       } else {
-        var bulletTwoText = slideTitle[2]['text'];
+        var bulletTwoText = slideFilter[2]['text'];
       } 
-      if (slideTitle[3] == null) {
+      if (slideFilter[3] == null) {
         Shows.insert([
           { show: currentShow },
           { slide: slideCount },
@@ -286,7 +293,7 @@ Template.yummy_coins.events({
         Meteor.call('passSlideCountUserData', slideCount);
         return bulletTwoText;
       } else {
-        var bulletThreeText = slideTitle[3]['text'];
+        var bulletThreeText = slideFilter[3]['text'];
         Shows.insert([
           { show: currentShow },
           { slide: slideCount },
