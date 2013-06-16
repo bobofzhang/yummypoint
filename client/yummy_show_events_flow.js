@@ -17,7 +17,6 @@ Meteor.methods({
 //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
 Template.yummy_coins.events({
   'click #start-this-show': function () {
-      //$('.navbar').remove();
       //Meteor.clearInterval(Session.get("bitcoinInterval"));
       $('.bitcoin-chart').remove();
       $('.bitly-chart').remove();
@@ -36,6 +35,16 @@ Template.yummy_coins.events({
       var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
       $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
       yummySlideBulletCount++;
+  },
+  'click #user-show-name-1': function () {
+    //var thisShowName = document.getElementById("user-show-name");
+    var thisShowName = $('#user-show-name-1').text()
+    //alert(thisShowName.innerHTML);
+    alert(thisShowName);
+  },
+  'click #user-show-name-2': function () {
+    var thisShowName = $('#user-show-name-2').text()
+    alert(thisShowName);
   },
   'click #the-show-title': function () {
     var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];

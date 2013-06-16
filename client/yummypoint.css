@@ -42,7 +42,7 @@ body {
   font-size: 1.25em;
 }
 
-#user-show-name {
+.user-show {
   text-align: center;
   background-color: aquamarine;
 }

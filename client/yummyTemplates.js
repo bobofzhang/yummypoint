@@ -19,12 +19,10 @@ Meteor.methods({
 
 Template.userShows.events({
   'click #user-show-template': function () {
+    var nameNum = 0;
     var showFind = Shownames.find().fetch();
     console.log(showFind);
     userShowsMap = [];
-    // var userShowMap = _.map(showFind, function (obj) {
-    //   if (obj[1])
-    // })
     for (var i = 0; i < showFind.length; i++) {
       if (showFind[i]['meteorUser'] === currentUser) {
         userShowsMap.push(showFind[i]['show']);
@@ -32,12 +30,13 @@ Template.userShows.events({
     }
     _.each(userShowsMap, function (name) {
       if (name) {
-        $('#show-list-row').append('<div id="user-show-name" class="span2">' + name + '</div>');
+        nameNum++;
+        //$('#show-list-row').append('<div id="user-show-name" class="span2"><span id="' + nameNum + '">' + name + '</span></div>');
+        $('#show-list-row').append('<div id="user-show-name-'+ nameNum +'" class="span2 user-show">' + name + '</div>');
       }
     })
   }
 })
-
 
 Template.userShows.allUserShows = function () {
   var showQuery = Shows.find().fetch();
@@ -456,12 +455,6 @@ Template.yummy_coins.events({
     } else if (type === "chart" && source === "bitly") {
       return Meteor.call('bitlyLineChartD3'); 
     } else {
-      // var slideTitleMap = [];
-      // for (var i = 0; i < slideTitle.length; i++) {
-      //   if (slideTitle[i][0]['show'] === currentShow) {
-      //     slideTitleMap.push(slideTitle[i]);
-      //   }
-      // }
       var slideTextArray = slideShowMap[0][2]['contents'];
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
