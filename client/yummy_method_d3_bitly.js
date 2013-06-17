@@ -28,7 +28,7 @@ Template.yummy_coins.events({
       { show: thisShow },
       { slide: slideNumber },
       //{ contents: 'Deps.autorun(function(){ return Meteor.call("bitlyLineChartD3", ' + bitPhrase + '); }) && Meteor.call("renderHotBits");' },
-      { contents: "Meteor.call('bitlyLineChartD3')" }, 
+      { contents: "Meteor.call('bitlyLineChartD3', " + bitPhrase + ")" }, 
       { slideType: "chart" },
       { dataSource: "bitly" },
       { fileNum: ""}, 
@@ -73,13 +73,16 @@ Meteor.methods({
   bitlyLineChartD3: function(hotbits) {
     console.log('i am in the bitly line graph method');
     $('.bitly-chart').remove();
+    $('.bitcoin-chart').remove();
+    $('.the-show').remove();
+    $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
+    $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
 
     var rawData;
 
-    //Deps.autorun(function(){
     rawData = Hotbits.find({ phrase: bitPhrase }).fetch();
-      //return rawData;
-    //})
+
     var data = [];
 
     for (var i = 0; i < rawData.length; i++) {

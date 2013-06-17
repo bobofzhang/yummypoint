@@ -20,6 +20,7 @@ Meteor.methods({
       //   query: '/v3/search?access_token=06cc854f25b36aebb4a9fac685d880413d511967&query=obama&limit=10'
       // }
     )
+    console.log(result);
     var linkData = result.data.data.phrases;
     for (var i = 0; i < linkData.length; i++) {
       console.log(linkData[i]);

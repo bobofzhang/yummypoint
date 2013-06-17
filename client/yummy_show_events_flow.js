@@ -615,8 +615,6 @@ Template.yummy_coins.events({
     if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-      //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-      //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return
