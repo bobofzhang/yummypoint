@@ -6,7 +6,6 @@ var yummyShowSlideIndex = 0;
 var savedShowSlideIndex = 0;
 var currentUser = Meteor.userId();
 
-
 Meteor.methods({
   tickSlideCount: function () {
     slideCount++
@@ -19,6 +18,7 @@ Meteor.methods({
 
 Template.userShows.events({
   'click #user-show-template': function () {
+    currentUser = Meteor.userId();
     var nameNum = 0;
     var showFind = Shownames.find().fetch();
     console.log(showFind);
@@ -333,6 +333,7 @@ Template.yummy_coins.events({
       event.preventDefault();
       var showName = document.getElementById("create-show-input").value;
       currentShow = showName;
+      currentUser = Meteor.userId();
       Meteor.call('passShowName', currentShow);
       Meteor.call('passShowNameBitCoin', currentShow);
       Meteor.call('passCurrentShowName', currentShow);
@@ -342,7 +343,6 @@ Template.yummy_coins.events({
       $('#marketing-text').remove();
       $('#call-2-action').remove();
       $('#myCarousel').remove();
-      // $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + showName + '</h2></span></div>'); 
       Shownames.insert({
         show: showName,
         meteorUser: currentUser

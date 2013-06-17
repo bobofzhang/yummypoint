@@ -9,7 +9,7 @@ var thisShowName;
 Meteor.methods({
   passCurrentShowName: function (showName) {
     console.log('in the passCurrentShowName');
-    thisCurrentShow= showName;
+    thisCurrentShow = showName;
     return thisCurrentShow;
   }
 })
@@ -17,30 +17,15 @@ Meteor.methods({
 
 //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
 Template.yummy_coins.events({
-  // 'click #start-this-show': function () {
-  //     //Meteor.clearInterval(Session.get("bitcoinInterval"));
-  //     $('.bitcoin-chart').remove();
-  //     $('.bitly-chart').remove();
-  //     // $('#yummy-shows').remove();
-  //     $('#show-row').remove();
-  //     $('#slide-index').remove();
-  //     $('#slide-inputs').remove();
-  //     $('#slide-inputs-chart').remove();
-  //     $('#slide-nav-row').remove();
-  //     $('.saved-slide-preview').remove();
-  //     $('#slide-preview').remove();
-  //     $('#img-back-upload').remove();
-  //     $('#slide-controls').remove();
-  //     $('#create-chart-sub').remove();
-  //     currentYummyShow = (Shows.find({ 0 : { show: thisCurrentShow }}).fetch());
-  //     var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
-  //     $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
-  //     yummySlideBulletCount++;
-  // },
   'click #user-show-name-1': function () {
     thisShowName = $('#user-show-name-1').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
+    Meteor.call('passShowName', thisShowName);
+    Meteor.call('passShowNameBitCoin', thisShowName);
+    Meteor.call('passCurrentShowName', thisShowName);
+    Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNamePreview', thisShowName);
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -72,6 +57,11 @@ Template.yummy_coins.events({
     thisShowName = $('#user-show-name-2').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
+    Meteor.call('passShowName', thisShowName);
+    Meteor.call('passShowNameBitCoin', thisShowName);
+    Meteor.call('passCurrentShowName', thisShowName);
+    Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNamePreview', thisShowName);
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -102,6 +92,11 @@ Template.yummy_coins.events({
     thisShowName = $('#user-show-name-3').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
+    Meteor.call('passShowName', thisShowName);
+    Meteor.call('passShowNameBitCoin', thisShowName);
+    Meteor.call('passCurrentShowName', thisShowName);
+    Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNamePreview', thisShowName);
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -133,6 +128,11 @@ Template.yummy_coins.events({
     thisShowName = $('#user-show-name-4').text()
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
+    Meteor.call('passShowName', thisShowName);
+    Meteor.call('passShowNameBitCoin', thisShowName);
+    Meteor.call('passCurrentShowName', thisShowName);
+    Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNamePreview', thisShowName);
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -164,6 +164,11 @@ Template.yummy_coins.events({
     thisShowName = $('#user-show-name-5').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
+    Meteor.call('passShowName', thisShowName);
+    Meteor.call('passShowNameBitCoin', thisShowName);
+    Meteor.call('passCurrentShowName', thisShowName);
+    Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNamePreview', thisShowName);
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -195,6 +200,11 @@ Template.yummy_coins.events({
     thisShowName = $('#user-show-name-6').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
+    Meteor.call('passShowName', thisShowName);
+    Meteor.call('passShowNameBitCoin', thisShowName);
+    Meteor.call('passCurrentShowName', thisShowName);
+    Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNamePreview', thisShowName);
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -246,8 +256,10 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+        $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -258,7 +270,6 @@ Template.yummy_coins.events({
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
-          // var func = slideTitle[1]['2']['contents'];
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
@@ -300,8 +311,10 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+        $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -312,7 +325,6 @@ Template.yummy_coins.events({
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
-          // var func = slideTitle[1]['2']['contents'];
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
@@ -356,8 +368,8 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -368,7 +380,6 @@ Template.yummy_coins.events({
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
-          // var func = slideTitle[1]['2']['contents'];
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
@@ -400,8 +411,8 @@ Template.yummy_coins.events({
     if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-      $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-      $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+      //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+      //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return
@@ -453,8 +464,8 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -465,7 +476,6 @@ Template.yummy_coins.events({
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
-          // var func = slideTitle[1]['2']['contents'];
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
@@ -507,8 +517,8 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -519,7 +529,6 @@ Template.yummy_coins.events({
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
-          // var func = slideTitle[1]['2']['contents'];
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
@@ -563,8 +572,8 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -575,7 +584,6 @@ Template.yummy_coins.events({
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
-          // var func = slideTitle[1]['2']['contents'];
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
@@ -607,8 +615,8 @@ Template.yummy_coins.events({
     if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-      $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-      $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+      //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+      //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return
@@ -619,7 +627,6 @@ Template.yummy_coins.events({
       if (type === "chart" && source === "bitcoin") {
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
         $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
-        // var func = slideTitle[1]['2']['contents'];
         return Meteor.call('D3testinit'); 
       } else if (type === "chart" && source === "bitly") {
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
@@ -657,8 +664,8 @@ Template.yummy_coins.events({
     if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-      $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-      $('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+      //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
+      //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return
@@ -668,7 +675,6 @@ Template.yummy_coins.events({
       var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
       if (type === "chart" && source === "bitcoin") {
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-        // var func = slideTitle[1]['2']['contents'];
         return Meteor.call('D3testinit'); 
       } else if (type === "chart" && source === "bitly") {
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');

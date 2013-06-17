@@ -1,5 +1,4 @@
 
-var thisShow;
 var slideNumber;
 var fileCount = -1;
 var thisShowName;
@@ -77,7 +76,8 @@ Template.yummy_coins.events({
           name: file.name,
           count: fileCount,
           file: data,
-          meteorUser: Meteor.userId()
+          meteorUser: Meteor.userId(),
+          show: thisShowName
         })
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
@@ -131,6 +131,7 @@ Template.yummy_coins.events({
 Meteor.methods({
   userFileLineChart: function(index) {
     console.log('i am in the userFileLineChart line graph method');
+    var currentUser = Meteor.userId();
     $('.bitly-chart').remove();
     $('.userFile-chart').remove();
     $('#user-data-row').remove();
@@ -142,20 +143,24 @@ Meteor.methods({
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
     $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
-    //var fileIndex = index;
     var rawData;
 
     rawData = Files.find({}).fetch();
     console.log(rawData)
-    var myData = rawData[index]['file'];
+    var fileUserFilter = _.filter(rawData, function (obj) {
+      if (obj['meteorUser'] === currentUser && obj['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(fileUserFilter);
+
+    var myData = fileUserFilter[index]['file'];
     //console.log(myData);
 
     var data = [];
 
     for (var i = 0; i < myData.length; i++) {
       data.push([myData[i][0], myData[i][1]]);
-      // console.log(myData[i][0]);
-      // console.log(myData[i][1]);
     }
 
     var margin = {
