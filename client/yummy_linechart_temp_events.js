@@ -57,13 +57,13 @@ Template.yummy_coins.events({
     $('#bar-chart-switch').remove();
     $('#bubble-chart-switch').remove();
     $('.chart-data-sources-types').remove();
+    $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save this sick Line Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch back to Create Chart Slide home </p></span></div>');
     //$('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
-    $('.make-start').append('<div class="data-source-details"><div class="row"><div id="twitter-switch" class="span6"> <span class="twitter"> <h3> Switch to Twitter Data </h3> </span></div><div id="bitcoin-switch" class="span6"> <span class="bitcoin"> <h3> Switch to Bitcoin Data </h3> </span></div></div></div>');
-    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.call("renderHotBits");
-    //return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.setInterval(function(){ Meteor.call("renderHotBits") }, 10000) && Meteor.call("renderHotBits");
+    //return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.call("renderHotBits");
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); });
   }
 })
 

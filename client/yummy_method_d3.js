@@ -46,8 +46,6 @@ Meteor.methods({
 
 Template.yummy_coins.events({
   'click #save-bitcoin-slide': function() {
-    // console.log(thisShowBitCoin);
-    // console.log(slideNumberBitCoin);
     Shows.insert([
       { show: thisShowBitCoin },
       { slide: slideNumberBitCoin },
