@@ -11,6 +11,8 @@ Template.yummy_coins.events({
     $('#slide-inputs').remove();
     $('.slide-controls').remove();
     $('#save-bitcoin-slide').remove();
+    $('#save-bitly-slide').remove();
+    $('#render-userFile').remove();
     $('#create-text-sub').remove();
     $('#preview-slide-inputs').remove();
     $('#slide-controls').remove();

@@ -26,12 +26,14 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
+    $('.user-details').hide();
+    $('#show-list-row').hide();
+    $('#footer-div').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
-    // $('#yummy-shows').remove();
     $('#show-row').remove();
     $('#slide-index').remove();
     $('#slide-inputs').remove();
@@ -51,6 +53,7 @@ Template.yummy_coins.events({
     console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
     $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
+    $('')
     yummySlideBulletCount++;
   },
   'click #user-show-name-2': function () {
@@ -62,6 +65,9 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
+    $('.user-details').hide();
+    $('#show-list-row').hide();
+    $('#footer-div').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -97,12 +103,14 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
+    $('.user-details').hide();
+    $('#show-list-row').hide();
+    $('#footer-div').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
-    // $('#yummy-shows').remove();
     $('#show-row').remove();
     $('#slide-index').remove();
     $('#slide-inputs').remove();
@@ -133,12 +141,14 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
+    $('.user-details').hide();
+    $('#show-list-row').hide();
+    $('#footer-div').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
-    // $('#yummy-shows').remove();
     $('#show-row').remove();
     $('#slide-index').remove();
     $('#slide-inputs').remove();
@@ -169,12 +179,14 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
+    $('.user-details').hide();
+    $('#show-list-row').hide();
+    $('#footer-div').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
-    // $('#yummy-shows').remove();
     $('#show-row').remove();
     $('#slide-index').remove();
     $('#slide-inputs').remove();
@@ -205,12 +217,14 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
+    $('.user-details').hide();
+    $('#show-list-row').hide();
+    $('#footer-div').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
-    // $('#yummy-shows').remove();
     $('#show-row').remove();
     $('#slide-index').remove();
     $('#slide-inputs').remove();
@@ -256,10 +270,11 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
         $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
         $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+        $('.user-details').show();
+        $('#footer-div').show();
+        $('#show-list-row').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -281,7 +296,7 @@ Template.yummy_coins.events({
           $('#save-userfile-slide').remove();
           return;
         } else {
-          var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+          var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
           $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
         }        
       }
@@ -311,10 +326,11 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
         $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
         $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+        $('.user-details').show();
+        $('#footer-div').show();
+        $('#show-list-row').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -368,8 +384,11 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+        $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+        $('.user-details').show();
+        $('#footer-div').show();
+        $('#show-list-row').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -411,8 +430,11 @@ Template.yummy_coins.events({
     if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-      //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-      //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+      $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+      $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+      $('.user-details').show();
+      $('#footer-div').show();
+      $('#show-list-row').show();
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return
@@ -464,8 +486,11 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+        $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+        $('.user-details').show();
+        $('#footer-div').show();
+        $('#show-list-row').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -517,8 +542,11 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+        $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+        $('.user-details').show();
+        $('#footer-div').show();
+        $('#show-list-row').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -572,8 +600,11 @@ Template.yummy_coins.events({
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-        //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
+        $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+        $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+        $('.user-details').show();
+        $('#footer-div').show();
+        $('#show-list-row').show(); 
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -615,6 +646,11 @@ Template.yummy_coins.events({
     if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
+      $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+      $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+      $('.user-details').show();
+      $('#footer-div').show();
+      $('#show-list-row').show();
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return
