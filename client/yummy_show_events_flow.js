@@ -4,6 +4,7 @@ var thisCurrentShow;
 var currentYummyShow;
 var yummyShowSlideIndex = 0;
 var yummySlideBulletCount = 0;
+var thisShowName;
 
 Meteor.methods({
   passCurrentShowName: function (showName) {
@@ -37,7 +38,7 @@ Template.yummy_coins.events({
   //     yummySlideBulletCount++;
   // },
   'click #user-show-name-1': function () {
-    var thisShowName = $('#user-show-name-1').text();
+    thisShowName = $('#user-show-name-1').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
     $('.bitcoin-chart').remove();
@@ -68,7 +69,7 @@ Template.yummy_coins.events({
     yummySlideBulletCount++;
   },
   'click #user-show-name-2': function () {
-    var thisShowName = $('#user-show-name-2').text();
+    thisShowName = $('#user-show-name-2').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
     $('.bitcoin-chart').remove();
@@ -76,7 +77,6 @@ Template.yummy_coins.events({
     $('#the-show-title').remove();
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
-    // $('#yummy-shows').remove();
     $('#show-row').remove();
     $('#slide-index').remove();
     $('#slide-inputs').remove();
@@ -99,7 +99,7 @@ Template.yummy_coins.events({
     yummySlideBulletCount++;
   },
   'click #user-show-name-3': function () {
-    var thisShowName = $('#user-show-name-3').text();
+    thisShowName = $('#user-show-name-3').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
     $('.bitcoin-chart').remove();
@@ -130,7 +130,7 @@ Template.yummy_coins.events({
     yummySlideBulletCount++;
   },
   'click #user-show-name-4': function () {
-    var thisShowName = $('#user-show-name-4').text()
+    thisShowName = $('#user-show-name-4').text()
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
     $('.bitcoin-chart').remove();
@@ -161,7 +161,7 @@ Template.yummy_coins.events({
     yummySlideBulletCount++;
   },
   'click #user-show-name-5': function () {
-    var thisShowName = $('#user-show-name-5').text();
+    thisShowName = $('#user-show-name-5').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
     $('.bitcoin-chart').remove();
@@ -192,7 +192,7 @@ Template.yummy_coins.events({
     yummySlideBulletCount++;
   },
   'click #user-show-name-6': function () {
-    var thisShowName = $('#user-show-name-6').text();
+    thisShowName = $('#user-show-name-6').text();
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
     $('.bitcoin-chart').remove();
@@ -223,8 +223,17 @@ Template.yummy_coins.events({
     yummySlideBulletCount++;
   },
   'click #the-show-title': function () {
-    var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
+    yummyShowSlideIndex = 0;
+    yummySlideBulletCount = 0;
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
+    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
     $('.the-show').remove();
     $('.make-start').append('<div id="the-show-one" class="the-show"></div>');
     $('.the-show').append('<div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div>'); 
@@ -234,7 +243,7 @@ Template.yummy_coins.events({
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-      if (currentYummyShow[yummyShowSlideIndex] == null) {
+      if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
         $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -243,9 +252,9 @@ Template.yummy_coins.events({
         yummySlideBulletCount = 0
         return
       } else {
-        var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-        var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-        var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+        var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+        var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+        var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -268,9 +277,16 @@ Template.yummy_coins.events({
     }
   },
   'click #the-show-one': function () {
-    var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
-    var yummyBulletTwoText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][2]['text'];
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
+    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
+    var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
     $('.the-show').remove();
     $('.make-start').append('<div id="the-show-two" class="the-show"></div>');
     $('.the-show').append('<div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div>'); 
@@ -281,7 +297,7 @@ Template.yummy_coins.events({
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-      if (currentYummyShow[yummyShowSlideIndex] == null) {
+      if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
         $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -290,9 +306,9 @@ Template.yummy_coins.events({
         yummySlideBulletCount = 0
         return
       } else {
-        var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-        var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-        var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+        var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+        var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+        var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -308,17 +324,24 @@ Template.yummy_coins.events({
           $('#save-userfile-slide').remove();
           return;
         } else {
-          var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+          var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
           $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
         }
       }
     }
   },
   'click #the-show-two': function () {
-    var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
-    var yummyBulletTwoText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][2]['text'];
-    var yummyBulletThreeText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][3]['text'];
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
+    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
+    var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
+    var yummyBulletThreeText = showFilter[yummyShowSlideIndex]['2']['contents'][3]['text'];
     $('.the-show').remove();
     $('.make-start').append('<div id="the-show-three" class="the-show"></div>');
     $('.the-show').append('<div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div>'); 
@@ -330,7 +353,7 @@ Template.yummy_coins.events({
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-      if (currentYummyShow[yummyShowSlideIndex] == null) {
+      if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
         $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -339,9 +362,9 @@ Template.yummy_coins.events({
         yummySlideBulletCount = 0
         return
       } else {
-        var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-        var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-        var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+        var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+        var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+        var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -357,7 +380,7 @@ Template.yummy_coins.events({
           $('#save-userfile-slide').remove();
           return;
         } else {
-          var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+          var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
           $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
         }
       }
@@ -365,9 +388,16 @@ Template.yummy_coins.events({
   },
   'click #the-show-three': function () {
     yummyShowSlideIndex++;
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-    if (currentYummyShow[yummyShowSlideIndex] == null) {
+    if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
       $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -376,9 +406,9 @@ Template.yummy_coins.events({
       yummySlideBulletCount = 0
       return
     } else {
-      var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-      var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-      var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+      var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+      var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+      var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
       if (type === "chart" && source === "bitcoin") {
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
         $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -393,7 +423,7 @@ Template.yummy_coins.events({
         $('#save-userfile-slide').remove();
         return;
       } else {
-        var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+        var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
         $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
       }
     }
@@ -402,9 +432,16 @@ Template.yummy_coins.events({
 //>>>>>>>>>>>>>>>>> SHOW BODY SLIDES <<<<<<<<<<<<<<<<<
 
   'click #show-content-title': function () {
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
     $('.the-show').remove();
-    var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
+    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
     $('.make-start').append('<div id="show-content-one" class="the-show"></div>');
     $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
     if (yummyBulletOneText) {
@@ -413,7 +450,7 @@ Template.yummy_coins.events({
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-      if (currentYummyShow[yummyShowSlideIndex] == null) {
+      if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
         $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -422,9 +459,9 @@ Template.yummy_coins.events({
         yummySlideBulletCount = 0
         return
       } else {
-        var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-        var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-        var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+        var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+        var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+        var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -440,16 +477,23 @@ Template.yummy_coins.events({
           $('#save-userfile-slide').remove();
           return;
         } else {
-          var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+          var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
           $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
         }
       }
     }
   },
   'click #show-content-one': function () {
-    var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
-    var yummyBulletTwoText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][2]['text'];
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
+    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
+    var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-two" class="the-show"></div>');
     $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
@@ -460,7 +504,7 @@ Template.yummy_coins.events({
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-      if (currentYummyShow[yummyShowSlideIndex] == null) {
+      if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
         $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -469,9 +513,9 @@ Template.yummy_coins.events({
         yummySlideBulletCount = 0
         return
       } else {
-        var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-        var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-        var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+        var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+        var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+        var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -487,17 +531,24 @@ Template.yummy_coins.events({
           $('#save-userfile-slide').remove();
           return;
         } else {
-          var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+          var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
           $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
         }
       }
     }
   },
   'click #show-content-two': function () {
-    var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
-    var yummyBulletOneText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][1]['text'];
-    var yummyBulletTwoText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][2]['text'];
-    var yummyBulletThreeText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][3]['text'];
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
+    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
+    var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
+    var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
+    var yummyBulletThreeText = showFilter[yummyShowSlideIndex]['2']['contents'][3]['text'];
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-three" class="the-show"></div>');
     $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
@@ -509,7 +560,7 @@ Template.yummy_coins.events({
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-      if (currentYummyShow[yummyShowSlideIndex] == null) {
+      if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
         $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -518,9 +569,9 @@ Template.yummy_coins.events({
         yummySlideBulletCount = 0
         return
       } else {
-        var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-        var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-        var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+        var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+        var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+        var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
         if (type === "chart" && source === "bitcoin") {
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -536,7 +587,7 @@ Template.yummy_coins.events({
           $('#save-userfile-slide').remove();
           return;
         } else {
-          var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+          var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
           $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
         }
       }
@@ -544,9 +595,16 @@ Template.yummy_coins.events({
   },
   'click #show-content-three': function () {
     yummyShowSlideIndex++;
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-    if (currentYummyShow[yummyShowSlideIndex] == null) {
+    if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
       $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -555,9 +613,9 @@ Template.yummy_coins.events({
       yummySlideBulletCount = 0
       return
     } else {
-      var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-      var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-      var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+      var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+      var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+      var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
       if (type === "chart" && source === "bitcoin") {
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
         $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
@@ -573,7 +631,7 @@ Template.yummy_coins.events({
         $('#save-userfile-slide').remove();
         return;
       } else {
-        var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+        var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
         $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
       }
     }
@@ -583,13 +641,20 @@ Template.yummy_coins.events({
 Template.yummy_coins.events({
   'click #slide-inputs-chart': function (){
     yummyShowSlideIndex++;
+    currentYummyShow = Shows.find().fetch();
+    var showFilter = _.filter(currentYummyShow, function (obj) {
+      if (obj[0]['show'] === thisShowName) {
+        return obj;
+      }
+    })
+    console.log(showFilter);
     $('#chart-control').remove();
     $('.bitly-chart').remove();
     $('.bitcoin-chart').remove();
     $('.the-show').remove();
     $('#slide-inputs-chart').remove();
     $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-    if (currentYummyShow[yummyShowSlideIndex] == null) {
+    if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
       $('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
@@ -598,9 +663,9 @@ Template.yummy_coins.events({
       yummySlideBulletCount = 0
       return
     } else { 
-      var type = currentYummyShow[yummyShowSlideIndex]['3']['slideType'];
-      var source = currentYummyShow[yummyShowSlideIndex]['4']['dataSource'];
-      var fileCount = currentYummyShow[yummyShowSlideIndex]['5']['fileNum'];
+      var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+      var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+      var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
       if (type === "chart" && source === "bitcoin") {
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
         // var func = slideTitle[1]['2']['contents'];
@@ -614,7 +679,7 @@ Template.yummy_coins.events({
         $('#save-userfile-slide').remove();
         return;
       } else {
-        var yummyTitleText = currentYummyShow[yummyShowSlideIndex]['2']['contents'][0]['text'];
+        var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
         $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
       }
     }
