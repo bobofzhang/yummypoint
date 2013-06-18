@@ -42,16 +42,23 @@
       <div id="user-login" class="span3">
           {{loginButtons}}
       </div>
-      <div id="current-show" class="span2">
-      </div>
-      <div id="all-user-shows" class="span2">
-          {{> userShows}}
-      </div>
       <div id="yummy-brand" class="span4">
           <span class="brand"> Yummy Show </span> 
       </div>
     </div> <!-- USER ROW -->
   </div> <!-- USER CONTAINER -->
+
+  <div id="user-shows" class="container">
+    <div id="user-shows-row" class="row">
+      <div id="current-show" class="span6">
+      </div>
+      <div id="all-user-shows" class="span3">
+        {{> userShows}}
+      </div>
+      <div id="make-new-show" class="span3">
+      </div>
+    </div> <!--USER SHOW ROW -->
+  </div><!-- USER SHOW CONTAINER --> 
 
   <div id="user-shows-list" class="container">
     {{> showList}}
@@ -59,10 +66,7 @@
 
   <div id="homepage-mkt" class="container">
     <div id="mkt-plug" class="row">
-      <div id="the-plug" class="span12">
-        <span id="plug-text-title" class="span12"> Tired of Powerpoint? </span>
-        <span id="plug-text-body" class="span12"> Try YummyShow, innovative business presentation software. </span>
-      </div>
+        <span id="plug-text-title" class="span12"> <h4> Tired of Powerpoint?  Try YummyShow! Innovative business presentation software. </h4> </span>
     </div>
   </div>
 
@@ -72,7 +76,7 @@
       <div id="show-row" class="row"> 
         <div id="create-show" class="span12 create-show">
           <span class="create-show-input">
-            <input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>
+            <input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a YummyShow by giving it a name here" autofocus /></span>
         </div>
       </div><!--ROW-->
     </div><!--CONTAINER-->
@@ -82,24 +86,38 @@
       <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
           <div class="item active">
-            <img src="http://24.media.tumblr.com/tumblr_m2jgt82hf51rtufbao1_400.png" alt="">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Finger Canvas</h1>
-                <p class="lead"> Reimagining kids edutainment with webRTC. </p>
+                <h1> Win with Data... Not bullets and arrows </h1> 
+                <h3 class="lead"> The best presentations are </br> <span id="simple" class="caro1-bullet"> simple </span> </br> <span id="clear" class="caro1-bullet"> clear </span> </br> <span id="data-plug" class="caro1-bullet"> data driven </span> </h3>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="http://24.media.tumblr.com/tumblr_m2jgt82hf51rtufbao1_400.png" alt="">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Yummy Show</h1>
-                <p class="lead">Innovating cloud hosted business presentation software with reactive data</p>
+                <h1> Data Visualization </h1>
+                <h3 class="lead"> Yummyshow empowers its customers with innovative data visualization templates. </br> Choose from a selection amazing community created templates using D3 and Raphael </h3>
               </div>
             </div>
           </div>
-        </div>
+          <div class="item">
+            <div class="container">
+              <div class="carousel-caption">
+                <h1> Data Sources </h1>
+                <h3 class="lead"> Yummyshow provides access to live data sources such as Twitter, Bitly, Bitcoin markets and global stockexhanges </br> Customers can of course upload their own data </h3>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="container">
+              <div class="carousel-caption">
+                <h1> Data Reactivity </h1>
+                <h3 class="lead"> Data is alive </br> The web is alive </br> Make your presentations come alive with reactive data! </h3>
+              </div>
+            </div>
+          </div>
+        </div> <!-- CAROUSEL -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
       </div><!-- /.carousel -->
@@ -167,7 +185,11 @@
 </template>
 
 
-
+<!--       <div id="current-show" class="span2">
+      </div>
+      <div id="all-user-shows" class="span2">
+          {{> userShows}}
+      </div> -->
 
 
 
