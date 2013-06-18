@@ -35,7 +35,7 @@ Template.yummy_coins.events({
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
     $('#show-row').remove();
-    $('#slide-index').remove();
+    $('#slide-links').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#slide-nav-row').remove();
@@ -74,7 +74,7 @@ Template.yummy_coins.events({
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
     $('#show-row').remove();
-    $('#slide-index').remove();
+    $('#slide-links').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#slide-nav-row').remove();
@@ -112,7 +112,7 @@ Template.yummy_coins.events({
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
     $('#show-row').remove();
-    $('#slide-index').remove();
+    $('#slide-links').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#slide-nav-row').remove();
@@ -150,7 +150,7 @@ Template.yummy_coins.events({
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
     $('#show-row').remove();
-    $('#slide-index').remove();
+    $('#slide-links').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#slide-nav-row').remove();
@@ -188,7 +188,7 @@ Template.yummy_coins.events({
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
     $('#show-row').remove();
-    $('#slide-index').remove();
+    $('#slide-links').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#slide-nav-row').remove();
@@ -226,7 +226,7 @@ Template.yummy_coins.events({
     $('#preview-slide-inputs').remove();
     $('#myCarousel').remove();
     $('#show-row').remove();
-    $('#slide-index').remove();
+    $('#slide-links').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#slide-nav-row').remove();
@@ -276,8 +276,9 @@ Template.yummy_coins.events({
         $('#footer-div').show();
         $('#show-list-row').show();
         yummyShowSlideIndex = 0;
-        yummySlideBulletCount = 0
-        return
+        yummySlideBulletCount = 0;
+        //thisCurrentShow = undefined;
+        return;
       } else {
         var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
         var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
@@ -332,8 +333,8 @@ Template.yummy_coins.events({
         $('#footer-div').show();
         $('#show-list-row').show();
         yummyShowSlideIndex = 0;
-        yummySlideBulletCount = 0
-        return
+        yummySlideBulletCount = 0;
+        return;
       } else {
         var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
         var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
@@ -390,8 +391,8 @@ Template.yummy_coins.events({
         $('#footer-div').show();
         $('#show-list-row').show();
         yummyShowSlideIndex = 0;
-        yummySlideBulletCount = 0
-        return
+        yummySlideBulletCount = 0;
+        return;
       } else {
         var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
         var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
@@ -436,8 +437,8 @@ Template.yummy_coins.events({
       $('#footer-div').show();
       $('#show-list-row').show();
       yummyShowSlideIndex = 0;
-      yummySlideBulletCount = 0
-      return
+      yummySlideBulletCount = 0;
+      return;
     } else {
       var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
       var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];

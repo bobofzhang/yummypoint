@@ -35,8 +35,7 @@
   </div> <!-- USER CONTAINER -->
 
   <div id="user-shows-list" class="container">
-    <div id="show-list-row" class="row">
-    </div>
+    {{> showList}}
   </div>
 
   <div id="contant-div" class="freeze-reactive-changes">
@@ -78,14 +77,14 @@
       </div><!-- /.carousel -->
 
     <div id="slide-nav" class="container">
-      <div id="slide-nav-row" class="row">
-      </div><!--ROW-->
+<!--       <div id="slide-nav-row" class="row">
+      </div> -->
     </div><!--CONTAINER-->
 
     <div id="slide-index" class="container slide-index">
-      <div class="row">
-        <div id="slide-links" class="span12 slide-links">
-        </div>
+      <div id="slide-index-row" class="row">
+<!--         <div id="slide-links" class="span12 slide-links">
+        </div> -->
       </div><!--ROW-->
     </div><!--CONTAINER-->
 
@@ -134,8 +133,11 @@
   <p class="pull-right">&copy; 2013 Mission Reds, LLC </p>
 </template>
 
-<!-- <a class="top_nav pull-right" href="#">{{loginButtons}}</a>-->
-<!--<a class="top_nav pull-right"> {{loginButtons}} </a> -->
+<template name="showList">
+  <div id="show-list-row" class="row">
+  </div>
+</template>
+
 
 
 
