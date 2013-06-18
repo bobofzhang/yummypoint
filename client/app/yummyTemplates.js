@@ -326,30 +326,38 @@ Template.yummy_coins.events({
       event.preventDefault();
       var showName = document.getElementById("create-show-input").value;
       currentShow = showName;
-      currentUser = Meteor.userId();
-      Meteor.call('passShowName', currentShow);
-      Meteor.call('passShowNameBitCoin', currentShow);
-      Meteor.call('passCurrentShowName', currentShow);
-      Meteor.call('passShowNameUserData', currentShow);
-      Meteor.call('passShowNamePreview', currentShow);
-      slideCount = 1;
-      $('#create-show').remove();
-      $('#marketing-text').remove();
-      $('#call-2-action').remove();
-      $('#myCarousel').remove();
-      $('#user-session-show').remove();
-      $('#mkt-plug').remove();
-      Shownames.insert({
-        show: showName,
-        meteorUser: currentUser
-      })
-      $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h4> Nice YummyShow name. </br> Begin your YummyShow with a cover slide. </br> Follow the prompts in the inputs below. </span></h4>');
-      $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
-      $('#current-show').append('<span id="user-session-show" class="span-session-show">' + showName + '</span>')
-      $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
-      $('#slide-inputs').append('<div class="title-slide-title"</div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-      $('.title-slide-title').append('<input id="title-slide-title" class="slide-text" type="text" placeholder="Enter cover slide title here" autofocus />');
-      $('#slide-index-row').append('<div id="slide-links" class="span12 slide-links"></div>');
+      if (Meteor.userId() == null) {
+        $('#plug-text-title').remove();
+        $('.create-show-input').remove();
+        $('#create-show').append('<span class="create-show-input"></span>');
+        $('.create-show-input').append('<input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a YummyShow by giving it a name here" autofocus />');
+        $('#mkt-plug').append('<span id="user-login-alert" class="span12"> <h4> Try again. You must be signed in to create a tasty YummyShow </h4></span>')
+      } else {
+        currentUser = Meteor.userId();
+        Meteor.call('passShowName', currentShow);
+        Meteor.call('passShowNameBitCoin', currentShow);
+        Meteor.call('passCurrentShowName', currentShow);
+        Meteor.call('passShowNameUserData', currentShow);
+        Meteor.call('passShowNamePreview', currentShow);
+        slideCount = 1;
+        $('#create-show').remove();
+        $('#marketing-text').remove();
+        $('#call-2-action').remove();
+        $('#myCarousel').remove();
+        $('#user-session-show').remove();
+        $('#mkt-plug').remove();
+        Shownames.insert({
+          show: showName,
+          meteorUser: currentUser
+        })
+        $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h4> Nice YummyShow name. </br> Begin your YummyShow with a cover slide. </br> Follow the prompts in the inputs below. </span></h4>');
+        $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
+        $('#current-show').append('<span id="user-session-show" class="span-session-show">' + showName + '</span>')
+        $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"</div>');
+        $('#slide-inputs').append('<div class="title-slide-title"</div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
+        $('.title-slide-title').append('<input id="title-slide-title" class="slide-text" type="text" placeholder="Enter cover slide title here" autofocus />');
+        $('#slide-index-row').append('<div id="slide-links" class="span12 slide-links"></div>');
+      }
     } 
   },
   'keypress #title-slide-title': function (event) {
