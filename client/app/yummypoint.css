@@ -9,6 +9,16 @@ body {
     user-select: none;
 }
 
+/*>>>>>>>>>>>>>> HOMEPAGE <<<<<<<<<<<<<<<<<< */
+
+#homepage-mkt {
+  margin-bottom: 1em;
+}
+
+#the-plug {
+  text-align: center;
+}
+
 /*>>>>>>>>>>>> USER UPLOAD <<<<<<<<<<<<<<<<< */
 
 #inputs {
