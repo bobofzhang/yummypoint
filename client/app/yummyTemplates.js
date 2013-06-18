@@ -40,6 +40,7 @@ Template.userShows.events({
 })
 
 Template.userShows.allUserShows = function () {
+  console.log("i am in the all userShows temp")
   var showQuery = Shows.find().fetch();
   console.log(showQuery);
   var thisUser = Meteor.userId();
@@ -203,13 +204,12 @@ Template.yummy_coins.events({
       $('#start-this-show').remove();
       $('#make-slide-options').remove();
       $('#create-chart-sub').remove();
+      $('#make-new-show').append('<span class="new-yum-show"> New Yummy Show </span>')
       $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
-      //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + currentShow + '</h2></span><div>');
       $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
-      // var slideTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       var slideTitle = Slides.find().fetch();
       var slideFilter = _.filter(slideTitle, function (obj) {
         if (obj['slide'] === slideCount && obj['show'] === currentShow) {
@@ -354,7 +354,7 @@ Template.yummy_coins.events({
         $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
         $('#current-show').append('<span id="user-session-show" class="span-session-show">' + showName + '</span>')
         $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"</div>');
-        $('#slide-inputs').append('<div class="title-slide-title"</div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
+        $('#slide-inputs').append('<div class="title-slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
         $('.title-slide-title').append('<input id="title-slide-title" class="slide-text" type="text" placeholder="Enter cover slide title here" autofocus />');
         $('#slide-index-row').append('<div id="slide-links" class="span12 slide-links"></div>');
       }
@@ -383,7 +383,7 @@ Template.yummy_coins.events({
       var slideOneTitleText = userSlideMap[0]['text'];
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
-      $()
+      $('#make-slide-options').remove();
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
       $('.title-slide-title').append('<div class="title-slideTitle"> <h1>' + slideOneTitleText +'</h1></div>');
       $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter your sub title here" autofocus />');
