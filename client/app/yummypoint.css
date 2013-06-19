@@ -4,6 +4,7 @@
   rgba(20, 53, 173, .75); BLUE
   rgba(213, 0, 101, 0.5); REDDISH
   rgba(142, 235, 0, 0.5); GREEN
+  rgba(192, 192, 192, 0.5); SILVERY
 
   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
@@ -33,6 +34,11 @@ body {
 }
 
 #plug-text-title {
+  background-color: rgba(255, 177, 0, .5);
+  border-radius: 0.5em;
+}
+
+#plug-text-title {
   border-radius: 0.5em;
 }
 
@@ -55,11 +61,70 @@ body {
   text-align: center;
 }
 
+/* >>>>>>>>>>>>> CREATE CHART <<<<<<<<<<<<<<< */
+
+#userFile-chart {
+/*  background-color: rgba(192, 192, 192, 0.5);*/
+  font-size: 1.5em;
+}
+
+#live-data-head {
+/*  background-color: rgba(192, 192, 192, 0.5);*/
+  font-size: 1.5em;
+}
+
+#bitly-data, 
+#bitcoin-data,
+#user-data {
+  background-color: rgba(192, 192, 192, 0.5);
+  border-radius: 0.5em;
+}
+
+.chart-data-sources-types {
+/*  background-color: rgba(213, 0, 101, 0.5);*/
+  background-color: rgba(192, 192, 192, 0.5);
+  border-radius: 0.5em;
+}
+
+#user-chart-options-row {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#bitcoin-data-row {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#coin-line-chart-nav {
+  background-color: rgba(20, 53, 173, .5);
+  border-radius: 0.5em;
+}
+
+#bitly-data-row {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#bitly-line-chart-nav {
+  background-color: rgba(255, 177, 0, .5);
+  border-radius: 0.5em;
+}
+
+#bitly-line-chart-nav:hover {
+  background-color: rgba(255, 177, 0, 1);
+/*  border: 1px solid whitesmoke;*/
+/*  box-shadow: inset 1px 1px 1px;*/ 
+}
+
+/* >>>>>>>>>>>>> END CREATE CHART <<<<<<<<<<<<<<< */
+
 /*>>>>>>>>>>>> USER UPLOAD <<<<<<<<<<<<<<<<< */
 
 #inputs {
-  height: 50px;
-  background-color: pink;
+/*  height: 50px;*/
+  background-color: rgba(213, 0, 101, 0.5);
+  border-radius: 0.5em;
 }
 
 #render-userFile {
@@ -67,6 +132,8 @@ body {
   font-weight: bold;
   background-color: indianred;
 }
+
+/*>>>>>>>>>>>>  END USER UPLOAD <<<<<<<<<<<<<<<<< */
 
 /*>>>>>>>>>>>>>>>> USER MODULE <<<<<<<<<<<<<<<< */
 

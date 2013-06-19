@@ -81,7 +81,7 @@ Template.yummy_coins.events({
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
+    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter the Slide Title Here" autofocus />');
   },
 
   //>>>>>>> SLIDE ONE INPUTS <<<<<<<<<
@@ -135,7 +135,7 @@ Template.yummy_coins.events({
       var bulletText = userSlideMap[1]['text'];
       $('#bullet-one').remove();
       $('.bullet-one').append('<div class="bullet-first-slide-one"> <h2>' + bulletText +'</h2></div>');
-      $('.bullet-two').append('<input id="bullet-two" class="slide-text" type="text" placeholder="Enter Bullet Two Text Here" autofocus />');
+      $('.bullet-two').append('<input id="bullet-two" class="slide-text" type="text" placeholder="Make a Second Point Here" autofocus />');
       return bulletOne;
     }
   },
@@ -160,7 +160,7 @@ Template.yummy_coins.events({
       var bullet2Text = userSlideMap[2]['text'];
       $('#bullet-two').remove();
       $('.bullet-two').append('<div class="bullet-second-slide-one"> <h2>' + bullet2Text +'</h2></div>');
-      $('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Enter Bullet Three Text Here" autofocus />');
+      $('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Make a Third and Final Point Here" autofocus />');
       return bulletTwo;
     }
   },
