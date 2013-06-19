@@ -29,6 +29,7 @@ Template.yummy_coins.events({
     $('.user-details').hide();
     $('#show-list-row').hide();
     $('#footer-div').hide();
+    $('#user-shows').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -68,6 +69,7 @@ Template.yummy_coins.events({
     $('.user-details').hide();
     $('#show-list-row').hide();
     $('#footer-div').hide();
+    $('#user-shows').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -106,6 +108,7 @@ Template.yummy_coins.events({
     $('.user-details').hide();
     $('#show-list-row').hide();
     $('#footer-div').hide();
+    $('#user-shows').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -144,6 +147,7 @@ Template.yummy_coins.events({
     $('.user-details').hide();
     $('#show-list-row').hide();
     $('#footer-div').hide();
+    $('#user-shows').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -182,6 +186,7 @@ Template.yummy_coins.events({
     $('.user-details').hide();
     $('#show-list-row').hide();
     $('#footer-div').hide();
+    $('#user-shows').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -220,6 +225,7 @@ Template.yummy_coins.events({
     $('.user-details').hide();
     $('#show-list-row').hide();
     $('#footer-div').hide();
+    $('#user-shows').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -274,7 +280,8 @@ Template.yummy_coins.events({
         $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
         $('.user-details').show();
         $('#footer-div').show();
-        $('#show-list-row').show();
+        //$('#show-list-row').show();
+        $('#user-shows').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0;
         //thisCurrentShow = undefined;
@@ -331,7 +338,8 @@ Template.yummy_coins.events({
         $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
         $('.user-details').show();
         $('#footer-div').show();
-        $('#show-list-row').show();
+        //$('#show-list-row').show();
+        $('#user-shows').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0;
         return;
@@ -389,7 +397,8 @@ Template.yummy_coins.events({
         $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
         $('.user-details').show();
         $('#footer-div').show();
-        $('#show-list-row').show();
+        //$('#show-list-row').show();
+        $('#user-shows').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0;
         return;
@@ -435,7 +444,8 @@ Template.yummy_coins.events({
       $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
       $('.user-details').show();
       $('#footer-div').show();
-      $('#show-list-row').show();
+      //$('#show-list-row').show();
+      $('#user-shows').show();
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0;
       return;
@@ -491,7 +501,8 @@ Template.yummy_coins.events({
         $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
         $('.user-details').show();
         $('#footer-div').show();
-        $('#show-list-row').show();
+        //$('#show-list-row').show();
+        $('#user-shows').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -547,7 +558,8 @@ Template.yummy_coins.events({
         $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
         $('.user-details').show();
         $('#footer-div').show();
-        $('#show-list-row').show();
+        //$('#show-list-row').show();
+        $('#user-shows').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -605,7 +617,8 @@ Template.yummy_coins.events({
         $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
         $('.user-details').show();
         $('#footer-div').show();
-        $('#show-list-row').show(); 
+        //$('#show-list-row').show();
+        $('#user-shows').show(); 
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -651,7 +664,8 @@ Template.yummy_coins.events({
       $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
       $('.user-details').show();
       $('#footer-div').show();
-      $('#show-list-row').show();
+      //$('#show-list-row').show();
+      $('#user-shows').show();
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return
@@ -699,8 +713,6 @@ Template.yummy_coins.events({
     if (showFilter[yummyShowSlideIndex] == null) {
       $('.the-show').remove();
       $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-      //$('#show-row').append('<div id="session-show" class="span7"><span class="current-show"><h2>' + thisCurrentShow + '</h2></span></div>');
-      //$('#show-row').append('<div id="start-this-show" class="span4"><span class="start-current-show"><h2> Start' + ' ' + thisCurrentShow + '</h2></span><div>'); 
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return

@@ -20,6 +20,7 @@ Template.userShows.events({
   'click #user-show-template': function () {
     currentUser = Meteor.userId();
     var nameNum = 0;
+    $('#show-list-row').show();
     Deps.autorun(function(){
       $('.user-show').remove();
       var showFind = Shownames.find().fetch();
@@ -79,7 +80,7 @@ Template.yummy_coins.events({
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
     $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
   },
 
@@ -107,7 +108,7 @@ Template.yummy_coins.events({
       $('#slide-title').remove();
       $('.instruct-title').remove();
       $('#create-chart-sub').remove();
-      $('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.slide-title').append('<div class="slide-one-title"> <h1>' + slideOneTitleText +'</h1></div>');
       $('.bullet-one').append('<input id="bullet-one" class="slide-text" type="text" placeholder="Make Your First Point" autofocus />');
       return slideTitle;
@@ -174,7 +175,6 @@ Template.yummy_coins.events({
         text: bulletThree,
         meteorUser: Meteor.userId()
       })
-      //var bullet3Obj = (Slides.find({slide: slideCount}, {meteorUser: Meteor.userId()}).fetch());
       var bullet3Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
       var userSlideMap = _.filter(bullet3Obj, function (obj) {
         if (obj['show'] === currentShow) {
@@ -204,8 +204,9 @@ Template.yummy_coins.events({
       $('#start-this-show').remove();
       $('#make-slide-options').remove();
       $('#create-chart-sub').remove();
-      $('#make-new-show').append('<span class="new-yum-show"> New Yummy Show </span>')
-      $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      $('.new-yum-show').remove();
+      $('#make-new-show').append('<span class="new-yum-show"> Make a new Yummy Show </span>')
+      $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
@@ -355,7 +356,7 @@ Template.yummy_coins.events({
         $('#current-show').append('<span id="user-session-show" class="span-session-show">' + showName + '</span>')
         $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"</div>');
         $('#slide-inputs').append('<div class="title-slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-        $('.title-slide-title').append('<input id="title-slide-title" class="slide-text" type="text" placeholder="Enter cover slide title here" autofocus />');
+        $('.title-slide-title').append('<input id="title-slide-title" class="slide-text" type="text" placeholder="Enter the cover slide title here" autofocus />');
         $('#slide-index-row').append('<div id="slide-links" class="span12 slide-links"></div>');
       }
     } 
@@ -384,9 +385,9 @@ Template.yummy_coins.events({
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
       $('#make-slide-options').remove();
-      $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
+      $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save This Slide and Continue </p></span></div>');
       $('.title-slide-title').append('<div class="title-slideTitle"> <h1>' + slideOneTitleText +'</h1></div>');
-      $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter your sub title here" autofocus />');
+      $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter a sub slide title here... if you want" autofocus />');
       return slideTitle;
     }
   },
@@ -411,7 +412,7 @@ Template.yummy_coins.events({
       var subTitleText = userSlideMap[1]['text'];
       $('#title-slide-sub-title').remove();
       $('.bullet-one').append('<div class="title-sub-title"> <h2>' + subTitleText +'</h2></div>');
-      $('.bullet-two').append('<input id="title-slide-sub-sub" class="slide-text" type="text" placeholder="Enter additional details here" autofocus />');
+      $('.bullet-two').append('<input id="title-slide-sub-sub" class="slide-text" type="text" placeholder="Enter additional details here. Like the date." autofocus />');
       return bulletOne;
     }
   },
@@ -472,10 +473,10 @@ Template.yummy_coins.events({
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
       var thirdBull = slideTextArray[3]['text'];
-      $('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+      //$('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+      $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="preview-slide-inputs" class="span12"></div>');
-      //$('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-      // $('#preview-slide-inputs').append('<div class="preview-title-slide-title"></div>'); 
       $('#preview-slide-inputs').append('<div class="preview-title-slideTitle"> <h1>' + title + '</h1></div><div class="title-sub-title"><h2>' + firstBull + '</h2></div><div class="title-sub-sub"> <h3>' + secondBull + '</h3></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
     }
   },

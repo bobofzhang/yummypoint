@@ -43,27 +43,27 @@
       <div id="user-login" class="span3">
           {{loginButtons}}
       </div>
-      <div id="yummy-brand" class="span4">
+      <div id="all-user-shows" class="span3">
+        {{> userShows}}
+      </div>
+      <div id="yummy-brand" class="span5">
           <span class="brand"> Yummy Show </span> 
       </div>
     </div> <!-- USER ROW -->
   </div> <!-- USER CONTAINER -->
 
-  <div id="user-shows" class="container">
-    <div id="user-shows-row" class="row">
-      <div id="current-show" class="span6">
-      </div>
-      <div id="all-user-shows" class="span3">
-        {{> userShows}}
-      </div>
-      <div id="make-new-show" class="span3">
-      </div>
-    </div> <!--USER SHOW ROW -->
-  </div><!-- USER SHOW CONTAINER --> 
-
   <div id="user-shows-list" class="container">
     {{> showList}}
   </div>
+
+  <div id="user-shows" class="container">
+    <div id="user-shows-row" class="row">
+      <div id="current-show" class="span8">
+      </div>
+      <div id="make-new-show" class="span4">
+      </div>
+    </div> <!--USER SHOW ROW -->
+  </div><!-- USER SHOW CONTAINER --> 
 
   <div id="homepage-mkt" class="container">
     <div id="mkt-plug" class="row">
@@ -77,7 +77,7 @@
       <div id="show-row" class="row"> 
         <div id="create-show" class="span12 create-show">
           <span class="create-show-input">
-            <input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a YummyShow by giving it a name here" autofocus /></span>
+            <input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a Yummy Show by naming it here" autofocus /></span>
         </div>
       </div><!--ROW-->
     </div><!--CONTAINER-->
@@ -123,18 +123,15 @@
         <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
       </div><!-- /.carousel -->
 
+    <div id="slide-index" class="container slide-index">
+      <div id="slide-index-row" class="row">
+      </div><!--ROW-->
+    </div><!--CONTAINER-->
+
     <div id="slide-nav" class="container">
 <!--       <div id="slide-nav-row" class="row">
       </div> -->
     </div><!--CONTAINER-->
-
-    <div id="slide-index" class="container slide-index">
-      <div id="slide-index-row" class="row">
-<!--         <div id="slide-links" class="span12 slide-links">
-        </div> -->
-      </div><!--ROW-->
-    </div><!--CONTAINER-->
-
 
     <div id="body" class="container body">
       <div id="body-row" class="row">
