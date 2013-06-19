@@ -210,7 +210,7 @@ Template.yummy_coins.events({
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
-      $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
+      $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span id="slidelink" class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
       var slideTitle = Slides.find().fetch();
       var slideFilter = _.filter(slideTitle, function (obj) {
         if (obj['slide'] === slideCount && obj['show'] === currentShow) {
@@ -330,6 +330,7 @@ Template.yummy_coins.events({
       if (Meteor.userId() == null) {
         $('#plug-text-title').remove();
         $('.create-show-input').remove();
+        $('user-login-alert').remove();
         $('#create-show').append('<span class="create-show-input"></span>');
         $('.create-show-input').append('<input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a YummyShow by giving it a name here" autofocus />');
         $('#mkt-plug').append('<span id="user-login-alert" class="span12"> <h4> Try again. You must be signed in to create a tasty YummyShow </h4></span>')
@@ -351,7 +352,7 @@ Template.yummy_coins.events({
           show: showName,
           meteorUser: currentUser
         })
-        $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h4> Nice YummyShow name. </br> Begin your YummyShow with a cover slide. </br> Follow the prompts in the inputs below. </span></h4>');
+        $('.make-start').append('<div id="make-slide-options" class="span12"><span class="slide-options"><h4> Begin your YummyShow with a cover slide. Follow the prompts in the inputs below. </span></h4>');
         $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
         $('#current-show').append('<span id="user-session-show" class="span-session-show">' + showName + '</span>')
         $('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"</div>');
@@ -385,6 +386,7 @@ Template.yummy_coins.events({
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
       $('#make-slide-options').remove();
+      $('#homepage-mkt').remove();
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save This Slide and Continue </p></span></div>');
       $('.title-slide-title').append('<div class="title-slideTitle"> <h1>' + slideOneTitleText +'</h1></div>');
       $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter a sub slide title here... if you want" autofocus />');
