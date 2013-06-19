@@ -37,6 +37,16 @@ Template.userShows.events({
         }
       })
     })
+    $('#user-show-template').hide();
+    $('#all-user-shows').append('<div id="hide-shows" class="user-showcontrols"><span> Hide My Shows </span></div>');
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hide-shows': function (){
+    $('#user-show-template').show();
+    $('#show-list-row').hide();
+    $('#hide-shows').remove();
   }
 })
 
