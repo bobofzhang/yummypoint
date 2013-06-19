@@ -30,23 +30,21 @@ Template.yummy_coins.events({
   }
 })
 
-Template.yummy_coins.events({
-  'click .line-chart': function () {
-    $('.create_graph').remove();
-    //$('.make-start').append('<div class="line-chart-options"><div id="line-options-row" class="row"><div class="span6"> <span class="line-chart"> <p> Line Chart</p></span></div><div class="span3"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div class="span3"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div></div></div>');
-    //$('.make-start').append('<div class="line-chart-options"><div id="line-options-row" class="row"><div id="bar-chart-switch" class="span6"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span6"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div></div></div>');
-    $('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
-    $('.make-start').append('<div class="line-chart-data-sources"><div id="line-data-row" class="row"><div id="userFile-chart" class="span6"><span class="line-chart-upload"><h3> Upload a File</h3><span></div></div>');
-    $('#line-data-row').append('<div class="span6"><span class="live-data-header"> <h3> Use Live Data Sources </h3> </span></div></div></div>');
-    $('.make-start').append('<div class="data-source-details"><div class="row"><div class="span6"></div><div class="span2"><span class="twitter"> <h3> Twitter </h3> </span></div><div class="span2"><span class="bit-coins"> <h3> Bit Coins </h3> </span></div><div class="span2"><span class="bitly"> <h3> Bitly </h3> </span></div></div></div>');
-  },
-  'click #bar-chart-switch': function () {
-    alert('congratulations... but sorry, no easter eggs!')
-  },
-  'click #bubble-chart-switch': function () {
-    alert('sorry... you loose. wrong button mister clicker!!!')
-  }
-})
+// Template.yummy_coins.events({
+//   'click .line-chart': function () {
+//     $('.create_graph').remove();
+//     $('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
+//     $('.make-start').append('<div class="line-chart-data-sources"><div id="line-data-row" class="row"><div id="userFile-chart" class="span6"><span class="line-chart-upload"><h3> Upload a File</h3><span></div></div>');
+//     $('#line-data-row').append('<div class="span6"><span class="live-data-header"> <h3> Use Live Data Sources </h3> </span></div></div></div>');
+//     $('.make-start').append('<div class="data-source-details"><div class="row"><div class="span6"></div><div class="span2"><span class="twitter"> <h3> Twitter </h3> </span></div><div class="span2"><span class="bit-coins"> <h3> Bit Coins </h3> </span></div><div class="span2"><span class="bitly"> <h3> Bitly </h3> </span></div></div></div>');
+//   },
+//   'click #bar-chart-switch': function () {
+//     alert('congratulations... but sorry, no easter eggs!')
+//   },
+//   'click #bubble-chart-switch': function () {
+//     alert('sorry... you loose. wrong button mister clicker!!!')
+//   }
+// })
 
 Template.yummy_coins.events({
   'click #bitly-line-chart-nav': function () {
@@ -54,14 +52,11 @@ Template.yummy_coins.events({
     $('.data-source-details').remove();
     $('#slide-controls').remove();
     $('#create-text-sub').remove();
-    $('#bar-chart-switch').remove();
-    $('#bubble-chart-switch').remove();
     $('.chart-data-sources-types').remove();
     $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save this sick Line Graph </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch back to Create Chart Slide home </p></span></div>');
-    //$('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     //return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.call("renderHotBits");
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); });
   }
@@ -73,14 +68,11 @@ Template.yummy_coins.events({
     $('.data-source-details').remove();
     $('#slide-controls').remove();
     $('#create-text-sub').remove();
-    $('#bar-chart-switch').remove();
-    $('#bubble-chart-switch').remove();
     $('.chart-data-sources-types').remove();
     $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     $('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch back to Create Chart Slide home </p></span></div>');
-    //$('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     return Deps.autorun(function(){ return Meteor.call('D3testinit'); });
   }
 })

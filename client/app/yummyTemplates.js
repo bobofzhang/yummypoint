@@ -44,9 +44,43 @@ Template.userShows.events({
 
 Template.yummy_coins.events({
   'click #hide-shows': function (){
+    $('#hide-shows').remove();
     $('#user-show-template').show();
     $('#show-list-row').hide();
+  }
+})
+
+Template.yummy_coins.events({
+  'click #show-maker': function () {
+    yummyShowSlideIndex = 0;
+    yummySlideBulletCount = 0;
+    $('#show-maker').remove();
+    $('#user-session-show').remove();
+    // $('.user-details').hide();
+    // $('#show-list-row').hide();
+    // $('#footer-div').hide();
+    // $('#user-shows').hide();
+    $('.bitcoin-chart').remove();
+    $('.bitly-chart').remove();
+    $('#the-show-title').remove();
+    $('#preview-slide-inputs').remove();
+    $('#myCarousel').remove();
+    $('#show-row').remove();
+    $('#slide-links').remove();
+    $('#slide-inputs').remove();
+    $('#slide-inputs-chart').remove();
+    $('#slide-nav-row').remove();
+    $('.saved-slide-preview').remove();
+    $('#slide-preview').remove();
+    $('#img-back-upload').remove();
+    $('#slide-controls').remove();
+    $('#create-chart-sub').remove();
+    $('.the-show').remove();
+    $('#yummy-shows').append('<div id="show-row" class="row"></div>');
+    $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+    $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a new Yummy Show by naming it here" autofocus /></span>');
     $('#hide-shows').remove();
+    $('#user-show-template').show();
   }
 })
 
@@ -73,8 +107,6 @@ Template.yummy_coins.events({
     $('#chart-bullets').remove();
     $('#save-bitly-slide').remove();
     $('#create-text-sub').remove();
-    $('#bar-chart-switch').remove();
-    $('#bubble-chart-switch').remove();
     $('#slide-controls').remove();
     $('#line-chart-nav').remove();
     $('#bar-chart-nav').remove();
@@ -214,8 +246,8 @@ Template.yummy_coins.events({
       $('#start-this-show').remove();
       $('#make-slide-options').remove();
       $('#create-chart-sub').remove();
-      $('.new-yum-show').remove();
-      $('#make-new-show').append('<span class="new-yum-show"> Make a new Yummy Show </span>')
+      $('#show-maker').remove();
+      $('#make-new-show').append('<div id="show-maker"><span class="new-yum-show"><p> Make a new Yummy Show </p> </span></div>')
       $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');

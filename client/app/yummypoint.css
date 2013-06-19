@@ -168,9 +168,19 @@ margin-bottom: 1em;
 }
 
 #make-new-show {
-  color: rgba(20, 53, 173, .9);
+
+}
+
+.new-yum-show p {
+  padding-top: 0.15em;
+}
+
+#show-maker {
+  background-color: rgba(213, 0, 101, 0.5);
   text-align: center;
-  border-radius: 0.4em;
+  border-radius: 0.5em;
+  font-size: 1.25em;
+  height: 1.5em;
 }
 
 #user-row {
