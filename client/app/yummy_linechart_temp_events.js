@@ -53,7 +53,9 @@ Template.yummy_coins.events({
     $('#slide-controls').remove();
     $('#create-text-sub').remove();
     $('.chart-data-sources-types').remove();
-    $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
+    $('#slide-inputs').remove();
+    //$('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
+    $('.make-start').append('<div id="chart-render" class="span12"></div>');
     $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');

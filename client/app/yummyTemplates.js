@@ -77,6 +77,7 @@ Template.yummy_coins.events({
     $('#slide-controls').remove();
     $('#create-chart-sub').remove();
     $('.the-show').remove();
+    $('#chart-render').remove();
     $('#yummy-shows').append('<div id="show-row" class="row"></div>');
     $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
     $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a new Yummy Show by naming it here" autofocus /></span>');
@@ -122,6 +123,7 @@ Template.yummy_coins.events({
     $('#slide-inputs-chart').remove();
     $('#save-userfile-slide').remove();
     $('#slide-inputs-chart').remove();
+    $('#chart-render').remove();
     $('#inputs').remove();
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');

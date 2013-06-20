@@ -1,14 +1,13 @@
 
-// Meteor.setInterval(function(){
-//   Meteor.call("searchBitly", function(error, result) { 
-//     console.log("search bitly called"); 
-//     return result;
-//   })
-// }, 60000);
+Meteor.setInterval(function(){
+  Meteor.call("searchBitly", function(error, result) { 
+    console.log("search bitly called"); 
+    return result;
+  })
+}, 20000);
 
 Meteor.methods({
   searchBitly: function(){
-    console.log('i am in bitly');
 
     // var accessToken = 06cc854f25b36aebb4a9fac685d880413d511967;
     var result = Meteor.http.call('GET',
