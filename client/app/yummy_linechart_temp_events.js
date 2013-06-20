@@ -54,7 +54,7 @@ Template.yummy_coins.events({
     $('#create-text-sub').remove();
     $('.chart-data-sources-types').remove();
     $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
-    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save this sick Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     //return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3'); }) && Meteor.call("renderHotBits");
@@ -70,7 +70,7 @@ Template.yummy_coins.events({
     $('#create-text-sub').remove();
     $('.chart-data-sources-types').remove();
     $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
-    $('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save Bitcoin Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     return Deps.autorun(function(){ return Meteor.call('D3testinit'); });

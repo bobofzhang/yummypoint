@@ -83,7 +83,6 @@ Template.yummy_coins.events({
 Meteor.methods({
 
   D3testinit: function() {
-    // var dataset = getData();
     $('.bitcoin-chart').remove();
     $('.the-show').remove();
     $('#slide-inputs').remove();

@@ -64,12 +64,12 @@ body {
 /* >>>>>>>>>>>>> CREATE CHART <<<<<<<<<<<<<<< */
 
 #userFile-chart {
-/*  background-color: rgba(192, 192, 192, 0.5);*/
+  margin-top: 0.25em;
   font-size: 1.5em;
 }
 
 #live-data-head {
-/*  background-color: rgba(192, 192, 192, 0.5);*/
+  margin-top: 0.25em;
   font-size: 1.5em;
 }
 
@@ -81,29 +81,30 @@ body {
 }
 
 .chart-data-sources-types {
-/*  background-color: rgba(213, 0, 101, 0.5);*/
   background-color: rgba(192, 192, 192, 0.5);
   border-radius: 0.5em;
 }
 
 #user-chart-options-row {
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.75em;
 }
 
 #bitcoin-data-row {
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.75em;
 }
 
 #coin-line-chart-nav {
   background-color: rgba(20, 53, 173, .5);
   border-radius: 0.5em;
+  margin-right: 0.5em;
 }
 
 #bitly-data-row {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  margin-right: 0.5em;
 }
 
 #bitly-line-chart-nav {
@@ -125,6 +126,7 @@ body {
 /*  height: 50px;*/
   background-color: rgba(213, 0, 101, 0.5);
   border-radius: 0.5em;
+  margin-right: 0.5em;
 }
 
 #render-userFile {
@@ -140,7 +142,6 @@ body {
 #user {
   margin-top: 10px;
   margin-bottom: 5px;
-/*  background-color: burlywood;*/
   background-color: rgba(192, 192, 192, 0.5);
   border-radius: 0.5em;
 }
@@ -173,6 +174,7 @@ margin-bottom: 1em;
 
 .new-yum-show p {
   padding-top: 0.15em;
+  color: white;
 }
 
 #show-maker {
@@ -602,45 +604,13 @@ margin-bottom: 1em;
   margin-top: 0.6em;
 }
 
-/*#img-back-upload {
-  text-align: center;
-  height: 3em;  
-  background-color: powderblue;
-  font-size: 1.5em;
-  color: white;
-  margin-bottom: 0.75em;
-  border-radius: 0.75em;
-}
-
-#bar-chart-switch {
-  background-color: peru;
-  color: white;
-  text-align: center;
-  height: 3em; 
-  font-size: 1.5em;
-  margin-bottom: 0.75em;
-  border-radius: 0.75em;
-}
-
-#bubble-chart-switch {
-  background-color: olive;
-  color: white;
-  text-align: center;
-  height: 3em; 
-  font-size: 1.5em;
-  margin-bottom: 0.75em;
-  border-radius: 0.75em;
-}*/
-
 #save-bitly-slide, 
 #save-bitcoin-slide, 
 #save-userfile-slide {
   text-align: center;
   height: 2.25em;  
-/*  background-color: chocolate;*/
   background-color: rgba(255, 177, 0, .5);
   font-size: 1.5em;
-  color: white;
   margin-bottom: 0.5em;
   border-radius: 0.75em;
 }
@@ -652,7 +622,6 @@ margin-bottom: 1em;
 }
 
 #saved-slide {
-/*  background-color: mediumseagreen;*/
   color: white;
   background-color: rgba(213, 0, 101, 0.5);
   border-radius: 0.25em;

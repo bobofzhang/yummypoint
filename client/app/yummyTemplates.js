@@ -118,6 +118,7 @@ Template.yummy_coins.events({
     $('.chart-data-sources-types').remove();
     $('#slide-inputs-chart').remove();
     $('#save-userfile-slide').remove();
+    $('#slide-inputs-chart').remove();
     $('#inputs').remove();
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');

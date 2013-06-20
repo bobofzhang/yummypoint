@@ -21,7 +21,7 @@ Template.yummy_coins.events({
     $('#inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#save-userfile-slide').remove();
-    $('#slide-nav-row').append('<div id="create-text-sub" class="span12"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span12"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
     // $('.make-start').append('<div class="row chart-data-sources-types"></div>');
     // $('.chart-data-sources-types').append('<div id="user-data-row" class="span12"></div>');
     $('.make-start').append('<div id="data-source-container" class="span12 chart-data-sources-types"></div>');
