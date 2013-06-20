@@ -86,6 +86,7 @@ Template.yummy_coins.events({
 Template.yummy_coins.events({
   'click #render-userFile': function () {
     $('#user-data-row').remove();
+    $('.make-start').append('<div id="chart-render" class="span12"></div>');
     Meteor.call('userFileLineChart', fileCount);
   }
 })
@@ -117,6 +118,7 @@ Template.yummy_coins.events({
     $('#create-chart-sub').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
+    $('#chart-render').remove();
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Create a Chart Slide </p></span></div>');
@@ -139,7 +141,7 @@ Meteor.methods({
     $('#slide-nav-row').append('<div id="save-userfile-slide" class="span4 save-userfile-chart"> <span class="save-userfile"> <p> Save this Line Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-    $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
+    $('#chart-render').append('<div id="slide-inputs-chart" class="show-title-slide"></div>');
     var rawData;
 
     rawData = Files.find({}).fetch();
