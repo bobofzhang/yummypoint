@@ -24,7 +24,6 @@ var bitcoinInterval = Meteor.setInterval(function(){
 
 Meteor.methods({
   passShowNameBitCoin: function (showName) {
-    console.log('in the passShowNameBitCoin');
     thisShowBitCoin = showName;
     return thisShowBitCoin;
   }
@@ -39,7 +38,6 @@ Meteor.methods({
 
 Meteor.methods({
   showBitCoinLine: function (func) {
-    console.log('in showBitCoinLine bitch');
     return func;
   }
 })
@@ -68,6 +66,7 @@ Template.yummy_coins.events({
     $('#create-chart-sub').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
+    $('#chart-render').remove();
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create Chart Slide </p></span></div>');
@@ -86,7 +85,7 @@ Meteor.methods({
     $('.the-show').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
-    $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
+    $('#chart-render').append('<div id="slide-inputs-chart" class="show-title-slide"></div>');
     var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
     console.log(checkBitTime);
 

@@ -501,6 +501,7 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
+    $('#chart-render').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -512,8 +513,10 @@ Template.yummy_coins.events({
     var type = slideShowMap[0]['3']['slideType'];
     var source = slideShowMap[0]['4']['dataSource'];
     if (type === "chart" && source === "bitcoin") {
+      $('.make-start').append('<div id="chart-render" class="span12"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
+      $('.make-start').append('<div id="chart-render" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideShowMap[0][2]['contents'];
@@ -521,7 +524,6 @@ Template.yummy_coins.events({
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
       var thirdBull = slideTextArray[3]['text'];
-      //$('#slide-nav-row').append('<div id="edit-current-slide" class="span4"><span class="edit-slide"><p class="edit-this-slide"> Edit This Slide </p></span></div><div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
       $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="preview-slide-inputs" class="span12"></div>');

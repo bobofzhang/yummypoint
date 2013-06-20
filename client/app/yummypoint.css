@@ -715,7 +715,7 @@ margin-bottom: 1em;
 
 .saved-slide-preview {
   text-align: center;
-  background-color: oldlace;
+  background-color: rgba(192, 192, 192, 0.5);
   border-radius: 3em;
   height: 600px;
 }
