@@ -101,6 +101,11 @@ body {
   margin-right: 0.5em;
 }
 
+#coin-line-chart-nav:hover {
+  background-color: rgba(20, 53, 173, 1);
+  color: white;
+}
+
 #bitly-data-row {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -114,6 +119,7 @@ body {
 
 #bitly-line-chart-nav:hover {
   background-color: rgba(255, 177, 0, 1);
+  color: white;
 /*  border: 1px solid whitesmoke;*/
 /*  box-shadow: inset 1px 1px 1px;*/ 
 }
@@ -127,12 +133,41 @@ body {
   background-color: rgba(213, 0, 101, 0.5);
   border-radius: 0.5em;
   margin-right: 0.5em;
+  color: white;
+}
+
+#inputs:hover {
+/*  height: 50px;*/
+  background-color: rgba(213, 0, 101, 1);
 }
 
 #render-userFile {
-  height: 100px;
+  font-size: 1.5em;
+  background-color: rgba(255, 177, 0, .5);
+  border-radius: 0.5em;
+  height: 2.25em; 
+}
+
+#render-userFile:hover {
+  background-color: rgba(255, 177, 0, 1);
+  color: white;
+}
+
+#render-userFile p {
+  margin-top: 0.6em;
+}
+
+#upload-success-msg {
+  font-size: 1.5em;
+  border-radius: 0.5em;
+  background-color: rgba(192, 192, 192, 0.5);
+  margin-top: 0.5em;
+  margin-bottom: 1em;
   font-weight: bold;
-  background-color: indianred;
+}
+
+#upload-success-msg p {
+  margin-top: 0.4em;
 }
 
 /*>>>>>>>>>>>>  END USER UPLOAD <<<<<<<<<<<<<<<<< */
@@ -174,7 +209,6 @@ margin-bottom: 1em;
 
 .new-yum-show p {
   padding-top: 0.15em;
-  color: white;
 }
 
 #show-maker {
@@ -183,6 +217,12 @@ margin-bottom: 1em;
   border-radius: 0.5em;
   font-size: 1.25em;
   height: 1.5em;
+  color: white;
+}
+
+#show-maker:hover {
+  background-color: rgba(213, 0, 101, 1);
+  color: black;
 }
 
 #user-row {
@@ -393,13 +433,6 @@ margin-bottom: 1em;
   margin-bottom: 1em;
 }
 
-#slide-instruct {
-  text-align: center;
-  background-color: tomato;
-  color: white;
-  margin-bottom: 1em;
-}
-
 #create-show {
   margin-bottom: 2em;
 }
@@ -566,9 +599,13 @@ margin-bottom: 1em;
   height: 2.25em;  
   background-color: rgba(20, 53, 173, .5);
   font-size: 1.5em;
-/*  color: white;*/
   margin-bottom: 0.5em;
   border-radius: 0.75em;
+}
+
+#create-chart-sub:hover {
+  background-color: rgba(20, 53, 173, 1);
+  color: white;
 }
 
 #create-chart-sub p {
@@ -578,12 +615,15 @@ margin-bottom: 1em;
 #create-text-sub {
   text-align: center;
   height: 2.25em;  
-/*  background-color: goldenrod;*/
   background-color: rgba(142, 235, 0, 0.5);
   font-size: 1.5em;
-/*  color: white;*/
   margin-bottom: 0.5em;
   border-radius: 0.75em;
+}
+
+#create-text-sub:hover {
+  background-color: rgba(142, 235, 0, 1);
+  color: white;
 }
 
 #create-text-sub p {
@@ -615,6 +655,13 @@ margin-bottom: 1em;
   border-radius: 0.75em;
 }
 
+#save-bitly-slide:hover, 
+#save-bitcoin-slide:hover, 
+#save-userfile-slide:hover {
+  background-color: rgba(255, 177, 0, 1);
+  color: white;
+}
+
 #save-bitly-slide p, 
 #save-bitcoin-slide p, 
 #save-userfile-slide p {
@@ -625,6 +672,11 @@ margin-bottom: 1em;
   color: white;
   background-color: rgba(213, 0, 101, 0.5);
   border-radius: 0.25em;
+}
+
+#saved-slide:hover {
+  color: black;
+  background-color: rgba(213, 0, 101, 1);
 }
 
 #slide-links p {

@@ -56,6 +56,7 @@ Template.yummy_coins.events({
     yummySlideBulletCount = 0;
     $('#show-maker').remove();
     $('#user-session-show').remove();
+    $('slide-inputs-chart').remove();
     // $('.user-details').hide();
     // $('#show-list-row').hide();
     // $('#footer-div').hide();
@@ -79,8 +80,8 @@ Template.yummy_coins.events({
     $('#yummy-shows').append('<div id="show-row" class="row"></div>');
     $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
     $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a new Yummy Show by naming it here" autofocus /></span>');
-    $('#hide-shows').remove();
-    $('#user-show-template').show();
+    //$('#hide-shows').remove();
+    // $('#user-show-template').show();
   }
 })
 
@@ -89,6 +90,8 @@ Template.userShows.allUserShows = function () {
   var showQuery = Shows.find().fetch();
   console.log(showQuery);
   var thisUser = Meteor.userId();
+  $('#hide-shows').remove();
+  $('#show-list-row').hide();
   var showsExist;
   _.find(showQuery, function (obj) {
     if (obj[6]['meteorUser'] === thisUser) {

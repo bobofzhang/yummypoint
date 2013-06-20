@@ -36,8 +36,6 @@ Template.yummy_coins.events({
     //$('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-    //$('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
-    //$('.make-start').append('<div class="data-source-details"><div class="row"><div id="twitter-switch" class="span6"> <span class="twitter"> <h3> Switch to Twitter Data </h3> </span></div><div id="bitly-switch" class="span6"> <span class="bitly"> <h3> Switch to Bitly Data </h3> </span></div></div></div>');
     $('.make-start').append('<div id="inputs" class="span12 clearfix"><input type="file" id="files" name="files[]" /></div>');
   }
 })
@@ -55,9 +53,8 @@ Template.yummy_coins.events({
     $('#bitcoin-data-row').remove();
     $('#bitly-data-row').remove();
     $('.chart-data-sources-types').remove();
-    //$('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     // event.preventDefault();
     var files = event.target.files; // FileList object
     var file = files[0];
@@ -82,7 +79,7 @@ Template.yummy_coins.events({
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
     }
-    return $('#inputs').remove() &&  $('.make-start').append('<div id="render-userFile" class="span12 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data </p></span></div>')
+    return $('#inputs').remove() &&  $('.make-start').append('<div id="post-user-file-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div><div class="span2"></div><div id="render-userFile" class="span8 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data Line Chart </p></span></div><div class="span2></div></div>')
   }
 })
 
@@ -122,7 +119,7 @@ Template.yummy_coins.events({
     $('#slide-inputs-chart').remove();
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Create a Chart Slide </p></span></div>');
     $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
     Meteor.call('tickSlideCount');
   }
@@ -130,18 +127,18 @@ Template.yummy_coins.events({
 
 Meteor.methods({
   userFileLineChart: function(index) {
-    console.log('i am in the userFileLineChart line graph method');
     var currentUser = Meteor.userId();
     $('.bitly-chart').remove();
     $('.userFile-chart').remove();
     $('#user-data-row').remove();
     $('#render-userFile').remove();
+    $('#post-user-file-upload').remove();
     $('#create-chart-sub').remove();
     $('#create-text-sub').remove();
     $('#show-content-title').remove();
-    $('#slide-nav-row').append('<div id="save-userfile-slide" class="span4 save-userfile-chart"> <span class="save-userfile"> <p> Save this sick Line Graph </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    $('#slide-nav-row').append('<div id="save-userfile-slide" class="span4 save-userfile-chart"> <span class="save-userfile"> <p> Save this Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     $('.make-start').append('<div id="slide-inputs-chart" class="span12 show-title-slide"></div>');
     var rawData;
 
