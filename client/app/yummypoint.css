@@ -193,9 +193,14 @@ body {
 
 }
 
+.user-show:hover {
+  color: white;
+  background-color: rgba(255, 177, 0, 1);
+}
+
 #user-shows-list {
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
 #user-shows {
@@ -246,6 +251,11 @@ margin-bottom: 1em;
   margin-top: 0.15em;
   padding: 0.15em 0;
   font-size: 1.25em;
+}
+
+#all-user-shows:hover {
+  color: white;
+  font-size: 1.5em;
 }
 
 #current-show {
@@ -582,12 +592,15 @@ margin-bottom: 1em;
 #slide-controls {
   text-align: center;
   height: 2.25em;  
-/*  background-color: lightslategray;*/
   background-color: rgba(255, 177, 0, .5);
   font-size: 1.5em;
-/*  color: white;*/
   margin-bottom: 0.5em;
   border-radius: 0.75em;
+}
+
+#slide-controls:hover {
+  background-color: rgba(255, 177, 0, 1);
+  color: white;
 }
 
 #slide-controls p {
