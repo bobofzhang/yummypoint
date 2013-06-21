@@ -524,10 +524,10 @@ Template.yummy_coins.events({
     var type = slideShowMap[0]['3']['slideType'];
     var source = slideShowMap[0]['4']['dataSource'];
     if (type === "chart" && source === "bitcoin") {
-      $('.make-start').append('<div id="chart-render" class="span12"></div>');
+      $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly") {
-      $('.make-start').append('<div id="chart-render" class="span12"></div>');
+      $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3'); 
     } else {
       var slideTextArray = slideShowMap[0][2]['contents'];

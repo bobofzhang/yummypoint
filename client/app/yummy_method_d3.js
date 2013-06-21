@@ -67,6 +67,7 @@ Template.yummy_coins.events({
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#chart-render').remove();
+    $('#chart-render-bitcoin').remove();
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create Chart Slide </p></span></div>');
