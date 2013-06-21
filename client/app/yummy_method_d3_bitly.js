@@ -1,5 +1,5 @@
 
-var bitPhrase = "justin bieber";
+var bitPhrase = "james gandolfini";
 var thisShow;
 var slideNumber;
 
@@ -13,15 +13,12 @@ Meteor.methods({
 Meteor.methods({
   passSlideCount: function (count) {
     slideNumber = count;
-    console.log(slideNumber);
     return slideNumber;
   }
 })
 
 Template.yummy_coins.events({
   'click #save-bitly-slide': function() {
-    console.log('saving bitly chart');
-    console.log(thisShow);
     Shows.insert([
       { show: thisShow },
       { slide: slideNumber },
@@ -56,7 +53,6 @@ Template.yummy_coins.events({
   },
   'click #start-chart': function() {
     var showSlide = (Shows.find({ 0 : { show: thisShow }}).fetch());
-    console.log(showSlide);
     $('.make-start').remove();
     var type = showSlide[0]['1']['slideType'];
     if (type === "chart") {

@@ -253,6 +253,7 @@ Template.yummy_coins.events({
       $('#make-slide-options').remove();
       $('#create-chart-sub').remove();
       $('#show-maker').remove();
+      $('#chart-render').remove();
       $('#make-new-show').append('<div id="show-maker"><span class="new-yum-show"><p> Make a new Yummy Show </p> </span></div>')
       $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
