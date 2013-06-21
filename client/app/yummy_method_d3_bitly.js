@@ -67,7 +67,7 @@ Meteor.methods({
   bitlyLineChartD3: function(hotbits) {
     $('.bitly-chart').remove();
     $('.bitcoin-chart').remove();
-    $('.the-show').remove();
+    //$('.the-show').remove();
     // $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#chart-render').append('<div id="slide-inputs-chart" class="show-title-slide"></div>');

@@ -154,7 +154,6 @@ Meteor.methods({
     console.log(fileUserFilter);
 
     var myData = fileUserFilter[index]['file'];
-    //console.log(myData);
 
     var data = [];
 

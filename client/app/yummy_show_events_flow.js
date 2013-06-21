@@ -26,7 +26,7 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
-    $('plug-text-title').remove();
+    $('#plug-text-title').remove();
     $('#show-maker').remove();
     $('.user-details').hide();
     $('#show-list-row').hide();
@@ -69,7 +69,7 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
-    $('plug-text-title').remove();
+    $('#plug-text-title').remove();
     $('#show-maker').remove();
     $('.user-details').hide();
     $('#show-list-row').hide();
@@ -111,7 +111,7 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
-    $('plug-text-title').remove();
+    $('#plug-text-title').remove();
     $('#show-maker').remove();
     $('.user-details').hide();
     $('#show-list-row').hide();
@@ -153,7 +153,7 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
-    $('plug-text-title').remove();
+    $('#plug-text-title').remove();
     $('#show-maker').remove();
     $('.user-details').hide();
     $('#show-list-row').hide();
@@ -195,7 +195,7 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
-    $('plug-text-title').remove();
+    $('#plug-text-title').remove();
     $('#show-maker').remove();
     $('.user-details').hide();
     $('#show-list-row').hide();
@@ -237,7 +237,7 @@ Template.yummy_coins.events({
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
-    $('plug-text-title').remove();
+    $('#plug-text-title').remove();
     $('#show-maker').remove();
     $('.user-details').hide();
     $('#show-list-row').hide();
