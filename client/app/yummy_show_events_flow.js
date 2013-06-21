@@ -313,6 +313,7 @@ Template.yummy_coins.events({
         $('#hide-shows').remove();
         $('#user-show-template').show();
         $('#user-shows').show();
+        $('#homepage-mkt').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0;
         return;
@@ -378,6 +379,7 @@ Template.yummy_coins.events({
         $('#hide-shows').remove();
         $('#user-show-template').show();
         $('#user-shows').show();
+        $('#homepage-mkt').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0;
         return;
@@ -442,6 +444,7 @@ Template.yummy_coins.events({
         $('#hide-shows').remove();
         $('#user-show-template').show();
         $('#user-shows').show();
+        $('#homepage-mkt').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0;
         return;
@@ -497,6 +500,7 @@ Template.yummy_coins.events({
         $('#hide-shows').remove();
         $('#user-show-template').show();
         $('#user-shows').show();
+        $('#homepage-mkt').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0;
       return;
@@ -562,6 +566,7 @@ Template.yummy_coins.events({
         $('#hide-shows').remove();
         $('#user-show-template').show();
         $('#user-shows').show();
+        $('#homepage-mkt').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -626,6 +631,7 @@ Template.yummy_coins.events({
         $('#hide-shows').remove();
         $('#user-show-template').show();
         $('#user-shows').show();
+        $('#homepage-mkt').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -692,7 +698,8 @@ Template.yummy_coins.events({
         $('#footer-div').show();
         $('#hide-shows').remove();
         $('#user-show-template').show();
-        $('#user-shows').show(); 
+        $('#user-shows').show();
+        $('#homepage-mkt').show(); 
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
         return
@@ -748,6 +755,7 @@ Template.yummy_coins.events({
         $('#hide-shows').remove();
         $('#user-show-template').show();
         $('#user-shows').show();
+        $('#homepage-mkt').show();
         yummyShowSlideIndex = 0;
         yummySlideBulletCount = 0
       return
@@ -812,6 +820,7 @@ Template.yummy_coins.events({
       $('#hide-shows').remove();
       $('#user-show-template').show();
       $('#user-shows').show();
+      $('#homepage-mkt').show();
       yummyShowSlideIndex = 0;
       yummySlideBulletCount = 0
       return

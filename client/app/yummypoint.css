@@ -35,6 +35,11 @@ body {
   border-radius: 0.75em;
 }
 
+#user-login-alert h4 {
+  text-align: center;
+  color: red;
+}
+
 #plug-text-title h4 {
   font-size: 1.5em;
   font-weight: bold;

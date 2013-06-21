@@ -385,10 +385,11 @@ Template.yummy_coins.events({
       if (Meteor.userId() == null) {
         $('#plug-text-title').remove();
         $('.create-show-input').remove();
-        $('user-login-alert').remove();
+        $('#mkt-text').remove();
+        //$('user-login-alert').remove();
         $('#create-show').append('<span class="create-show-input"></span>');
         $('.create-show-input').append('<input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a YummyShow by giving it a name here" autofocus />');
-        $('#mkt-plug').append('<span id="user-login-alert" class="span12"> <h4> Try again. You must be signed in to create a tasty YummyShow </h4></span>')
+        $('#homepage-mkt').append('<div id="mkt-plug" class="row"><span id="user-login-alert" class="span12"> <h4> Try again. You must be signed in to create a tasty YummyShow </h4></span></div>')
       } else {
         currentUser = Meteor.userId();
         Meteor.call('passShowName', currentShow);
@@ -441,7 +442,9 @@ Template.yummy_coins.events({
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
       $('#make-slide-options').remove();
-      $('#homepage-mkt').remove();
+      $('#user-login-alert').remove();
+      //$('#mkt-plug').remove();
+      $('#homepage-mkt').hide();
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save This Slide and Continue </p></span></div>');
       $('.title-slide-title').append('<div class="title-slideTitle"> <h1>' + slideOneTitleText +'</h1></div>');
       $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter a sub slide title here... if you want" autofocus />');
