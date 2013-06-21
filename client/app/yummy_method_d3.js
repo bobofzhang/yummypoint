@@ -81,11 +81,10 @@ Template.yummy_coins.events({
 Meteor.methods({
 
   D3testinit: function() {
+    console.log('i am in bitcoin render');
     $('.bitcoin-chart').remove();
-    //$('.the-show').remove();
-    //$('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#chart-render').append('<div id="slide-inputs-chart" class="show-title-slide"></div>');
+    $('#slide-inputs-chart-bitcoin').remove();
+    $('#chart-render-bitcoin').append('<div id="slide-inputs-chart-bitcoin" class="show-title-slide"></div>');
     var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
     console.log(checkBitTime);
 
@@ -129,7 +128,7 @@ Meteor.methods({
         .x(function(d) { return x(d[1]); })
         .y(function(d) { return y(d[0]); });
 
-    var svg = d3.select("#slide-inputs-chart").append("svg")
+    var svg = d3.select("#slide-inputs-chart-bitcoin").append("svg")
                               .attr("width", width + margin.left + margin.right)
                               .attr("height", height + margin.top + margin.bottom)
                               .attr("class", "bitcoin-chart")

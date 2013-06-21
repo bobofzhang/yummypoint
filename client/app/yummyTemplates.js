@@ -78,6 +78,8 @@ Template.yummy_coins.events({
     $('#create-chart-sub').remove();
     $('.the-show').remove();
     $('#chart-render').remove();
+    $('#chart-render-bitly').remove();
+    $('#chart-render-bitcoin').remove();
     $('#yummy-shows').append('<div id="show-row" class="row"></div>');
     $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
     $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a new Yummy Show by naming it here" autofocus /></span>');
@@ -124,6 +126,8 @@ Template.yummy_coins.events({
     $('#save-userfile-slide').remove();
     $('#slide-inputs-chart').remove();
     $('#chart-render').remove();
+    $('#chart-render-bitly').remove();
+    $('#chart-render-bitcoin').remove();
     $('#inputs').remove();
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
@@ -254,6 +258,8 @@ Template.yummy_coins.events({
       $('#create-chart-sub').remove();
       $('#show-maker').remove();
       $('#chart-render').remove();
+      $('#chart-render-bitly').remove();
+      $('#chart-render-bitcoin').remove();
       $('#make-new-show').append('<div id="show-maker"><span class="new-yum-show"><p> Make a new Yummy Show </p> </span></div>')
       $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
@@ -505,6 +511,8 @@ Template.yummy_coins.events({
     $('#save-bitcoin-slide').remove();
     $('#render-userFile').remove();
     $('#chart-render').remove();
+    $('#chart-render-bitly').remove();
+    $('#chart-render-bitcoin').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {

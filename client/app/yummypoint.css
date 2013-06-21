@@ -286,7 +286,7 @@ margin-bottom: 1em;
 
 .the-show {
   height: 600px;
-  background-color: navajowhite;
+  background-color: rgba(192, 192, 192, 0.5);
   border-radius: 2em;
 }
 
@@ -355,9 +355,10 @@ margin-bottom: 1em;
   border-radius: 2em;
 }
 
-#slide-inputs-chart {
+#slide-inputs-chart, 
+#slide-inputs-chart-bitly, 
+#slide-inputs-chart-bitcoin {
   height: 600px;
-/*  background-color: linen;*/
   background-color: rgba(192, 192, 192, 0.5);
   border-radius: 2em;
 }

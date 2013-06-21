@@ -1,5 +1,5 @@
 
-var bitPhrase = "james gandolfini";
+var bitPhrase = "miami heat";
 var thisShow;
 var slideNumber;
 
@@ -44,6 +44,7 @@ Template.yummy_coins.events({
     $('#slide-inputs-chart').remove();
     $('#create-chart-sub').remove();
     $('#chart-render').remove();
+    $('#chart-render-bitly').remove();
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create Chart Slide </p></span></div>');
@@ -65,12 +66,10 @@ Template.yummy_coins.events({
 
 Meteor.methods({
   bitlyLineChartD3: function(hotbits) {
+    console.log('i am in bitly render');
     $('.bitly-chart').remove();
-    $('.bitcoin-chart').remove();
-    //$('.the-show').remove();
-    // $('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#chart-render').append('<div id="slide-inputs-chart" class="show-title-slide"></div>');
+    $('#slide-inputs-chart-bitly').remove();
+    $('#chart-render-bitly').append('<div id="slide-inputs-chart-bitly" class="show-title-slide"></div>');
 
     var rawData;
 
@@ -80,7 +79,7 @@ Meteor.methods({
 
     for (var i = 0; i < rawData.length; i++) {
       data.push([rawData[i].clickrate, rawData[i].time]);
-      console.log(rawData[i].clickrate);
+      // console.log(rawData[i].clickrate);
     }
 
     var margin = {
@@ -112,7 +111,7 @@ Meteor.methods({
         .x(function(d) { return x(d[1]); })
         .y(function(d) { return y(d[0]); });
 
-    var svg = d3.select("#slide-inputs-chart").append("svg")
+    var svg = d3.select("#slide-inputs-chart-bitly").append("svg")
                               .attr("width", width + margin.left + margin.right)
                               .attr("height", height + margin.top + margin.bottom)
                               .attr("class", "bitly-chart")
