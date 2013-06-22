@@ -22,6 +22,11 @@ body {
 
 /* >>>>>>>>>>>>>>> TOOL TIPS <<<<<<<<<<<<<<< */
 
+#slide-inputs-chart-bitly-bubble a {
+  color: white;
+  z-index: 999;
+}
+
 
 /*>>>>>>>>>>>>>> HOMEPAGE <<<<<<<<<<<<<<<<<< */
 

@@ -11,15 +11,15 @@ Template.yummy_coins.events({
         $('#slide-nav-row').append('<div id="save-bitly-slide-bubble" class="span4 save-bitly-bubble"> <span class="save-bit-bub"> <p> Save Bitly Bubble Graph </p></span></div>');
         $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
         $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-        //return Deps.autorun(function(){ return Meteor.call('d3BubbleChart'); });
-        return Meteor.call('d3BubbleChart');
+        return Deps.autorun(function(){ return Meteor.call('d3BubbleChart'); });
+        //return Meteor.call('d3BubbleChart');
     }
 })
 
 Meteor.methods ({
     d3BubbleChart: function(){
-        $('.bitly-chart').remove();
-        $('#slide-inputs-chart-bitly').remove();
+        //$('.bitly-chart').remove();
+        $('#slide-inputs-chart-bitly-bubble').remove();
         $('#chart-render-bitly-bubble').append('<div id="slide-inputs-chart-bitly-bubble" class="show-title-slide"></div>');
 
         var rawData = Bubhotbits.find().fetch();
@@ -57,7 +57,7 @@ Meteor.methods ({
                         d3.min(dataset, function(d) { return d[0]; }),
                         d3.max(dataset, function(d) { return d[0]; }) 
                         ])
-                .range ([ 1, 100 ])
+                .range ([ 1, 150 ])
                 .clamp([true]);
 
         var g = function (d) {
@@ -89,7 +89,11 @@ Meteor.methods ({
                     .attr("fill", "#ff7f0e")
                     .attr("stroke-width", 2)
                     .attr("stroke", "yellow")
-                    .attr("phrase", function (d) { return d[1]; });
+                    .text(function (d) { return d[1]; })
+                    .attr("text-anchor", "middle")
+                    .attr("dy", ".3em")
+                    //.style("font-size", "24px") // initial guess
+                    .style("font-size", function(d) { return (10 * d[0]); });
 
             d3.selectAll("circle")
                     .transition()
