@@ -17,3 +17,5 @@ Files = new Meteor.Collection("files");
 
 Shownames = new Meteor.Collection("shownames");
 
+Bubhotbits = new Meteor.Collection("bubhotbits");
+

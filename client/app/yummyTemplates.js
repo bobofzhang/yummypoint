@@ -91,7 +91,6 @@ Template.yummy_coins.events({
 Template.userShows.allUserShows = function () {
   console.log("i am in the all userShows temp")
   var showQuery = Shows.find().fetch();
-  console.log(showQuery);
   var thisUser = Meteor.userId();
   $('#hide-shows').remove();
   $('#show-list-row').hide();
@@ -140,7 +139,6 @@ Template.yummy_coins.events({
   'keypress #slide-title': function (event) {
     if (event.which == 13) {
       event.preventDefault();
-      console.log(currentShow);
       var slideTitle = document.getElementById("slide-title").value;
       Slides.insert({
         show: currentShow,
@@ -150,7 +148,6 @@ Template.yummy_coins.events({
         meteorUser: Meteor.userId()
       })
       var slideOneTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
-      console.log(slideOneTitle);
       var userSlideMap = _.filter(slideOneTitle, function (obj) {
         if (obj['show'] === currentShow) {
           return obj;
@@ -178,7 +175,6 @@ Template.yummy_coins.events({
         meteorUser: Meteor.userId()
       })
       var bulletObj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
-      console.log(bulletObj);
       var userSlideMap = _.filter(bulletObj, function (obj) {
         if (obj['show'] === currentShow) {
           return obj;
@@ -203,7 +199,6 @@ Template.yummy_coins.events({
         meteorUser: Meteor.userId()
       })
       var bullet2Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
-      console.log(bullet2Obj);
       var userSlideMap = _.filter(bullet2Obj, function (obj) {
         if (obj['show'] === currentShow) {
           return obj;
@@ -243,7 +238,6 @@ Template.yummy_coins.events({
   },
   'click #slide-controls': function (event) { //>>>>>>> SAVE SLIDE <<<<<<<<<
       event.preventDefault();
-      console.log(slideCount);
       $('#slide-controls').remove();
       $('#slide-inputs').remove();  
       $('#slide-inputs-chart').remove();    
@@ -272,7 +266,6 @@ Template.yummy_coins.events({
           return obj;
         }
       })
-      console.log(slideFilter);
       var slideTitleText = slideFilter[0]['text'];
       if (slideFilter[1] == null) {
         Shows.insert([
@@ -421,7 +414,6 @@ Template.yummy_coins.events({
   'keypress #title-slide-title': function (event) {
     if (event.which == 13) {
       event.preventDefault();
-      console.log(currentShow);
       var slideTitle = document.getElementById("title-slide-title").value;
       Slides.insert({
         show: currentShow,
@@ -431,13 +423,11 @@ Template.yummy_coins.events({
         meteorUser: Meteor.userId()
       })
       var slideOneTitle = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
-      console.log(slideOneTitle);
       var userSlideMap = _.filter(slideOneTitle, function (obj) {
         if (obj['show'] === currentShow) {
           return obj;
         }
       })
-      console.log(userSlideMap);
       var slideOneTitleText = userSlideMap[0]['text'];
       $('#title-slide-title').remove();
       $('.instruct-title').remove();
@@ -463,7 +453,6 @@ Template.yummy_coins.events({
         meteorUser: Meteor.userId()
       })
       var bulletObj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
-      console.log(bulletObj);
       var userSlideMap = _.filter(bulletObj, function (obj) {
         if (obj['show'] === currentShow) {
           return obj;
@@ -488,7 +477,6 @@ Template.yummy_coins.events({
         meteorUser: Meteor.userId()
       })
       var bullet2Obj = Slides.find( { slide: slideCount, meteorUser: Meteor.userId() } ).fetch();
-      console.log(bullet2Obj);
       var userSlideMap = _.filter(bullet2Obj, function (obj) {
         if (obj['show'] === currentShow) {
           return obj;
@@ -523,7 +511,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[0]['3']['slideType'];
     var source = slideShowMap[0]['4']['dataSource'];
     if (type === "chart" && source === "bitcoin") {

@@ -31,7 +31,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[1]['3']['slideType'];
     var source = slideShowMap[1]['4']['dataSource'];
     var fileCount = slideShowMap[1]['5']['fileNum'];
@@ -51,7 +50,6 @@ Template.yummy_coins.events({
       return;
     } else {
       var slideTextArray = slideShowMap[1][2]['contents'];
-      console.log(slideTextArray);
       var title = slideTextArray[0]['text'];
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
@@ -82,7 +80,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[2]['3']['slideType'];
     var source = slideShowMap[2]['4']['dataSource'];
     var fileCount = slideShowMap[2]['5']['fileNum'];
@@ -132,7 +129,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[3]['3']['slideType'];
     var source = slideShowMap[3]['4']['dataSource'];
     var fileCount = slideShowMap[3]['5']['fileNum'];
@@ -182,7 +178,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[4]['3']['slideType'];
     var source = slideShowMap[4]['4']['dataSource'];
     var fileCount = slideShowMap[4]['5']['fileNum'];
@@ -232,7 +227,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[5]['3']['slideType'];
     var source = slideShowMap[5]['4']['dataSource'];
     var fileCount = slideShowMap[5]['5']['fileNum'];
@@ -282,7 +276,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[6]['3']['slideType'];
     var source = slideShowMap[6]['4']['dataSource'];
     var fileCount = slideShowMap[6]['5']['fileNum'];
@@ -332,7 +325,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[7]['3']['slideType'];
     var source = slideShowMap[7]['4']['dataSource'];
     var fileCount = slideShowMap[7]['5']['fileNum'];
@@ -382,7 +374,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[8]['3']['slideType'];
     var source = slideShowMap[8]['4']['dataSource'];
     var fileCount = slideShowMap[8]['5']['fileNum'];
@@ -432,7 +423,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[9]['3']['slideType'];
     var source = slideShowMap[9]['4']['dataSource'];
     var fileCount = slideShowMap[9]['5']['fileNum'];
@@ -482,7 +472,6 @@ Template.yummy_coins.events({
         slideShowMap.push(slideTitle[i]);
       }
     }
-    console.log(slideShowMap);
     var type = slideShowMap[10]['3']['slideType'];
     var source = slideShowMap[10]['4']['dataSource'];
     var fileCount = slideShowMap[10]['5']['fileNum'];

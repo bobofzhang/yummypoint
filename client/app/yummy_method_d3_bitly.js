@@ -1,5 +1,5 @@
 
-var bitPhrase = "miami heat";
+var bitPhrase = "food network";
 var thisShow;
 var slideNumber;
 
@@ -58,7 +58,7 @@ Template.yummy_coins.events({
     var type = showSlide[0]['1']['slideType'];
     if (type === "chart") {
       var func = showSlide[0]['2']['contents'];
-      console.log(func);
+      // console.log(func);
       return func;
     }
   }

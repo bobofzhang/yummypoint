@@ -56,7 +56,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
     $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
     $('')
@@ -101,7 +100,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
     $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
     yummySlideBulletCount++;
@@ -145,7 +143,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
     $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
     yummySlideBulletCount++;
@@ -189,7 +186,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
     $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
     yummySlideBulletCount++;
@@ -233,7 +229,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
     $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
     yummySlideBulletCount++;
@@ -277,7 +272,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
     $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
     yummySlideBulletCount++;
@@ -291,7 +285,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
     var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
     $('.the-show').remove();
@@ -355,7 +348,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
     var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
     var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
@@ -418,7 +410,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
     var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
     var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
@@ -487,7 +478,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
     if (showFilter[yummyShowSlideIndex] == null) {
@@ -544,7 +534,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     $('.the-show').remove();
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
     var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
@@ -607,7 +596,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
     var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
     var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
@@ -673,7 +661,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
     var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
     var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
@@ -742,7 +729,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
     if (showFilter[yummyShowSlideIndex] == null) {
@@ -800,7 +786,6 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    console.log(showFilter);
     $('#chart-control').remove();
     $('.bitly-chart').remove();
     $('.bitcoin-chart').remove();

@@ -68,7 +68,6 @@ Template.yummy_coins.events({
       reader.onload = function(event){
         var csv = event.target.result;
         var data = $.csv.toArrays(csv);
-        console.log(data);
         Files.insert({
           name: file.name,
           count: fileCount,
@@ -145,13 +144,11 @@ Meteor.methods({
     var rawData;
 
     rawData = Files.find({}).fetch();
-    console.log(rawData)
     var fileUserFilter = _.filter(rawData, function (obj) {
       if (obj['meteorUser'] === currentUser && obj['show'] === thisShowName) {
         return obj;
       }
     })
-    console.log(fileUserFilter);
 
     var myData = fileUserFilter[index]['file'];
 

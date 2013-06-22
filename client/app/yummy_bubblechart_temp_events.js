@@ -11,8 +11,8 @@ Template.yummy_coins.events({
     }
 })
 
-Template.yummy_coins.events({
-    'click #bitly-bubble-chart-nav': function () {
-        alert('Thanks for trying. Feature coming soon.');
-    }
-})
+// Template.yummy_coins.events({
+//     'click #bitly-bubble-chart-nav': function () {
+//         alert('Thanks for trying. Feature coming soon.');
+//     }
+// })
