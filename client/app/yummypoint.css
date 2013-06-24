@@ -140,17 +140,20 @@ body {
   margin-right: 0.5em;
 }
 
-#bitly-line-chart-nav {
+#bitly-line-chart-nav,
+#bitly-bubble-chart-nav {
   background-color: rgba(255, 177, 0, .5);
   border-radius: 0.5em;
 }
 
-#bitly-line-chart-nav:hover {
+#bitly-line-chart-nav:hover,
+#bitly-bubble-chart-nav {
   background-color: rgba(255, 177, 0, 1);
   color: white;
 /*  border: 1px solid whitesmoke;*/
 /*  box-shadow: inset 1px 1px 1px;*/ 
 }
+
 
 /* >>>>>>>>>>>>> END CREATE CHART <<<<<<<<<<<<<<< */
 
@@ -688,7 +691,8 @@ margin-bottom: 1em;
 
 #save-bitly-slide, 
 #save-bitcoin-slide, 
-#save-userfile-slide {
+#save-userfile-slide, 
+#save-bitly-slide-bubble {
   text-align: center;
   height: 2.25em;  
   background-color: rgba(255, 177, 0, .5);
@@ -699,14 +703,16 @@ margin-bottom: 1em;
 
 #save-bitly-slide:hover, 
 #save-bitcoin-slide:hover, 
-#save-userfile-slide:hover {
+#save-userfile-slide:hover, 
+#save-bitly-slide-bubble:hover {
   background-color: rgba(255, 177, 0, 1);
   color: white;
 }
 
 #save-bitly-slide p, 
 #save-bitcoin-slide p, 
-#save-userfile-slide p {
+#save-userfile-slide p,
+#save-bitly-slide-bubble p {
   margin-top: 0.6em;
 }
 

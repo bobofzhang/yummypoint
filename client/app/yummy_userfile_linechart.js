@@ -101,7 +101,8 @@ Template.yummy_coins.events({
       { slideType: "chart" },
       { dataSource: "userfile" },
       { fileNum: fileCount },
-      { meteorUser: Meteor.userId() }
+      { meteorUser: Meteor.userId() },
+      { chartType: "line" }
     ]);
     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + thisSlideNumber + '"<p> Slide' + ' ' + thisSlideNumber + '</p></span></div>');
     $('.bitly-chart').remove();

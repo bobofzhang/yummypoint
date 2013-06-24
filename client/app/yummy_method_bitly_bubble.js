@@ -1,3 +1,20 @@
+var bitPhrase = "food network";
+var thisShow;
+var slideNumber;
+
+Meteor.methods({
+  passSlideCountBitBub: function (count) {
+    slideNumber = count;
+    return slideNumber;
+  }
+})
+
+Meteor.methods({
+  passShowNameBitBub: function (showName) {
+    thisShow = showName;
+    return thisShow;
+  }
+})
 
 Template.yummy_coins.events({
     'click #bitly-bubble-chart-nav': function () {
@@ -11,8 +28,39 @@ Template.yummy_coins.events({
         $('#slide-nav-row').append('<div id="save-bitly-slide-bubble" class="span4 save-bitly-bubble"> <span class="save-bit-bub"> <p> Save Bitly Bubble Graph </p></span></div>');
         $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
         $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-        //return Deps.autorun(function(){ return Meteor.call('d3BubbleChart'); });
-        return Meteor.call('d3BubbleChart');
+        return Deps.autorun(function(){ return Meteor.call('d3BubbleChart'); });
+        //return Meteor.call('d3BubbleChart');
+    },
+    'click #save-bitly-slide-bubble': function() {
+        Shows.insert([
+        { show: thisShow },
+        { slide: slideNumber },
+        { contents: "Meteor.call('d3BubbleChart')" }, 
+        { slideType: "chart" },
+        { dataSource: "bitly" },
+        { fileNum: ""}, 
+        { meteorUser: Meteor.userId() },
+        { chartType: "bubble" }
+        ]);
+        $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumber + '"<p> Slide' + ' ' + slideNumber + '</p></span></div>');
+        $('#slide-instruct').remove();
+        $('#save-bitly-slide-bubble').remove();
+        $('#create-text-sub').remove();
+        $('#bar-chart-switch').remove();
+        $('#bubble-chart-switch').remove();
+        $('create-chart-sub').remove();
+        $('#slide-inputs').remove();
+        $('#slide-inputs-chart').remove();
+        $('#create-chart-sub').remove();
+        $('#chart-render').remove();
+        $('#chart-render-bitly').remove();
+        $('#chart-render-bitly-bubble').remove();
+        $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
+        $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
+        $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create Chart Slide </p></span></div>');
+        $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
+        Meteor.call('tickSlideCount');
+        //Meteor.clearInterval("renderHotBits"); showNameEED TO FIGURE OUT HOW TO ACCESS THE SET INTERVAL HANDLE
     }
 })
 
@@ -88,12 +136,13 @@ Meteor.methods ({
                     .attr("r", 0)
                     .attr("cx", function (d) { return d.x; })
                     .attr("cy", function (d) { return d.y; })
+                    .attr("fill", "rgba(20, 53, 173, .5)")
                     .attr("stroke-width", 2)
                     .attr("stroke", "yellow")
-                    .on("mouseover", function(){d3.select(this).style("fill", "red");})
-                    .on("mouseout", function(){d3.select(this).style("fill", "black");});
+                    .on("mouseover", function(){d3.select(this).style("fill", "rgba(213, 0, 101, 0.5)");})
+                    .on("mouseout", function(){d3.select(this).style("fill", "rgba(20, 53, 173, .5)");});
                     //.attr("id", "bub-text")
-                    //.attr("fill", "#ff7f0e")
+                    //.attr("fill", "rgba(220, 220, 220, 0.5)")
                     // .append("text")
                     // .attr("text-anchor", "middle")
                     // .attr("dy", ".3em")

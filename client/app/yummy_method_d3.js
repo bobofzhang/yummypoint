@@ -51,7 +51,8 @@ Template.yummy_coins.events({
       { slideType: "chart" },
       { dataSource: "bitcoin" },
       { fileNum: ""},
-      { meteorUser: Meteor.userId() }
+      { meteorUser: Meteor.userId() },
+      { chartType: "line" }
     ]);
     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumberBitCoin + '"<p> Slide' + ' ' + slideNumberBitCoin + '</p></span></div>');
     $('.bitly-chart').remove();
@@ -82,7 +83,6 @@ Template.yummy_coins.events({
 Meteor.methods({
 
   D3testinit: function() {
-    console.log('i am in bitcoin render');
     $('.bitcoin-chart').remove();
     $('#slide-inputs-chart-bitcoin').remove();
     $('#chart-render-bitcoin').append('<div id="slide-inputs-chart-bitcoin" class="show-title-slide"></div>');
