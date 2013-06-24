@@ -11,8 +11,8 @@ Template.yummy_coins.events({
         $('#slide-nav-row').append('<div id="save-bitly-slide-bubble" class="span4 save-bitly-bubble"> <span class="save-bit-bub"> <p> Save Bitly Bubble Graph </p></span></div>');
         $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
         $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-        return Deps.autorun(function(){ return Meteor.call('d3BubbleChart'); });
-        //return Meteor.call('d3BubbleChart');
+        //return Deps.autorun(function(){ return Meteor.call('d3BubbleChart'); });
+        return Meteor.call('d3BubbleChart');
     }
 })
 
@@ -25,7 +25,7 @@ Meteor.methods ({
         var rawData = Bubhotbits.find().fetch();
         var dataset = [];
 
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 50; i++) {
           dataset.push([rawData[i].clickrate, rawData[i].phrase]);
         }
 
@@ -49,6 +49,7 @@ Meteor.methods ({
 
         var svg = d3.select("#slide-inputs-chart-bitly-bubble")
                     .append("svg")
+                    .attr("id", "svg-canvas")
                     .attr("height", h)
                     .attr("width", w);
 
@@ -69,9 +70,9 @@ Meteor.methods ({
             force
                 .nodes(dataset);
 
-            circles = svg.append("g")
+            circles = svg.append("svg")
                         .attr("id", "circles")
-                        .selectAll("a")
+                        .selectAll("g")
                         .data(force.nodes());
 
             force.nodes().forEach(function(d,i) {
@@ -81,25 +82,43 @@ Meteor.methods ({
 
             var node = circles 
                     .enter()
-                    .append("a")
+                    .append("g")
+                    .attr("class", "bub-node")
                     .append("circle")
                     .attr("r", 0)
                     .attr("cx", function (d) { return d.x; })
                     .attr("cy", function (d) { return d.y; })
-                    .attr("fill", "#ff7f0e")
                     .attr("stroke-width", 2)
                     .attr("stroke", "yellow")
-                    .text(function (d) { return d[1]; })
-                    .attr("text-anchor", "middle")
-                    .attr("dy", ".3em")
-                    //.style("font-size", "24px") // initial guess
-                    .style("font-size", function(d) { return (10 * d[0]); });
+                    .on("mouseover", function(){d3.select(this).style("fill", "red");})
+                    .on("mouseout", function(){d3.select(this).style("fill", "black");});
+                    //.attr("id", "bub-text")
+                    //.attr("fill", "#ff7f0e")
+                    // .append("text")
+                    // .attr("text-anchor", "middle")
+                    // .attr("dy", ".3em")
+                    // //.style("font-size", function(d) { return (10 * d[0]); })
+                    // .style("color", "white")
+                    // .style("z-index", "10")
+                    // .text(function (d) { return d[1]; });
 
             d3.selectAll("circle")
                     .transition()
                     .delay(function(d,i) { return i * 10; })
                     .duration( 1000 )
-                    .attr("r", function (d) { return r( d[0] ); });
+                    .attr("r", function (d) { return r( d[0]); });
+
+            node.append("title")
+                .attr("class", "title-text")
+                .text(function (d) { return (d[1] + ", " + d[0]) ; })
+                .style("font-size", "18px");
+
+            node.append("text")
+                .attr("cx", function (d) { return d.x; })
+                .attr("cy", function (d) { return d.y; })
+                .attr("dy", ".3em")
+                //.attr("visability", "hidden")
+                .text(function (d) { return (d[1] + ", " + d[0]) ; });
 
             var loadGravity = function (generator) {
                 force

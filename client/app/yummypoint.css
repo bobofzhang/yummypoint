@@ -21,12 +21,26 @@ body {
 }
 
 /* >>>>>>>>>>>>>>> TOOL TIPS <<<<<<<<<<<<<<< */
-
-#slide-inputs-chart-bitly-bubble a {
+/*
+#slide-inputs-chart-bitly-bubble .bub-text {
   color: white;
-  z-index: 999;
+}
+*/
+
+#circles .bub-text {
+  color: white;
 }
 
+#svg-canvas {
+  color: white;
+}
+
+.title-text {
+  color: white;
+  background-color: black;
+  border-radius: 0.5em;
+  font-size: 2em;
+}
 
 /*>>>>>>>>>>>>>> HOMEPAGE <<<<<<<<<<<<<<<<<< */
 

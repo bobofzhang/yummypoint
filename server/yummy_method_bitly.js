@@ -4,7 +4,7 @@ Meteor.setInterval(function(){
     console.log("search bitly called"); 
     return result;
   })
-}, 30000);
+}, 60000);
 
 Meteor.methods({
   searchBitly: function(){
