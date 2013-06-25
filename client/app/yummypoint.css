@@ -54,6 +54,19 @@ body {
   border-radius: 0.75em;
 }
 
+#beta-band {
+  height: 1.5em;
+  background-color: black;
+  border-radius: 0.2em;
+}
+
+#beta-text {
+  float: right;
+  margin-top: 0.2em;
+  margin-right: 4em;
+  color: white;
+}
+
 #user-login-alert h4 {
   text-align: center;
   color: red;
@@ -147,11 +160,9 @@ body {
 }
 
 #bitly-line-chart-nav:hover,
-#bitly-bubble-chart-nav {
+#bitly-bubble-chart-nav:hover {
   background-color: rgba(255, 177, 0, 1);
   color: white;
-/*  border: 1px solid whitesmoke;*/
-/*  box-shadow: inset 1px 1px 1px;*/ 
 }
 
 
@@ -167,8 +178,27 @@ body {
   color: white;
 }
 
+#user-data-line-nav {
+  background-color: rgba(213, 0, 101, 0.5);
+  border-radius: 0.5em;
+  margin-right: 0.5em;
+}
+
+#user-line-instruct {
+/*  background-color: rgba(192, 192, 192, 0.5);*/
+  text-align: center;
+  color: red;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 0.5em;
+}
+
+#user-data-line-nav:hover {
+  background-color: rgba(213, 0, 101, 0.5);
+  color: white;
+}
+
 #inputs:hover {
-/*  height: 50px;*/
   background-color: rgba(213, 0, 101, 1);
 }
 
@@ -494,7 +524,7 @@ margin-bottom: 1em;
   text-align: right;
 }
 
-#twitter-switch, .twitter h3 {
+/*#twitter-switch, .twitter h3 {
   text-align: center;
   background-color: pink; 
 }
@@ -507,7 +537,7 @@ margin-bottom: 1em;
 #bitly-switch, .bitly h3 {
   text-align: center;
   background-color: brown;
-}
+}*/
 
 /* >>>>> TEXT SLIDES <<<<<<<<< */
 

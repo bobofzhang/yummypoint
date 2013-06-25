@@ -513,6 +513,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {

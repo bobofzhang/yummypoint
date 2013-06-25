@@ -135,8 +135,7 @@ Meteor.methods({
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Price ($)");
+        .style("text-anchor", "end");
 
     svg.append("path")
         .datum(data)

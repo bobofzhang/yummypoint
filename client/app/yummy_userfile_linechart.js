@@ -22,21 +22,21 @@ Meteor.methods({
 })
 
 Template.yummy_coins.events({
-  'click #line-chart-nav': function() {
-    $('.line-chart-data-sources').remove();
-    $('.data-source-details').remove();
-    $('#slide-controls').remove();
-    $('#create-text-sub').remove();
-    $('#bar-chart-switch').remove();
-    $('#bubble-chart-switch').remove();
-    $('#public-data-row').remove();
-    $('#twitter-data-row').remove();
-    $('#bitcoin-data-row').remove();
-    $('#bitly-data-row').remove();
-    //$('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-    $('.make-start').append('<div id="inputs" class="span12 clearfix"><input type="file" id="files" name="files[]" /></div>');
+  'click #user-data-line-nav': function() {
+    $('#user-chart-options-row').append('<div id="user-line-instruct" class="span12"><span class="user-line-info"> Upload a CSV file to create a line graph slide </br> The first column is the x-axis </br> The second column is the y-axis </span></div>')
+    $('#user-chart-options-row').append('<div id="inputs" class="span12 clearfix pull-right"><h4><input type="file" id="files" name="files[]" /><h4></div><div class="span12"></div>');
+    // $('.line-chart-data-sources').remove();
+    // $('.data-source-details').remove();
+    // $('#slide-controls').remove();
+    // $('#create-text-sub').remove();
+    // $('#public-data-row').remove();
+    // $('#twitter-data-row').remove();
+    // $('#bitcoin-data-row').remove();
+    // $('#bitly-data-row').remove();
+    // //$('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
+    // $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
+    // $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
+    // $('.make-start').append('<div id="inputs" class="span12 clearfix"><input type="file" id="files" name="files[]" /></div>');
   }
 })
 
@@ -218,6 +218,7 @@ Meteor.methods({
     svg.append("path")
         .datum(data)
         .attr("class", "line")
+        .style("stroke", "white")
         .attr("d", line);
 
     return data;

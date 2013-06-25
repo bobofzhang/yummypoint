@@ -80,6 +80,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -134,6 +135,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -144,14 +146,19 @@ Template.yummy_coins.events({
     var type = slideShowMap[3]['3']['slideType'];
     var source = slideShowMap[3]['4']['dataSource'];
     var fileCount = slideShowMap[3]['5']['fileNum'];
+    var chartType = slideShowMap[3]['7']['chartType'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
+    } else if (type === "chart" && source === "bitly" && chartType === "line") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
+    } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
+      return Meteor.call('d3BubbleChart');
     } else if (type === "chart" && source === "userfile") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render" class="span12"></div>');
@@ -183,6 +190,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -193,14 +201,19 @@ Template.yummy_coins.events({
     var type = slideShowMap[4]['3']['slideType'];
     var source = slideShowMap[4]['4']['dataSource'];
     var fileCount = slideShowMap[4]['5']['fileNum'];
+    var chartType = slideShowMap[4]['7']['chartType'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
+    } else if (type === "chart" && source === "bitly" && chartType === "line") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
+    } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
+      return Meteor.call('d3BubbleChart');
     } else if (type === "chart" && source === "userfile") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render" class="span12"></div>');
@@ -232,6 +245,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -242,14 +256,19 @@ Template.yummy_coins.events({
     var type = slideShowMap[5]['3']['slideType'];
     var source = slideShowMap[5]['4']['dataSource'];
     var fileCount = slideShowMap[5]['5']['fileNum'];
+    var chartType = slideShowMap[5]['7']['chartType'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
+    } else if (type === "chart" && source === "bitly" && chartType === "line") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
+    } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
+      return Meteor.call('d3BubbleChart');
     } else if (type === "chart" && source === "userfile") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render" class="span12"></div>');
@@ -281,6 +300,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -291,14 +311,19 @@ Template.yummy_coins.events({
     var type = slideShowMap[6]['3']['slideType'];
     var source = slideShowMap[6]['4']['dataSource'];
     var fileCount = slideShowMap[6]['5']['fileNum'];
+    var chartType = slideShowMap[6]['7']['chartType'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
+    } else if (type === "chart" && source === "bitly" && chartType === "line") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
+    } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
+      return Meteor.call('d3BubbleChart');
     } else if (type === "chart" && source === "userfile") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render" class="span12"></div>');
@@ -330,6 +355,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -340,14 +366,19 @@ Template.yummy_coins.events({
     var type = slideShowMap[7]['3']['slideType'];
     var source = slideShowMap[7]['4']['dataSource'];
     var fileCount = slideShowMap[7]['5']['fileNum'];
+    var chartType = slideShowMap[7]['7']['chartType'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
+    } else if (type === "chart" && source === "bitly" && chartType === "line") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
+    } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
+      return Meteor.call('d3BubbleChart');
     } else if (type === "chart" && source === "userfile") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render" class="span12"></div>');
@@ -389,14 +420,19 @@ Template.yummy_coins.events({
     var type = slideShowMap[8]['3']['slideType'];
     var source = slideShowMap[8]['4']['dataSource'];
     var fileCount = slideShowMap[8]['5']['fileNum'];
+    var chartType = slideShowMap[8]['7']['chartType'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
+    } else if (type === "chart" && source === "bitly" && chartType === "line") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
+    } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
+      return Meteor.call('d3BubbleChart');
     } else if (type === "chart" && source === "userfile") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render" class="span12"></div>');
@@ -428,6 +464,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -438,14 +475,19 @@ Template.yummy_coins.events({
     var type = slideShowMap[9]['3']['slideType'];
     var source = slideShowMap[9]['4']['dataSource'];
     var fileCount = slideShowMap[9]['5']['fileNum'];
+    var chartType = slideShowMap[9]['7']['chartType'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
+    } else if (type === "chart" && source === "bitly" && chartType === "line") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
+    } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
+      return Meteor.call('d3BubbleChart');
     } else if (type === "chart" && source === "userfile") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render" class="span12"></div>');
@@ -477,6 +519,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -487,14 +530,19 @@ Template.yummy_coins.events({
     var type = slideShowMap[10]['3']['slideType'];
     var source = slideShowMap[10]['4']['dataSource'];
     var fileCount = slideShowMap[10]['5']['fileNum'];
+    var chartType = slideShowMap[2]['7']['chartType'];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
       return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
+    } else if (type === "chart" && source === "bitly" && chartType === "line") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Meteor.call('bitlyLineChartD3');
+    } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
+      return Meteor.call('d3BubbleChart');
     } else if (type === "chart" && source === "userfile") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render" class="span12"></div>');

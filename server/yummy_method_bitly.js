@@ -4,11 +4,10 @@ Meteor.setInterval(function(){
     console.log("search bitly called"); 
     return result;
   })
-}, 60000);
+}, 30000);
 
 Meteor.methods({
   searchBitly: function(){
-    Bubhotbits.remove();
     // var accessToken = 06cc854f25b36aebb4a9fac685d880413d511967;
     var result = Meteor.http.call('GET',
       //'https://api-ssl.bitly.com/v3/search?access_token=06cc854f25b36aebb4a9fac685d880413d511967&query=walmart&limit=1'

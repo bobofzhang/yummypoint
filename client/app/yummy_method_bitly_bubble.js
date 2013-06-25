@@ -71,6 +71,7 @@ Meteor.methods ({
         $('#chart-render-bitly-bubble').append('<div id="slide-inputs-chart-bitly-bubble" class="show-title-slide"></div>');
 
         var rawData = Bubhotbits.find().fetch();
+        //var rawData = Bubhotbits.find({}, { sort: { clickrate: -1 }, limit: 100 }).fetch();
         var dataset = [];
 
         for (var i = 0; i < 50; i++) {
@@ -162,11 +163,11 @@ Meteor.methods ({
                 .text(function (d) { return (d[1] + ", " + d[0]) ; })
                 .style("font-size", "18px");
 
-            node.append("text")
+            node.append("g")
+                .append("text")
                 .attr("cx", function (d) { return d.x; })
                 .attr("cy", function (d) { return d.y; })
                 .attr("dy", ".3em")
-                //.attr("visability", "hidden")
                 .text(function (d) { return (d[1] + ", " + d[0]) ; });
 
             var loadGravity = function (generator) {

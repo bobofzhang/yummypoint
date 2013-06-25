@@ -91,8 +91,7 @@ Meteor.methods({
 
     var rawData;
     rawData = Prices.find({}, { sort: { date: -1 }, limit: 500 }).fetch();
-    //rawData = Prices.find({}, { sort: { time: -1 }, limit: 10 }).fetch();
-    // console.log(rawData);
+
 
     var dataset = [];
 

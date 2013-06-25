@@ -44,6 +44,7 @@ var priceFlush = Meteor.setInterval(function(){
 Meteor.startup(function () {
   Slides.remove({});
   Shows.remove({});
+  Bubhotbits.remove({});
   //Hotbits.remove({});
   //Prices.remove({});
   Files.remove({});

@@ -30,22 +30,6 @@ Template.yummy_coins.events({
   }
 })
 
-// Template.yummy_coins.events({
-//   'click .line-chart': function () {
-//     $('.create_graph').remove();
-//     $('#slide-nav-row').append('<div id="bar-chart-switch" class="span2"><span class="bar-recall"><p> Switch to Bar Chart </p></span></div><div id="bubble-chart-switch" class="span2"><span class="bubble-recall"><p> Switch to Bubble Chart </p></span></div>');
-//     $('.make-start').append('<div class="line-chart-data-sources"><div id="line-data-row" class="row"><div id="userFile-chart" class="span6"><span class="line-chart-upload"><h3> Upload a File</h3><span></div></div>');
-//     $('#line-data-row').append('<div class="span6"><span class="live-data-header"> <h3> Use Live Data Sources </h3> </span></div></div></div>');
-//     $('.make-start').append('<div class="data-source-details"><div class="row"><div class="span6"></div><div class="span2"><span class="twitter"> <h3> Twitter </h3> </span></div><div class="span2"><span class="bit-coins"> <h3> Bit Coins </h3> </span></div><div class="span2"><span class="bitly"> <h3> Bitly </h3> </span></div></div></div>');
-//   },
-//   'click #bar-chart-switch': function () {
-//     alert('congratulations... but sorry, no easter eggs!')
-//   },
-//   'click #bubble-chart-switch': function () {
-//     alert('sorry... you loose. wrong button mister clicker!!!')
-//   }
-// })
-
 Template.yummy_coins.events({
   'click #bitly-line-chart-nav': function () {
     $('.line-chart-data-sources').remove();
@@ -76,12 +60,6 @@ Template.yummy_coins.events({
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     return Deps.autorun(function(){ return Meteor.call('D3testinit'); });
   }
-})
-
-Template.yummy_coins.events({
-    'click #twit-line-chart-nav': function () {
-        alert('Thanks for trying. Feature coming soon.');
-    }
 })
 
 
