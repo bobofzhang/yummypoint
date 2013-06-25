@@ -55,17 +55,20 @@ body {
 }
 
 #beta-band {
+  width: 101%;
   height: 1.5em;
-  background-color: black;
-  border-radius: 0.2em;
+  background-color: rgba(112, 128, 144, 0.35);
 }
 
 #beta-text {
-  float: right;
-  margin-top: 0.2em;
-  margin-right: 4em;
+  float: left;
+  margin-top: 0.1em;
+  margin-left: 11em;
   color: white;
 }
+#beta-span {
+  float: left;
+} 
 
 #user-login-alert h4 {
   text-align: center;
@@ -171,17 +174,31 @@ body {
 /*>>>>>>>>>>>> USER UPLOAD <<<<<<<<<<<<<<<<< */
 
 #inputs {
-/*  height: 50px;*/
   background-color: rgba(213, 0, 101, 0.5);
   border-radius: 0.5em;
-  margin-right: 0.5em;
-  color: white;
+}
+
+#files{
+  float:left;
+}
+
+.input-text {
+  float: right;
+  margin-right: 19em;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 0.3em;
 }
 
 #user-data-line-nav {
   background-color: rgba(213, 0, 101, 0.5);
-  border-radius: 0.5em;
   margin-right: 0.5em;
+  border-radius: 0.5em;
+}
+
+#user-data-line-nav:hover {
+  background-color: rgba(213, 0, 101, 1);
+  color: white;
 }
 
 #user-line-instruct {
@@ -193,13 +210,9 @@ body {
   border-radius: 0.5em;
 }
 
-#user-data-line-nav:hover {
-  background-color: rgba(213, 0, 101, 0.5);
-  color: white;
-}
-
 #inputs:hover {
   background-color: rgba(213, 0, 101, 1);
+  color: white;
 }
 
 #render-userFile {

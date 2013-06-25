@@ -24,7 +24,7 @@ Meteor.methods({
 Template.yummy_coins.events({
   'click #user-data-line-nav': function() {
     $('#user-chart-options-row').append('<div id="user-line-instruct" class="span12"><span class="user-line-info"> Upload a CSV file to create a line graph slide </br> The first column is the x-axis </br> The second column is the y-axis </span></div>')
-    $('#user-chart-options-row').append('<div id="inputs" class="span12 clearfix pull-right"><h4><input type="file" id="files" name="files[]" /><h4></div><div class="span12"></div>');
+    $('#user-chart-options-row').append('<div id="cloak-inputs" class="span12"><div id="inputs" class="clearfix" onclick="files.click()"><span class="input-text"> Upload file from computer </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>');
     // $('.line-chart-data-sources').remove();
     // $('.data-source-details').remove();
     // $('#slide-controls').remove();
