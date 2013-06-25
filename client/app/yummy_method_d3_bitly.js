@@ -1,5 +1,5 @@
 
-var bitPhrase = "food network";
+var bitPhrase = "stanley cup";
 var thisShow;
 var slideNumber;
 
@@ -14,6 +14,87 @@ Meteor.methods({
   passSlideCount: function (count) {
     slideNumber = count;
     return slideNumber;
+  }
+})
+
+
+Meteor.methods({
+  renderHotBits: function(){
+    var bitTags = Hotbits.find({}, { sort: { clickrate: -1 }, limit: 100 }).fetch();
+    var bitTagsArray =[];
+    for (var i = 0; i < bitTags.length; i++) {
+        bitTagsArray.push(bitTags[i]['phrase']);
+    }
+    var bitArray = _.uniq(bitTagsArray);
+    console.log(bitArray);
+    $('.hot-bits').remove();
+    $('.make-start').append('<div id="hot-bits-div"></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-1" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[0] + '">' + bitArray[0] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-2" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit2" title="' + bitArray[1] + '">' + bitArray[1] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-3" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit3" title="' + bitArray[2] + '">' + bitArray[2] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-4" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit4" title="' + bitArray[3] + '">' + bitArray[3] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-5" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit5" title="' + bitArray[4] + '">' + bitArray[4] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-6" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit6" title="' + bitArray[5] + '">' + bitArray[5] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-7" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit7" title="' + bitArray[6] + '">' + bitArray[6] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-8" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit8" title="' + bitArray[7] + '">' + bitArray[7] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-9" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit9" title="' + bitArray[8] + '">' + bitArray[8] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-10" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit10" title="' + bitArray[9] + '">' + bitArray[9] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-11" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit11" title="' + bitArray[10] + '">' + bitArray[10] + '</p></span></div>');
+    $('#hot-bits-div').append('<div id="hot-bit-12" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit12" title="' + bitArray[11] + '">' + bitArray[11] + '</p></span></div>');
+  //   $('#hot-bits-div').append('<div id="hot-bit-1" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[0]['phrase'] + '">' + bitArray[0]['phrase'] + '</p></span></div>');
+  //   $('#hot-bits-div').append('<div id="hot-bit-2" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[1]['phrase'] + '">' + bitArray[1]['phrase'] + '</p></span></div>');
+  //   $('#hot-bits-div').append('<div id="hot-bit-3" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[2]['phrase'] + '">' + bitArray[2]['phrase'] + '</p></span></div>');
+  //   $('#hot-bits-div').append('<div id="hot-bit-4" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[3]['phrase'] + '">' + bitArray[3]['phrase'] + '</p></span></div>');
+  //   $('#hot-bits-div').append('<div id="hot-bit-5" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[4]['phrase'] + '">' + bitArray[4]['phrase'] + '</p></span></div>');
+  //   $('#hot-bits-div').append('<div id="hot-bit-6" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[5]['phrase'] + '">' + bitArray[5]['phrase'] + '</p></span></div>');
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-1': function() {
+    var hotBitVal2 = document.getElementById("hot-bit1");
+    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-2': function() {
+    var hotBitVal2 = document.getElementById("hot-bit2");
+    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-3': function() {
+    var hotBitVal2 = document.getElementById("hot-bit3");
+    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-4': function() {
+    var hotBitVal2 = document.getElementById("hot-bit4");
+    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-5': function() {
+    var hotBitVal2 = document.getElementById("hot-bit5");
+    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-6': function() {
+    var hotBitVal2 = document.getElementById("hot-bit6");
+    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
   }
 })
 
@@ -68,13 +149,14 @@ Template.yummy_coins.events({
 Meteor.methods({
   bitlyLineChartD3: function(hotbits) {
     console.log('i am in bitly render');
+    $('.hot-bits').remove();
     $('.bitly-chart').remove();
     $('#slide-inputs-chart-bitly').remove();
     $('#chart-render-bitly').append('<div id="slide-inputs-chart-bitly" class="show-title-slide"></div>');
 
     var rawData;
 
-    rawData = Hotbits.find({ phrase: bitPhrase }).fetch();
+    rawData = Hotbits.find({ phrase: hotbits }).fetch();
 
     var data = [];
 
