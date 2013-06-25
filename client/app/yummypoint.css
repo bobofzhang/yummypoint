@@ -227,6 +227,15 @@ body {
   color: white;
 }
 
+#hotbit-line-chart {
+  font-size: 1.5em;
+  background-color: rgba(192, 192, 192, 0.5);
+  border-radius: 0.5em;
+  height: 2.25em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 #render-userFile {
   font-size: 1.5em;
   background-color: rgba(255, 177, 0, .5);

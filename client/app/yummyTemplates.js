@@ -108,6 +108,8 @@ Template.yummy_coins.events({
   'click #create-text-sub': function () {
     $('#create-chart').remove();
     $('#create-text').remove();
+    $('#hot-bits-div').remove();
+    $('#hotbit-line-chart').remove();
     $('#make-slide-options').remove();
     $('#text-bullets').remove();
     $('#chart-bullets').remove();

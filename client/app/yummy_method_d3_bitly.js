@@ -1,5 +1,5 @@
 
-var bitPhrase = "stanley cup";
+var bitPhrase;
 var thisShow;
 var slideNumber;
 
@@ -17,11 +17,10 @@ Meteor.methods({
   }
 })
 
-
 Meteor.methods({
   renderHotBits: function(){
-    var bitTags = Hotbits.find({}, { sort: { clickrate: -1 }, limit: 100 }).fetch();
-    var bitTagsArray =[];
+    var bitTags = Hotbits.find({}, { sort: { time: -1, clickrate: -1 }, limit: 50 }).fetch();
+    var bitTagsArray =[]; 
     for (var i = 0; i < bitTags.length; i++) {
         bitTagsArray.push(bitTags[i]['phrase']);
     }
@@ -41,59 +40,185 @@ Meteor.methods({
     $('#hot-bits-div').append('<div id="hot-bit-10" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit10" title="' + bitArray[9] + '">' + bitArray[9] + '</p></span></div>');
     $('#hot-bits-div').append('<div id="hot-bit-11" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit11" title="' + bitArray[10] + '">' + bitArray[10] + '</p></span></div>');
     $('#hot-bits-div').append('<div id="hot-bit-12" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit12" title="' + bitArray[11] + '">' + bitArray[11] + '</p></span></div>');
-  //   $('#hot-bits-div').append('<div id="hot-bit-1" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[0]['phrase'] + '">' + bitArray[0]['phrase'] + '</p></span></div>');
-  //   $('#hot-bits-div').append('<div id="hot-bit-2" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[1]['phrase'] + '">' + bitArray[1]['phrase'] + '</p></span></div>');
-  //   $('#hot-bits-div').append('<div id="hot-bit-3" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[2]['phrase'] + '">' + bitArray[2]['phrase'] + '</p></span></div>');
-  //   $('#hot-bits-div').append('<div id="hot-bit-4" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[3]['phrase'] + '">' + bitArray[3]['phrase'] + '</p></span></div>');
-  //   $('#hot-bits-div').append('<div id="hot-bit-5" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[4]['phrase'] + '">' + bitArray[4]['phrase'] + '</p></span></div>');
-  //   $('#hot-bits-div').append('<div id="hot-bit-6" class="span2"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[5]['phrase'] + '">' + bitArray[5]['phrase'] + '</p></span></div>');
   }
 })
 
 Template.yummy_coins.events({
   'click #hot-bit-1': function() {
-    var hotBitVal2 = document.getElementById("hot-bit1");
-    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    var hotBitVal = document.getElementById("hot-bit1");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
   }
 })
 
 Template.yummy_coins.events({
   'click #hot-bit-2': function() {
-    var hotBitVal2 = document.getElementById("hot-bit2");
-    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    var hotBitVal = document.getElementById("hot-bit2");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
   }
 })
 
 Template.yummy_coins.events({
   'click #hot-bit-3': function() {
-    var hotBitVal2 = document.getElementById("hot-bit3");
-    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    var hotBitVal = document.getElementById("hot-bit3");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
   }
 })
 
 Template.yummy_coins.events({
   'click #hot-bit-4': function() {
-    var hotBitVal2 = document.getElementById("hot-bit4");
-    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    var hotBitVal = document.getElementById("hot-bit4");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
   }
 })
 
 Template.yummy_coins.events({
   'click #hot-bit-5': function() {
-    var hotBitVal2 = document.getElementById("hot-bit5");
-    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    var hotBitVal = document.getElementById("hot-bit5");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
   }
 })
 
 Template.yummy_coins.events({
   'click #hot-bit-6': function() {
-    var hotBitVal2 = document.getElementById("hot-bit6");
-    var bitPhraseVal = hotBitVal2.getAttribute("title");
+    var hotBitVal = document.getElementById("hot-bit6");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-7': function() {
+    var hotBitVal = document.getElementById("hot-bit7");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-8': function() {
+    var hotBitVal = document.getElementById("hot-bit8");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-9': function() {
+    var hotBitVal = document.getElementById("hot-bit9");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-10': function() {
+    var hotBitVal = document.getElementById("hot-bit10");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-11': function() {
+    var hotBitVal = document.getElementById("hot-bit11");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
+    return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
+  }
+})
+
+Template.yummy_coins.events({
+  'click #hot-bit-12': function() {
+    var hotBitVal = document.getElementById("hot-bit12");
+    var bitPhraseVal = hotBitVal.getAttribute("title");
+    bitPhrase = bitPhraseVal;
+    $('#hot-bits-div').remove();
+    $('#create-chart-sub').remove();
+    $('#slide-nav-row').append('<div id="save-bitly-slide" class="span4 save-bitly-slide"> <span class="save-bitly"> <p> Save Bitly Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
+    $('#slide-nav-row').append('<div id="hotbit-line-chart" class="span12"><span class="line-chart"><h4>'+ bitPhraseVal +'</h4></span></div>');
     return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhraseVal); });
   }
 })
@@ -103,8 +228,7 @@ Template.yummy_coins.events({
     Shows.insert([
       { show: thisShow },
       { slide: slideNumber },
-      //{ contents: 'Deps.autorun(function(){ return Meteor.call("bitlyLineChartD3", ' + bitPhrase + '); }) && Meteor.call("renderHotBits");' },
-      { contents: "Meteor.call('bitlyLineChartD3', " + bitPhrase + ")" }, 
+      { contents: bitPhrase }, 
       { slideType: "chart" },
       { dataSource: "bitly" },
       { fileNum: ""}, 
@@ -114,14 +238,11 @@ Template.yummy_coins.events({
     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumber + '"<p> Slide' + ' ' + slideNumber + '</p></span></div>');
     $('.bitly-chart').remove();
     $('.hot-bits').remove();
+    $('#hot-bits-div').remove();
+    $('#hotbit-line-chart').remove();
     $('#slide-instruct').remove();
-    $('#twitter-switch').remove();
-    $('#bitcoin-switch').remove();
     $('#save-bitly-slide').remove();
     $('#create-text-sub').remove();
-    $('#bar-chart-switch').remove();
-    $('#bubble-chart-switch').remove();
-    $('create-chart-sub').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
     $('#create-chart-sub').remove();
@@ -132,7 +253,6 @@ Template.yummy_coins.events({
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create Chart Slide </p></span></div>');
     $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
     Meteor.call('tickSlideCount');
-    //Meteor.clearInterval("renderHotBits"); showNameEED TO FIGURE OUT HOW TO ACCESS THE SET INTERVAL HANDLE
   },
   'click #start-chart': function() {
     var showSlide = (Shows.find({ 0 : { show: thisShow }}).fetch());
@@ -140,7 +260,6 @@ Template.yummy_coins.events({
     var type = showSlide[0]['1']['slideType'];
     if (type === "chart") {
       var func = showSlide[0]['2']['contents'];
-      // console.log(func);
       return func;
     }
   }
@@ -149,7 +268,6 @@ Template.yummy_coins.events({
 Meteor.methods({
   bitlyLineChartD3: function(hotbits) {
     console.log('i am in bitly render');
-    $('.hot-bits').remove();
     $('.bitly-chart').remove();
     $('#slide-inputs-chart-bitly').remove();
     $('#chart-render-bitly').append('<div id="slide-inputs-chart-bitly" class="show-title-slide"></div>');
@@ -217,7 +335,8 @@ Meteor.methods({
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", ".71em")
-        .style("text-anchor", "end");
+        .style("text-anchor", "end")
+        .text(+ hotbits + " link clickrate");
 
     svg.append("path")
         .datum(data)

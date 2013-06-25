@@ -3,6 +3,8 @@ Template.yummy_coins.events({
   'click #create-chart-sub': function () {
     $('#slide-instruct').remove();
     $('.slide-title').remove();
+    $('#hot-bits-div').remove();
+    $('#hotbit-line-chart').remove();
     $('#create-chart-sub').remove();
     $('#img-back-upload').remove();
     $('#make-slide-options').remove();
@@ -26,8 +28,6 @@ Template.yummy_coins.events({
     $('#chart-render-bitcoin').remove();
     $('#save-bitly-slide-bubble').remove();
     $('#slide-nav-row').append('<div id="create-text-sub" class="span12"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
-    // $('.make-start').append('<div class="row chart-data-sources-types"></div>');
-    // $('.chart-data-sources-types').append('<div id="user-data-row" class="span12"></div>');
     $('.make-start').append('<div id="data-source-container" class="span12 chart-data-sources-types"></div>');
     $('.chart-data-sources-types').append('<div id="user-data-row" class="row"></div>');
     $('.chart-data-sources-types').append('<div id="user-chart-options-row" class="row"></div>');
