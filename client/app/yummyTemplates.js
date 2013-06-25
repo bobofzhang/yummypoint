@@ -257,6 +257,7 @@ Template.yummy_coins.events({
       $('#chart-render').remove();
       $('#chart-render-bitly').remove();
       $('#chart-render-bitcoin').remove();
+      $('chart-render-bitly-bubble').remove();
       $('#make-new-show').append('<div id="show-maker"><span class="new-yum-show"><p> Make a new Yummy Show </p> </span></div>')
       $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
@@ -407,7 +408,9 @@ Template.yummy_coins.events({
         $('#call-2-action').remove();
         $('#myCarousel').remove();
         $('#user-session-show').remove();
+        $('#user-login-alert').remove();
         $('#mkt-plug').remove();
+        $('#homepage-mkt').remove();
         Shownames.insert({
           show: showName,
           meteorUser: currentUser
