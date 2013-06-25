@@ -218,7 +218,8 @@ Meteor.methods({
     svg.append("path")
         .datum(data)
         .attr("class", "line")
-        .style("stroke", "white")
+        .style("stroke", "red")
+        .style("fill", "white")
         .attr("d", line);
 
     return data;

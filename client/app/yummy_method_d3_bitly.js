@@ -336,7 +336,7 @@ Meteor.methods({
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text(+ hotbits + " link clickrate");
+        .text(""+ hotbits + "link clickrate");
 
     svg.append("path")
         .datum(data)

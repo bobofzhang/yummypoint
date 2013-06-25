@@ -130,6 +130,7 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
+    $('#chart-render-bitly-bubble').remove();
     $('#inputs').remove();
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');

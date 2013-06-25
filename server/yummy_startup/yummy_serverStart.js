@@ -39,6 +39,38 @@ var priceFlush = Meteor.setInterval(function(){
     Meteor.call("clearPriceDB");
   }, 360000);
 
+Meteor.methods({
+  clearHotbitDB: function(){
+    Bubhotbits.remove({});
+    Hotbits.remove({});
+    var result = Meteor.http.call('GET',
+      'https://api-ssl.bitly.com/v3/realtime/hot_phrases?access_token=06cc854f25b36aebb4a9fac685d880413d511967'
+    )
+    var linkData = result.data.data.phrases;
+    for (var i = 0; i < linkData.length; i++) {
+      console.log(linkData[i]);
+      var bitPhrase = linkData[i].phrase;
+      var bitRate = linkData[i].rate;
+      var date = new Date();
+      var time = date.getTime();
+      Hotbits.insert({
+        phrase: bitPhrase,
+        clickrate: bitRate,
+        time: time
+      })
+      Bubhotbits.insert({
+        phrase: bitPhrase,
+        clickrate: bitRate,
+        time: time
+      })
+    }
+  }
+})
+
+var hotbitsFlush = Meteor.setInterval(function(){
+    Meteor.call("clearHotbitDB");
+}, 480000);
+
 Meteor.startup(function () {
   Slides.remove({});
   Shows.remove({});
