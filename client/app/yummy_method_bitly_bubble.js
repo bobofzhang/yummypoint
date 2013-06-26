@@ -111,7 +111,7 @@ Meteor.methods ({
                         d3.min(dataset, function(d) { return d[0]; }),
                         d3.max(dataset, function(d) { return d[0]; }) 
                         ])
-                .range ([ 1, 100 ])
+                .range ([ 1, 125 ])
                 .clamp([true]);
 
         var g = function (d) {
@@ -119,7 +119,6 @@ Meteor.methods ({
         };
 
         var launch = function () {
-            console.log('i am in launch');
             force
                 .nodes(dataset);
 
@@ -158,7 +157,7 @@ Meteor.methods ({
 
             d3.selectAll("circle")
                     .transition()
-                    .delay(function(d,i) { return i * 5; })
+                    .delay(function(d,i) { return i * 10; })
                     .duration( 1000 )
                     .attr("r", function (d) { return r( d[0]); });
 

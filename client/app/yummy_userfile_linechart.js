@@ -7,7 +7,6 @@ var thisSlideNumber;
 
 Meteor.methods({
   passShowNameUserData: function (showName) {
-    console.log('in the passShowNameUserData');
     thisShowName = showName;
     return thisShowName;
   }
@@ -15,7 +14,6 @@ Meteor.methods({
 
 Meteor.methods({
   passSlideCountUserData: function (count) {
-    console.log('in passSlideCountUserData');
     thisSlideNumber = count;
     return thisSlideNumber;
   }
@@ -62,7 +60,6 @@ Template.yummy_coins.events({
     fileCount++
 
     function printTable(file) {
-      console.log('i am in printTable');
       var reader = new FileReader();
       reader.readAsText(file);
       reader.onload = function(event){
@@ -92,8 +89,6 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'click #save-userfile-slide': function () {
-    console.log(thisShowName);
-    console.log(thisSlideNumber);
     Shows.insert([
       { show: thisShowName },
       { slide: thisSlideNumber },

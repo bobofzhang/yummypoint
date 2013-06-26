@@ -90,7 +90,6 @@ Template.yummy_coins.events({
 })
 
 Template.userShows.allUserShows = function () {
-  console.log("i am in the all userShows temp")
   var showQuery = Shows.find().fetch();
   var thisUser = Meteor.userId();
   $('#hide-shows').remove();

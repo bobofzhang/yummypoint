@@ -87,10 +87,9 @@ Meteor.methods({
     $('#slide-inputs-chart-bitcoin').remove();
     $('#chart-render-bitcoin').append('<div id="slide-inputs-chart-bitcoin" class="show-title-slide"></div>');
     var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
-    //console.log(checkBitTime);
 
     var rawData;
-    rawData = Prices.find({}, { sort: { date: -1 }, limit: 500 }).fetch();
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 250 }).fetch();
 
 
     var dataset = [];
@@ -169,8 +168,6 @@ Meteor.methods({
   D3BarChart: function() {
 
     var data = getData();
-    console.log('in barchar');
-    console.log(data);
 
     // var t = 1297110663, // start time (seconds since epoch)
     // v = 70, // start value (subscribers)

@@ -8,7 +8,6 @@ var thisShowName;
 
 Meteor.methods({
   passCurrentShowName: function (showName) {
-    console.log('in the passCurrentShowName');
     thisCurrentShow = showName;
     return thisCurrentShow;
   }
@@ -347,7 +346,6 @@ Template.yummy_coins.events({
         } else if (type === "chart" && source === "bitly" && chartType === "line") {
           $('.the-show').remove();
           var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-          console.log(bitPhrase);
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
           return Meteor.call('bitlyLineChartD3', bitPhrase);
@@ -419,7 +417,6 @@ Template.yummy_coins.events({
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly" && chartType === "line") {
           var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-          console.log(bitPhrase);
           $('.the-show').remove();
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
@@ -491,7 +488,6 @@ Template.yummy_coins.events({
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly" && chartType === "line") {
           var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-          console.log(bitPhrase);
           $('.the-show').remove();
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
@@ -554,7 +550,6 @@ Template.yummy_coins.events({
         return Meteor.call('D3testinit'); 
       } else if (type === "chart" && source === "bitly" && chartType === "line") {
         var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-        console.log(bitPhrase);
         $('.the-show').remove();
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
         $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
@@ -627,7 +622,6 @@ Template.yummy_coins.events({
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly" && chartType === "line") {
           var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-          console.log(bitPhrase);
           $('.the-show').remove();
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
@@ -700,7 +694,6 @@ Template.yummy_coins.events({
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly" && chartType === "line") {
           var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-          console.log(bitPhrase);
           $('.the-show').remove();
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
@@ -775,7 +768,6 @@ Template.yummy_coins.events({
           return Meteor.call('D3testinit'); 
         } else if (type === "chart" && source === "bitly" && chartType === "line") {
           var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-          console.log(bitPhrase);
           $('.the-show').remove();
           $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
           $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
@@ -838,7 +830,6 @@ Template.yummy_coins.events({
         return Meteor.call('D3testinit'); 
       } else if (type === "chart" && source === "bitly" && chartType === "line") {
         var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-        console.log(bitPhrase);
         $('.the-show').remove();
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
         $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
@@ -919,7 +910,6 @@ Template.yummy_coins.events({
         $('#chart-render-bitly').remove();
         $('#chart-render-bitcoin').remove();
         var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-        console.log(bitPhrase);
         $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
         $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
         return Meteor.call('bitlyLineChartD3', bitPhrase);

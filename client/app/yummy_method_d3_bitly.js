@@ -25,7 +25,6 @@ Meteor.methods({
         bitTagsArray.push(bitTags[i]['phrase']);
     }
     var bitArray = _.uniq(bitTagsArray);
-    console.log(bitArray);
     $('.hot-bits').remove();
     $('.make-start').append('<div id="hot-bits-div"></div>');
     $('#hot-bits-div').append('<div id="hot-bit-1" class="span3 hot-bits-div"><span class="hot-bits"><p id="hot-bit1" title="' + bitArray[0] + '">' + bitArray[0] + '</p></span></div>');
@@ -267,7 +266,6 @@ Template.yummy_coins.events({
 
 Meteor.methods({
   bitlyLineChartD3: function(hotbits) {
-    console.log('i am in bitly render');
     $('.bitly-chart').remove();
     $('#slide-inputs-chart-bitly').remove();
     $('#chart-render-bitly').append('<div id="slide-inputs-chart-bitly" class="show-title-slide"></div>');
