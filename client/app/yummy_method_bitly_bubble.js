@@ -67,7 +67,6 @@ Template.yummy_coins.events({
 
 Meteor.methods ({
     d3BubbleChart: function(){
-        console.log('i am in the bit bubble render');
         $('#slide-inputs-chart-bitly-bubble').remove();
         $('#chart-render-bitly-bubble').append('<div id="slide-inputs-chart-bitly-bubble" class="show-title-slide"></div>');
 

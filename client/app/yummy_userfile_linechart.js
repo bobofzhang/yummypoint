@@ -82,7 +82,12 @@ Template.yummy_coins.events({
 Template.yummy_coins.events({
   'click #render-userFile': function () {
     $('#user-data-row').remove();
+    $('#create-chart-sub').remove();
+    $('#create-text-sub').remove();
     $('.make-start').append('<div id="chart-render" class="span12"></div>');
+    $('#slide-nav-row').append('<div id="save-userfile-slide" class="span4 save-userfile-chart"> <span class="save-userfile"> <p> Save this Line Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     Meteor.call('userFileLineChart', fileCount);
   }
 })
@@ -124,19 +129,14 @@ Template.yummy_coins.events({
 
 Meteor.methods({
   userFileLineChart: function(index) {
+    console.log('i am in the file chart render');
     var currentUser = Meteor.userId();
-    $('.bitly-chart').remove();
-    $('.userFile-chart').remove();
-    $('#user-data-row').remove();
+    $('#slide-inputs-chart').remove();
+    // $('#user-data-row').remove();
     $('#render-userFile').remove();
     $('#post-user-file-upload').remove();
-    $('#create-chart-sub').remove();
-    $('#create-text-sub').remove();
-    $('#show-content-title').remove();
-    $('#slide-nav-row').append('<div id="save-userfile-slide" class="span4 save-userfile-chart"> <span class="save-userfile"> <p> Save this Line Graph </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-    $('#chart-render').append('<div id="slide-inputs-chart" class="show-title-slide"></div>');
+    // $('#show-content-title').remove();
+    $('#chart-render').append('<div id="slide-inputs-chart" class="show-user-line-slide"></div>');
     var rawData;
 
     rawData = Files.find({}).fetch();
@@ -152,7 +152,7 @@ Meteor.methods({
 
     for (var i = 0; i < myData.length; i++) {
       var newDate = Date.parse(myData[i][1]);
-      console.log(newDate);
+      //console.log(newDate);
       data.push([myData[i][0], newDate]);
     }
 

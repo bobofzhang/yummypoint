@@ -60,14 +60,20 @@ Template.yummy_coins.events({
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
     }
-    return $('#user-bub-inputs').remove() &&  $('.make-start').append('<div id="post-user-file-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div><div class="span2"></div><div id="render-user-bub-file" class="span8 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data Line Chart </p></span></div><div class="span2></div></div>')
+    return $('#user-bub-inputs').remove() &&  $('.make-start').append('<div id="post-user-file-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div><div class="span2"></div><div id="render-user-bub-file" class="span8 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data Bubble Chart </p></span></div><div class="span2></div></div>')
   }
 })
 
 Template.yummy_coins.events({
   'click #render-user-bub-file': function () {
     $('#user-data-row').remove();
+    $('#create-chart-sub').remove();
+    $('#create-text-sub').remove();
+    $('#show-content-title').remove();
     $('.make-start').append('<div id="user-bub-chart-render" class="span12"></div>');
+    $('#slide-nav-row').append('<div id="save-user-bub-slide" class="span4 save-userfile-chart"> <span class="save-userfile"> <p> Save this Bubble Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     Meteor.call('userBubbleChart', userBubFileCount);
   }
 })
@@ -85,20 +91,15 @@ Template.yummy_coins.events({
       { chartType: "bubble" }
     ]);
     $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + userBubSlideNumber + '"<p> Slide' + ' ' + userBubSlideNumber + '</p></span></div>');
-    $('.bitly-chart').remove();
-    $('.bitcoin-chart').remove();
     $('#slide-instruct').remove();
-    $('#twitter-switch').remove();
-    $('#bitly-switch').remove();
     $('#save-bitcoin-slide').remove();
     $('#save-userfile-slide').remove();
     $('#create-text-sub').remove();
-    $('#bar-chart-switch').remove();
-    $('#bubble-chart-switch').remove();
     $('#create-chart-sub').remove();
     $('#slide-inputs').remove();
     $('#slide-inputs-chart').remove();
-    $('#chart-render').remove();
+    $('#user-bub-chart-render').remove();
+    $('#save-user-bub-slide').remove();
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Create a Chart Slide </p></span></div>');
@@ -111,20 +112,11 @@ Template.yummy_coins.events({
 Meteor.methods ({
     userBubbleChart: function(index){
         var currentUser = Meteor.userId();
-        console.log('i am in the user bubble render');
         $('#slide-inputs-chart-user-bubble').remove();
-        $('.bitly-chart').remove();
-        $('.userFile-chart').remove();
-        $('#user-data-row').remove();
-        $('#render-userFile').remove();
         $('#post-user-file-upload').remove();
-        $('#create-chart-sub').remove();
-        $('#create-text-sub').remove();
-        $('#show-content-title').remove();
-        $('#slide-nav-row').append('<div id="save-user-bub-slide" class="span4 save-userfile-chart"> <span class="save-userfile"> <p> Save this Bubble Graph </p></span></div>');
-        $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
-        $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-        $('#user-bub-chart-render').append('<div id="slide-inputs-chart-user-bubble" class="show-title-slide"></div>');
+        $('#render-user-bub-file').remove();
+
+        $('#user-bub-chart-render').append('<div id="slide-inputs-chart-user-bubble" class="show-user-bub-slide"></div>');
 
         //var rawData = Hotbits.find({}, { sort: { time: -1, clickrate: -1 }, limit: 80 }).fetch();
 
@@ -142,7 +134,7 @@ Meteor.methods ({
         var dataset = [];
 
         for (var i = 0; i < 30; i++) {
-          console.log(myData[i][0]);
+          //console.log(myData[i][0]);
           dataset.push([myData[i][0], myData[i][1]]);
         }
         //console.log(dataset);
