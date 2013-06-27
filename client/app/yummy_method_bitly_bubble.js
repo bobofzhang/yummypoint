@@ -67,13 +67,10 @@ Template.yummy_coins.events({
 
 Meteor.methods ({
     d3BubbleChart: function(){
-        //$('.bitly-chart').remove();
         console.log('i am in the bit bubble render');
         $('#slide-inputs-chart-bitly-bubble').remove();
         $('#chart-render-bitly-bubble').append('<div id="slide-inputs-chart-bitly-bubble" class="show-title-slide"></div>');
 
-        //var rawData = Bubhotbits.find().fetch();
-        // var rawData = Bubhotbits.find({}, { sort: { clickrate: -1 }, limit: 100 }).fetch();
         var rawData = Hotbits.find({}, { sort: { time: -1, clickrate: -1 }, limit: 80 }).fetch();
 
         var dataset = [];

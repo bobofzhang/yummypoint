@@ -190,6 +190,21 @@ body {
   border-radius: 0.5em;
 }
 
+#inputs:hover {
+  background-color: rgba(213, 0, 101, 1);
+  color: white;
+}
+
+#user-bub-inputs {
+  background-color: rgba(213, 0, 101, 0.5);
+  border-radius: 0.5em; 
+}
+
+#user-bub-inputs:hover {
+  background-color: rgba(213, 0, 101, 1);
+  color: white;
+}
+
 #files{
   float:left;
 }
@@ -213,6 +228,17 @@ body {
   color: white;
 }
 
+#user-bubble-chart-nav {
+  background-color: rgba(213, 0, 101, 0.5);
+  margin-right: 0.5em;
+  border-radius: 0.5em;
+}
+
+#user-bubble-chart-nav:hover {
+  background-color: rgba(213, 0, 101, 1);
+  color: white;
+}
+
 #user-line-instruct {
 /*  background-color: rgba(192, 192, 192, 0.5);*/
   text-align: center;
@@ -222,9 +248,12 @@ body {
   border-radius: 0.5em;
 }
 
-#inputs:hover {
-  background-color: rgba(213, 0, 101, 1);
-  color: white;
+#user-bub-instruct {
+  text-align: center;
+  color: red;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 0.5em;
 }
 
 #hotbit-line-chart {
@@ -249,6 +278,22 @@ body {
 }
 
 #render-userFile p {
+  margin-top: 0.6em;
+}
+
+#render-user-bub-file {
+  font-size: 1.5em;
+  background-color: rgba(255, 177, 0, .5);
+  border-radius: 0.5em;
+  height: 2.25em; 
+}
+
+#render-user-bub-file:hover {
+  background-color: rgba(255, 177, 0, 1);
+  color: white;
+}
+
+#render-user-bub-file p {
   margin-top: 0.6em;
 }
 
@@ -756,7 +801,8 @@ margin-bottom: 1em;
 #save-bitly-slide, 
 #save-bitcoin-slide, 
 #save-userfile-slide, 
-#save-bitly-slide-bubble {
+#save-bitly-slide-bubble,
+#save-user-bub-slide {
   text-align: center;
   height: 2.25em;  
   background-color: rgba(255, 177, 0, .5);
@@ -768,7 +814,8 @@ margin-bottom: 1em;
 #save-bitly-slide:hover, 
 #save-bitcoin-slide:hover, 
 #save-userfile-slide:hover, 
-#save-bitly-slide-bubble:hover {
+#save-bitly-slide-bubble:hover,
+#save-user-bub-slide:hover {
   background-color: rgba(255, 177, 0, 1);
   color: white;
 }
@@ -776,7 +823,8 @@ margin-bottom: 1em;
 #save-bitly-slide p, 
 #save-bitcoin-slide p, 
 #save-userfile-slide p,
-#save-bitly-slide-bubble p {
+#save-bitly-slide-bubble p,
+#save-user-bub-slide p {
   margin-top: 0.6em;
 }
 

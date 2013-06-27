@@ -24,6 +24,7 @@ Template.yummy_coins.events({
     Meteor.call('passShowNameBitCoin', thisShowName);
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNameUserBub', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
     $('#plug-text-title').remove();
     $('#show-maker').remove();
@@ -72,6 +73,7 @@ Template.yummy_coins.events({
     Meteor.call('passShowNameBitCoin', thisShowName);
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNameUserBub', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
     $('#plug-text-title').remove();
     $('#show-maker').remove();
@@ -119,6 +121,7 @@ Template.yummy_coins.events({
     Meteor.call('passShowNameBitCoin', thisShowName);
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNameUserBub', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
     $('#plug-text-title').remove();
     $('#show-maker').remove();
@@ -166,6 +169,7 @@ Template.yummy_coins.events({
     Meteor.call('passShowNameBitCoin', thisShowName);
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNameUserBub', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
     $('#plug-text-title').remove();
     $('#show-maker').remove();
@@ -213,6 +217,7 @@ Template.yummy_coins.events({
     Meteor.call('passShowNameBitCoin', thisShowName);
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNameUserBub', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
     $('#plug-text-title').remove();
     $('#show-maker').remove();
@@ -260,6 +265,7 @@ Template.yummy_coins.events({
     Meteor.call('passShowNameBitCoin', thisShowName);
     Meteor.call('passCurrentShowName', thisShowName);
     Meteor.call('passShowNameUserData', thisShowName);
+    Meteor.call('passShowNameUserBub', thisShowName);
     Meteor.call('passShowNamePreview', thisShowName);
     $('#plug-text-title').remove();
     $('#show-maker').remove();

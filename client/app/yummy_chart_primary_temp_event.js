@@ -27,6 +27,7 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#save-bitly-slide-bubble').remove();
+    $('#user-bub-chart-render').remove();
     $('#slide-nav-row').append('<div id="create-text-sub" class="span12"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div>');
     $('.make-start').append('<div id="data-source-container" class="span12 chart-data-sources-types"></div>');
     $('.chart-data-sources-types').append('<div id="user-data-row" class="row"></div>');
@@ -39,7 +40,7 @@ Template.yummy_coins.events({
     $('#user-chart-options-row').append('<div id="user-data-line-nav" class="span3 pull-right"> <span class="line-chart"> <h4> Line Chart </h4></span></div>');
     //$('#user-chart-options-row').append('<div id="inputs" class="span3 clearfix pull-right"><h4><input type="file" id="files" name="files[]" /><h4></div>');
     //$('#user-chart-options-row').append('<div id="bar-chart-nav" class="span4"> <span class="bar-chart"> <h4> Bar Chart</h4></span></div>');
-    //$('#user-chart-options-row').append('<div id="bubble-chart-nav" class="span4"> <span class="bubble-chart"> <h4> Bubble Chart </h4></span></div>');
+    $('#user-chart-options-row').append('<div id="user-bubble-chart-nav" class="span3 pull-right"> <span class="bubble-chart"> <h4> Bubble Chart </h4></span></div>');
     $('.chart-data-sources-types').append('<div id="public-data-row" class="row"></div>');
     $('.chart-data-sources-types').append('<div id="twitter-data-row" class="row"></div>');
     $('.chart-data-sources-types').append('<div id="bitcoin-data-row" class="row"></div>');

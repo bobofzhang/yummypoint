@@ -12,6 +12,7 @@ Meteor.methods({
     Meteor.call('passSlideCount', slideCount);
     Meteor.call('passSlideCountBitCoin', slideCount);
     Meteor.call('passSlideCountUserData', slideCount);
+    Meteor.call('passSlideCountUserBub', slideCount);
     Meteor.call('passSlideCountBitBub', slideCount);
     return slideCount;
   }
@@ -131,6 +132,7 @@ Template.yummy_coins.events({
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
     $('#inputs').remove();
+    $('#user-bub-chart-render').remove();
     $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
     $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
     $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
@@ -292,6 +294,7 @@ Template.yummy_coins.events({
         Meteor.call('passSlideCount', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
         Meteor.call('passSlideCountUserData', slideCount);
+        Meteor.call('passSlideCountUserBub', slideCount);
         Meteor.call('passSlideCountBitBub', slideCount);
         return slideTitleText;
       } else {
@@ -318,6 +321,7 @@ Template.yummy_coins.events({
         Meteor.call('passSlideCount', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
         Meteor.call('passSlideCountUserData', slideCount);
+        Meteor.call('passSlideCountUserBub', slideCount);
         Meteor.call('passSlideCountBitBub', slideCount);
         return bulletOneText;
       } else {
@@ -344,6 +348,7 @@ Template.yummy_coins.events({
         Meteor.call('passSlideCount', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
         Meteor.call('passSlideCountUserData', slideCount);
+        Meteor.call('passSlideCountUserBub', slideCount);
         Meteor.call('passSlideCountBitBub', slideCount);
         return bulletTwoText;
       } else {
@@ -368,6 +373,7 @@ Template.yummy_coins.events({
         Meteor.call('passSlideCount', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
         Meteor.call('passSlideCountUserData', slideCount);
+        Meteor.call('passSlideCountUserBub', slideCount);
         Meteor.call('passSlideCountBitBub', slideCount);
         return bulletThreeText;
       }
@@ -402,6 +408,7 @@ Template.yummy_coins.events({
         Meteor.call('passShowNameUserData', currentShow);
         Meteor.call('passShowNamePreview', currentShow);
         Meteor.call('passShowNameBitBub', currentShow);
+        Meteor.call('passShowNameUserBub', currentShow);
         slideCount = 1;
         $('#create-show').remove();
         $('#marketing-text').remove();
