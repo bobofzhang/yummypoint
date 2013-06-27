@@ -26,6 +26,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -89,6 +91,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -150,6 +154,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -211,6 +217,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -272,6 +280,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -333,6 +343,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -394,6 +406,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -454,7 +468,9 @@ Template.yummy_coins.events({
     $('#chart-render').remove();
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove(); 
-    $('#chart-render-bitly-bubble').remove();   
+    $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();   
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -516,6 +532,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
@@ -577,6 +595,8 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#user-bub-chart-render').remove();
+    $('#render-user-bub-file').remove();
     var slideTitle = Shows.find().fetch();
     var slideShowMap = [];
     for (var i = 0; i < slideTitle.length; i++) {
