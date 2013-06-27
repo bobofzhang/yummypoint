@@ -278,7 +278,7 @@ Meteor.methods({
 
     for (var i = 0; i < rawData.length; i++) {
       data.push([rawData[i].clickrate, rawData[i].time]);
-      // console.log(rawData[i].clickrate);
+      console.log(rawData[i].time);
     }
 
     var margin = {

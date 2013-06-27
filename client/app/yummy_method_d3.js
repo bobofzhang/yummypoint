@@ -89,13 +89,14 @@ Meteor.methods({
     var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
 
     var rawData;
-    rawData = Prices.find({}, { sort: { date: -1 }, limit: 250 }).fetch();
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 500 }).fetch();
 
 
     var dataset = [];
 
     for (var i = 0; i < rawData.length; i++) {
       dataset.push([rawData[i]['price'], rawData[i]['time']]);
+      console.log(rawData[i]['time']);
     }
 
     var margin = {

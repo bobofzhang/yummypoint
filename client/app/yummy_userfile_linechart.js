@@ -151,8 +151,12 @@ Meteor.methods({
     var data = [];
 
     for (var i = 0; i < myData.length; i++) {
-      data.push([myData[i][0], myData[i][1]]);
+      var newDate = Date.parse(myData[i][1]);
+      console.log(newDate);
+      data.push([myData[i][0], newDate]);
     }
+
+    //console.log(data);
 
     var margin = {
       top: 20, 
@@ -165,10 +169,17 @@ Meteor.methods({
     var height = 500 - margin.top - margin.bottom;
 
     var x = d3.time.scale()
-        .range([0, width]);
+        // .domain([
+        //   d3.min(data, function(d) { return d[1]; }),
+        //   d3.max(data, function(d) { return d[1]; }) 
+        //   ])
+        .range([ 0, width ]);
 
     var y = d3.scale.linear()
-        // .domain([d3.min(data), d3.max(data)])
+        // .domain([
+        //   d3.min(data, function(d) { return d[0]; }),
+        //   d3.max(data, function(d) { return d[0]; }) 
+        //   ])
         .range([height, 0]);
 
     var xAxis = d3.svg.axis()
@@ -207,14 +218,14 @@ Meteor.methods({
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Price ($)");
+        .style("text-anchor", "end");
+        // .text("Price ($)");
 
     svg.append("path")
         .datum(data)
         .attr("class", "line")
         .style("stroke", "red")
-        .style("fill", "white")
+        .style("fill", "black")
         .attr("d", line);
 
     return data;
