@@ -512,50 +512,50 @@ Template.yummy_coins.events({
       return bulletTwo;
     }
   },
-  'click .slidelink1': function(){
-    $('.slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('.saved-slide-preview').remove();
-    $('#create-chart-sub').remove();
-    $('#edit-current-slide').remove();
-    $('#create-text-sub').remove();
-    $('.chart-data-sources-types').remove();
-    $('#save-userfile-slide').remove();
-    $('#save-bitcoin-slide').remove();
-    $('#render-userFile').remove();
-    $('#chart-render').remove();
-    $('#chart-render-bitly').remove();
-    $('#chart-render-bitcoin').remove();
-    $('#chart-render-bitly-bubble').remove();
-    $('#user-bub-chart-render').remove();
-    $('#render-user-bub-file').remove();
-    var slideTitle = Shows.find().fetch();
-    var slideShowMap = [];
-    for (var i = 0; i < slideTitle.length; i++) {
-      if (slideTitle[i][0]['show'] === currentShow) {
-        slideShowMap.push(slideTitle[i]);
-      }
-    }
-    var type = slideShowMap[0]['3']['slideType'];
-    var source = slideShowMap[0]['4']['dataSource'];
-    if (type === "chart" && source === "bitcoin") {
-      $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
-      return Meteor.call('D3testinit'); 
-    } else if (type === "chart" && source === "bitly") {
-      $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
-      return Meteor.call('bitlyLineChartD3'); 
-    } else {
-      var slideTextArray = slideShowMap[0][2]['contents'];
-      var title = slideTextArray[0]['text'];
-      var firstBull = slideTextArray[1]['text'];
-      var secondBull = slideTextArray[2]['text'];
-      var thirdBull = slideTextArray[3]['text'];
-      $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
-      $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-      $('.make-start').append('<div id="preview-slide-inputs" class="span12"></div>');
-      $('#preview-slide-inputs').append('<div class="preview-title-slideTitle"> <h1>' + title + '</h1></div><div class="title-sub-title"><h2>' + firstBull + '</h2></div><div class="title-sub-sub"> <h3>' + secondBull + '</h3></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
-    }
-  },
+  // 'click .slidelink1': function(){
+  //   $('.slide-inputs').remove();
+  //   $('#slide-inputs-chart').remove();
+  //   $('.saved-slide-preview').remove();
+  //   $('#create-chart-sub').remove();
+  //   $('#edit-current-slide').remove();
+  //   $('#create-text-sub').remove();
+  //   $('.chart-data-sources-types').remove();
+  //   $('#save-userfile-slide').remove();
+  //   $('#save-bitcoin-slide').remove();
+  //   $('#render-userFile').remove();
+  //   $('#chart-render').remove();
+  //   $('#chart-render-bitly').remove();
+  //   $('#chart-render-bitcoin').remove();
+  //   $('#chart-render-bitly-bubble').remove();
+  //   $('#user-bub-chart-render').remove();
+  //   $('#render-user-bub-file').remove();
+  //   var slideTitle = Shows.find().fetch();
+  //   var slideShowMap = [];
+  //   for (var i = 0; i < slideTitle.length; i++) {
+  //     if (slideTitle[i][0]['show'] === currentShow) {
+  //       slideShowMap.push(slideTitle[i]);
+  //     }
+  //   }
+  //   var type = slideShowMap[0]['3']['slideType'];
+  //   var source = slideShowMap[0]['4']['dataSource'];
+  //   if (type === "chart" && source === "bitcoin") {
+  //     $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
+  //     return Meteor.call('D3testinit'); 
+  //   } else if (type === "chart" && source === "bitly") {
+  //     $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
+  //     return Meteor.call('bitlyLineChartD3'); 
+  //   } else {
+  //     var slideTextArray = slideShowMap[0][2]['contents'];
+  //     var title = slideTextArray[0]['text'];
+  //     var firstBull = slideTextArray[1]['text'];
+  //     var secondBull = slideTextArray[2]['text'];
+  //     var thirdBull = slideTextArray[3]['text'];
+  //     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
+  //     $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+  //     $('.make-start').append('<div id="preview-slide-inputs" class="span12"></div>');
+  //     $('#preview-slide-inputs').append('<div class="preview-title-slideTitle"> <h1>' + title + '</h1></div><div class="title-sub-title"><h2>' + firstBull + '</h2></div><div class="title-sub-sub"> <h3>' + secondBull + '</h3></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+  //   }
+  // },
   'click #edit-current-slide': function () {
     alert('oh yeah bitchy bitch. this whole thing is getting closer to the promise land');
   }
