@@ -118,7 +118,7 @@ Meteor.methods ({
             force
                 .nodes(dataset);
 
-            circles = svg.append("svg")
+            circlesDiv = svg.append("svg")
                         .attr("id", "circles")
                         .selectAll("g")
                         .data(force.nodes());
@@ -128,10 +128,10 @@ Meteor.methods ({
                 d.y = Math.random() * h;
             });
 
-            var node = circles 
+            var node = circlesDiv 
                     .enter()
-                    .append("g")
-                    .attr("class", "bub-node")
+                    .append("g");
+            var circleElems = node.attr("class", "bub-node")
                     .append("circle")
                     .attr("r", 0)
                     .attr("cx", function (d) { return d.x; })
@@ -141,6 +141,10 @@ Meteor.methods ({
                     .attr("stroke", "yellow")
                     .on("mouseover", function(){d3.select(this).style("fill", "rgba(213, 0, 101, 0.5)");})
                     .on("mouseout", function(){d3.select(this).style("fill", "rgba(20, 53, 173, .5)");});
+            circleElems.append("title")
+                    .attr("class", "title-text")
+                    .text(function (d) { return (d[1] + ", " + d[0]) ; })
+                    .style("font-size", "18px");
                     //.attr("id", "bub-text")
                     //.attr("fill", "rgba(220, 220, 220, 0.5)")
                     // .append("text")
@@ -157,13 +161,7 @@ Meteor.methods ({
                     .duration( 1000 )
                     .attr("r", function (d) { return r( d[0]); });
 
-            node.append("title")
-                .attr("class", "title-text")
-                .text(function (d) { return (d[1] + ", " + d[0]) ; })
-                .style("font-size", "18px");
-
-            node.append("g")
-                .append("text")
+            node.append("text")
                 .attr("cx", function (d) { return d.x; })
                 .attr("cy", function (d) { return d.y; })
                 .attr("dy", ".3em")
@@ -176,7 +174,7 @@ Meteor.methods ({
                     .friction(friction)
                     .on("tick", function (e) {
                         generator(e.alpha);
-                        node 
+                        circleElems 
                             .attr("cx", function (d) { return d.x; })
                             .attr("cy", function (d) { return d.y; });
                     }).start();

@@ -266,7 +266,7 @@ Template.yummy_coins.events({
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
-      $('#slide-links').append('<div id="saved-slide" title="'+ slideCount +'" class="span1"><span id="slidelink" class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
+      $('#slide-links').append('<div id="saved-slide'+slideCount+'" title="'+ slideCount +'" class="span1 saved-slide"><span id="slidelink" class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
       var slideTitle = Slides.find().fetch();
       var slideFilter = _.filter(slideTitle, function (obj) {
         if (obj['slide'] === slideCount && obj['show'] === currentShow) {
