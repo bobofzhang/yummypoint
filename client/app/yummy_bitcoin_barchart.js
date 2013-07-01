@@ -24,7 +24,7 @@ Template.yummy_coins.events({
     $('#create-text-sub').remove();
     $('.chart-data-sources-types').remove();
     $('.make-start').append('<div id="chart-bar-render-bitcoin" class="span12"></div>');
-    $('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save Bitcoin Graph </p></span></div>');
+    $('#slide-nav-row').append('<div id="save-bitcoin-bar-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save Bitcoin Graph </p></span></div>');
     $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
     return Deps.autorun(function(){ return Meteor.call('bitcoinBarChart'); });
@@ -32,7 +32,7 @@ Template.yummy_coins.events({
 })
 
 Template.yummy_coins.events({
-  'click #save-bitcoin-slide': function() {
+  'click #save-bitcoin-bar-slide': function() {
     Shows.insert([
       { show: thisShowBitCoin },
       { slide: slideNumberBitCoin },
@@ -43,7 +43,7 @@ Template.yummy_coins.events({
       { meteorUser: Meteor.userId() },
       { chartType: "line" }
     ]);
-    $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumberBitCoin + '"<p> Slide' + ' ' + slideNumberBitCoin + '</p></span></div>');
+    $('#slide-links').append('<div id="saved-slide'+slideNumberBitCoin+'" title="'+ slideNumberBitCoin +'" class="span1 saved-slide"><span class="slidelink' + slideNumberBitCoin + '"<p> Slide' + ' ' + slideNumberBitCoin + '</p></span></div>');
     $('.bitly-chart').remove();
     $('.bitcoin-chart').remove();
     $('#slide-instruct').remove();

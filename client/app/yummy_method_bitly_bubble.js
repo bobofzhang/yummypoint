@@ -43,7 +43,7 @@ Template.yummy_coins.events({
         { meteorUser: Meteor.userId() },
         { chartType: "bubble" }
         ]);
-        $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumber + '"<p> Slide' + ' ' + slideNumber + '</p></span></div>');
+        $('#slide-links').append('<div id="saved-slide'+slideNumber+'" title="'+ slideNumber +'" class="span1 saved-slide"><span class="slidelink' + slideNumber + '"<p> Slide' + ' ' + slideNumber + '</p></span></div>');
         $('#slide-instruct').remove();
         $('#save-bitly-slide-bubble').remove();
         $('#create-text-sub').remove();

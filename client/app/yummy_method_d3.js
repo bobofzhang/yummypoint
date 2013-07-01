@@ -54,7 +54,7 @@ Template.yummy_coins.events({
       { meteorUser: Meteor.userId() },
       { chartType: "line" }
     ]);
-    $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + slideNumberBitCoin + '"<p> Slide' + ' ' + slideNumberBitCoin + '</p></span></div>');
+    $('#slide-links').append('<div id="saved-slide'+slideNumberBitCoin+'" title="'+ slideNumberBitCoin +'" class="span1 saved-slide"><span class="slidelink' + slideNumberBitCoin + '"<p> Slide' + ' ' + slideNumberBitCoin + '</p></span></div>');
     $('.bitly-chart').remove();
     $('.bitcoin-chart').remove();
     $('#slide-instruct').remove();

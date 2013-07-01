@@ -90,7 +90,7 @@ Template.yummy_coins.events({
       { meteorUser: Meteor.userId() },
       { chartType: "bubble" }
     ]);
-    $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + userBubSlideNumber + '"<p> Slide' + ' ' + userBubSlideNumber + '</p></span></div>');
+    $('#slide-links').append('<div id="saved-slide' + userBubSlideNumber + '" title="'+ userBubSlideNumber +'" class="span1 saved-slide"><span class="slidelink' + userBubSlideNumber + '"<p> Slide' + ' ' + userBubSlideNumber + '</p></span></div>');
     $('#slide-instruct').remove();
     $('#save-bitcoin-slide').remove();
     $('#save-userfile-slide').remove();

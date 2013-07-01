@@ -23,18 +23,6 @@ Template.yummy_coins.events({
   'click #user-data-line-nav': function() {
     $('#user-chart-options-row').append('<div id="user-line-instruct" class="span12"><span class="user-line-info"> Upload a CSV file to create a line graph slide </br> The first column is the y-axis </br> The second column is the time scale x-axis </br> The second column of your data file must be in date format </span></div>')
     $('#user-chart-options-row').append('<div id="cloak-inputs" class="span12"><div id="inputs" class="clearfix" onclick="files.click()"><span class="input-text"> Upload file from computer </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>');
-    // $('.line-chart-data-sources').remove();
-    // $('.data-source-details').remove();
-    // $('#slide-controls').remove();
-    // $('#create-text-sub').remove();
-    // $('#public-data-row').remove();
-    // $('#twitter-data-row').remove();
-    // $('#bitcoin-data-row').remove();
-    // $('#bitly-data-row').remove();
-    // //$('#slide-nav-row').append('<div id="save-bitcoin-slide" class="span4 save-bitcoin-slide"> <span class="save-bitcoin"> <p> Save this sick Line Graph </p></span></div>');
-    // $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Switch to Create Text Slide without saving </p></span></div>');
-    // $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p>Switch to Create Chart Slide without saving </p></span></div>');
-    // $('.make-start').append('<div id="inputs" class="span12 clearfix"><input type="file" id="files" name="files[]" /></div>');
   }
 })
 
@@ -104,7 +92,7 @@ Template.yummy_coins.events({
       { meteorUser: Meteor.userId() },
       { chartType: "line" }
     ]);
-    $('#slide-links').append('<div id="saved-slide" class="span1"><span class="slidelink' + thisSlideNumber + '"<p> Slide' + ' ' + thisSlideNumber + '</p></span></div>');
+    $('#slide-links').append('<div id="saved-slide' + thisSlideNumber + '" title="'+ thisSlideNumber +'" class="span1 saved-slide"><span class="slidelink' + thisSlideNumber + '"<p> Slide' + ' ' + thisSlideNumber + '</p></span></div>');
     $('.bitly-chart').remove();
     $('.bitcoin-chart').remove();
     $('#slide-instruct').remove();

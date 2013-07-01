@@ -10,6 +10,7 @@ Meteor.methods({
 
 Meteor.methods({
   slidePreviewRender: function(currentSlide){
+    console.log(currentSlide);
     $('#create-chart-sub').remove();
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
