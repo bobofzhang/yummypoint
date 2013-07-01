@@ -60,10 +60,6 @@ Template.yummy_coins.events({
     $('#show-maker').remove();
     $('#user-session-show').remove();
     $('slide-inputs-chart').remove();
-    // $('.user-details').hide();
-    // $('#show-list-row').hide();
-    // $('#footer-div').hide();
-    // $('#user-shows').hide();
     $('.bitcoin-chart').remove();
     $('.bitly-chart').remove();
     $('#the-show-title').remove();
@@ -87,8 +83,6 @@ Template.yummy_coins.events({
     $('#yummy-shows').append('<div id="show-row" class="row"></div>');
     $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
     $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a new Yummy Show by naming it here" autofocus /></span>');
-    //$('#hide-shows').remove();
-    // $('#user-show-template').show();
   }
 })
 
@@ -107,41 +101,6 @@ Template.userShows.allUserShows = function () {
 };
 
 Template.yummy_coins.events({
-  'click #create-text-sub': function () {
-    $('#create-chart').remove();
-    $('#create-text').remove();
-    $('#hot-bits-div').remove();
-    $('#hotbit-line-chart').remove();
-    $('#make-slide-options').remove();
-    $('#text-bullets').remove();
-    $('#chart-bullets').remove();
-    $('#save-bitly-slide').remove();
-    $('#create-text-sub').remove();
-    $('#slide-controls').remove();
-    $('#line-chart-nav').remove();
-    $('#bar-chart-nav').remove();
-    $('#bubble-chart-nav').remove();
-    $('#preview-slide-inputs').remove();
-    $('#slide-inputs').remove();
-    $('#slide-nav-row').remove();
-    $('.saved-slide-preview').remove();
-    $('.chart-data-sources-types').remove();
-    $('#slide-inputs-chart').remove();
-    $('#save-userfile-slide').remove();
-    $('#slide-inputs-chart').remove();
-    $('#chart-render').remove();
-    $('#chart-render-bitly').remove();
-    $('#chart-render-bitcoin').remove();
-    $('#chart-render-bitly-bubble').remove();
-    $('#inputs').remove();
-    $('#user-bub-chart-render').remove();
-    $('#slide-nav').append('<div id="slide-nav-row" class="row"></div>');
-    $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
-    $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter the Slide Title Here" autofocus />');
-  },
-
   //>>>>>>> SLIDE ONE INPUTS <<<<<<<<<
   'keypress #slide-title': function (event) {
     if (event.which == 13) {

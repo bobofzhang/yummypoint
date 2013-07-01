@@ -29,7 +29,8 @@ Template.yummy_coins.events({
         $('#slide-nav-row').append('<div id="save-bitly-slide-bubble" class="span4 save-bitly-bubble"> <span class="save-bit-bub"> <p> Save Bitly Bubble Graph </p></span></div>');
         $('#slide-nav-row').append('<div id="create-text-sub" class="span4"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
         $('#slide-nav-row').append('<div id="create-chart-sub" class="span4"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-        return Deps.autorun(function(){ return Meteor.call('d3BubbleChart'); });
+        //return Deps.autorun(function(){ return Meteor.call('d3BubbleChart'); });
+        return Meteor.call('d3BubbleChart');
     }
 })
 
@@ -113,27 +114,19 @@ Meteor.methods ({
                     .attr("class", "title-text")
                     .text(function (d) { return (d[1] + ", " + d[0]) ; })
                     .style("font-size", "18px");
-                    //.attr("id", "bub-text")
-                    //.attr("fill", "rgba(220, 220, 220, 0.5)")
-                    // .append("text")
-                    // .attr("text-anchor", "middle")
-                    // .attr("dy", ".3em")
-                    // //.style("font-size", function(d) { return (10 * d[0]); })
-                    // .style("color", "white")
-                    // .style("z-index", "10")
-                    // .text(function (d) { return d[1]; });
 
+            cirlceElems.append("text")
+                    .attr("text-anchor", "middle")
+                    .attr("dy", ".3em")
+                    .style("z-index", "10")
+                    .text(function (d) { return (d[1] + ", " + d[0]) ; });
+
+            
             d3.selectAll("circle")
                     .transition()
                     .delay(function(d,i) { return i * 10; })
                     .duration( 1000 )
                     .attr("r", function (d) { return r( d[0]); });
-
-            node.append("text")
-                .attr("cx", function (d) { return d.x; })
-                .attr("cy", function (d) { return d.y; })
-                .attr("dy", ".3em")
-                .text(function (d) { return (d[1] + ", " + d[0]) ; });
 
             var loadGravity = function (generator) {
                 force
