@@ -13,298 +13,146 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+    yummyShowStart: function(showName){
+        thisShowName = showName;
+        yummyShowSlideIndex = 0;
+        yummySlideBulletCount = 0;
+        Meteor.call('passShowName', thisShowName);
+        Meteor.call('passShowNameSave', currentShow);
+        Meteor.call('passShowNameBitCoin', thisShowName);
+        Meteor.call('passCurrentShowName', thisShowName);
+        Meteor.call('passShowNameUserData', thisShowName);
+        Meteor.call('passShowNameUserBub', thisShowName);
+        Meteor.call('passShowNamePreview', thisShowName);
+        $('#plug-text-title').remove();
+        $('#show-maker').remove();
+        $('.user-details').hide();
+        $('#show-list-row').hide();
+        $('#footer-div').hide();
+        $('#user-shows').hide();
+        $('.bitcoin-chart').remove();
+        $('.bitly-chart').remove();
+        $('#the-show-title').remove();
+        $('#preview-slide-inputs').remove();
+        $('#myCarousel').remove();
+        $('#show-row').remove();
+        $('#slide-links').remove();
+        $('#slide-inputs').remove();
+        $('#slide-inputs-chart').remove();
+        $('#slide-nav-row').remove();
+        $('.saved-slide-preview').remove();
+        $('#slide-preview').remove();
+        $('#img-back-upload').remove();
+        $('#slide-controls').remove();
+        $('#create-chart-sub').remove();
+        $('#chart-render').remove();
+        $('#chart-render-bitly').remove();
+        $('#chart-render-bitcoin').remove();
+        $('#chart-render-bitly-bubble').remove();
+        $('#hot-bits-div').remove();
+        $('#hotbit-line-chart').remove();
+        $('#data-source-container').remove();
+        currentYummyShow = Shows.find().fetch();
+        var showFilter = _.filter(currentYummyShow, function (obj) {
+          if (obj[0]['show'] === thisShowName) {
+            return obj;
+          }
+        })
+        var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
+        $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
+        $('')
+        yummySlideBulletCount++;
+    }
+})
 
 //>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
 Template.yummy_coins.events({
   'click #user-show-name-1': function () {
-    thisShowName = $('#user-show-name-1').text();
-    yummyShowSlideIndex = 0;
-    yummySlideBulletCount = 0;
-    Meteor.call('passShowName', thisShowName);
-    Meteor.call('passShowNameBitCoin', thisShowName);
-    Meteor.call('passCurrentShowName', thisShowName);
-    Meteor.call('passShowNameUserData', thisShowName);
-    Meteor.call('passShowNameUserBub', thisShowName);
-    Meteor.call('passShowNamePreview', thisShowName);
-    $('#plug-text-title').remove();
-    $('#show-maker').remove();
-    $('.user-details').hide();
-    $('#show-list-row').hide();
-    $('#footer-div').hide();
-    $('#user-shows').hide();
-    $('.bitcoin-chart').remove();
-    $('.bitly-chart').remove();
-    $('#the-show-title').remove();
-    $('#preview-slide-inputs').remove();
-    $('#myCarousel').remove();
-    $('#show-row').remove();
-    $('#slide-links').remove();
-    $('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#slide-nav-row').remove();
-    $('.saved-slide-preview').remove();
-    $('#slide-preview').remove();
-    $('#img-back-upload').remove();
-    $('#slide-controls').remove();
-    $('#create-chart-sub').remove();
-    $('#chart-render').remove();
-    $('#chart-render-bitly').remove();
-    $('#chart-render-bitcoin').remove();
-    $('#chart-render-bitly-bubble').remove();
-    $('#hot-bits-div').remove();
-    $('#hotbit-line-chart').remove();
-    $('#data-source-container').remove();
-    currentYummyShow = Shows.find().fetch();
-    var showFilter = _.filter(currentYummyShow, function (obj) {
-      if (obj[0]['show'] === thisShowName) {
-        return obj;
-      }
-    })
-    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
-    $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
-    $('')
-    yummySlideBulletCount++;
+    var showName = $('#user-show-name-1').text();
+    Meteor.call('yummyShowStart', showName );
   },
   'click #user-show-name-2': function () {
-    thisShowName = $('#user-show-name-2').text();
-    yummyShowSlideIndex = 0;
-    yummySlideBulletCount = 0;
-    Meteor.call('passShowName', thisShowName);
-    Meteor.call('passShowNameBitCoin', thisShowName);
-    Meteor.call('passCurrentShowName', thisShowName);
-    Meteor.call('passShowNameUserData', thisShowName);
-    Meteor.call('passShowNameUserBub', thisShowName);
-    Meteor.call('passShowNamePreview', thisShowName);
-    $('#plug-text-title').remove();
-    $('#show-maker').remove();
-    $('.user-details').hide();
-    $('#show-list-row').hide();
-    $('#footer-div').hide();
-    $('#user-shows').hide();
-    $('.bitcoin-chart').remove();
-    $('.bitly-chart').remove();
-    $('#the-show-title').remove();
-    $('#preview-slide-inputs').remove();
-    $('#myCarousel').remove();
-    $('#show-row').remove();
-    $('#slide-links').remove();
-    $('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#slide-nav-row').remove();
-    $('.saved-slide-preview').remove();
-    $('#slide-preview').remove();
-    $('#img-back-upload').remove();
-    $('#slide-controls').remove();
-    $('#create-chart-sub').remove();
-    $('#chart-render').remove();
-    $('#chart-render-bitly').remove();
-    $('#chart-render-bitcoin').remove();
-    $('#chart-render-bitly-bubble').remove();
-    $('#hot-bits-div').remove();
-    $('#hotbit-line-chart').remove();
-    $('#data-source-container').remove();
-    currentYummyShow = Shows.find().fetch();
-    var showFilter = _.filter(currentYummyShow, function (obj) {
-      if (obj[0]['show'] === thisShowName) {
-        return obj;
-      }
-    })
-    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
-    $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
-    yummySlideBulletCount++;
+    showName = $('#user-show-name-2').text();
+    Meteor.call('yummyShowStart', showName );
   },
   'click #user-show-name-3': function () {
-    thisShowName = $('#user-show-name-3').text();
-    yummyShowSlideIndex = 0;
-    yummySlideBulletCount = 0;
-    Meteor.call('passShowName', thisShowName);
-    Meteor.call('passShowNameBitCoin', thisShowName);
-    Meteor.call('passCurrentShowName', thisShowName);
-    Meteor.call('passShowNameUserData', thisShowName);
-    Meteor.call('passShowNameUserBub', thisShowName);
-    Meteor.call('passShowNamePreview', thisShowName);
-    $('#plug-text-title').remove();
-    $('#show-maker').remove();
-    $('.user-details').hide();
-    $('#show-list-row').hide();
-    $('#footer-div').hide();
-    $('#user-shows').hide();
-    $('.bitcoin-chart').remove();
-    $('.bitly-chart').remove();
-    $('#the-show-title').remove();
-    $('#preview-slide-inputs').remove();
-    $('#myCarousel').remove();
-    $('#show-row').remove();
-    $('#slide-links').remove();
-    $('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#slide-nav-row').remove();
-    $('.saved-slide-preview').remove();
-    $('#slide-preview').remove();
-    $('#img-back-upload').remove();
-    $('#slide-controls').remove();
-    $('#create-chart-sub').remove();
-    $('#chart-render').remove();
-    $('#chart-render-bitly').remove();
-    $('#chart-render-bitcoin').remove();
-    $('#chart-render-bitly-bubble').remove();
-    $('#hot-bits-div').remove();
-    $('#hotbit-line-chart').remove();
-    $('#data-source-container').remove();
-    currentYummyShow = Shows.find().fetch();
-    var showFilter = _.filter(currentYummyShow, function (obj) {
-      if (obj[0]['show'] === thisShowName) {
-        return obj;
-      }
-    })
-    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
-    $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
-    yummySlideBulletCount++;
+    showName = $('#user-show-name-3').text();
+    Meteor.call('yummyShowStart', showName );
   },
   'click #user-show-name-4': function () {
-    thisShowName = $('#user-show-name-4').text()
-    yummyShowSlideIndex = 0;
-    yummySlideBulletCount = 0;
-    Meteor.call('passShowName', thisShowName);
-    Meteor.call('passShowNameBitCoin', thisShowName);
-    Meteor.call('passCurrentShowName', thisShowName);
-    Meteor.call('passShowNameUserData', thisShowName);
-    Meteor.call('passShowNameUserBub', thisShowName);
-    Meteor.call('passShowNamePreview', thisShowName);
-    $('#plug-text-title').remove();
-    $('#show-maker').remove();
-    $('.user-details').hide();
-    $('#show-list-row').hide();
-    $('#footer-div').hide();
-    $('#user-shows').hide();
-    $('.bitcoin-chart').remove();
-    $('.bitly-chart').remove();
-    $('#the-show-title').remove();
-    $('#preview-slide-inputs').remove();
-    $('#myCarousel').remove();
-    $('#show-row').remove();
-    $('#slide-links').remove();
-    $('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#slide-nav-row').remove();
-    $('.saved-slide-preview').remove();
-    $('#slide-preview').remove();
-    $('#img-back-upload').remove();
-    $('#slide-controls').remove();
-    $('#create-chart-sub').remove();
-    $('#chart-render').remove();
-    $('#chart-render-bitly').remove();
-    $('#chart-render-bitcoin').remove();
-    $('#chart-render-bitly-bubble').remove();
-    $('#hot-bits-div').remove();
-    $('#hotbit-line-chart').remove();
-    $('#data-source-container').remove();
-    currentYummyShow = Shows.find().fetch();
-    var showFilter = _.filter(currentYummyShow, function (obj) {
-      if (obj[0]['show'] === thisShowName) {
-        return obj;
-      }
-    })
-    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
-    $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
-    yummySlideBulletCount++;
+    showName = $('#user-show-name-4').text();
+    Meteor.call('yummyShowStart', showName );
   },
   'click #user-show-name-5': function () {
-    thisShowName = $('#user-show-name-5').text();
-    yummyShowSlideIndex = 0;
-    yummySlideBulletCount = 0;
-    Meteor.call('passShowName', thisShowName);
-    Meteor.call('passShowNameBitCoin', thisShowName);
-    Meteor.call('passCurrentShowName', thisShowName);
-    Meteor.call('passShowNameUserData', thisShowName);
-    Meteor.call('passShowNameUserBub', thisShowName);
-    Meteor.call('passShowNamePreview', thisShowName);
-    $('#plug-text-title').remove();
-    $('#show-maker').remove();
-    $('.user-details').hide();
-    $('#show-list-row').hide();
-    $('#footer-div').hide();
-    $('#user-shows').hide();
-    $('.bitcoin-chart').remove();
-    $('.bitly-chart').remove();
-    $('#the-show-title').remove();
-    $('#preview-slide-inputs').remove();
-    $('#myCarousel').remove();
-    $('#show-row').remove();
-    $('#slide-links').remove();
-    $('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#slide-nav-row').remove();
-    $('.saved-slide-preview').remove();
-    $('#slide-preview').remove();
-    $('#img-back-upload').remove();
-    $('#slide-controls').remove();
-    $('#create-chart-sub').remove();
-    $('#chart-render').remove();
-    $('#chart-render-bitly').remove();
-    $('#chart-render-bitcoin').remove();
-    $('#chart-render-bitly-bubble').remove();
-    $('#hot-bits-div').remove();
-    $('#hotbit-line-chart').remove();
-    $('#data-source-container').remove();
-    currentYummyShow = Shows.find().fetch();
-    var showFilter = _.filter(currentYummyShow, function (obj) {
-      if (obj[0]['show'] === thisShowName) {
-        return obj;
-      }
-    })
-    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
-    $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
-    yummySlideBulletCount++;
+    showName = $('#user-show-name-5').text();
+    Meteor.call('yummyShowStart', showName );
   },
   'click #user-show-name-6': function () {
-    thisShowName = $('#user-show-name-6').text();
-    yummyShowSlideIndex = 0;
-    yummySlideBulletCount = 0;
-    Meteor.call('passShowName', thisShowName);
-    Meteor.call('passShowNameBitCoin', thisShowName);
-    Meteor.call('passCurrentShowName', thisShowName);
-    Meteor.call('passShowNameUserData', thisShowName);
-    Meteor.call('passShowNameUserBub', thisShowName);
-    Meteor.call('passShowNamePreview', thisShowName);
-    $('#plug-text-title').remove();
-    $('#show-maker').remove();
-    $('.user-details').hide();
-    $('#show-list-row').hide();
-    $('#footer-div').hide();
-    $('#user-shows').hide();
-    $('.bitcoin-chart').remove();
-    $('.bitly-chart').remove();
-    $('#the-show-title').remove();
-    $('#preview-slide-inputs').remove();
-    $('#myCarousel').remove();
-    $('#show-row').remove();
-    $('#slide-links').remove();
-    $('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#slide-nav-row').remove();
-    $('.saved-slide-preview').remove();
-    $('#slide-preview').remove();
-    $('#img-back-upload').remove();
-    $('#slide-controls').remove();
-    $('#create-chart-sub').remove();
-    $('#chart-render').remove();
-    $('#chart-render-bitly').remove();
-    $('#chart-render-bitcoin').remove();
-    $('#chart-render-bitly-bubble').remove();
-    $('#hot-bits-div').remove();
-    $('#hotbit-line-chart').remove();
-    $('#data-source-container').remove();
-    currentYummyShow = Shows.find().fetch();
-    var showFilter = _.filter(currentYummyShow, function (obj) {
-      if (obj[0]['show'] === thisShowName) {
-        return obj;
-      }
-    })
-    var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
-    $('.make-start').append('<div id="the-show-title" class="the-show"><div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>'); 
-    yummySlideBulletCount++;
-  },
+    showName = $('#user-show-name-6').text();
+    Meteor.call('yummyShowStart', showName );
+  }
+})
+
+Meteor.methods({
+    showSlideLogic: function () {
+        if (showFilter[yummyShowSlideIndex] == null) {
+            $('.the-show').remove();
+            $('#yummy-shows').append('<div id="show-row" class="row"></div>');
+            $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+            $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a new Yummy Show by naming it here" autofocus /></span>');
+            $('.user-details').show();
+            $('#footer-div').show();
+            $('#hide-shows').remove();
+            $('#user-show-template').show();
+            $('#user-shows').show();
+            $('#homepage-mkt').show();
+            yummyShowSlideIndex = 0;
+            yummySlideBulletCount = 0;
+            return;
+          } else {
+            var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+            var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+            var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
+            var chartType = showFilter[yummyShowSlideIndex]['7']['chartType'];
+            if (type === "chart" && source === "bitcoin") {
+              $('.the-show').remove();
+              $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+              $('.make-start').append('<div id="chart-render-bitcoin" class="span12 show-chart-render"></div>');
+              return Meteor.call('D3testinit'); 
+            } else if (type === "chart" && source === "bitly" && chartType === "line") {
+              $('.the-show').remove();
+              var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
+              $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+              $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
+              return Meteor.call('bitlyLineChartD3', bitPhrase);
+            } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+              $('.the-show').remove();
+              $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+              $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12 show-chart-render"></div>');
+              return Meteor.call('d3BubbleChart');
+            } else if (type === "chart" && source === "userfile" && chartType === "line") {
+              $('.the-show').remove();
+              $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+              $('.make-start').append('<div id="chart-render" class="span12 show-chart-render"></div>');
+              return Meteor.call('userFileLineChart', fileCount);
+            } else if (type === "chart" && source === "userfile" && chartType === "bubble") {
+              $('.the-show').remove();
+              $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+              $('.make-start').append('<div id="user-bub-chart-render" class="span12 show-chart-render"></div>');
+              return Meteor.call('userBubbleChart', fileCount);
+            } else {
+              $('#chart-render').remove();
+              $('#chart-render-bitly').remove();
+              $('#chart-render-bitcoin').remove();
+              var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
+              $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+            }  
+        }
+    }
+})
+
+Template.yummy_coins.events({
   'click #the-show-title': function () {
     yummyShowSlideIndex = 0;
     yummySlideBulletCount = 0;
@@ -325,6 +173,7 @@ Template.yummy_coins.events({
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
+      // Meteor.call('showSlideLogic');
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
@@ -377,9 +226,9 @@ Template.yummy_coins.events({
           var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
           $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
         }        
-      }
+        }
     }
-  },
+},
   'click #the-show-one': function () {
     currentYummyShow = Shows.find().fetch();
     var showFilter = _.filter(currentYummyShow, function (obj) {
@@ -400,6 +249,7 @@ Template.yummy_coins.events({
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
+      // Meteor.call('showSlideLogic');
       if (showFilter[yummyShowSlideIndex] == null) {
         $('.the-show').remove();
         $('#yummy-shows').append('<div id="show-row" class="row"></div>');
@@ -679,6 +529,7 @@ Template.yummy_coins.events({
     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
     var yummyBulletOneText = showFilter[yummyShowSlideIndex]['2']['contents'][1]['text'];
     var yummyBulletTwoText = showFilter[yummyShowSlideIndex]['2']['contents'][2]['text'];
+    var yummyBulletThreeText = showFilter[yummyShowSlideIndex]['2']['contents'][3]['text'];
     var chartType = showFilter[yummyShowSlideIndex]['7']['chartType'];
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-two" class="the-show"></div>');
@@ -779,7 +630,7 @@ Template.yummy_coins.events({
         $('#user-shows').show();
         $('#homepage-mkt').show(); 
         yummyShowSlideIndex = 0;
-        yummySlideBulletCount = 0
+        yummySlideBulletCount = 0;
         return
       } else {
         var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
@@ -844,7 +695,7 @@ Template.yummy_coins.events({
         $('#user-shows').show();
         $('#homepage-mkt').show();
         yummyShowSlideIndex = 0;
-        yummySlideBulletCount = 0
+        yummySlideBulletCount = 0;
       return
     } else {
       var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
@@ -898,8 +749,6 @@ Template.yummy_coins.events({
       }
     })
     $('#chart-control').remove();
-    // $('.bitly-chart').remove();
-    // $('.bitcoin-chart').remove();
     $('.the-show').remove();
     $('#slide-inputs-chart').remove();
     $('#chart-render-bitly-bubble').remove();

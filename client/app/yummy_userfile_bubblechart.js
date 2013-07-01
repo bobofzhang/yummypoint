@@ -43,6 +43,7 @@ Template.yummy_coins.events({
     var file = files[0];
     printTable(file);
     userBubFileCount++
+    Meteor.call('passFileCount', userBubFileCount);
 
     function printTable(file) {
       var reader = new FileReader();
@@ -77,37 +78,6 @@ Template.yummy_coins.events({
     Meteor.call('userBubbleChart', userBubFileCount);
   }
 })
-
-Template.yummy_coins.events({
-  'click #save-user-bub-slide': function () {
-    Shows.insert([
-      { show: userBubShowName },
-      { slide: userBubSlideNumber },
-      { contents: "Meteor.call('userBubbleChart')" },
-      { slideType: "chart" },
-      { dataSource: "userfile" },
-      { fileNum: userBubFileCount },
-      { meteorUser: Meteor.userId() },
-      { chartType: "bubble" }
-    ]);
-    $('#slide-links').append('<div id="saved-slide' + userBubSlideNumber + '" title="'+ userBubSlideNumber +'" class="span1 saved-slide"><span class="slidelink' + userBubSlideNumber + '"<p> Slide' + ' ' + userBubSlideNumber + '</p></span></div>');
-    $('#slide-instruct').remove();
-    $('#save-bitcoin-slide').remove();
-    $('#save-userfile-slide').remove();
-    $('#create-text-sub').remove();
-    $('#create-chart-sub').remove();
-    $('#slide-inputs').remove();
-    $('#slide-inputs-chart').remove();
-    $('#user-bub-chart-render').remove();
-    $('#save-user-bub-slide').remove();
-    $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
-    $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p>Create a Chart Slide </p></span></div>');
-    $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" autofocus />');
-    Meteor.call('tickSlideCount');
-  }
-})
-
 
 Meteor.methods ({
     userBubbleChart: function(index){

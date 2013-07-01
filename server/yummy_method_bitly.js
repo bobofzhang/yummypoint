@@ -1,12 +1,12 @@
 
 var preDataSet = [];
 
-// Meteor.setInterval(function(){
-//   Meteor.call("searchBitly", function(error, result) { 
-//     console.log("search bitly called"); 
-//     return result;
-//   })
-// }, 20000);
+Meteor.setInterval(function(){
+  Meteor.call("searchBitly", function(error, result) { 
+    console.log("search bitly called"); 
+    return result;
+  })
+}, 20000);
 
 Meteor.methods({
   searchBitly: function(){

@@ -10,6 +10,7 @@ Meteor.methods({
   tickSlideCount: function () {
     slideCount++
     Meteor.call('passSlideCount', slideCount);
+    Meteor.call('passSlideCountSave', slideCount);
     Meteor.call('passSlideCountBitCoin', slideCount);
     Meteor.call('passSlideCountUserData', slideCount);
     Meteor.call('passSlideCountUserBub', slideCount);
@@ -293,6 +294,7 @@ Template.yummy_coins.events({
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
+        Meteor.call('passSlideCountSave', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
         Meteor.call('passSlideCountUserData', slideCount);
         Meteor.call('passSlideCountUserBub', slideCount);
@@ -320,6 +322,7 @@ Template.yummy_coins.events({
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
+        Meteor.call('passSlideCountSave', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
         Meteor.call('passSlideCountUserData', slideCount);
         Meteor.call('passSlideCountUserBub', slideCount);
@@ -347,6 +350,7 @@ Template.yummy_coins.events({
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
+        Meteor.call('passSlideCountSave', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
         Meteor.call('passSlideCountUserData', slideCount);
         Meteor.call('passSlideCountUserBub', slideCount);
@@ -372,6 +376,7 @@ Template.yummy_coins.events({
           ])
         slideCount++;
         Meteor.call('passSlideCount', slideCount);
+        Meteor.call('passSlideCountSave', slideCount);
         Meteor.call('passSlideCountBitCoin', slideCount);
         Meteor.call('passSlideCountUserData', slideCount);
         Meteor.call('passSlideCountUserBub', slideCount);
@@ -399,6 +404,7 @@ Template.yummy_coins.events({
       } else {
         currentUser = Meteor.userId();
         Meteor.call('passShowName', currentShow);
+        Meteor.call('passShowNameSave', currentShow);
         Meteor.call('passShowNameBitCoin', currentShow);
         Meteor.call('passCurrentShowName', currentShow);
         Meteor.call('passShowNameUserData', currentShow);
