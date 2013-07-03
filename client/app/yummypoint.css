@@ -455,7 +455,7 @@ margin-bottom: 1em;
 }
 
 .title-slideTitle h1 {
-  font-size: 6em; 
+  font-size: 5em; 
 }
 
 .preview-title-slideTitle h1 {
@@ -680,8 +680,9 @@ margin-bottom: 1em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   font-size: 5em;
-  margin-top: 50px;
-  margin-bottom: 75px;
+  color: red;
+/*  margin-top: 50px;
+  margin-bottom: 75px;*/
 }
 
 #show-bullet-one h2, #show-bullet-two h2, #show-bullet-three h2 {
@@ -694,8 +695,8 @@ margin-bottom: 1em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   font-size: 5em;
-  margin-top: 50px;
-  margin-bottom: 75px;
+/*  margin-top: 50px;
+  margin-bottom: 75px;*/
 }
 
 .bullet-first-slide-one h2, .bullet-second-slide-one h2, .bullet-third-slide-one h2 {

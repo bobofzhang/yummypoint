@@ -234,34 +234,49 @@ Template.yummy_coins.events({
   }
 })
 
-// Template.yummy_coins.events({
-//   'click #start-chart': function() {
-//     var showSlide = (Shows.find({ 0 : { show: thisShow }}).fetch());
-//     $('.make-start').remove();
-//     var type = showSlide[0]['1']['slideType'];
-//     if (type === "chart") {
-//       var func = showSlide[0]['2']['contents'];
-//       return func;
-//     }
-//   }
-// })
-
 Meteor.methods({
   bitlyLineChartD3: function(hotbits) {
     $('.bitly-chart').remove();
     $('#slide-inputs-chart-bitly').remove();
-    $('#chart-render-bitly').append('<div id="slide-inputs-chart-bitly" class="show-title-slide"></div>');
-
+    $('#chart-render-bitly').append('<div id="slide-inputs-chart-bitly" class="show-title-slide'+hotbits+'"></div>');
+    //var $container = $('<div id="slide-inputs-chart-bitly" class="show-title-slide"></div>').appendTo('#chart-render-bitly');
+    
     var rawData;
 
     rawData = Hotbits.find({ phrase: hotbits }).fetch();
 
     var data = [];
+    var bitCTR =[];
 
     for (var i = 0; i < rawData.length; i++) {
       data.push([rawData[i].clickrate, rawData[i].time]);
-      //console.log(rawData[i].time);
     }
+//       var num = Number(rawData[i]['clickrate']);
+//       bitCTR.push(num);
+//       console.log(num);
+//       //console.log(rawData[i].time);
+//     }
+
+//     var chart = new Highcharts.Chart({
+//       chart: {
+//         type: 'line',
+//         renderTo: $container[0],
+//         height: 600
+//       },
+//       // xAxis: {
+//       //   type: 'linear'
+//       //   // categories: bitTime
+//       // },
+//       series: [{
+//         name: "Bitly CTR",
+//         data: bitCTR
+//       }]
+//     })
+//     setInterval(function(){
+//         chart();
+//     }, 20000);
+//   }
+// })
 
     var margin = {
       top: 20, 
@@ -326,8 +341,6 @@ Meteor.methods({
     return data;
   }
 })
-
-var data = [];
 
 Meteor.methods({
 

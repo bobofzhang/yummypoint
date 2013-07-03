@@ -70,120 +70,203 @@ Template.yummy_coins.events({
 
 Meteor.methods({
   bitcoinBarChart: function() {
-    //var data = getData();
     $('.bitcoin-chart').remove();
     $('#slide-inputs-chart-bar-bitcoin').remove();
-    $('#chart-bar-render-bitcoin').append('<div id="slide-inputs-chart-bar-bitcoin" class="show-title-slide"></div>');
-
-    var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
+    //$('#chart-bar-render-bitcoin').append('<div id="slide-inputs-chart-bar-bitcoin" class="show-title-slide" style="width: 600px; height: 400px;"></div>');
+    var $container = $('<div id="slide-inputs-chart-bar-bitcoin" class="show-title-slide"></div>').appendTo('#chart-bar-render-bitcoin');
 
     var rawData;
-    rawData = Prices.find({}, { sort: { date: -1 }, limit: 50 }).fetch();
+    rawData = Prices.find({}, { sort: { date: -1 }, limit: 250 }).fetch();
 
-
-    var data = [];
-
+    var bitTime = [];
+    var bitPrices = [];
     for (var i = 0; i < rawData.length; i++) {
-      data.push([rawData[i]['price'], rawData[i]['time']]);
+      var newTime = rawData[i]['time'];
+      bitTime.push(newTime);
+      console.log(newTime)
+      var num = Number(rawData[i]['price']);
+      bitPrices.push(num);
     }
-
-    // var t = 1297110663, // start time (seconds since epoch)
-    // v = 70, // start value (subscribers)
-    // data = d3.range(50).map(next); // starting dataset
-
-    var margin = {
-      top: 50, 
-      right: 50, 
-      bottom: 30, 
-      left: 50
-    };
-
-    var w = 950 - margin.left - margin.right;
-    var h = 550 - margin.top - margin.bottom;
-
-    var n = data.length;
-
-    var c = w/n;
-
-    // var w = 15,
-    //     h = 550;
-
-    var x = d3.time.scale()
-        .range([0, c]);
-
-    // var y = d3.scale.linear()
-    //  .domain([0, 300])
-    //  .rangeRound([0, h]);
-
-    var y = d3.scale.linear()
-      .domain([
-              d3.min(data, function(d) { return d[0]; }),
-              d3.max(data, function(d) { return d[0]; }) 
-              ])
-      // .rangeRound([
-      //         d3.min(data, function(d) { return d[0]; }),
-      //         d3.max(data, function(d) { return d[0]; }) 
-      //         ]);
-      .rangeRound([h/2, 500]);
-
-    var chart = d3.select("#slide-inputs-chart-bar-bitcoin")
-      .append("svg")
-      .attr("class", "chart")
-      // .style("border", "1px solid black")
-      .attr("width", w)// * data.length - 1)
-      .attr("height", h)
-      .attr("cx", -50 )//function (d) { return d.x; })
-      .attr("cy", 0 );//function (d) { return d.y; });
-      //.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    chart.selectAll("rect")
-      .data(data)
-      .enter().append("rect")
-      .attr("x", function(d, i) { return x(i) - .5; })
-      .attr("y", function(d) { return h - y(d[0]); })
-      .attr("width", c)
-      .attr("height", function(d) { console.log(d[0]); return y(d[0]); })
-      .style("fill", function(d) {
-        var returnColor;
-        if (d[0] <= 102.55) { returnColor = "blue"; 
-          } else if (d[0] > 102.55 &&  d[0] <= 106) { returnColor = "purple";
-          // } else if (d.value > 8 && d.value <= 12 ) { returnColor = "yellow";
-          // } else if (d.value > 4 && d.value <= 8 ) { returnColor = "green";
-          } else if (d[0] > 102.6) { returnColor = "red"; }
-          return returnColor;
-        });
-
-    chart.append("line")
-      .attr("x1", 0 )
-      .attr("x2", w )//* data.length)
-      .attr("y1", h - .5)
-      .attr("y2", h - .5)
-      .style("stroke", "#000");
-
-    // function redraw() {
-
-    //   var rect = chart.selectAll("rect")
-    //       .data(data, function(d) { return d.time; });
-
-    //   rect.enter().insert("rect", "line")
-    //       .attr("x", function(d, i) { return x(i + 1) - .5; })
-    //       .attr("y", function(d) { return h - y(d.value) - .5; })
-    //       .attr("width", w)
-    //       .attr("height", function(d) { return y(d.value); })
-    //     .transition()
-    //       .duration(1000)
-    //       .attr("x", function(d, i) { return x(i) - .5; });
-
-    //   rect.transition()
-    //       .duration(1000)
-    //       .attr("x", function(d, i) { return x(i) - .5; });
-
-    //   rect.exit().transition()
-    //       .duration(1000)
-    //       .attr("x", function(d, i) { return x(i - 1) - .5; })
-    //       .remove();
+      //data.push([rawData[i]['time'], rawData[i]['price']]);
+      //data.push([i, rawData[i]['price']]);
+    // var highData = {
+    //   data: bitPrices
     // }
+    //console.log(highData);
+    //console.log(bitPrices);
+
+    var chart = new Highcharts.Chart({
+      chart: {
+        type: 'column',
+        renderTo: $container[0],
+        height: 600
+      },
+      // xAxis: {
+      //   type: 'linear'
+      //   // categories: bitTime
+      // },
+      series: [{
+        name: "Bitcoin Price",
+        data: bitPrices
+      }]
+    })
   }
 })
+
+    // $(function () {
+    // console.log('i am in the highcharts function') ;
+    //   $('#slide-inputs-chart-bar-bitcoin').highcharts({
+    //     chart: {
+    //         type: 'column'
+    //     },
+    //     title: {
+    //         text: 'Bitcoin Prices'
+    //     },
+    //     xAxis: {
+    //         categories: bitTime
+    //     },
+    //     yAxis: {
+    //         title: {
+    //             text: 'Price'
+    //         }
+    //     },
+    //     series: [highData]
+    //   })
+    // })
+
+
+    // google.load("visualization", "1", {packages:["corechart"]});
+    // google.setOnLoadCallback(drawChart);
+
+    // function drawChart() {
+    //   console.log('in drawChart')
+    //   var bitdata = google.visualization.arrayToDataTable(data);
+
+    //   var options = {
+    //     title: 'Bitcoin Prices',
+    //     hAxis: {title: 'Time', titleTextStyle: {color: 'red'}}
+    //   };
+
+    //   var chart = new google.visualization.ColumnChart(document.getElementById('slide-inputs-chart-bar-bitcoin'));
+    //   chart.draw(bitdata, options);
+    // }
+
+// Meteor.methods({
+//   bitcoinBarChart: function() {
+//     //var data = getData();
+//     $('.bitcoin-chart').remove();
+//     $('#slide-inputs-chart-bar-bitcoin').remove();
+//     $('#chart-bar-render-bitcoin').append('<div id="slide-inputs-chart-bar-bitcoin" class="show-title-slide"></div>');
+
+//     var checkBitTime = Prices.find({}, { sort: { date: -1 }, limit: 1 }).fetch();
+
+//     var rawData;
+//     rawData = Prices.find({}, { sort: { date: -1 }, limit: 50 }).fetch();
+
+
+//     var data = [];
+
+//     for (var i = 0; i < rawData.length; i++) {
+//       data.push([rawData[i]['price'], rawData[i]['time']]);
+//     }
+
+//     // var t = 1297110663, // start time (seconds since epoch)
+//     // v = 70, // start value (subscribers)
+//     // data = d3.range(50).map(next); // starting dataset
+
+//     var margin = {
+//       top: 50, 
+//       right: 50, 
+//       bottom: 30, 
+//       left: 50
+//     };
+
+//     var w = 950 - margin.left - margin.right;
+//     var h = 550 - margin.top - margin.bottom;
+
+//     var n = data.length;
+
+//     var c = w/n;
+
+//     // var w = 15,
+//     //     h = 550;
+
+//     var x = d3.time.scale()
+//         .range([0, c]);
+
+//     // var y = d3.scale.linear()
+//     //  .domain([0, 300])
+//     //  .rangeRound([0, h]);
+
+//     var y = d3.scale.linear()
+//       .domain([
+//               d3.min(data, function(d) { return d[0]; }),
+//               d3.max(data, function(d) { return d[0]; }) 
+//               ])
+//       // .rangeRound([
+//       //         d3.min(data, function(d) { return d[0]; }),
+//       //         d3.max(data, function(d) { return d[0]; }) 
+//       //         ]);
+//       .rangeRound([h/2, 500]);
+
+//     var chart = d3.select("#slide-inputs-chart-bar-bitcoin")
+//       .append("svg")
+//       .attr("class", "chart")
+//       // .style("border", "1px solid black")
+//       .attr("width", w)// * data.length - 1)
+//       .attr("height", h)
+//       .attr("cx", -50 )//function (d) { return d.x; })
+//       .attr("cy", 0 );//function (d) { return d.y; });
+//       //.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+//     chart.selectAll("rect")
+//       .data(data)
+//       .enter().append("rect")
+//       .attr("x", function(d, i) { return x(i) - .5; })
+//       .attr("y", function(d) { return h - y(d[0]); })
+//       .attr("width", c)
+//       .attr("height", function(d) { console.log(d[0]); return y(d[0]); })
+//       .style("fill", function(d) {
+//         var returnColor;
+//         if (d[0] <= 102.55) { returnColor = "blue"; 
+//           } else if (d[0] > 102.55 &&  d[0] <= 106) { returnColor = "purple";
+//           // } else if (d.value > 8 && d.value <= 12 ) { returnColor = "yellow";
+//           // } else if (d.value > 4 && d.value <= 8 ) { returnColor = "green";
+//           } else if (d[0] > 102.6) { returnColor = "red"; }
+//           return returnColor;
+//         });
+
+//     chart.append("line")
+//       .attr("x1", 0 )
+//       .attr("x2", w )//* data.length)
+//       .attr("y1", h - .5)
+//       .attr("y2", h - .5)
+//       .style("stroke", "#000");
+
+//     // function redraw() {
+
+//     //   var rect = chart.selectAll("rect")
+//     //       .data(data, function(d) { return d.time; });
+
+//     //   rect.enter().insert("rect", "line")
+//     //       .attr("x", function(d, i) { return x(i + 1) - .5; })
+//     //       .attr("y", function(d) { return h - y(d.value) - .5; })
+//     //       .attr("width", w)
+//     //       .attr("height", function(d) { return y(d.value); })
+//     //     .transition()
+//     //       .duration(1000)
+//     //       .attr("x", function(d, i) { return x(i) - .5; });
+
+//     //   rect.transition()
+//     //       .duration(1000)
+//     //       .attr("x", function(d, i) { return x(i) - .5; });
+
+//     //   rect.exit().transition()
+//     //       .duration(1000)
+//     //       .attr("x", function(d, i) { return x(i - 1) - .5; })
+//     //       .remove();
+//     // }
+//   }
+// })
     
 

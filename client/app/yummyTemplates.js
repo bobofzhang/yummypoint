@@ -125,6 +125,9 @@ Template.yummy_coins.events({
       $('#create-chart-sub').remove();
       $('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.slide-title').append('<div class="slide-one-title"> <h1>' + slideOneTitleText +'</h1></div>');
+      $(function() {
+        $('.slide-one-title').draggable();
+      });
       $('.bullet-one').append('<input id="bullet-one" class="slide-text" type="text" placeholder="Make Your First Point" autofocus />');
       return slideTitle;
     }
@@ -204,6 +207,18 @@ Template.yummy_coins.events({
   },
   'click #slide-controls': function (event) { //>>>>>>> SAVE SLIDE <<<<<<<<<
       event.preventDefault();
+      var titleTop = document.getElementById("title-title").style.top;
+      var titleLeft = document.getElementById("title-title").style.left;
+      // var grid = $('title-title').draggable("grid");
+      // console.log(grid);
+      if (document.getElementById("title-sub-bullet")) {
+        var subBulletTop = document.getElementById("title-sub-bullet").style.top;
+        var subBulletLeft = document.getElementById("title-sub-bullet").style.left;
+      }
+      console.log("top " + titleTop);
+      console.log("left " + titleLeft);
+      // console.log("topbull " + subBulletTop);
+      // console.log("leftbull " + subBulletLeft);
       $('#slide-controls').remove();
       $('#slide-inputs').remove();  
       $('#slide-inputs-chart').remove();    
@@ -239,10 +254,10 @@ Template.yummy_coins.events({
           { show: currentShow },
           { slide: slideCount },
           { contents: [
-                      { bullet: 'title', text: slideTitleText },
-                      { bullet: 'first', text: "" },
-                      { bullet: 'second', text: "" },
-                      { bullet: 'third', text: "" }
+                      { bullet: 'title', text: slideTitleText, top: titleTop, left: titleLeft },
+                      { bullet: 'first', text: "", top: "", left: "" },
+                      { bullet: 'second', text: "", top: "", left: ""  },
+                      { bullet: 'third', text: "", top: "", left: ""  }
                       ]
           },
           { slideType: "text" },
@@ -267,10 +282,10 @@ Template.yummy_coins.events({
           { show: currentShow },
           { slide: slideCount },
           { contents: [
-                      { bullet: 'title', text: slideTitleText },
-                      { bullet: 'first', text: bulletOneText },
-                      { bullet: 'second', text: "" },
-                      { bullet: 'third', text: "" }
+                      { bullet: 'title', text: slideTitleText, top: titleTop, left: titleLeft },
+                      { bullet: 'first', text: bulletOneText, top: subBulletTop, left: subBulletLeft },
+                      { bullet: 'second', text: "", top: "", left: ""  },
+                      { bullet: 'third', text: "", top: "", left: ""  }
                       ]
           },
           { slideType: "text" },
@@ -418,7 +433,10 @@ Template.yummy_coins.events({
       //$('#mkt-plug').remove();
       $('#homepage-mkt').hide();
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save This Slide and Continue </p></span></div>');
-      $('.title-slide-title').append('<div class="title-slideTitle"> <h1>' + slideOneTitleText +'</h1></div>');
+      $('.title-slide-title').append('<div id="title-slideTitle" class="title-slideTitle"> <h1 id="title-title">' + slideOneTitleText +'</h1></div>');
+      $(function() {
+        $('#title-title').draggable();
+      });
       $('.bullet-one').append('<input id="title-slide-sub-title" class="slide-text" type="text" placeholder="Enter a sub slide title here... if you want" autofocus />');
       return slideTitle;
     }
@@ -442,7 +460,10 @@ Template.yummy_coins.events({
       })
       var subTitleText = userSlideMap[1]['text'];
       $('#title-slide-sub-title').remove();
-      $('.bullet-one').append('<div class="title-sub-title"> <h2>' + subTitleText +'</h2></div>');
+      $('.bullet-one').append('<div class="title-sub-title"> <h2 id="title-sub-bullet">' + subTitleText +'</h2></div>');
+      $(function() {
+        $('#title-sub-bullet').draggable();
+      });
       $('.bullet-two').append('<input id="title-slide-sub-sub" class="slide-text" type="text" placeholder="Enter additional details here. Like the date." autofocus />');
       return bulletOne;
     }

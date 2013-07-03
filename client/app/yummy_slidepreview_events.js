@@ -10,7 +10,6 @@ Meteor.methods({
 
 Meteor.methods({
   slidePreviewRender: function(currentSlide){
-    console.log(currentSlide);
     $('#create-chart-sub').remove();
     $('#edit-current-slide').remove();
     $('#create-text-sub').remove();
@@ -46,9 +45,10 @@ Meteor.methods({
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly" && chartType === "line") {
       var bitPhrase = slideShowMap[currentSlide]['2']['contents'];
+      console.log(bitPhrase);
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
-      return Meteor.call('bitlyLineChartD3', bitPhrase);
+      return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhrase); });
     } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12"></div>');
@@ -68,12 +68,33 @@ Meteor.methods({
     } else {
       var slideTextArray = slideShowMap[currentSlide][2]['contents'];
       var title = slideTextArray[0]['text'];
+      var titleTop = (slideTextArray[0]['top']);
+      console.log(titleTop);
+      var num = /\S\d+/;
+      var newNum = num.exec(titleTop);
+      console.log(newNum);
+      var newTop = newNum[0];
+      console.log(newTop);
+      var intTop = parseInt(newTop);
+      var plusTop = intTop+172;
+      console.log(plusTop);
+      var pxTop = plusTop+"px";
+      console.log(pxTop);
+      var titleLeft = slideTextArray[0]['left'];
+      console.log(titleLeft);
       var firstBull = slideTextArray[1]['text'];
       var secondBull = slideTextArray[2]['text'];
       var thirdBull = slideTextArray[3]['text'];
       var chartType = slideShowMap[currentSlide]['7']['chartType'];
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-      $('.make-start').append('<div class="span12 saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+      if (currentSlide === 0) {
+        $('.make-start').append('<div class="span12 saved-slide-preview"> <div id="show-title" class="show-title"> <h1 id="title-title" style="position: relative; top:'+ pxTop +'; left:'+ titleLeft +';">' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+        $(function() {
+          $('#title-title').draggable();
+        })
+      } else {
+        $('.make-start').append('<div class="span12 saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+      }
     }
   }
 })
