@@ -433,7 +433,7 @@ margin-bottom: 1em;
 }
 
 #show-titleSlide-title h1 {
-  font-size: 6em;
+  font-size: 5em;
 }
 
 #show-titleSlide-bullet-one h2 {
@@ -459,10 +459,11 @@ margin-bottom: 1em;
 }
 
 .preview-title-slideTitle h1 {
-  font-size: 6em; 
+  font-size: 5em; 
 }
 
-.title-sub-title h2 {
+.title-sub-title h2, 
+.title-sub-sub h2 {
   font-size: 3em;
 }
 
@@ -603,21 +604,6 @@ margin-bottom: 1em;
   text-align: right;
 }
 
-/*#twitter-switch, .twitter h3 {
-  text-align: center;
-  background-color: pink; 
-}
-
-#bitcoin-switch, .bit-coins h3 {
-  text-align: center;
-  background-color: orange;
-}
-
-#bitly-switch, .bitly h3 {
-  text-align: center;
-  background-color: brown;
-}*/
-
 /* >>>>> TEXT SLIDES <<<<<<<<< */
 
 #slide-inputs .slide-text {
@@ -680,29 +666,42 @@ margin-bottom: 1em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   font-size: 5em;
-  color: red;
 /*  margin-top: 50px;
   margin-bottom: 75px;*/
+}
+
+#show-title-notop h1 {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 5em;
+  margin-top: 200px;
+  margin-bottom: 0.5em;
 }
 
 #show-bullet-one h2, #show-bullet-two h2, #show-bullet-three h2 {
   padding-top: 0.25em;
   padding-bottom: 0.1em;
-  font-size: 4em;
+  font-size: 3em;
 }
 
 .slide-one-title h1 {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   font-size: 5em;
-/*  margin-top: 50px;
-  margin-bottom: 75px;*/
+}
+
+.slide-one-title-notop h1 {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 5em;
+  margin-top: 50px;
+  margin-bottom: 75px;
 }
 
 .bullet-first-slide-one h2, .bullet-second-slide-one h2, .bullet-third-slide-one h2 {
   padding-top: 0.25em;
   padding-bottom: 0.1em;
-  font-size: 4em;
+  font-size: 3em;
 }
 
 /* >>>>>>>>>>>> SHOW CREATION NAV CONTROLS >>>>>>>>>>>> */

@@ -9,6 +9,19 @@ Meteor.methods({
 })
 
 Meteor.methods({
+  topRenderFix: function (titleTop, pixels) {
+    var num = /\S\d+/;
+    var newNum = num.exec(titleTop);
+    var newTop = newNum[0];
+    var intTop = parseInt(newTop);
+    var plusTop = intTop+pixels;
+    var pxTop = plusTop+"px";
+    console.log(pxTop);
+    return pxTop;
+  }
+})
+
+Meteor.methods({
   slidePreviewRender: function(currentSlide){
     $('#create-chart-sub').remove();
     $('#edit-current-slide').remove();
@@ -67,34 +80,91 @@ Meteor.methods({
       return Meteor.call('userBubbleChart', fileCount);
     } else {
       var slideTextArray = slideShowMap[currentSlide][2]['contents'];
-      var title = slideTextArray[0]['text'];
-      var titleTop = (slideTextArray[0]['top']);
-      console.log(titleTop);
-      var num = /\S\d+/;
-      var newNum = num.exec(titleTop);
-      console.log(newNum);
-      var newTop = newNum[0];
-      console.log(newTop);
-      var intTop = parseInt(newTop);
-      var plusTop = intTop+172;
-      console.log(plusTop);
-      var pxTop = plusTop+"px";
-      console.log(pxTop);
-      var titleLeft = slideTextArray[0]['left'];
-      console.log(titleLeft);
-      var firstBull = slideTextArray[1]['text'];
-      var secondBull = slideTextArray[2]['text'];
-      var thirdBull = slideTextArray[3]['text'];
-      var chartType = slideShowMap[currentSlide]['7']['chartType'];
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       if (currentSlide === 0) {
-        $('.make-start').append('<div class="span12 saved-slide-preview"> <div id="show-title" class="show-title"> <h1 id="title-title" style="position: relative; top:'+ pxTop +'; left:'+ titleLeft +';">' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
-        $(function() {
-          $('#title-title').draggable();
-        })
-      } else {
-        $('.make-start').append('<div class="span12 saved-slide-preview"> <div class="slide-one-title"> <h1>' + title + '</h1></div><div class="bullet-first-slide-one"><h2>' + firstBull + '</h2></div><div class="bullet-second-slide-one"> <h2>' + secondBull + '</h2></div><div class="bullet-third-slide-one"> <h2>' + thirdBull + '</h2></div></div>');
+        $('.make-start').append('<div id="slide-preview" class="span12 saved-slide-preview"></div>'); 
+        var titleTop = (slideTextArray[0]['top']);
+        if (titleTop) {
+          var thisTop = Meteor.call('topRenderFix', titleTop, 172);
+          var title = slideTextArray[0]['text'];
+          var titleLeft = slideTextArray[0]['left'];
+          $('#slide-preview').append('<div id="show-title" class="show-title"> <h1 id="title-title" style="position: relative; top:'+ thisTop +'; left:'+ titleLeft +';">' + title + '</h1></div>');
+        } else {
+          var title = slideTextArray[0]['text'];
+          $('#slide-preview').append('<div id="show-title-notop" class="show-title"> <h1 id="title-title">' + title + '</h1></div>');
+        }
+        var firstTop = slideTextArray[1]['top'];
+        if (firstTop) {
+          var thisFirstTop = Meteor.call('topRenderFix', firstTop, 162);
+          var firstBull = slideTextArray[1]['text'];
+          var firstLeft = slideTextArray[1]['left'];
+          $('#slide-preview').append('<div class="bullet-first-slide-one"><h2 id="first-bullet" style="position: relative; top:'+ thisFirstTop +'; left:'+ firstLeft +';">' + firstBull + '</h2></div>');
+        } else {
+          var firstBull = slideTextArray[1]['text'];
+          $('#slide-preview').append('<div class="bullet-first-slide-one"><h2 id="first-bullet">' + firstBull + '</h2></div>');
+        }
+        var secondTop = slideTextArray[2]['top'];
+        if (secondTop) {
+          var thisSecondTop = Meteor.call('topRenderFix', secondTop, 148);
+          var secondBull = slideTextArray[2]['text'];
+          var secondLeft = slideTextArray[2]['left'];
+          $('#slide-preview').append('<div class="bullet-second-slide-one"> <h2 id="second-bullet" style="position: relative; top:'+ thisSecondTop +'; left:'+ secondLeft +';">' + secondBull + '</h2></div>');
+        } else {
+          var secondBull = slideTextArray[2]['text'];
+          $('#slide-preview').append('<div class="bullet-second-slide-one"> <h2 id="second-bullet">' + secondBull + '</h2></div>');
+        }
       }
+      if (currentSlide > 0) {
+        console.log("current slide is " + currentSlide);
+        $('.make-start').append('<div id="slide-preview" class="span12 saved-slide-preview"></div>'); 
+        var titleTop = (slideTextArray[0]['top']);
+        console.log(titleTop);
+        if (titleTop) {
+          var thisTop = Meteor.call('topRenderFix', titleTop, 43);
+          var title = slideTextArray[0]['text'];
+          var titleLeft = slideTextArray[0]['left'];
+          $('#slide-preview').append('<div class="slide-one-title"> <h1 id="title-title" style="position: relative; top:'+ thisTop +'; left:'+ titleLeft +';">' + title + '</h1></div>');
+        } else {
+          var title = slideTextArray[0]['text'];
+          $('#slide-preview').append('<div class="slide-one-title-notop"> <h1 id="title-title">' + title + '</h1></div>');
+        }
+        var firstTop = slideTextArray[1]['top'];
+        if (firstTop) {
+          var thisFirstTop = Meteor.call('topRenderFix', firstTop, 122);
+          var firstBull = slideTextArray[1]['text'];
+          var firstLeft = slideTextArray[1]['left'];
+          $('#slide-preview').append('<div class="bullet-first-slide-one"><h2 id="first-bullet" style="position: relative; top:'+ thisFirstTop +'; left:'+ firstLeft +';">' + firstBull + '</h2></div>');
+        } else {
+          var firstBull = slideTextArray[1]['text'];
+          $('#slide-preview').append('<div class="bullet-first-slide-one"><h2 id="first-bullet">' + firstBull + '</h2></div>');
+        }
+        var secondTop = slideTextArray[2]['top'];
+        if (secondTop) {
+          var thisSecondTop = Meteor.call('topRenderFix', secondTop, 148);
+          var secondBull = slideTextArray[2]['text'];
+          var secondLeft = slideTextArray[2]['left'];
+          $('#slide-preview').append('<div class="bullet-second-slide-one"> <h2 id="second-bullet" style="position: relative; top:'+ thisSecondTop +'; left:'+ secondLeft +';">' + secondBull + '</h2></div>');
+        } else {
+          var secondBull = slideTextArray[2]['text'];
+          $('#slide-preview').append('<div class="bullet-second-slide-one"> <h2 id="second-bullet">' + secondBull + '</h2></div>');
+        }
+        var thirdTop = slideTextArray[3]['top'];
+        if (thirdTop) {
+          var thisThirdTop = Meteor.call('topRenderFix', thirdTop, 138);
+          var thirdBull = slideTextArray[3]['text'];
+          var thirdLeft = slideTextArray[3]['left'];
+          $('#slide-preview').append('<div class="bullet-third-slide-one"> <h2 id="third-bullet" style="position: relative; top:'+ thisThirdTop +'; left:'+ thirdLeft +';">' + thirdBull + '</h2></div></div>');
+        } else {
+          var thirdBull = slideTextArray[3]['text'];
+          $('#slide-preview').append('<div class="bullet-third-slide-one"> <h2 id="third-bullet">' + thirdBull + '</h2></div></div>');
+        }
+      }
+      //var chartType = slideShowMap[currentSlide]['7']['chartType'];
+      // $(function() {
+      //   $('#title-title').draggable();
+      //   $('#first-bullet').draggable();
+      //   $('#second-bullet').draggable();
+      // })
     }
   }
 })

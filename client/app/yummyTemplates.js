@@ -7,14 +7,27 @@ var savedShowSlideIndex = 0;
 var currentUser = Meteor.userId();
 
 Meteor.methods({
-  tickSlideCount: function () {
-    slideCount++
+  passingTheCount: function () {
+    console.log(slideCount);
     Meteor.call('passSlideCount', slideCount);
     Meteor.call('passSlideCountSave', slideCount);
     Meteor.call('passSlideCountBitCoin', slideCount);
     Meteor.call('passSlideCountUserData', slideCount);
     Meteor.call('passSlideCountUserBub', slideCount);
     Meteor.call('passSlideCountBitBub', slideCount);
+  }
+})
+
+Meteor.methods({
+  tickSlideCount: function () {
+    slideCount++
+    Meteor.call('passingTheCount');
+    // Meteor.call('passSlideCount', slideCount);
+    // Meteor.call('passSlideCountSave', slideCount);
+    // Meteor.call('passSlideCountBitCoin', slideCount);
+    // Meteor.call('passSlideCountUserData', slideCount);
+    // Meteor.call('passSlideCountUserBub', slideCount);
+    // Meteor.call('passSlideCountBitBub', slideCount);
     return slideCount;
   }
 })
@@ -124,9 +137,9 @@ Template.yummy_coins.events({
       $('.instruct-title').remove();
       $('#create-chart-sub').remove();
       $('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-      $('.slide-title').append('<div class="slide-one-title"> <h1>' + slideOneTitleText +'</h1></div>');
+      $('.slide-title').append('<div class="slide-one-title"> <h1 id="title-title">' + slideOneTitleText +'</h1></div>');
       $(function() {
-        $('.slide-one-title').draggable();
+        $('#title-title').draggable();
       });
       $('.bullet-one').append('<input id="bullet-one" class="slide-text" type="text" placeholder="Make Your First Point" autofocus />');
       return slideTitle;
@@ -151,7 +164,10 @@ Template.yummy_coins.events({
       })
       var bulletText = userSlideMap[1]['text'];
       $('#bullet-one').remove();
-      $('.bullet-one').append('<div class="bullet-first-slide-one"> <h2>' + bulletText +'</h2></div>');
+      $('.bullet-one').append('<div class="bullet-first-slide-one"> <h2 id="title-sub-bullet">' + bulletText +'</h2></div>');
+      $(function() {
+        $('#title-sub-bullet').draggable();
+      });
       $('.bullet-two').append('<input id="bullet-two" class="slide-text" type="text" placeholder="Make a Second Point Here" autofocus />');
       return bulletOne;
     }
@@ -175,7 +191,10 @@ Template.yummy_coins.events({
       })
       var bullet2Text = userSlideMap[2]['text'];
       $('#bullet-two').remove();
-      $('.bullet-two').append('<div class="bullet-second-slide-one"> <h2>' + bullet2Text +'</h2></div>');
+      $('.bullet-two').append('<div class="bullet-second-slide-one"> <h2 id="title-sub-sub">' + bullet2Text +'</h2></div>');
+      $(function() {
+        $('#title-sub-sub').draggable();
+      });
       $('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Make a Third and Final Point Here" autofocus />');
       return bulletTwo;
     }
@@ -200,25 +219,41 @@ Template.yummy_coins.events({
       var bullet3Text = userSlideMap[3]['text'];
       $('#bullet-three').remove();
       $('.instruct-bullet-one').remove();
-      $('.bullet-three').append('<div class="bullet-third-slide-one"> <h2>' + bullet3Text +'</h2></div>');
+      $('.bullet-three').append('<div class="bullet-third-slide-one"> <h2 id="sub-sub-sub">' + bullet3Text +'</h2></div>');
+      $(function() {
+        $('#sub-sub-sub').draggable();
+      });
       //$('.bullet-three').append('<input id="bullet-three" class="slide-text" type="text" placeholder="Enter Bullet Three Text Here" />');
       return bulletThree;
     }
   },
   'click #slide-controls': function (event) { //>>>>>>> SAVE SLIDE <<<<<<<<<
       event.preventDefault();
-      var titleTop = document.getElementById("title-title").style.top;
-      var titleLeft = document.getElementById("title-title").style.left;
-      // var grid = $('title-title').draggable("grid");
-      // console.log(grid);
-      if (document.getElementById("title-sub-bullet")) {
-        var subBulletTop = document.getElementById("title-sub-bullet").style.top;
-        var subBulletLeft = document.getElementById("title-sub-bullet").style.left;
+      var titleTop = "";
+      var titleLeft = "";
+      var firstBulTop = "";
+      var firstBulLeft = "";
+      var secondBulTop = "";
+      var secondBulLeft = "";
+      var thirdBulTop = "";
+      var thirdBulLeft = "";
+
+      if (document.getElementById("title-title")) {
+        titleTop = document.getElementById("title-title").style.top;
+        titleLeft = document.getElementById("title-title").style.left;
       }
-      console.log("top " + titleTop);
-      console.log("left " + titleLeft);
-      // console.log("topbull " + subBulletTop);
-      // console.log("leftbull " + subBulletLeft);
+      if (document.getElementById("title-sub-bullet")) {
+        firstBulTop = document.getElementById("title-sub-bullet").style.top;
+        firstBulLeft = document.getElementById("title-sub-bullet").style.left;
+      }
+      if (document.getElementById("title-sub-sub")) {
+        secondBulTop = document.getElementById("title-sub-sub").style.top;
+        secondBulLeft = document.getElementById("title-sub-sub").style.left;
+      }
+      if (document.getElementById("sub-sub-sub")) {
+        thirdBulTop = document.getElementById("sub-sub-sub").style.top;
+        thirdBulLeft = document.getElementById("sub-sub-sub").style.left;
+      }
       $('#slide-controls').remove();
       $('#slide-inputs').remove();  
       $('#slide-inputs-chart').remove();    
@@ -255,9 +290,9 @@ Template.yummy_coins.events({
           { slide: slideCount },
           { contents: [
                       { bullet: 'title', text: slideTitleText, top: titleTop, left: titleLeft },
-                      { bullet: 'first', text: "", top: "", left: "" },
-                      { bullet: 'second', text: "", top: "", left: ""  },
-                      { bullet: 'third', text: "", top: "", left: ""  }
+                      { bullet: 'first', text: "", top: firstBulTop, left: firstBulLeft },
+                      { bullet: 'second', text: "", top: secondBulTop, left: secondBulLeft },
+                      { bullet: 'third', text: "", top: thirdBulTop, left: thirdBulLeft  }
                       ]
           },
           { slideType: "text" },
@@ -267,12 +302,13 @@ Template.yummy_coins.events({
           { chartType: "text" }
           ])
         slideCount++;
-        Meteor.call('passSlideCount', slideCount);
-        Meteor.call('passSlideCountSave', slideCount);
-        Meteor.call('passSlideCountBitCoin', slideCount);
-        Meteor.call('passSlideCountUserData', slideCount);
-        Meteor.call('passSlideCountUserBub', slideCount);
-        Meteor.call('passSlideCountBitBub', slideCount);
+        Meteor.call('passingTheCount');
+        // Meteor.call('passSlideCount', slideCount);
+        // Meteor.call('passSlideCountSave', slideCount);
+        // Meteor.call('passSlideCountBitCoin', slideCount);
+        // Meteor.call('passSlideCountUserData', slideCount);
+        // Meteor.call('passSlideCountUserBub', slideCount);
+        // Meteor.call('passSlideCountBitBub', slideCount);
         return slideTitleText;
       } else {
         var bulletOneText = slideFilter[1]['text'];
@@ -283,9 +319,9 @@ Template.yummy_coins.events({
           { slide: slideCount },
           { contents: [
                       { bullet: 'title', text: slideTitleText, top: titleTop, left: titleLeft },
-                      { bullet: 'first', text: bulletOneText, top: subBulletTop, left: subBulletLeft },
-                      { bullet: 'second', text: "", top: "", left: ""  },
-                      { bullet: 'third', text: "", top: "", left: ""  }
+                      { bullet: 'first', text: bulletOneText, top: firstBulTop, left: firstBulLeft },
+                      { bullet: 'second', text: "", top: secondBulTop, left: secondBulLeft },
+                      { bullet: 'third', text: "", top: thirdBulTop, left: thirdBulLeft  }
                       ]
           },
           { slideType: "text" },
@@ -295,12 +331,13 @@ Template.yummy_coins.events({
           { chartType: "text" }
           ])
         slideCount++;
-        Meteor.call('passSlideCount', slideCount);
-        Meteor.call('passSlideCountSave', slideCount);
-        Meteor.call('passSlideCountBitCoin', slideCount);
-        Meteor.call('passSlideCountUserData', slideCount);
-        Meteor.call('passSlideCountUserBub', slideCount);
-        Meteor.call('passSlideCountBitBub', slideCount);
+        Meteor.call('passingTheCount');
+        // Meteor.call('passSlideCount', slideCount);
+        // Meteor.call('passSlideCountSave', slideCount);
+        // Meteor.call('passSlideCountBitCoin', slideCount);
+        // Meteor.call('passSlideCountUserData', slideCount);
+        // Meteor.call('passSlideCountUserBub', slideCount);
+        // Meteor.call('passSlideCountBitBub', slideCount);
         return bulletOneText;
       } else {
         var bulletTwoText = slideFilter[2]['text'];
@@ -310,10 +347,10 @@ Template.yummy_coins.events({
           { show: currentShow },
           { slide: slideCount },
           { contents: [
-                      { bullet: 'title', text: slideTitleText },
-                      { bullet: 'first', text: bulletOneText },
-                      { bullet: 'second', text: bulletTwoText },
-                      { bullet: 'third', text: "" }
+                      { bullet: 'title', text: slideTitleText, top: titleTop, left: titleLeft },
+                      { bullet: 'first', text: bulletOneText, top: firstBulTop, left: firstBulLeft },
+                      { bullet: 'second', text: bulletTwoText, top: secondBulTop, left: secondBulLeft },
+                      { bullet: 'third', text: "", top: thirdBulTop, left: thirdBulLeft  }
                       ]
           },
           { slideType: "text" },
@@ -323,12 +360,13 @@ Template.yummy_coins.events({
           { chartType: "text" }
           ])
         slideCount++;
-        Meteor.call('passSlideCount', slideCount);
-        Meteor.call('passSlideCountSave', slideCount);
-        Meteor.call('passSlideCountBitCoin', slideCount);
-        Meteor.call('passSlideCountUserData', slideCount);
-        Meteor.call('passSlideCountUserBub', slideCount);
-        Meteor.call('passSlideCountBitBub', slideCount);
+        Meteor.call('passingTheCount');
+        // Meteor.call('passSlideCount', slideCount);
+        // Meteor.call('passSlideCountSave', slideCount);
+        // Meteor.call('passSlideCountBitCoin', slideCount);
+        // Meteor.call('passSlideCountUserData', slideCount);
+        // Meteor.call('passSlideCountUserBub', slideCount);
+        // Meteor.call('passSlideCountBitBub', slideCount);
         return bulletTwoText;
       } else {
         var bulletThreeText = slideFilter[3]['text'];
@@ -336,10 +374,10 @@ Template.yummy_coins.events({
           { show: currentShow },
           { slide: slideCount },
           { contents: [
-                      { bullet: 'title', text: slideTitleText },
-                      { bullet: 'first', text: bulletOneText },
-                      { bullet: 'second', text: bulletTwoText },
-                      { bullet: 'third', text: bulletThreeText }
+                      { bullet: 'title', text: slideTitleText, top: titleTop, left: titleLeft },
+                      { bullet: 'first', text: bulletOneText, top: firstBulTop, left: firstBulLeft },
+                      { bullet: 'second', text: bulletTwoText, top: secondBulTop, left: secondBulLeft },
+                      { bullet: 'third', text: bulletThreeText, top: thirdBulTop, left: thirdBulLeft  }
                       ]
           },
           { slideType: "text" },
@@ -349,12 +387,13 @@ Template.yummy_coins.events({
           { chartType: "text" }
           ])
         slideCount++;
-        Meteor.call('passSlideCount', slideCount);
-        Meteor.call('passSlideCountSave', slideCount);
-        Meteor.call('passSlideCountBitCoin', slideCount);
-        Meteor.call('passSlideCountUserData', slideCount);
-        Meteor.call('passSlideCountUserBub', slideCount);
-        Meteor.call('passSlideCountBitBub', slideCount);
+        Meteor.call('passingTheCount');
+        // Meteor.call('passSlideCount', slideCount);
+        // Meteor.call('passSlideCountSave', slideCount);
+        // Meteor.call('passSlideCountBitCoin', slideCount);
+        // Meteor.call('passSlideCountUserData', slideCount);
+        // Meteor.call('passSlideCountUserBub', slideCount);
+        // Meteor.call('passSlideCountBitBub', slideCount);
         return bulletThreeText;
       }
     }
@@ -488,7 +527,10 @@ Template.yummy_coins.events({
       var subSubTitleText = userSlideMap[2]['text'];
       $('#title-slide-sub-sub').remove();
       $('#slide-controls').remove();
-      $('.bullet-two').append('<div class="title-sub-sub"> <h3>' + subSubTitleText +'</h3></div>');
+      $('.bullet-two').append('<div class="title-sub-sub"> <h2 id="title-sub-sub">' + subSubTitleText +'</h2></div>');
+      $(function() {
+        $('#title-sub-sub').draggable();
+      });
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
       return bulletTwo;
     }
