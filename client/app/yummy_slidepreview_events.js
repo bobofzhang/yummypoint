@@ -120,7 +120,7 @@ Meteor.methods({
         var titleTop = (slideTextArray[0]['top']);
         console.log(titleTop);
         if (titleTop) {
-          var thisTop = Meteor.call('topRenderFix', titleTop, 43);
+          var thisTop = Meteor.call('topRenderFix', titleTop, 40);
           var title = slideTextArray[0]['text'];
           var titleLeft = slideTextArray[0]['left'];
           $('#slide-preview').append('<div class="slide-one-title"> <h1 id="title-title" style="position: relative; top:'+ thisTop +'; left:'+ titleLeft +';">' + title + '</h1></div>');
@@ -130,7 +130,7 @@ Meteor.methods({
         }
         var firstTop = slideTextArray[1]['top'];
         if (firstTop) {
-          var thisFirstTop = Meteor.call('topRenderFix', firstTop, 122);
+          var thisFirstTop = Meteor.call('topRenderFix', firstTop, 105);
           var firstBull = slideTextArray[1]['text'];
           var firstLeft = slideTextArray[1]['left'];
           $('#slide-preview').append('<div class="bullet-first-slide-one"><h2 id="first-bullet" style="position: relative; top:'+ thisFirstTop +'; left:'+ firstLeft +';">' + firstBull + '</h2></div>');
@@ -140,7 +140,7 @@ Meteor.methods({
         }
         var secondTop = slideTextArray[2]['top'];
         if (secondTop) {
-          var thisSecondTop = Meteor.call('topRenderFix', secondTop, 148);
+          var thisSecondTop = Meteor.call('topRenderFix', secondTop, 105);
           var secondBull = slideTextArray[2]['text'];
           var secondLeft = slideTextArray[2]['left'];
           $('#slide-preview').append('<div class="bullet-second-slide-one"> <h2 id="second-bullet" style="position: relative; top:'+ thisSecondTop +'; left:'+ secondLeft +';">' + secondBull + '</h2></div>');
@@ -150,7 +150,7 @@ Meteor.methods({
         }
         var thirdTop = slideTextArray[3]['top'];
         if (thirdTop) {
-          var thisThirdTop = Meteor.call('topRenderFix', thirdTop, 138);
+          var thisThirdTop = Meteor.call('topRenderFix', thirdTop, 145);
           var thirdBull = slideTextArray[3]['text'];
           var thirdLeft = slideTextArray[3]['left'];
           $('#slide-preview').append('<div class="bullet-third-slide-one"> <h2 id="third-bullet" style="position: relative; top:'+ thisThirdTop +'; left:'+ thirdLeft +';">' + thirdBull + '</h2></div></div>');

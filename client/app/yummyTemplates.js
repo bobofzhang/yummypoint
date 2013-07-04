@@ -19,15 +19,23 @@ Meteor.methods({
 })
 
 Meteor.methods({
+  passingTheName: function (nowShow) {
+    console.log("in the name passing func");
+    Meteor.call('passShowName', nowShow);
+    Meteor.call('passShowNameSave', nowShow);
+    Meteor.call('passShowNameBitCoin', nowShow);
+    Meteor.call('passCurrentShowName', nowShow);
+    Meteor.call('passShowNameUserData', nowShow);
+    Meteor.call('passShowNamePreview', nowShow);
+    Meteor.call('passShowNameBitBub', nowShow);
+    Meteor.call('passShowNameUserBub', nowShow);
+  }
+})
+
+Meteor.methods({
   tickSlideCount: function () {
     slideCount++
     Meteor.call('passingTheCount');
-    // Meteor.call('passSlideCount', slideCount);
-    // Meteor.call('passSlideCountSave', slideCount);
-    // Meteor.call('passSlideCountBitCoin', slideCount);
-    // Meteor.call('passSlideCountUserData', slideCount);
-    // Meteor.call('passSlideCountUserBub', slideCount);
-    // Meteor.call('passSlideCountBitBub', slideCount);
     return slideCount;
   }
 })
@@ -303,12 +311,6 @@ Template.yummy_coins.events({
           ])
         slideCount++;
         Meteor.call('passingTheCount');
-        // Meteor.call('passSlideCount', slideCount);
-        // Meteor.call('passSlideCountSave', slideCount);
-        // Meteor.call('passSlideCountBitCoin', slideCount);
-        // Meteor.call('passSlideCountUserData', slideCount);
-        // Meteor.call('passSlideCountUserBub', slideCount);
-        // Meteor.call('passSlideCountBitBub', slideCount);
         return slideTitleText;
       } else {
         var bulletOneText = slideFilter[1]['text'];
@@ -332,12 +334,6 @@ Template.yummy_coins.events({
           ])
         slideCount++;
         Meteor.call('passingTheCount');
-        // Meteor.call('passSlideCount', slideCount);
-        // Meteor.call('passSlideCountSave', slideCount);
-        // Meteor.call('passSlideCountBitCoin', slideCount);
-        // Meteor.call('passSlideCountUserData', slideCount);
-        // Meteor.call('passSlideCountUserBub', slideCount);
-        // Meteor.call('passSlideCountBitBub', slideCount);
         return bulletOneText;
       } else {
         var bulletTwoText = slideFilter[2]['text'];
@@ -361,12 +357,6 @@ Template.yummy_coins.events({
           ])
         slideCount++;
         Meteor.call('passingTheCount');
-        // Meteor.call('passSlideCount', slideCount);
-        // Meteor.call('passSlideCountSave', slideCount);
-        // Meteor.call('passSlideCountBitCoin', slideCount);
-        // Meteor.call('passSlideCountUserData', slideCount);
-        // Meteor.call('passSlideCountUserBub', slideCount);
-        // Meteor.call('passSlideCountBitBub', slideCount);
         return bulletTwoText;
       } else {
         var bulletThreeText = slideFilter[3]['text'];
@@ -388,12 +378,6 @@ Template.yummy_coins.events({
           ])
         slideCount++;
         Meteor.call('passingTheCount');
-        // Meteor.call('passSlideCount', slideCount);
-        // Meteor.call('passSlideCountSave', slideCount);
-        // Meteor.call('passSlideCountBitCoin', slideCount);
-        // Meteor.call('passSlideCountUserData', slideCount);
-        // Meteor.call('passSlideCountUserBub', slideCount);
-        // Meteor.call('passSlideCountBitBub', slideCount);
         return bulletThreeText;
       }
     }
@@ -416,14 +400,15 @@ Template.yummy_coins.events({
         $('#homepage-mkt').append('<div id="mkt-plug" class="row"><span id="user-login-alert" class="span12"> <h4> Try again. You must be signed in to create a tasty YummyShow </h4></span></div>')
       } else {
         currentUser = Meteor.userId();
-        Meteor.call('passShowName', currentShow);
-        Meteor.call('passShowNameSave', currentShow);
-        Meteor.call('passShowNameBitCoin', currentShow);
-        Meteor.call('passCurrentShowName', currentShow);
-        Meteor.call('passShowNameUserData', currentShow);
-        Meteor.call('passShowNamePreview', currentShow);
-        Meteor.call('passShowNameBitBub', currentShow);
-        Meteor.call('passShowNameUserBub', currentShow);
+        Meteor.call('passingTheName', currentShow);
+        // Meteor.call('passShowName', currentShow);
+        // Meteor.call('passShowNameSave', currentShow);
+        // Meteor.call('passShowNameBitCoin', currentShow);
+        // Meteor.call('passCurrentShowName', currentShow);
+        // Meteor.call('passShowNameUserData', currentShow);
+        // Meteor.call('passShowNamePreview', currentShow);
+        // Meteor.call('passShowNameBitBub', currentShow);
+        // Meteor.call('passShowNameUserBub', currentShow);
         slideCount = 1;
         $('#create-show').remove();
         $('#marketing-text').remove();
@@ -469,7 +454,6 @@ Template.yummy_coins.events({
       $('.instruct-title').remove();
       $('#make-slide-options').remove();
       $('#user-login-alert').remove();
-      //$('#mkt-plug').remove();
       $('#homepage-mkt').hide();
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save This Slide and Continue </p></span></div>');
       $('.title-slide-title').append('<div id="title-slideTitle" class="title-slideTitle"> <h1 id="title-title">' + slideOneTitleText +'</h1></div>');
