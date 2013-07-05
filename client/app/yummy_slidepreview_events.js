@@ -150,7 +150,7 @@ Meteor.methods({
         }
         var thirdTop = slideTextArray[3]['top'];
         if (thirdTop) {
-          var thisThirdTop = Meteor.call('topRenderFix', thirdTop, 145);
+          var thisThirdTop = Meteor.call('topRenderFix', thirdTop, 105);
           var thirdBull = slideTextArray[3]['text'];
           var thirdLeft = slideTextArray[3]['left'];
           $('#slide-preview').append('<div class="bullet-third-slide-one"> <h2 id="third-bullet" style="position: relative; top:'+ thisThirdTop +'; left:'+ thirdLeft +';">' + thirdBull + '</h2></div></div>');
