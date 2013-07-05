@@ -677,6 +677,20 @@ margin-bottom: 1em;
   margin-bottom: 0.5em;
 }
 
+#show-slide-title h1 {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 5em;
+}
+
+#show-slide-title-notop h1 {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 5em;
+  margin-top: 50px;
+  margin-bottom: 75px;
+}
+
 #show-bullet-one h2, #show-bullet-two h2, #show-bullet-three h2 {
   padding-top: 0.25em;
   padding-bottom: 0.1em;
