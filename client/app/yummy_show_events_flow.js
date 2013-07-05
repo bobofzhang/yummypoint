@@ -44,16 +44,16 @@ Meteor.methods ({
       $('.the-show').append('<div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1 id="show-title-title">' + yummyTitleText +'</h1></span></div>');
     }
   },
-  renderShowTitle: function (showFilter) {
-    var titleTop = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['top'];
+  renderShowTitle: function (showGoods, yummyTitleText) {
+    console.log(yummyTitleText);
+    console.log(yummySlideBulletCount);
+    var titleTop = showGoods[yummySlideBulletCount]['top'];
     if (titleTop) {
       thisTop = Meteor.call('showRenderFix', titleTop, 40);
-      var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['text'];
-      titleLeft = showFilter[yummyShowSlideIndex]['2']['contents'][yummySlideBulletCount]['left'];
+      titleLeft = showGoods[yummySlideBulletCount]['left'];
       $('.the-show').append('<div id="show-slide-title" class="span12 show-title"><span class="title"><h1 id="show-slide-title" style="position: relative; top:'+ thisTop +'; left:'+ titleLeft +';">' + yummyTitleText +'</h1></span></div>');
     } else {
-      //var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
-      $('.the-show').append('<div id="show-slide-title" class="span12 show-title"><span class="title"><h1 id="show-slide-title">' + yummyTitleText +'</h1></span></div>');
+      $('.the-show').append('<div id="show-slide-title-notop" class="span12 show-title"><span class="title"><h1 id="show-slide-title">' + yummyTitleText +'</h1></span></div>');
     }
   },
 
@@ -100,7 +100,7 @@ Meteor.methods({
       var secondLeft = showGoods[2]['left'];
       $('.the-show').append('<div id="show-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2 id="show-slide-second" style="position: relative; top:'+ thisSecondTop +'; left:'+ secondLeft +';">' + yummyBulletTwoText +'</h2></span></div>');
     } else {
-      $('.the-show').append('<div id="show-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2 id="show-slide-second">' + yummyBulletOneText +'</h2></span></div>');
+      $('.the-show').append('<div id="show-bullet-two" class="span12 show-bullet-two"><span class="show-bullet-two"><h2 id="show-slide-second">' + yummyBulletTwoText +'</h2></span></div>');
     } 
   }
 })
@@ -190,7 +190,7 @@ Meteor.methods({
       $('.the-show').append('<div id="show-slide-title" class="span12 show-title"><span class="title"><h1 id="show-slide-title" style="position: relative; top:'+ slideTop +'; left:'+ slideLeft +';">' + yummyTitleText +'</h1></span></div>');
     } else {
       var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
-      $('.the-show').append('<div id="show-slide-title" class="span12 show-title"><span class="title"><h1 id="show-slide-title">' + yummyTitleText +'</h1></span></div>');
+      $('.the-show').append('<div id="show-slide-title-notop" class="span12 show-title"><span class="title"><h1 id="show-slide-title">' + yummyTitleText +'</h1></span></div>');
     } 
   }
 })
@@ -244,22 +244,6 @@ Meteor.methods({
         return Meteor.call('userBubbleChart', fileCount);
       } else {
         Meteor.call('nextSlideRender', showFilter);
-        // $('#chart-render').remove();
-        // $('#chart-render-bitly').remove();
-        // $('#chart-render-bitcoin').remove();
-        // $('#user-bub-chart-render').remove();
-        // $('#chart-render-bitly-bubble').remove();
-        // var titleTop = showFilter[yummyShowSlideIndex]['2']['contents'][0]['top'];
-        // if (titleTop) {
-        //   var slideTop = Meteor.call('showRenderFix', titleTop, 40);
-        //   console.log(slideTop);
-        //   var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
-        //   var slideLeft = showFilter[yummyShowSlideIndex]['2']['contents'][0]['left'];
-        //   $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1 id="show-title-title" style="position: relative; top:'+ slideTop +'; left:'+ slideLeft +';">' + yummyTitleText +'</h1></span></div>');
-        // } else {
-        //   var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
-        //   $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1 id="show-title-title">' + yummyTitleText +'</h1></span></div>');
-        // } 
       }
     }
   }
@@ -300,7 +284,8 @@ Template.yummy_coins.events({
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-one" class="the-show"></div>');
     var showGoods = showFilter[yummyShowSlideIndex]['2']['contents'];
-    Meteor.call('renderShowTitle', showFilter);
+    var yummyTitleText = showGoods[0]['text'];
+    Meteor.call('renderShowTitle', showGoods, yummyTitleText);
     var yummyBulletOneText = showGoods[1]['text'];
     if (yummyBulletOneText) {
       Meteor.call('renderShowFirst', showGoods, yummyBulletOneText);
@@ -346,7 +331,9 @@ Template.yummy_coins.events({
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-two" class="the-show"></div>');
     var showGoods = showFilter[yummyShowSlideIndex]['2']['contents'];
-    Meteor.call('renderShowTitle', showFilter);
+    console.log(showGoods);
+    var yummyTitleText = showGoods[0]['text'];
+    Meteor.call('renderShowTitle', showGoods, yummyTitleText);
     var yummyBulletOneText = showGoods[1]['text'];
     Meteor.call('renderShowFirst', showGoods, yummyBulletOneText);
     var yummyBulletTwoText = showGoods[2]['text'];
@@ -396,7 +383,8 @@ Template.yummy_coins.events({
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-three" class="the-show"></div>');
     var showGoods = showFilter[yummyShowSlideIndex]['2']['contents'];
-    Meteor.call('renderShowTitle', showFilter);
+    var yummyTitleText = showGoods[0]['text'];
+    Meteor.call('renderShowTitle', showGoods, yummyTitleText);
     var yummyBulletOneText = showGoods[1]['text'];
     Meteor.call('renderShowFirst', showGoods, yummyBulletOneText);
     var yummyBulletTwoText = showGoods[2]['text'];
