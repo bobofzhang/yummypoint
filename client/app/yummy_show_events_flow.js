@@ -84,6 +84,19 @@ Meteor.methods({
 })
 
 Meteor.methods({
+  renderTitleThird: function (showGoods, yummyBulletThreeText) {
+    var thirdTop = showGoods[2]['top'];
+    if (thirdTop) {
+      var thisThirdTop = Meteor.call('showRenderFix', thirdTop, -18);
+      var thirdLeft = showGoods[2]['left'];
+      $('.the-show').append('<div id="show-titleSlide-bullet-three" class="span12 show-bullet-three"><span class="show-bullet-three"><h2 id="show-title-third" style="position: relative; top:'+ thisThirdTop +'; left:'+ ThirdLeft +';">' + yummyBulletThreeText +'</h2></span></div>');
+    } else {
+      $('.the-show').append('<div id="show-titleSlide-bullet-three" class="span12 show-bullet-three"><span class="show-bullet-three"><h2 id="show-title-three">' + yummyBulletThreeText + '</h2></span></div>');
+    }
+  }
+})
+
+Meteor.methods({
     yummyShowStart: function(showName){
         thisShowName = showName;
         yummyShowSlideIndex = 0;
@@ -127,34 +140,6 @@ Meteor.methods({
         Meteor.call('renderTitleTitle', showFilter);
         yummySlideBulletCount++;
     }
-})
-
-//>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
-Template.yummy_coins.events({
-  'click #user-show-name-1': function () {
-    var showName = $('#user-show-name-1').text();
-    Meteor.call('yummyShowStart', showName );
-  },
-  'click #user-show-name-2': function () {
-    showName = $('#user-show-name-2').text();
-    Meteor.call('yummyShowStart', showName );
-  },
-  'click #user-show-name-3': function () {
-    showName = $('#user-show-name-3').text();
-    Meteor.call('yummyShowStart', showName );
-  },
-  'click #user-show-name-4': function () {
-    showName = $('#user-show-name-4').text();
-    Meteor.call('yummyShowStart', showName );
-  },
-  'click #user-show-name-5': function () {
-    showName = $('#user-show-name-5').text();
-    Meteor.call('yummyShowStart', showName );
-  },
-  'click #user-show-name-6': function () {
-    showName = $('#user-show-name-6').text();
-    Meteor.call('yummyShowStart', showName );
-  }
 })
 
 Meteor.methods({
@@ -282,68 +267,79 @@ Template.yummy_coins.events({
         return obj;
       }
     })
-    var yummyBulletThreeText = showFilter[yummyShowSlideIndex]['2']['contents'][3]['text'];
+    $('.the-show').remove();
+    $('.make-start').append('<div id="the-show-two" class="the-show"></div>');
+    var showGoods = showFilter[yummyShowSlideIndex]['2']['contents'];
+    Meteor.call('renderTitleTitle', showFilter);
+    var yummyBulletOneText = showGoods[1]['text'];
+    Meteor.call('renderTitleFirst', showGoods, yummyBulletOneText);
+    var yummyBulletTwoText = showGoods[2]['text'];
+    Meteor.call('renderTitleSecond', showGoods, yummyBulletTwoText);
+    var yummyBulletThreeText = showGoods[3]['text'];
     if (yummyBulletThreeText) {
-      $('.the-show').append('<div id="show-titleSlide-bullet-three" class="span12 show-bullet-three"><span class="show-bullet-three"><h2>' + yummyBulletThreeText +'</h2></span></div>');
+      Meteor.call('renderTitleThird', showGoods, yummyBulletThreeText);
     } else {
       yummyShowSlideIndex++;
       $('.the-show').remove();
       $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
-      if (showFilter[yummyShowSlideIndex] == null) {
-        $('.the-show').remove();
-        $('#yummy-shows').append('<div id="show-row" class="row"></div>');
-        $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
-        $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
-        $('.user-details').show();
-        $('#footer-div').show();
-        $('#hide-shows').remove();
-        $('#user-show-template').show();
-        $('#user-shows').show();
-        $('#homepage-mkt').show();
-        yummyShowSlideIndex = 0;
-        yummySlideBulletCount = 0;
-        return;
-      } else {
-        var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
-        var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
-        var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
-        var chartType = showFilter[yummyShowSlideIndex]['7']['chartType'];
-        if (type === "chart" && source === "bitcoin") {
-          $('.the-show').remove();
-          $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-          $('.make-start').append('<div id="chart-render-bitcoin" class="span12 show-chart-render"></div>');
-          return Meteor.call('D3testinit'); 
-        } else if (type === "chart" && source === "bitly" && chartType === "line") {
-          var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
-          $('.the-show').remove();
-          $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
-          $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
-          return Meteor.call('bitlyLineChartD3', bitPhrase);
-        } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
-          $('.the-show').remove();
-          $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-          $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12 show-chart-render"></div>');
-          return Meteor.call('d3BubbleChart');
-        } else if (type === "chart" && source === "userfile" && chartType === "line") {
-          $('.the-show').remove();
-          $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-          $('.make-start').append('<div id="chart-render" class="span12 show-chart-render"></div>');
-          return Meteor.call('userFileLineChart', fileCount);
-        } else if (type === "chart" && source === "userfile" && chartType === "bubble") {
-          $('.the-show').remove();
-          $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-          $('.make-start').append('<div id="user-bub-chart-render" class="span12 show-chart-render"></div>');
-          return Meteor.call('userBubbleChart', fileCount);
-        } else {
-          $('#chart-render').remove();
-          $('#chart-render-bitly').remove();
-          $('#chart-render-bitcoin').remove();
-          var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
-          $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
-        }
-      }
+      Meteor.call('showSlideLogic', showFilter);
     }
   },
+      // if (showFilter[yummyShowSlideIndex] == null) {
+      //   $('.the-show').remove();
+      //   $('#yummy-shows').append('<div id="show-row" class="row"></div>');
+      //   $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
+      //   $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="To get started type your Yummy Show name here" autofocus /></span>');
+      //   $('.user-details').show();
+      //   $('#footer-div').show();
+      //   $('#hide-shows').remove();
+      //   $('#user-show-template').show();
+      //   $('#user-shows').show();
+      //   $('#homepage-mkt').show();
+      //   yummyShowSlideIndex = 0;
+      //   yummySlideBulletCount = 0;
+      //   return;
+      // } else {
+      //   var type = showFilter[yummyShowSlideIndex]['3']['slideType'];
+      //   var source = showFilter[yummyShowSlideIndex]['4']['dataSource'];
+      //   var fileCount = showFilter[yummyShowSlideIndex]['5']['fileNum'];
+      //   var chartType = showFilter[yummyShowSlideIndex]['7']['chartType'];
+      //   if (type === "chart" && source === "bitcoin") {
+      //     $('.the-show').remove();
+      //     $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+      //     $('.make-start').append('<div id="chart-render-bitcoin" class="span12 show-chart-render"></div>');
+      //     return Meteor.call('D3testinit'); 
+      //   } else if (type === "chart" && source === "bitly" && chartType === "line") {
+      //     var bitPhrase = showFilter[yummyShowSlideIndex]['2']['contents'];
+      //     $('.the-show').remove();
+      //     $('#slide-nav-row').append('<div id="chart-control" class="span12"></div>');
+      //     $('.make-start').append('<div id="chart-render-bitly" class="span12 show-chart-render"></div>');
+      //     return Meteor.call('bitlyLineChartD3', bitPhrase);
+      //   } else if (type === "chart" && source === "bitly" && chartType === "bubble") {
+      //     $('.the-show').remove();
+      //     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      //     $('.make-start').append('<div id="chart-render-bitly-bubble" class="span12 show-chart-render"></div>');
+      //     return Meteor.call('d3BubbleChart');
+      //   } else if (type === "chart" && source === "userfile" && chartType === "line") {
+      //     $('.the-show').remove();
+      //     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p>Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      //     $('.make-start').append('<div id="chart-render" class="span12 show-chart-render"></div>');
+      //     return Meteor.call('userFileLineChart', fileCount);
+      //   } else if (type === "chart" && source === "userfile" && chartType === "bubble") {
+      //     $('.the-show').remove();
+      //     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      //     $('.make-start').append('<div id="user-bub-chart-render" class="span12 show-chart-render"></div>');
+      //     return Meteor.call('userBubbleChart', fileCount);
+      //   } else {
+      //     $('#chart-render').remove();
+      //     $('#chart-render-bitly').remove();
+      //     $('#chart-render-bitcoin').remove();
+      //     var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
+      //     $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+      //   }
+      // }
+  //   }
+  // },
   'click #the-show-three': function () {
     yummyShowSlideIndex++;
     currentYummyShow = Shows.find().fetch();
@@ -803,5 +799,34 @@ Template.yummy_coins.events({
         $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
       }
     }
+  }
+})
+
+
+//>>>>>>>> YUMMY SHOW <<<<<<<<<<<<<
+Template.yummy_coins.events({
+  'click #user-show-name-1': function () {
+    var showName = $('#user-show-name-1').text();
+    Meteor.call('yummyShowStart', showName );
+  },
+  'click #user-show-name-2': function () {
+    showName = $('#user-show-name-2').text();
+    Meteor.call('yummyShowStart', showName );
+  },
+  'click #user-show-name-3': function () {
+    showName = $('#user-show-name-3').text();
+    Meteor.call('yummyShowStart', showName );
+  },
+  'click #user-show-name-4': function () {
+    showName = $('#user-show-name-4').text();
+    Meteor.call('yummyShowStart', showName );
+  },
+  'click #user-show-name-5': function () {
+    showName = $('#user-show-name-5').text();
+    Meteor.call('yummyShowStart', showName );
+  },
+  'click #user-show-name-6': function () {
+    showName = $('#user-show-name-6').text();
+    Meteor.call('yummyShowStart', showName );
   }
 })
