@@ -1,4 +1,20 @@
 var imgCount = 0;
+var imgShowName;
+var imgSlideCount;
+
+Meteor.methods({
+  passShowNameImage: function (showName) {
+    imgShowName = showName;
+    return imgShowName;
+  }
+})
+
+Meteor.methods({
+  passSlideCountImage: function (count) {
+    imgSlideCount = count;
+    return imgSlideCount;
+  }
+})
 
 Template.yummy_coins.events({
   'click #slide-img_upload': function() {
@@ -8,22 +24,6 @@ Template.yummy_coins.events({
 })
 
 Template.yummy_coins.events({
-  // 'click #cloak-inputs': function () {
-  //   filepicker.setKey('A12wDVTEfRR2KhAhTTwyBz');
-  //   var input = document.getElementById("read-input");
-  //   var output = document.getElementById("read-result");
-  //   if (!input.value) {
-  //   console.log("Choose an image to read below");
-  //   } else {
-  //     filepicker.read(input, {base64encode: true}, 
-  //     function(imgdata){
-  //           output.src = 'data:image/png;base64,'+imgdata;
-  //           console.log("Read successful");
-  //     }, function(fperror) {
-  //           console.log(fperror.toString());
-  //     });
-  //   }
-  // },
   'change #img-inputs': function (event, tmpl) {
     //$('#slide-nav-row').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
     $('#slide-nav-row').append('<div id="render-image" class="span5 see-userFile"> <span class="view-image"> <p> preview image</p></span></div>'); 
@@ -39,16 +39,18 @@ Template.yummy_coins.events({
       Images.insert({
         name: file.name,
         count: imgCount,  
-        file: img
-        //meteorUser: Meteor.userId(),
-        //show: thisShowName
+        file: img,
+        meteorUser: Meteor.userId(),
+        show: imgShowName,
+        slide: imgSlideCount
       })
       imgCount++;
+      Meteor.call('passImgCount', imgCount);
       reader.onerror = function(){ 
         alert('Unable to read ' + file.fileName); 
       };
     }
-    $('#img-inputs').remove();
+    $('#add-image').remove();
     //$('.make-start').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
     //$('#post-image-upload').append('<div id="render-image" class="span8 see-userFile"> <span class="view-image"> <p> prview image</p></span></div>');    
   },
@@ -58,7 +60,7 @@ Template.yummy_coins.events({
     var showImg = myImages[0]['file'];
     //var showImg = window.btoa(unescape(encodeURIComponent( thisImg )));
     console.log(showImg);
-    $('#slide-inputs').append('<div id="image-test"><img id="thisImage" src="'+showImg+'" alt="An awesome image" /></div>');
+    $('#slide-inputs').append('<div id="image-test" style="position: relative; top: -65px; left: 700px;"><img id="thisImage" src="'+showImg+'" alt="An awesome image" style="height: 200px; width: 200px" /></div>');
     $(function() {
       $('#image-test').draggable();
       $('#thisImage').resizable();

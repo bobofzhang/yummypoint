@@ -52,6 +52,7 @@ Meteor.methods({
     var source = slideShowMap[currentSlide]['4']['dataSource'];
     var fileCount = slideShowMap[currentSlide]['5']['fileNum'];
     var chartType = slideShowMap[currentSlide]['7']['chartType'];
+    var imageOne = slideShowMap[currentSlide]['8']['images'][0];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
@@ -115,7 +116,6 @@ Meteor.methods({
         }
       }
       if (currentSlide > 0) {
-        console.log("current slide is " + currentSlide);
         $('.make-start').append('<div id="slide-preview" class="span12 saved-slide-preview"></div>'); 
         var titleTop = (slideTextArray[0]['top']);
         console.log(titleTop);
@@ -158,6 +158,18 @@ Meteor.methods({
           var thirdBull = slideTextArray[3]['text'];
           $('#slide-preview').append('<div class="bullet-third-slide-one"> <h2 id="third-bullet">' + thirdBull + '</h2></div></div>');
         }
+      }
+      if (imageOne) {
+        var imageTop = imageOne['top'];
+        var imageLeft = imageOne['left'];
+        var imageWidth = imageOne['width'];
+        var imageHeight = imageOne['height'];
+
+        var imagesArray = Images.find().fetch();
+        console.log(imagesArray);
+        var firstImage = imagesArray[0]['file'];
+
+        $('#slide-preview').append('<div id="image-one" style="position: relative; top:'+imageTop+'; left:'+imageLeft+';"><img id="thisImage" src="'+firstImage+'" alt="An awesome image" style="height:'+imageHeight+'; width:'+imageWidth+';" /></div>');
       }
       //var chartType = slideShowMap[currentSlide]['7']['chartType'];
       // $(function() {

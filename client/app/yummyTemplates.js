@@ -5,6 +5,7 @@ var currentYummyShow;
 var yummyShowSlideIndex = 0;
 var savedShowSlideIndex = 0;
 var currentUser = Meteor.userId();
+var imageCount = 0;
 
 Meteor.methods({
   passingTheCount: function () {
@@ -15,6 +16,7 @@ Meteor.methods({
     Meteor.call('passSlideCountUserData', slideCount);
     Meteor.call('passSlideCountUserBub', slideCount);
     Meteor.call('passSlideCountBitBub', slideCount);
+    Meteor.call('passSlideCountImage', slideCount);
   }
 })
 
@@ -29,6 +31,14 @@ Meteor.methods({
     Meteor.call('passShowNamePreview', nowShow);
     Meteor.call('passShowNameBitBub', nowShow);
     Meteor.call('passShowNameUserBub', nowShow);
+    Meteor.call('passShowNameImage', nowShow);
+  }
+})
+
+Meteor.methods({
+  passImgCount: function (imgCount) {
+    imageCount = imgCount;
+    return imageCount;
   }
 })
 
@@ -245,6 +255,10 @@ Template.yummy_coins.events({
       var secondBulLeft = "";
       var thirdBulTop = "";
       var thirdBulLeft = "";
+      var imageTop = "";
+      var imageLeft = "";
+      var imageWidth = "";
+      var imageHeight = "";
 
       if (document.getElementById("title-title")) {
         titleTop = document.getElementById("title-title").style.top;
@@ -262,6 +276,17 @@ Template.yummy_coins.events({
         thirdBulTop = document.getElementById("sub-sub-sub").style.top;
         thirdBulLeft = document.getElementById("sub-sub-sub").style.left;
       }
+      if (document.getElementById("image-test")) {
+        imageTop = document.getElementById("image-test").style.top;
+        imageLeft = document.getElementById("image-test").style.left;
+        imageWidth = document.getElementById("thisImage").style.width;
+        imageHeight = document.getElementById("thisImage").style.height;
+        console.log(imageTop);
+        console.log(imageLeft);
+        console.log(imageWidth);
+        console.log(imageHeight);
+      }
+      $('#render-image').remove();
       $('#slide-controls').remove();
       $('#slide-inputs').remove();  
       $('#slide-inputs-chart').remove();    
@@ -309,7 +334,11 @@ Template.yummy_coins.events({
           { dataSource: "text" },
           { fileNum: "" }, 
           { meteorUser: Meteor.userId() },
-          { chartType: "text" }
+          { chartType: "text" },
+          { images: [
+            {image: 'one', num: "", top: imageTop, left: imageLeft, width: imageWidth, height: imageHeight }
+            ]
+          }
           ])
         slideCount++;
         Meteor.call('passingTheCount');
