@@ -217,6 +217,28 @@ body {
   margin-top: 0.3em;
 }
 
+#render-image {
+  background-color: rgba(213, 0, 101, 0.5);
+  margin-right: 0.5em;
+  border-radius: 0.5em;
+}
+
+#render-image:hover {
+  background-color: rgba(213, 0, 101, 1);
+  color: white; 
+}
+
+#add-image {
+  background-color: rgba(213, 0, 101, 0.5);
+  margin-right: 0.5em;
+  border-radius: 0.5em;
+}
+
+#add-image:hover {
+  background-color: rgba(213, 0, 101, 1);
+  color: white;
+}
+
 #user-data-line-nav {
   background-color: rgba(213, 0, 101, 0.5);
   margin-right: 0.5em;
@@ -631,18 +653,6 @@ margin-bottom: 1em;
   background-color: whitesmoke;
   height: 50em;
   border-radius: 1em;
-}
-
-#line-chart-nav {
-  background-color: linen;
-}
-
-#bar-chart-nav {
-  background-color: slateblue;
-}
-
-#bubble-chart-nav {
-  background-color: coral;
 }
 
 .line-chart-options {

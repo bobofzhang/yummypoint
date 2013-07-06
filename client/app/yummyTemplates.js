@@ -280,7 +280,9 @@ Template.yummy_coins.events({
       $('#chart-render-bitcoin').remove();
       $('chart-render-bitly-bubble').remove();
       $('#make-new-show').append('<div id="show-maker"><span class="new-yum-show"><p> Make a new Yummy Show </p> </span></div>')
-      $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      //$('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('#slide-nav-row').append('<div id="add-image" class="span5"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" accept="image/jpg" name="files[]" style="visibility:hidden;"/></div></div>');
+      $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
@@ -401,14 +403,6 @@ Template.yummy_coins.events({
       } else {
         currentUser = Meteor.userId();
         Meteor.call('passingTheName', currentShow);
-        // Meteor.call('passShowName', currentShow);
-        // Meteor.call('passShowNameSave', currentShow);
-        // Meteor.call('passShowNameBitCoin', currentShow);
-        // Meteor.call('passCurrentShowName', currentShow);
-        // Meteor.call('passShowNameUserData', currentShow);
-        // Meteor.call('passShowNamePreview', currentShow);
-        // Meteor.call('passShowNameBitBub', currentShow);
-        // Meteor.call('passShowNameUserBub', currentShow);
         slideCount = 1;
         $('#create-show').remove();
         $('#marketing-text').remove();

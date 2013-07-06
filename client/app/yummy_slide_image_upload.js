@@ -25,15 +25,16 @@ Template.yummy_coins.events({
   //   }
   // },
   'change #img-inputs': function (event, tmpl) {
-    $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-    // event.preventDefault();
+    //$('#slide-nav-row').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
+    $('#slide-nav-row').append('<div id="render-image" class="span5 see-userFile"> <span class="view-image"> <p> preview image</p></span></div>'); 
+    event.preventDefault();
     var files = event.target.files; // FileList object
     var file = files[0];
     var reader = new FileReader();
     reader.readAsDataURL(file);
 
     reader.onload = function(event) {
+      event.preventDefault();
       var img = event.target.result;
       Images.insert({
         name: file.name,
@@ -48,8 +49,8 @@ Template.yummy_coins.events({
       };
     }
     $('#img-inputs').remove();
-    $('.make-start').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
-    $('#post-image-upload').append('<div id="render-image" class="span8 see-userFile"> <span class="view-image"> <p> prview image</p></span></div>');    
+    //$('.make-start').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
+    //$('#post-image-upload').append('<div id="render-image" class="span8 see-userFile"> <span class="view-image"> <p> prview image</p></span></div>');    
   },
   'click #render-image': function () {
     alert('feel the click');
@@ -57,10 +58,9 @@ Template.yummy_coins.events({
     var showImg = myImages[0]['file'];
     //var showImg = window.btoa(unescape(encodeURIComponent( thisImg )));
     console.log(showImg);
-    $('.make-start').append('<div id="image-test"><img id="thisImage" src="'+showImg+'" alt="An awesome image" /></div>');
+    $('#slide-inputs').append('<div id="image-test"><img id="thisImage" src="'+showImg+'" alt="An awesome image" /></div>');
     $(function() {
       $('#image-test').draggable();
-      //$('#image-test').resizable();
       $('#thisImage').resizable();
     });
   }
