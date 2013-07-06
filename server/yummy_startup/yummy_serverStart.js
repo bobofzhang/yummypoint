@@ -74,6 +74,7 @@ var hotbitsFlush = Meteor.setInterval(function(){
 Meteor.startup(function () {
   Slides.remove({});
   Shows.remove({});
+  Images.remove({});
   //Bubhotbits.remove({});
   //Hotbits.remove({});
   //Prices.remove({});

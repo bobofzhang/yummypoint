@@ -19,3 +19,5 @@ Shownames = new Meteor.Collection("shownames");
 
 Bubhotbits = new Meteor.Collection("bubhotbits");
 
+Images = new Meteor.Collection("images");
+

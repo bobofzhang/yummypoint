@@ -19,8 +19,6 @@ Meteor.methods({
 
 Meteor.methods({
   showRenderFix: function (titleTop, pixels) {
-    console.log(titleTop);
-    console.log(pixels);
     var num = /\S\d+/;
     var newNum = num.exec(titleTop);
     var newTop = newNum[0];
@@ -45,8 +43,6 @@ Meteor.methods ({
     }
   },
   renderShowTitle: function (showGoods, yummyTitleText) {
-    console.log(yummyTitleText);
-    console.log(yummySlideBulletCount);
     var titleTop = showGoods[yummySlideBulletCount]['top'];
     if (titleTop) {
       thisTop = Meteor.call('showRenderFix', titleTop, 40);
@@ -184,7 +180,6 @@ Meteor.methods({
     var titleTop = showFilter[yummyShowSlideIndex]['2']['contents'][0]['top'];
     if (titleTop) {
       var slideTop = Meteor.call('showRenderFix', titleTop, 40);
-      console.log(slideTop);
       var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
       var slideLeft = showFilter[yummyShowSlideIndex]['2']['contents'][0]['left'];
       $('.the-show').append('<div id="show-slide-title" class="span12 show-title"><span class="title"><h1 id="show-slide-title" style="position: relative; top:'+ slideTop +'; left:'+ slideLeft +';">' + yummyTitleText +'</h1></span></div>');
@@ -331,7 +326,6 @@ Template.yummy_coins.events({
     $('.the-show').remove();
     $('.make-start').append('<div id="show-content-two" class="the-show"></div>');
     var showGoods = showFilter[yummyShowSlideIndex]['2']['contents'];
-    console.log(showGoods);
     var yummyTitleText = showGoods[0]['text'];
     Meteor.call('renderShowTitle', showGoods, yummyTitleText);
     var yummyBulletOneText = showGoods[1]['text'];
@@ -523,8 +517,9 @@ Template.yummy_coins.events({
         $('#chart-render-bitcoin').remove();
         $('#chart-render-bitly-bubble').remove();
         $('#user-bub-chart-render').remove();
-        var yummyTitleText = showFilter[yummyShowSlideIndex]['2']['contents'][0]['text'];
-        $('.the-show').append('<div id="show-title" class="span12 show-title"><span class="title"><h1>' + yummyTitleText +'</h1></span></div></div>');
+        $('.the-show').remove();
+        $('.make-start').append('<div id="show-content-title" class="the-show"></div>');
+        Meteor.call('showSlideLogic', showFilter);
       }
     }
   }
