@@ -1,6 +1,9 @@
 var imgCount = 0;
 var imgShowName;
 var imgSlideCount;
+var countShowImgs = 0;
+var thisSlideImgCount = 1;
+
 
 Meteor.methods({
   passShowNameImage: function (showName) {
@@ -16,6 +19,13 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  refreshCountSlideImgs: function (number) {
+    thisSlideImgCount = number;
+    return thisSlideImgCount;
+  }
+})
+
 Template.yummy_coins.events({
   'click #slide-img_upload': function() {
     $('#user-chart-options-row').append('<div id="user-line-instruct" class="span12"><span class="user-line-info"> Upload a CSV file to create a line graph slide </br> The first column is the y-axis </br> The second column is the time scale x-axis </br> The second column of your data file must be in date format </span></div>')
@@ -25,8 +35,10 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'change #img-inputs': function (event, tmpl) {
+    $('#create-chart-sub').remove();
     //$('#slide-nav-row').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
-    $('#slide-nav-row').append('<div id="render-image" class="span5 see-userFile"> <span class="view-image"> <p> preview image</p></span></div>'); 
+    $('#slide-nav-row').append('<div id="render-slide-image" class="span3 see-userFile"> <span class="view-image"><p> preview image </p></span></div>'); 
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span3"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
     event.preventDefault();
     var files = event.target.files; // FileList object
     var file = files[0];
@@ -54,17 +66,29 @@ Template.yummy_coins.events({
     //$('.make-start').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
     //$('#post-image-upload').append('<div id="render-image" class="span8 see-userFile"> <span class="view-image"> <p> prview image</p></span></div>');    
   },
-  'click #render-image': function () {
-    alert('feel the click');
-    var myImages = Images.find().fetch();
-    var showImg = myImages[0]['file'];
-    //var showImg = window.btoa(unescape(encodeURIComponent( thisImg )));
-    console.log(showImg);
-    $('#slide-inputs').append('<div id="image-test" style="position: relative; top: -65px; left: 700px;"><img id="thisImage" src="'+showImg+'" alt="An awesome image" style="height: 200px; width: 200px" /></div>');
+  'click #render-slide-image': function () {
+    $('#render-slide-image').remove();
+    $('#create-chart-sub').remove()
+    $('#slide-nav-row').append('<div id="add-image" class="span3"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); // accept="image/jpg"
+    $('#slide-nav-row').append('<div id="create-chart-sub" class="span3"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+    var currentUser = Meteor.userId();
+    var myImages = Images.find({}, { show: imgShowName }).fetch();
+    console.log(myImages);
+    var showImg = myImages[countShowImgs]['file'];
+    // console.log(showImg);
+    $('#slide-inputs').append('<div id="slide-image'+thisSlideImgCount+'" class="slide-image" style="top: -67px; left: 200px;"><img id="thisImage'+thisSlideImgCount+'" class="'+thisSlideImgCount+'" src="'+showImg+'" alt="An awesome image" style="height: 200px; width: 200px" /></div>');
     $(function() {
-      $('#image-test').draggable();
-      $('#thisImage').resizable();
+      $('#slide-image1').draggable();
+      $('#thisImage1').resizable();
+      $('#slide-image2').draggable();
+      $('#thisImage2').resizable();
+      $('#slide-image3').draggable();
+      $('#thisImage3').resizable();
+      $('#slide-image4').draggable();
+      $('#thisImage4').resizable();
     });
+    countShowImgs++;
+    thisSlideImgCount++;
   }
 })
 

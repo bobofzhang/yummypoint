@@ -42,6 +42,12 @@ body {
   font-size: 2em;
 }
 
+/*>>>>>>>>>>>>>> IMAGE STYLES <<<<<<<<<<<<<<*/
+
+/*.slide-image {
+  border: 1px solid black;
+}*/
+
 /*>>>>>>>>>>>>>> HOMEPAGE <<<<<<<<<<<<<<<<<< */
 
 #homepage-mkt {
@@ -217,13 +223,15 @@ body {
   margin-top: 0.3em;
 }
 
-#render-image {
+#render-slide-image {
   background-color: rgba(213, 0, 101, 0.5);
   margin-right: 0.5em;
   border-radius: 0.5em;
+  height: 2.25em;
+  text-align: center;
 }
 
-#render-image:hover {
+#render-slide-image:hover {
   background-color: rgba(213, 0, 101, 1);
   color: white; 
 }
@@ -232,6 +240,12 @@ body {
   background-color: rgba(213, 0, 101, 0.5);
   margin-right: 0.5em;
   border-radius: 0.5em;
+  height: 2.25em; 
+  text-align: center;
+}
+
+#img-inputs {
+  height: 2.25em;
 }
 
 #add-image:hover {
@@ -908,6 +922,21 @@ margin-bottom: 1em;
 
 #bullet-one, #bullet-two, #bullet-three {
   margin-top: 1.5em;
+/*  z-index: 100;*/
+}
+
+/*.slide-title, 
+.bullet-one, 
+.bullet-two, 
+.bullet-three {
+  z-index: 100;
+}*/
+
+#title-sub-bullet,
+#title-title,
+#title-sub-sub,
+#title-sub-sub {
+  z-index: 100;
 }
 
 div.bar {
