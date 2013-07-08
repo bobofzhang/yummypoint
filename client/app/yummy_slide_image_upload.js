@@ -72,10 +72,10 @@ Template.yummy_coins.events({
     $('#slide-nav-row').append('<div id="add-image" class="span3"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); // accept="image/jpg"
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span3"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
     var currentUser = Meteor.userId();
-    var myImages = Images.find({}, { show: imgShowName }).fetch();
+    var myImages = Images.find( { show: imgShowName } ).fetch();
     console.log(myImages);
     var showImg = myImages[countShowImgs]['file'];
-    // console.log(showImg);
+    console.log(showImg);
     $('#slide-inputs').append('<div id="slide-image'+thisSlideImgCount+'" class="slide-image" style="top: -67px; left: 200px;"><img id="thisImage'+thisSlideImgCount+'" class="'+thisSlideImgCount+'" src="'+showImg+'" alt="An awesome image" style="height: 200px; width: 200px" /></div>');
     $(function() {
       $('#slide-image1').draggable();

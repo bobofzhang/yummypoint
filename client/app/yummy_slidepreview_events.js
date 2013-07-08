@@ -16,7 +16,6 @@ Meteor.methods({
     var intTop = parseInt(newTop);
     var plusTop = intTop+pixels;
     var pxTop = plusTop+"px";
-    console.log(pxTop);
     return pxTop;
   }
 })
@@ -59,7 +58,6 @@ Meteor.methods({
       return Meteor.call('D3testinit'); 
     } else if (type === "chart" && source === "bitly" && chartType === "line") {
       var bitPhrase = slideShowMap[currentSlide]['2']['contents'];
-      console.log(bitPhrase);
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitly" class="span12"></div>');
       return Deps.autorun(function(){ return Meteor.call('bitlyLineChartD3', bitPhrase); });
@@ -118,7 +116,6 @@ Meteor.methods({
       if (currentSlide > 0) {
         $('.make-start').append('<div id="slide-preview" class="span12 saved-slide-preview"></div>'); 
         var titleTop = (slideTextArray[0]['top']);
-        console.log(titleTop);
         if (titleTop) {
           var thisTop = Meteor.call('topRenderFix', titleTop, 40);
           var title = slideTextArray[0]['text'];
@@ -165,7 +162,8 @@ Meteor.methods({
         var imageWidth = imageOne['width'];
         var imageHeight = imageOne['height'];
 
-        var imagesArray = Images.find().fetch();
+        var countSlide = currentSlide + 1;
+        var imagesArray = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
         console.log(imagesArray);
         var firstImage = imagesArray[0]['file'];
 

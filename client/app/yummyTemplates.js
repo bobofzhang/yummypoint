@@ -264,6 +264,18 @@ Template.yummy_coins.events({
       var imageLeft = "";
       var imageWidth = "";
       var imageHeight = "";
+      var imageTop2 = "";
+      var imageLeft2 = "";
+      var imageWidth2 = "";
+      var imageHeight2 = "";
+      var imageTop3 = "";
+      var imageLeft3 = "";
+      var imageWidth3 = "";
+      var imageHeight3 = "";
+      var imageTop4 = "";
+      var imageLeft4 = "";
+      var imageWidth4 = "";
+      var imageHeight4 = "";
 
       if (document.getElementById("title-title")) {
         titleTop = document.getElementById("title-title").style.top;
@@ -281,15 +293,29 @@ Template.yummy_coins.events({
         thirdBulTop = document.getElementById("sub-sub-sub").style.top;
         thirdBulLeft = document.getElementById("sub-sub-sub").style.left;
       }
-      if (document.getElementById("image-test")) {
-        imageTop = document.getElementById("image-test").style.top;
-        imageLeft = document.getElementById("image-test").style.left;
-        imageWidth = document.getElementById("thisImage").style.width;
-        imageHeight = document.getElementById("thisImage").style.height;
-        // console.log(imageTop);
-        // console.log(imageLeft);
-        // console.log(imageWidth);
-        // console.log(imageHeight);
+      if (document.getElementById("slide-image1")) {
+        imageTop = document.getElementById("slide-image1").style.top;
+        imageLeft = document.getElementById("slide-image1").style.left;
+        imageWidth = document.getElementById("thisImage1").style.width;
+        imageHeight = document.getElementById("thisImage1").style.height;
+      }
+      if (document.getElementById("slide-image2")) {
+        imageTop2 = document.getElementById("slide-image2").style.top;
+        imageLeft2 = document.getElementById("slide-image2").style.left;
+        imageWidth2 = document.getElementById("thisImage2").style.width;
+        imageHeight2 = document.getElementById("thisImage2").style.height;
+      }
+      if (document.getElementById("slide-image3")) {
+        imageTop = document.getElementById("slide-image3").style.top;
+        imageLeft = document.getElementById("slide-image3").style.left;
+        imageWidth = document.getElementById("thisImage3").style.width;
+        imageHeight = document.getElementById("thisImage3").style.height;
+      }
+      if (document.getElementById("slide-image4")) {
+        imageTop = document.getElementById("slide-image4").style.top;
+        imageLeft = document.getElementById("slide-image4").style.left;
+        imageWidth = document.getElementById("thisImage4").style.width;
+        imageHeight = document.getElementById("thisImage4").style.height;
       }
       $('#render-image').remove();
       $('#slide-controls').remove();
@@ -343,7 +369,10 @@ Template.yummy_coins.events({
           { meteorUser: Meteor.userId() },
           { chartType: "text" },
           { images: [
-            {image: 'one', num: "", top: imageTop, left: imageLeft, width: imageWidth, height: imageHeight }
+            {image: 'one', num: "", top: imageTop, left: imageLeft, width: imageWidth, height: imageHeight }, 
+            {image: 'two', num: "", top: imageTop2, left: imageLeft2, width: imageWidth2, height: imageHeight2 },
+            {image: 'three', num: "", top: imageTop3, left: imageLeft3, width: imageWidth3, height: imageHeight3 },
+            {image: 'four', num: "", top: imageTop4, left: imageLeft4, width: imageWidth4, height: imageHeight4 }
             ]
           }
           ])
@@ -368,7 +397,14 @@ Template.yummy_coins.events({
           { dataSource: "text" }, 
           { fileNum: "" }, 
           { meteorUser: Meteor.userId() },
-          { chartType: "text" }
+          { chartType: "text" },
+          { images: [
+            {image: 'one', num: "", top: imageTop, left: imageLeft, width: imageWidth, height: imageHeight }, 
+            {image: 'two', num: "", top: imageTop2, left: imageLeft2, width: imageWidth2, height: imageHeight2 },
+            {image: 'three', num: "", top: imageTop3, left: imageLeft3, width: imageWidth3, height: imageHeight3 },
+            {image: 'four', num: "", top: imageTop4, left: imageLeft4, width: imageWidth4, height: imageHeight4 }
+            ]
+          }
           ])
         slideCount++;
         Meteor.call('passingTheCount');
@@ -391,7 +427,14 @@ Template.yummy_coins.events({
           { dataSource: "text" },
           { fileNum: "" }, 
           { meteorUser: Meteor.userId() },
-          { chartType: "text" }
+          { chartType: "text" },
+          { images: [
+            {image: 'one', num: "", top: imageTop, left: imageLeft, width: imageWidth, height: imageHeight }, 
+            {image: 'two', num: "", top: imageTop2, left: imageLeft2, width: imageWidth2, height: imageHeight2 },
+            {image: 'three', num: "", top: imageTop3, left: imageLeft3, width: imageWidth3, height: imageHeight3 },
+            {image: 'four', num: "", top: imageTop4, left: imageLeft4, width: imageWidth4, height: imageHeight4 }
+            ]
+          }
           ])
         slideCount++;
         Meteor.call('passingTheCount');
@@ -412,7 +455,14 @@ Template.yummy_coins.events({
           { dataSource: "text" },
           { fileNum: "" }, 
           { meteorUser: Meteor.userId() },
-          { chartType: "text" }
+          { chartType: "text" },
+          { images: [
+            {image: 'one', num: "", top: imageTop, left: imageLeft, width: imageWidth, height: imageHeight }, 
+            {image: 'two', num: "", top: imageTop2, left: imageLeft2, width: imageWidth2, height: imageHeight2 },
+            {image: 'three', num: "", top: imageTop3, left: imageLeft3, width: imageWidth3, height: imageHeight3 },
+            {image: 'four', num: "", top: imageTop4, left: imageLeft4, width: imageWidth4, height: imageHeight4 }
+            ]
+          }
           ])
         slideCount++;
         Meteor.call('passingTheCount');
