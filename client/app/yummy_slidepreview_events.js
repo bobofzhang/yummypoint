@@ -59,6 +59,49 @@ Meteor.methods({
 })
 
 Meteor.methods({
+  slideImageRender: function (slideShowMap, currentSlide) {
+    console.log(slideShowMap);
+    var slideTextArray = slideShowMap[currentSlide][2]['contents'];
+    console.log(slideTextArray);
+    var titleTopCheck = slideTextArray[0]['top'];
+    console.log(titleTopCheck);
+    var firstTopCheck = slideTextArray[1]['top'];
+    var secondTopCheck = slideTextArray[2]['top'];
+    var thirdTopCheck = slideTextArray[3]['top'];
+
+    var titleTextCheck = slideTextArray[0]['text'];
+    var firstTextCheck = slideTextArray[1]['text'];
+    var secondTextCheck = slideTextArray[2]['text'];
+    var thirdTextCheck = slideTextArray[3]['text'];
+    var imageTopPixAdjust = 70;
+    
+    if (firstTextCheck) {
+      imageTopPixAdjust = 94;
+    }
+    if (secondTextCheck) {
+      imageTopPixAdjust = 118;
+    }
+    if (thirdTextCheck) {
+      imageTopPixAdjust = -1;
+    }
+    if (titleTopCheck) {
+      imageTopPixAdjust = 175;
+    }
+    if (titleTopCheck && firstTextCheck) {
+      imageTopPixAdjust = 200;
+    }
+    if (titleTopCheck && firstTextCheck && secondTextCheck) {
+      imageTopPixAdjust = 224;
+    }
+    if (titleTopCheck && firstTextCheck && secondTextCheck && thirdTextCheck) {
+      imageTopPixAdjust = 105;
+    }
+    console.log(imageTopPixAdjust);
+    return imageTopPixAdjust;
+  }
+})
+
+Meteor.methods({
   slidePreviewRender: function(currentSlide){
     $('#create-chart-sub').remove();
     $('#edit-current-slide').remove();
@@ -194,32 +237,15 @@ Meteor.methods({
           $('#slide-preview').append('<div class="bullet-third-slide-one"> <h2 id="third-bullet">' + thirdBull + '</h2></div></div>');
         }
       }
-      var slideTextArray = slideShowMap[currentSlide][2]['contents'];
-      console.log(slideTextArray);
-      var titleTopCheck = slideTextArray[0]['top'];
-      console.log(titleTopCheck);
-      var firstTopCheck = slideTextArray[1]['top'];
-      var secondTopCheck = slideTextArray[2]['top'];
-      var thirdTopCheck = slideTextArray[3]['top'];
       if (imageOne['top']) {
         var imageTop = imageOne['top'];
         var imageLeft = imageOne['left'];
         var imageWidth = imageOne['width'];
         var imageHeight = imageOne['height'];
-        var imageTopPixAdjust = 70;
-        if (titleTopCheck) {
-          imageTopPixAdjust = 175;
-        }
-        if (titleTopCheck && firstTopCheck) {
-          imageTopPixAdjust = 200;
-        }
-        if (titleTopCheck && firstTopCheck && secondTopCheck) {
-          imageTopPixAdjust = 224;
-        }
-        if (titleTopCheck && firstTopCheck && secondTopCheck && thirdTopCheck) {
-          imageTopPixAdjust = 248;
-        }
+
+        var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
         console.log(imageTopPixAdjust);
+
         var thisImageTop = Meteor.call('imageTopRenderFix', imageTop, imageTopPixAdjust);
         var thisImageLeft = Meteor.call('imageLeftRenderFix', imageLeft, -371, imageWidth);
 
@@ -236,19 +262,24 @@ Meteor.methods({
         var imageTwoLeft = imageTwo['left'];
         var imageTwoWidth = imageTwo['width'];
         var imageTwoHeight = imageTwo['height'];
-        var imageTopPixAdjust = 70;
-        if (titleTopCheck) {
-          imageTopPixAdjust = 175;
-        }
-        if (titleTopCheck && firstTopCheck) {
-          imageTopPixAdjust = 200;
-        }
-        if (titleTopCheck && firstTopCheck && secondTopCheck) {
-          imageTopPixAdjust = 224;
-        }
-        if (titleTopCheck && firstTopCheck && secondTopCheck && thirdTopCheck) {
-          imageTopPixAdjust = 248;
-        }
+
+        var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
+        console.log(imageTopPixAdjust);
+
+
+        // var imageTopPixAdjust = 70;
+        // if (titleTopCheck) {
+        //   imageTopPixAdjust = 175;
+        // }
+        // if (titleTopCheck && firstTopCheck) {
+        //   imageTopPixAdjust = 200;
+        // }
+        // if (titleTopCheck && firstTopCheck && secondTopCheck) {
+        //   imageTopPixAdjust = 224;
+        // }
+        // if (titleTopCheck && firstTopCheck && secondTopCheck && thirdTopCheck) {
+        //   imageTopPixAdjust = 248;
+        //}
         var thisImageTop2 = Meteor.call('imageTopRenderFix', imageTwoTop, imageTopPixAdjust);
         var thisImageLeft2 = Meteor.call('imageLeftRenderFix', imageTwoLeft, -371, imageTwoWidth);
 
@@ -265,19 +296,9 @@ Meteor.methods({
         var imageThreeLeft = imageThree['left'];
         var imageThreeWidth = imageThree['width'];
         var imageThreeHeight = imageThree['height'];
-        var imageTopPixAdjust = 70;
-        if (titleTopCheck) {
-          imageTopPixAdjust = 175;
-        }
-        if (titleTopCheck && firstTopCheck) {
-          imageTopPixAdjust = 200;
-        }
-        if (titleTopCheck && firstTopCheck && secondTopCheck) {
-          imageTopPixAdjust = 224;
-        }
-        if (titleTopCheck && firstTopCheck && secondTopCheck && thirdTopCheck) {
-          imageTopPixAdjust = 248;
-        }
+
+        var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
+        console.log(imageTopPixAdjust);
 
         var thisImageTop3 = Meteor.call('imageTopRenderFix', imageThreeTop, imageTopPixAdjust);
         var thisImageLeft3 = Meteor.call('imageLeftRenderFix', imageThreeLeft, -371, imageThreeWidth);
@@ -295,19 +316,9 @@ Meteor.methods({
         var imageFourLeft = imageFour['left'];
         var imageFourWidth = imageFour['width'];
         var imageFourHeight = imageFour['height'];
-        var imageTopPixAdjust = 70;
-        if (titleTopCheck) {
-          imageTopPixAdjust = 175;
-        }
-        if (titleTopCheck && firstTopCheck) {
-          imageTopPixAdjust = 200;
-        }
-        if (titleTopCheck && firstTopCheck && secondTopCheck) {
-          imageTopPixAdjust = 224;
-        }
-        if (titleTopCheck && firstTopCheck && secondTopCheck && thirdTopCheck) {
-          imageTopPixAdjust = 248;
-        }
+        
+        var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
+        console.log(imageTopPixAdjust);
 
         var thisImageTop4 = Meteor.call('imageTopRenderFix', imageFourTop, imageTopPixAdjust);
         var thisImageLeft4 = Meteor.call('imageLeftRenderFix', imageFourLeft, -371, imageFourWidth);
