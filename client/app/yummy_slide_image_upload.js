@@ -26,6 +26,13 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  passShowImgCount: function(count) {
+    countShowImgs = count;
+    return countShowImgs;
+  }
+})
+
 Template.yummy_coins.events({
   'click #slide-img_upload': function() {
     $('#user-chart-options-row').append('<div id="user-line-instruct" class="span12"><span class="user-line-info"> Upload a CSV file to create a line graph slide </br> The first column is the y-axis </br> The second column is the time scale x-axis </br> The second column of your data file must be in date format </span></div>')
@@ -35,10 +42,7 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'change #img-inputs': function (event, tmpl) {
-    $('#create-chart-sub').remove();
-    //$('#slide-nav-row').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
-    $('#slide-nav-row').append('<div id="render-slide-image" class="span3 see-userFile"> <span class="view-image"><p> preview image </p></span></div>'); 
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span3"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+    $('#slide-img-row').append('<div id="render-slide-image" class="span5 see-userFile"> <span class="view-image"><p> preview image </p></span></div>'); 
     event.preventDefault();
     var files = event.target.files; // FileList object
     var file = files[0];
@@ -68,9 +72,7 @@ Template.yummy_coins.events({
   },
   'click #render-slide-image': function () {
     $('#render-slide-image').remove();
-    $('#create-chart-sub').remove()
-    $('#slide-nav-row').append('<div id="add-image" class="span3"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); // accept="image/jpg"
-    $('#slide-nav-row').append('<div id="create-chart-sub" class="span3"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+    $('#slide-img-row').append('<div id="add-image" class="span5"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); //accept="image/jpg"
     var currentUser = Meteor.userId();
     var myImages = Images.find( { show: imgShowName } ).fetch();
     console.log(myImages);

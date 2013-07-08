@@ -10,13 +10,51 @@ Meteor.methods({
 
 Meteor.methods({
   topRenderFix: function (titleTop, pixels) {
+    console.log(titleTop);
+    console.log(pixels);
     var num = /\S\d+/;
     var newNum = num.exec(titleTop);
+    console.log(newNum);
     var newTop = newNum[0];
     var intTop = parseInt(newTop);
     var plusTop = intTop+pixels;
     var pxTop = plusTop+"px";
     return pxTop;
+  }
+})
+
+Meteor.methods({
+  imageTopRenderFix: function (titleTop, pixels) {
+    console.log(titleTop);
+    console.log(pixels);
+    var num = /\S\d+/;
+    var newNum = num.exec(titleTop);
+    console.log(newNum);
+    var newTop = newNum[0];
+    var intTop = parseInt(newTop);
+    var plusTop = intTop+pixels;
+    var pxTop = plusTop+"px";
+    return pxTop;
+  }
+})
+
+Meteor.methods({
+  imageLeftRenderFix: function (titleLeft, pixels, width) {
+    console.log(width);
+    var num = /\d+/;
+    var newNum = num.exec(titleLeft);
+    console.log(newNum);
+    var newLeft = newNum[0];
+    var intLeft = parseInt(newLeft);
+    var newWidth = num.exec(width);
+    var frestWidth = newWidth[0];
+    var intWidth = parseInt(frestWidth);
+    var widthAdjust = (200-intWidth)/2;
+    console.log(widthAdjust);
+    var plusLeft = intLeft+pixels-widthAdjust;
+    console.log(plusLeft);
+    var pxLeft = plusLeft+"px";
+    return pxLeft;
   }
 })
 
@@ -162,13 +200,15 @@ Meteor.methods({
         var imageLeft = imageOne['left'];
         var imageWidth = imageOne['width'];
         var imageHeight = imageOne['height'];
+        var thisImageTop = Meteor.call('imageTopRenderFix', imageTop, 70);
+        var thisImageLeft = Meteor.call('imageLeftRenderFix', imageLeft, -371, imageWidth);
 
         var countSlide = currentSlide + 1;
         var imagesArray = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
         console.log(imagesArray);
         var firstImage = imagesArray[0]['file'];
 
-        $('#slide-preview').append('<div id="image-one" style="position: relative; top:'+imageTop+'; left:'+imageLeft+';"><img id="thisImage" src="'+firstImage+'" alt="An awesome image" style="height:'+imageHeight+'; width:'+imageWidth+';" /></div>');
+        $('#slide-preview').append('<div id="image-one" style="position: relative; top:'+thisImageTop+'; left:'+thisImageLeft+';"><img id="thisImage" src="'+firstImage+'" alt="An awesome image" style="height:'+imageHeight+'; width:'+imageWidth+';" /></div>');
       }
       var imageTwo = slideShowMap[currentSlide]['8']['images'][1];
       if (imageTwo['top']) {

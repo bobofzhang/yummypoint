@@ -114,6 +114,7 @@ Template.yummy_coins.events({
     $('#yummy-shows').append('<div id="show-row" class="row"></div>');
     $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
     $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a new Yummy Show by naming it here" autofocus /></span>');
+    Meteor.call('passShowImgCount', 0);
   }
 })
 
@@ -155,11 +156,10 @@ Template.yummy_coins.events({
       $('.instruct-title').remove();
       $('#create-chart-sub').remove();
       $('#add-image').remove();
-      $('#slide-nav-row').append('<div id="slide-controls" class="span4"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
-      //$('#slide-nav-row').append('<div class="span1"></div>');
-      $('#slide-nav-row').append('<div id="add-image" class="span3"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>');
-      //$('#slide-nav-row').append('<div class="span1"></div>'); 
-      $('#slide-nav-row').append('<div id="create-chart-sub" class="span3"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
+      $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('#slide-nav-row').append('<div id="slide-img-row" class="span12"></div>');
+      $('#slide-img-row').append('<div id="add-image" class="span5"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); //accept="image/jpg"
       $('.slide-title').append('<div class="slide-one-title"> <h1 id="title-title">' + slideOneTitleText +'</h1></div>');
       $(function() {
         $('#title-title').draggable();
@@ -336,10 +336,10 @@ Template.yummy_coins.events({
       $('#chart-render-bitcoin').remove();
       $('chart-render-bitly-bubble').remove();
       $('#add-image').remove();
+      $('#slide-img-row').remove();
       $('#make-new-show').append('<div id="show-maker"><span class="new-yum-show"><p> Make a new Yummy Show </p> </span></div>')
-      //$('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-      $('#slide-nav-row').append('<div id="add-image" class="span5"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" accept="image/jpg" name="files[]" style="visibility:hidden;"/></div></div>');
-      $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      $('#slide-nav-row').append('<div id="create-chart-sub" class="span12"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
+      //$('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="slide-inputs" class="span12 slide-inputs"></div>');
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');

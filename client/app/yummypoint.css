@@ -48,6 +48,21 @@ body {
   border: 1px solid black;
 }*/
 
+.add-slide-image {
+  float: left;
+  margin-left: 150px;
+  z-index: 10;
+  margin-top: 0.5em;
+}
+
+#slide-nav-row {
+  margin-bottom: 0.75em;
+}
+
+.view-image p {
+  margin-top: 0.5em;
+}
+
 /*>>>>>>>>>>>>>> HOMEPAGE <<<<<<<<<<<<<<<<<< */
 
 #homepage-mkt {
@@ -246,6 +261,7 @@ body {
 
 #img-inputs {
   height: 2.25em;
+  text-align: center;
 }
 
 #add-image:hover {
