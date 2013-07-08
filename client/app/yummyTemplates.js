@@ -306,16 +306,16 @@ Template.yummy_coins.events({
         imageHeight2 = document.getElementById("thisImage2").style.height;
       }
       if (document.getElementById("slide-image3")) {
-        imageTop = document.getElementById("slide-image3").style.top;
-        imageLeft = document.getElementById("slide-image3").style.left;
-        imageWidth = document.getElementById("thisImage3").style.width;
-        imageHeight = document.getElementById("thisImage3").style.height;
+        imageTop3 = document.getElementById("slide-image3").style.top;
+        imageLeft3 = document.getElementById("slide-image3").style.left;
+        imageWidth3 = document.getElementById("thisImage3").style.width;
+        imageHeight3 = document.getElementById("thisImage3").style.height;
       }
       if (document.getElementById("slide-image4")) {
-        imageTop = document.getElementById("slide-image4").style.top;
-        imageLeft = document.getElementById("slide-image4").style.left;
-        imageWidth = document.getElementById("thisImage4").style.width;
-        imageHeight = document.getElementById("thisImage4").style.height;
+        imageTop4 = document.getElementById("slide-image4").style.top;
+        imageLeft4 = document.getElementById("slide-image4").style.left;
+        imageWidth4 = document.getElementById("thisImage4").style.width;
+        imageHeight4 = document.getElementById("thisImage4").style.height;
       }
       $('#render-image').remove();
       $('#slide-controls').remove();
