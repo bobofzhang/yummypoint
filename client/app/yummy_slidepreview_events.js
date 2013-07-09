@@ -10,9 +10,11 @@ Meteor.methods({
 
 Meteor.methods({ 
   topRenderFix: function (titleTop, pixels) { // NEED TO FIX THE CASE WHEN PIXELS === 0PX
-    console.log(titleTop);
-    console.log(pixels);
-    var num = /\S\d+/;
+    if (titleTop === "0px") {
+      var num = /\d+/;
+    } else {
+      var num = /\S\d+/;
+    }
     var newNum = num.exec(titleTop);
     console.log(newNum);
     var newTop = newNum[0];
@@ -25,9 +27,11 @@ Meteor.methods({
 
 Meteor.methods({
   imageTopRenderFix: function (titleTop, pixels) {
-    console.log(titleTop);
-    console.log(pixels);
-    var num = /\S\d+/;
+    if (titleTop === "0px") {
+      var num = /\d+/;
+    } else {
+      var num = /\S\d+/;
+    }
     var newNum = num.exec(titleTop);
     console.log(newNum);
     var newTop = newNum[0];
@@ -40,19 +44,15 @@ Meteor.methods({
 
 Meteor.methods({
   imageLeftRenderFix: function (titleLeft, pixels, width) {
-    console.log(width);
     var num = /\d+/;
     var newNum = num.exec(titleLeft);
-    console.log(newNum);
     var newLeft = newNum[0];
     var intLeft = parseInt(newLeft);
     var newWidth = num.exec(width);
     var frestWidth = newWidth[0];
     var intWidth = parseInt(frestWidth);
     var widthAdjust = (200-intWidth)/2;
-    console.log(widthAdjust);
     var plusLeft = intLeft+pixels-widthAdjust;
-    console.log(plusLeft);
     var pxLeft = plusLeft+"px";
     return pxLeft;
   }
@@ -60,11 +60,8 @@ Meteor.methods({
 
 Meteor.methods({
   slideImageRender: function (slideShowMap, currentSlide) {
-    console.log(slideShowMap);
     var slideTextArray = slideShowMap[currentSlide][2]['contents'];
-    console.log(slideTextArray);
     var titleTopCheck = slideTextArray[0]['top'];
-    console.log(titleTopCheck);
     var firstTopCheck = slideTextArray[1]['top'];
     var secondTopCheck = slideTextArray[2]['top'];
     var thirdTopCheck = slideTextArray[3]['top'];
@@ -265,21 +262,6 @@ Meteor.methods({
 
         var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
         console.log(imageTopPixAdjust);
-
-
-        // var imageTopPixAdjust = 70;
-        // if (titleTopCheck) {
-        //   imageTopPixAdjust = 175;
-        // }
-        // if (titleTopCheck && firstTopCheck) {
-        //   imageTopPixAdjust = 200;
-        // }
-        // if (titleTopCheck && firstTopCheck && secondTopCheck) {
-        //   imageTopPixAdjust = 224;
-        // }
-        // if (titleTopCheck && firstTopCheck && secondTopCheck && thirdTopCheck) {
-        //   imageTopPixAdjust = 248;
-        //}
         var thisImageTop2 = Meteor.call('imageTopRenderFix', imageTwoTop, imageTopPixAdjust);
         var thisImageLeft2 = Meteor.call('imageLeftRenderFix', imageTwoLeft, -371, imageTwoWidth);
 

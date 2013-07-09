@@ -1,4 +1,16 @@
 
+var thisShowName;
+var chartCount = 0;
+
+Meteor.methods({
+    passShowNameChartCreate: function (showName) {
+        console.log('im in the show pass');
+        thisShowName = showName;
+        chartCount = 0;
+        return thisShowName && chartCount;
+    }
+})
+
 Meteor.methods({
     primeChartNavRemoveElem: function(){
         $('#slide-instruct').remove();
@@ -32,6 +44,14 @@ Meteor.methods({
     }
 })
 
+// Template.yummy_coins.events({
+//   'click .text-drag-goodbye': function () {
+//     $('#text-drag-modal').remove();
+//   },
+//   'click .slide-maker-goodbye': function () {
+//     $('#slide-maker-modal').remove(); 
+//   }
+// })
 
 Template.yummy_coins.events({
     'click #create-chart-sub': function () {
@@ -69,6 +89,29 @@ Template.yummy_coins.events({
         //$('#bitly-data-row').append('<div id="bitly-bar-chart-nav" class="span3 pull-right"> <span class="bar-chart"> <h4> Bar Chart</h4></span></div>');
         $('#bitly-data-row').append('<div id="bitly-bubble-chart-nav" class="span3 pull-right"> <span class="bubble-chart"> <h4> Bubble Chart </h4></span></div>');
         //$('.make-start').append('<div id="slide-inputs" class="span12 show-title-slide"></div>');
+        console.log(thisShowName);
+        var chartCheck = Shows.find().fetch();
+        var showCheckFilter = _.filter(chartCheck, function (show) {
+            if (show[0]['show'] === thisShowName) {
+                return show;
+            }
+        })
+        var chartReCheck = _.filter(showCheckFilter, function (obj) {
+            console.log(chartCount);
+            // var tys = obj[0]['chartType'];
+            // console.log(tys);
+            var tysD = obj['7']['chartType'];
+            console.log(tysD);
+            if (tysD != "text" || chartCount >= 1) {
+                return;
+            } else {
+                $('#modal-container').append('<div id="text-drag-modal" class="modal"></div>');
+                $('#text-drag-modal').append('<div class="modal-header"><button type="button" class="close text-drag-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel"> Data makes your Yummy Show tasty </h3></div>');
+                $('#text-drag-modal').append('<div class="modal-body"><h4 id="make-title-slide-modal-head" class="title-slide-modal"> You can easily intregrate DATA into your Yummy Show </br></br> Choose from our comprehensive set of public DATA sources </br></br> OR </br></br> Use your own DATA </h4></div>');
+                $('#text-drag-modal').append('<div class="modal-footer"><button class="btn text-drag-goodbye" data-dismiss="modal">Close</button></div>');
+                chartCount++;
+            }
+        })
     },
     'click #create-text-sub': function () {
         Meteor.call('primeChartNavRemoveElem');
@@ -85,5 +128,6 @@ Template.yummy_coins.events({
         $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter the Slide Title Here" autofocus />');
     }
 })
+
 
 

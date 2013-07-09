@@ -72,7 +72,7 @@ Template.yummy_coins.events({
   },
   'click #render-slide-image': function () {
     $('#render-slide-image').remove();
-    $('#slide-img-row').append('<div id="add-image" class="span5"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); //accept="image/jpg"
+    //$('#slide-img-row').append('<div id="add-image" class="span5"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); //accept="image/jpg"
     var currentUser = Meteor.userId();
     var myImages = Images.find( { show: imgShowName } ).fetch();
     console.log(myImages);

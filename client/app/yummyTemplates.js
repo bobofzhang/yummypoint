@@ -22,7 +22,6 @@ Meteor.methods({
 
 Meteor.methods({
   passingTheName: function (nowShow) {
-    console.log("in the name passing func");
     Meteor.call('passShowName', nowShow);
     Meteor.call('passShowNameSave', nowShow);
     Meteor.call('passShowNameBitCoin', nowShow);
@@ -32,6 +31,7 @@ Meteor.methods({
     Meteor.call('passShowNameBitBub', nowShow);
     Meteor.call('passShowNameUserBub', nowShow);
     Meteor.call('passShowNameImage', nowShow);
+    Meteor.call('passShowNameChartCreate', nowShow);
   }
 })
 
@@ -111,6 +111,7 @@ Template.yummy_coins.events({
     $('#chart-render-bitly').remove();
     $('#chart-render-bitcoin').remove();
     $('#chart-render-bitly-bubble').remove();
+    $('#data-source-container').remove();
     $('#yummy-shows').append('<div id="show-row" class="row"></div>');
     $('#show-row').append('<div id="create-show" class="span12 create-show"></div>');
     $('#create-show').append('<span class="create-show-input"><input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a new Yummy Show by naming it here" autofocus /></span>');
@@ -158,9 +159,9 @@ Template.yummy_coins.events({
       $('#add-image').remove();
       $('#slide-nav-row').append('<div id="slide-controls" class="span6"><span class="make-slide"><p class="make-first-slide"> Save Slide and Continue </p></span></div>');
       $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
-      $('#slide-nav-row').append('<div id="slide-img-row" class="span12"></div>');
-      $('#slide-img-row').append('<div id="add-image" class="span5"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); //accept="image/jpg"
-      $('.slide-title').append('<div class="slide-one-title"> <h1 id="title-title">' + slideOneTitleText +'</h1></div>');
+      //$('#slide-nav-row').append('<div id="slide-img-row" class="span12"></div>');
+      //$('#slide-img-row').append('<div id="add-image" class="span5"><div id="img-inputs" class="clearfix" onclick="files.click()"><span class="add-slide-image">Add an Image </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>'); //accept="image/jpg"
+      $('.slide-title').append('<div class="slide-one-title"> <h1 id="title-title" class="drag-slide-text">' + slideOneTitleText +'</h1></div>');
       $(function() {
         $('#title-title').draggable();
       });
@@ -187,7 +188,7 @@ Template.yummy_coins.events({
       })
       var bulletText = userSlideMap[1]['text'];
       $('#bullet-one').remove();
-      $('.bullet-one').append('<div class="bullet-first-slide-one"> <h2 id="title-sub-bullet">' + bulletText +'</h2></div>');
+      $('.bullet-one').append('<div class="bullet-first-slide-one"> <h2 id="title-sub-bullet" class="drag-slide-text">' + bulletText +'</h2></div>');
       $(function() {
         $('#title-sub-bullet').draggable();
       });
@@ -214,7 +215,7 @@ Template.yummy_coins.events({
       })
       var bullet2Text = userSlideMap[2]['text'];
       $('#bullet-two').remove();
-      $('.bullet-two').append('<div class="bullet-second-slide-one"> <h2 id="title-sub-sub">' + bullet2Text +'</h2></div>');
+      $('.bullet-two').append('<div class="bullet-second-slide-one"> <h2 id="title-sub-sub" class="drag-slide-text">' + bullet2Text +'</h2></div>');
       $(function() {
         $('#title-sub-sub').draggable();
       });
@@ -242,7 +243,7 @@ Template.yummy_coins.events({
       var bullet3Text = userSlideMap[3]['text'];
       $('#bullet-three').remove();
       $('.instruct-bullet-one').remove();
-      $('.bullet-three').append('<div class="bullet-third-slide-one"> <h2 id="sub-sub-sub">' + bullet3Text +'</h2></div>');
+      $('.bullet-three').append('<div class="bullet-third-slide-one"> <h2 id="sub-sub-sub" class="drag-slide-text">' + bullet3Text +'</h2></div>');
       $(function() {
         $('#sub-sub-sub').draggable();
       });
@@ -344,6 +345,12 @@ Template.yummy_coins.events({
       $('#slide-inputs').append('<div class="slide-title"></div><div class="bullet-one"></div><div class="bullet-two"></div><div class="bullet-three"></div>');
       $('.slide-title').append('<input id="slide-title" class="slide-text" type="text" placeholder="Enter Slide Title Here" />');
       $('#slide-links').append('<div id="saved-slide' + slideCount + '" title="'+ slideCount +'" class="span1 saved-slide"><span id="slidelink" class="slidelink' + slideCount + '"<p> Slide' + ' ' + slideCount + '</p></span></div>');
+      if (slideCount <= 1) {
+        $('#modal-container').append('<div id="slide-maker-modal" class="modal"></div>');
+        $('#slide-maker-modal').append('<div class="modal-header"><button type="button" class="close slide-maker-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel"> Begin making your main body slides </h3></div>');
+        $('#slide-maker-modal').append('<div class="modal-body"><h4 id="make-title-slide-modal-head" class="title-slide-modal"> Either make a Text Slide by typing in the inputs </br></br> OR </br></br> Make a Chart Slide by clicking on the big blue button </h4></div>');
+        $('#slide-maker-modal').append('<div class="modal-footer"><button class="btn slide-maker-goodbye" data-dismiss="modal">Close</button></div>');
+      }
       Meteor.call('refreshCountSlideImgs', 1);
       var slideTitle = Slides.find().fetch();
       var slideFilter = _.filter(slideTitle, function (obj) {
@@ -471,7 +478,33 @@ Template.yummy_coins.events({
     }
   })
 
-// >>>>>>>>>>> UPLOAD FILE <<<<<<<<<<<<<<<<<
+// >>>>>>>>>>> YUMMY SHOW START <<<<<<<<<<<<<<<<<
+
+
+var titleSlideModalHeader = function () {
+  var modalHeader = "Nice. You just named your YummyShow";
+  console.log(modalHeader);
+  return modalHeader;
+}
+
+Template.yummy_coins.events({
+  'click .title-slide-goodbye': function () {
+    $('#title-slide-modal').remove();
+    $('#modal-container').append('<div id="text-drag-modal" class="modal"></div>');
+    $('#text-drag-modal').append('<div class="modal-header"><button type="button" class="close text-drag-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel"> Reposition your text! </h3></div>');
+    $('#text-drag-modal').append('<div class="modal-body"><h4 id="make-title-slide-modal-head" class="title-slide-modal"> Simply CLICK the text you want to move </br></br> and DRAG it to your desired position </br></br> Text DRAG is functional on all slides </h4></div>');
+    $('#text-drag-modal').append('<div class="modal-footer"><button class="btn text-drag-goodbye" data-dismiss="modal">Close</button></div>');
+  }
+})
+
+Template.yummy_coins.events({
+  'click .text-drag-goodbye': function () {
+    $('#text-drag-modal').remove();
+  },
+  'click .slide-maker-goodbye': function () {
+    $('#slide-maker-modal').remove(); 
+  }
+})
 
 Template.yummy_coins.events({
   'keypress #create-show-input': function (event) {
@@ -490,6 +523,11 @@ Template.yummy_coins.events({
         currentUser = Meteor.userId();
         Meteor.call('passingTheName', currentShow);
         slideCount = 1;
+        var modalHeader = titleSlideModalHeader();
+        $('#modal-container').append('<div id="title-slide-modal" class="modal"></div>');
+        $('#title-slide-modal').append('<div class="modal-header"><button type="button" class="close title-slide-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel">'+modalHeader+'</h3></div>');
+        $('#title-slide-modal').append('<div class="modal-body"><h4 id="make-title-slide-modal-head" class="title-slide-modal">Now, make a title slide</h4><p> You have three text inputs for the title slide</p><p> Here is a basic usage example: </p class="modal-example"> NORCAL REAL ESTATE TRENDS </br> Hot Neighborhoods in SF </br> July 2013 </p></div>');
+        $('#title-slide-modal').append('<div class="modal-footer"><button class="btn title-slide-goodbye" data-dismiss="modal">Close</button></div>');
         $('#create-show').remove();
         $('#marketing-text').remove();
         $('#call-2-action').remove();
@@ -536,7 +574,7 @@ Template.yummy_coins.events({
       $('#user-login-alert').remove();
       $('#homepage-mkt').hide();
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save This Slide and Continue </p></span></div>');
-      $('.title-slide-title').append('<div id="title-slideTitle" class="title-slideTitle"> <h1 id="title-title">' + slideOneTitleText +'</h1></div>');
+      $('.title-slide-title').append('<div id="title-slideTitle" class="title-slideTitle"> <h1 id="`">' + slideOneTitleText +'</h1></div>');
       $(function() {
         $('#title-title').draggable();
       });

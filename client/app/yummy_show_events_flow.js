@@ -18,6 +18,84 @@ Meteor.methods({
 })
 
 Meteor.methods({
+  showSlideImageRender: function (slideShowMap, currentSlide) {
+    console.log(slideShowMap);
+    var slideTextArray = slideShowMap[currentSlide][2]['contents'];
+    console.log(slideTextArray);
+    var titleTopCheck = slideTextArray[0]['top'];
+    console.log(titleTopCheck);
+    var firstTopCheck = slideTextArray[1]['top'];
+    var secondTopCheck = slideTextArray[2]['top'];
+    var thirdTopCheck = slideTextArray[3]['top'];
+
+    var titleTextCheck = slideTextArray[0]['text'];
+    var firstTextCheck = slideTextArray[1]['text'];
+    var secondTextCheck = slideTextArray[2]['text'];
+    var thirdTextCheck = slideTextArray[3]['text'];
+    var imageTopPixAdjust = 70;
+    
+    if (firstTextCheck) {
+      imageTopPixAdjust = 94;
+    }
+    if (secondTextCheck) {
+      imageTopPixAdjust = 118;
+    }
+    if (thirdTextCheck) {
+      imageTopPixAdjust = -1;
+    }
+    if (titleTopCheck) {
+      imageTopPixAdjust = 175;
+    }
+    if (titleTopCheck && firstTextCheck) {
+      imageTopPixAdjust = 200;
+    }
+    if (titleTopCheck && firstTextCheck && secondTextCheck) {
+      imageTopPixAdjust = 224;
+    }
+    if (titleTopCheck && firstTextCheck && secondTextCheck && thirdTextCheck) {
+      imageTopPixAdjust = 105;
+    }
+    console.log(imageTopPixAdjust);
+    return imageTopPixAdjust;
+  }
+})
+
+Meteor.methods({
+  imageShowTopFix: function (titleTop, pixels) {
+    console.log(titleTop);
+    console.log(pixels);
+    if (titleTop === "0px") {
+      var num = /\d+/;
+    } else {
+      var num = /\S\d+/;
+    }
+    var newNum = num.exec(titleTop);
+    console.log(newNum);
+    var newTop = newNum[0];
+    var intTop = parseInt(newTop);
+    var plusTop = intTop+pixels;
+    var pxTop = plusTop+"px";
+    return pxTop;
+  }
+})
+
+Meteor.methods({
+  imageShowLeftFix: function (titleLeft, pixels, width) {
+    var num = /\d+/;
+    var newNum = num.exec(titleLeft);
+    var newLeft = newNum[0];
+    var intLeft = parseInt(newLeft);
+    var newWidth = num.exec(width);
+    var frestWidth = newWidth[0];
+    var intWidth = parseInt(frestWidth);
+    var widthAdjust = (200-intWidth)/2;
+    var plusLeft = intLeft+pixels-widthAdjust;
+    var pxLeft = plusLeft+"px";
+    return pxLeft;
+  }
+})
+
+Meteor.methods({
   showRenderFix: function (titleTop, pixels) {
     var num = /\S\d+/;
     var newNum = num.exec(titleTop);
@@ -42,17 +120,62 @@ Meteor.methods ({
       $('.the-show').append('<div id="show-titleSlide-title" class="span12 show-title"><span class="title"><h1 id="show-title-title">' + yummyTitleText +'</h1></span></div>');
     }
   },
-  renderShowTitle: function (showGoods, yummyTitleText) {
+  renderShowTitle: function (showGoods, yummyTitleText, showFilter) {
+    console.log('in render showTitle');
+    console.log(showFilter);
+    console.log(showGoods);
+    var thisSlide = yummyShowSlideIndex + 1;
+    var imageCheck = showFilter[thisSlide][8]['images'][0]['top'];
+    console.log(imageCheck);
     var titleTop = showGoods[yummySlideBulletCount]['top'];
-    if (titleTop) {
+    if (titleTop && imageCheck) {
+      var imageTop = imageCheck['top'];
+      var imageLeft = imageCheck['left'];
+      var imageWidth = imageCheck['width'];
+      var imageHeight = imageCheck['height'];
+      var imageTopPixAdjust = Meteor.call('showSlideImageRender', showFilter, thisSlide);
+
+      var thisImageTop = Meteor.call('imageShowTopFix', imageTop, imageTopPixAdjust);
+      var thisImageLeft = Meteor.call('imageShowLeftFix', imageLeft, -371, imageWidth);
+
+      var countSlide = currentSlide + 1;
+      var imagesArray = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
+      console.log(imagesArray);
+      var firstImage = imagesArray[0]['file'];
+      $('.the-show').append('<div id="image-one" style="position: relative; top:'+thisImageTop+'; left:'+thisImageLeft+';"><img id="thisImage" src="'+firstImage+'" alt="An awesome image" style="height:'+imageHeight+'; width:'+imageWidth+';" /></div>');
+     } else if (titleTop) {
       thisTop = Meteor.call('showRenderFix', titleTop, 40);
       titleLeft = showGoods[yummySlideBulletCount]['left'];
       $('.the-show').append('<div id="show-slide-title" class="span12 show-title"><span class="title"><h1 id="show-slide-title" style="position: relative; top:'+ thisTop +'; left:'+ titleLeft +';">' + yummyTitleText +'</h1></span></div>');
     } else {
       $('.the-show').append('<div id="show-slide-title-notop" class="span12 show-title"><span class="title"><h1 id="show-slide-title">' + yummyTitleText +'</h1></span></div>');
     }
-  },
+    // if (titleTop) {
+    //   thisTop = Meteor.call('showRenderFix', titleTop, 40);
+    //   titleLeft = showGoods[yummySlideBulletCount]['left'];
+    //   $('.the-show').append('<div id="show-slide-title" class="span12 show-title"><span class="title"><h1 id="show-slide-title" style="position: relative; top:'+ thisTop +'; left:'+ titleLeft +';">' + yummyTitleText +'</h1></span></div>');
+    // } else {
+    //   $('.the-show').append('<div id="show-slide-title-notop" class="span12 show-title"><span class="title"><h1 id="show-slide-title">' + yummyTitleText +'</h1></span></div>');
+    // }
 
+    // if (imageCheck) {
+    //     var imageTop = imageCheck['top'];
+    //     var imageLeft = imageCheck['left'];
+    //     var imageWidth = imageCheck['width'];
+    //     var imageHeight = imageCheck['height'];
+    //     var imageTopPixAdjust = Meteor.call('showSlideImageRender', showFilter, yummyShowSlideIndex);
+
+    //     var thisImageTop = Meteor.call('imageShowTopFix', imageTop, imageTopPixAdjust);
+    //     var thisImageLeft = Meteor.call('imageShowLeftFix', imageLeft, -371, imageWidth);
+
+    //     var countSlide = currentSlide + 1;
+    //     var imagesArray = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
+    //     console.log(imagesArray);
+    //     var firstImage = imagesArray[0]['file'];
+
+    //     $('.the-show').append('<div id="image-one" style="position: relative; top:'+thisImageTop+'; left:'+thisImageLeft+';"><img id="thisImage" src="'+firstImage+'" alt="An awesome image" style="height:'+imageHeight+'; width:'+imageWidth+';" /></div>');
+    // }
+  }
 })
 
 Meteor.methods ({
@@ -158,6 +281,7 @@ Meteor.methods({
         $('#hot-bits-div').remove();
         $('#hotbit-line-chart').remove();
         $('#data-source-container').remove();
+        $('#slide-img-row').remove();
         $('.make-start').append('<div id="the-show-title" class="the-show"></div>');
         currentYummyShow = Shows.find().fetch();
         var showFilter = _.filter(currentYummyShow, function (obj) {
@@ -280,7 +404,7 @@ Template.yummy_coins.events({
     $('.make-start').append('<div id="show-content-one" class="the-show"></div>');
     var showGoods = showFilter[yummyShowSlideIndex]['2']['contents'];
     var yummyTitleText = showGoods[0]['text'];
-    Meteor.call('renderShowTitle', showGoods, yummyTitleText);
+    Meteor.call('renderShowTitle', showGoods, yummyTitleText, showFilter);
     var yummyBulletOneText = showGoods[1]['text'];
     if (yummyBulletOneText) {
       Meteor.call('renderShowFirst', showGoods, yummyBulletOneText);
@@ -327,7 +451,7 @@ Template.yummy_coins.events({
     $('.make-start').append('<div id="show-content-two" class="the-show"></div>');
     var showGoods = showFilter[yummyShowSlideIndex]['2']['contents'];
     var yummyTitleText = showGoods[0]['text'];
-    Meteor.call('renderShowTitle', showGoods, yummyTitleText);
+    Meteor.call('renderShowTitle', showGoods, yummyTitleText, showFilter);
     var yummyBulletOneText = showGoods[1]['text'];
     Meteor.call('renderShowFirst', showGoods, yummyBulletOneText);
     var yummyBulletTwoText = showGoods[2]['text'];
@@ -378,7 +502,7 @@ Template.yummy_coins.events({
     $('.make-start').append('<div id="show-content-three" class="the-show"></div>');
     var showGoods = showFilter[yummyShowSlideIndex]['2']['contents'];
     var yummyTitleText = showGoods[0]['text'];
-    Meteor.call('renderShowTitle', showGoods, yummyTitleText);
+    Meteor.call('renderShowTitle', showGoods, yummyTitleText, showFilter);
     var yummyBulletOneText = showGoods[1]['text'];
     Meteor.call('renderShowFirst', showGoods, yummyBulletOneText);
     var yummyBulletTwoText = showGoods[2]['text'];
