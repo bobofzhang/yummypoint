@@ -39,18 +39,13 @@ Template.yummy_coins.events({
     $('.chart-data-sources-types').remove();
     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-    var files = event.target.files; // FileList object
-    var file = files[0];
-    printTable(file);
-    userBubFileCount++
-    Meteor.call('passFileCount', userBubFileCount);
 
     function printTable(file) {
       var reader = new FileReader();
       reader.readAsText(file);
       reader.onload = function(event){
-        var csv = event.target.result;
-        var data = $.csv.toArrays(csv);
+        var info = event.target.result;
+        var data = $.csv.toArrays(info);
         Files.insert({
           name: file.name,
           count: userBubFileCount,
@@ -61,6 +56,11 @@ Template.yummy_coins.events({
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
     }
+    var files = event.target.files; // FileList object
+    var file = files[0];
+    printTable(file);
+    userBubFileCount++
+    Meteor.call('passFileCount', userBubFileCount);
     return $('#user-bub-inputs').remove() &&  $('.make-start').append('<div id="post-user-file-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div><div class="span2"></div><div id="render-user-bub-file" class="span8 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data Bubble Chart </p></span></div><div class="span2></div></div>')
   }
 })
@@ -104,10 +104,10 @@ Meteor.methods ({
         var dataset = [];
 
         for (var i = 0; i < 30; i++) {
-          //console.log(myData[i][0]);
           dataset.push([myData[i][0], myData[i][1]]);
         }
-        //console.log(dataset);
+
+        console.log(dataset);
 
         var w = 1000;
         var h = 700;

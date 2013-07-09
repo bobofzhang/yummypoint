@@ -44,14 +44,11 @@ Meteor.methods({
     }
 })
 
-// Template.yummy_coins.events({
-//   'click .text-drag-goodbye': function () {
-//     $('#text-drag-modal').remove();
-//   },
-//   'click .slide-maker-goodbye': function () {
-//     $('#slide-maker-modal').remove(); 
-//   }
-// })
+Template.yummy_coins.events({
+  'click .chart-intro-goodbye': function () {
+    $('#chart-intro-modal').remove(); 
+  }
+})
 
 Template.yummy_coins.events({
     'click #create-chart-sub': function () {
@@ -105,10 +102,10 @@ Template.yummy_coins.events({
             if (tysD != "text" || chartCount >= 1) {
                 return;
             } else {
-                $('#modal-container').append('<div id="text-drag-modal" class="modal"></div>');
-                $('#text-drag-modal').append('<div class="modal-header"><button type="button" class="close text-drag-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel"> Data makes your Yummy Show tasty </h3></div>');
-                $('#text-drag-modal').append('<div class="modal-body"><h4 id="make-title-slide-modal-head" class="title-slide-modal"> You can easily intregrate DATA into your Yummy Show </br></br> Choose from our comprehensive set of public DATA sources </br></br> OR </br></br> Use your own DATA </h4></div>');
-                $('#text-drag-modal').append('<div class="modal-footer"><button class="btn text-drag-goodbye" data-dismiss="modal">Close</button></div>');
+                $('#modal-container').append('<div id="chart-intro-modal" class="modal"></div>');
+                $('#chart-intro-modal').append('<div class="modal-header"><button type="button" class="close chart-intro-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel"> Data makes your Yummy Show tasty </h3></div>');
+                $('#chart-intro-modal').append('<div class="modal-body"><h4 id="make-title-slide-modal-head" class="title-slide-modal"> You can easily intregrate DATA into your Yummy Show </br></br> Choose from our comprehensive set of public DATA sources </br></br> OR </br></br> Use your own DATA </h4></div>');
+                $('#chart-intro-modal').append('<div class="modal-footer"><button class="btn chart-intro-goodbye" data-dismiss="modal">Close</button></div>');
                 chartCount++;
             }
         })

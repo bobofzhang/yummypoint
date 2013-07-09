@@ -41,19 +41,16 @@ Template.yummy_coins.events({
     $('.chart-data-sources-types').remove();
     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
-    // event.preventDefault();
-    var files = event.target.files; // FileList object
-    var file = files[0];
-    printTable(file);
-    fileCount++;
-    Meteor.call('passFileCount', fileCount);
 
     function printTable(file) {
       var reader = new FileReader();
       reader.readAsText(file);
       reader.onload = function(event){
         var csv = event.target.result;
+        console.log(csv);
         var data = $.csv.toArrays(csv);
+        // var data = [csv];
+        // console.log(data);
         Files.insert({
           name: file.name,
           count: fileCount,
@@ -61,9 +58,18 @@ Template.yummy_coins.events({
           meteorUser: Meteor.userId(),
           show: thisShowName
         })
-      };
+      }
+      // reader.onloadend = function(event) {
+      //   console.log("read success");
+      //   console.log(event.target.result);
+      // };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
     }
+    var files = event.target.files; // FileList object
+    var file = files[0];
+    printTable(file);
+    fileCount++;
+    Meteor.call('passFileCount', fileCount);
     return $('#inputs').remove() && $('.make-start').append('<div id="post-user-file-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div><div class="span2"></div><div id="render-userFile" class="span8 see-userFile"> <span class="view-userFile"> <p> Preview Your Uploaded Data Line Chart </p></span></div><div class="span2></div></div>')
   }
 })
@@ -106,11 +112,11 @@ Meteor.methods({
 
     for (var i = 0; i < myData.length; i++) {
       var newDate = Date.parse(myData[i][1]);
-      //console.log(newDate);
+      // console.log(newDate);
       data.push([myData[i][0], newDate]);
     }
 
-    //console.log(data);
+    console.log(data);
 
     var margin = {
       top: 20, 

@@ -115,13 +115,12 @@ Meteor.methods ({
                     .text(function (d) { return (d[1] + ", " + d[0]) ; })
                     .style("font-size", "18px");
 
-            cirlceElems.append("text")
-                    .attr("text-anchor", "middle")
-                    .attr("dy", ".3em")
-                    .style("z-index", "10")
-                    .text(function (d) { return (d[1] + ", " + d[0]) ; });
+            // node.append("text")
+            //         .attr("text-anchor", "middle")
+            //         .attr("dy", ".3em")
+            //         .style("z-index", "10")
+            //         .text(function (d) { return (d[1] + ", " + d[0]) ; });
 
-            
             d3.selectAll("circle")
                     .transition()
                     .delay(function(d,i) { return i * 10; })

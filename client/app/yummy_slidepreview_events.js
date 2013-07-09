@@ -129,7 +129,7 @@ Meteor.methods({
     var source = slideShowMap[currentSlide]['4']['dataSource'];
     var fileCount = slideShowMap[currentSlide]['5']['fileNum'];
     var chartType = slideShowMap[currentSlide]['7']['chartType'];
-    var imageOne = slideShowMap[currentSlide]['8']['images'][0];
+    //var imageOne = slideShowMap[currentSlide]['8']['images'][0];
     if (type === "chart" && source === "bitcoin") {
       $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div><div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Create a Chart Slide </p></span></div>');
       $('.make-start').append('<div id="chart-render-bitcoin" class="span12"></div>');
@@ -234,90 +234,84 @@ Meteor.methods({
           $('#slide-preview').append('<div class="bullet-third-slide-one"> <h2 id="third-bullet">' + thirdBull + '</h2></div></div>');
         }
       }
-      if (imageOne['top']) {
-        var imageTop = imageOne['top'];
-        var imageLeft = imageOne['left'];
-        var imageWidth = imageOne['width'];
-        var imageHeight = imageOne['height'];
+      // if (imageOne['top']) {
+      //   var imageTop = imageOne['top'];
+      //   var imageLeft = imageOne['left'];
+      //   var imageWidth = imageOne['width'];
+      //   var imageHeight = imageOne['height'];
 
-        var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
-        console.log(imageTopPixAdjust);
+      //   var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
+      //   console.log(imageTopPixAdjust);
 
-        var thisImageTop = Meteor.call('imageTopRenderFix', imageTop, imageTopPixAdjust);
-        var thisImageLeft = Meteor.call('imageLeftRenderFix', imageLeft, -371, imageWidth);
+      //   var thisImageTop = Meteor.call('imageTopRenderFix', imageTop, imageTopPixAdjust);
+      //   var thisImageLeft = Meteor.call('imageLeftRenderFix', imageLeft, -371, imageWidth);
 
-        var countSlide = currentSlide + 1;
-        var imagesArray = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
-        console.log(imagesArray);
-        var firstImage = imagesArray[0]['file'];
+      //   var countSlide = currentSlide + 1;
+      //   var imagesArray = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
+      //   console.log(imagesArray);
+      //   var firstImage = imagesArray[0]['file'];
 
-        $('#slide-preview').append('<div id="image-one" style="position: relative; top:'+thisImageTop+'; left:'+thisImageLeft+';"><img id="thisImage" src="'+firstImage+'" alt="An awesome image" style="height:'+imageHeight+'; width:'+imageWidth+';" /></div>');
-      }
-      var imageTwo = slideShowMap[currentSlide]['8']['images'][1];
-      if (imageTwo['top']) {
-        var imageTwoTop = imageTwo['top'];
-        var imageTwoLeft = imageTwo['left'];
-        var imageTwoWidth = imageTwo['width'];
-        var imageTwoHeight = imageTwo['height'];
+      //   $('#slide-preview').append('<div id="image-one" style="position: relative; top:'+thisImageTop+'; left:'+thisImageLeft+';"><img id="thisImage" src="'+firstImage+'" alt="An awesome image" style="height:'+imageHeight+'; width:'+imageWidth+';" /></div>');
+      // }
+      // var imageTwo = slideShowMap[currentSlide]['8']['images'][1];
+      // if (imageTwo['top']) {
+      //   var imageTwoTop = imageTwo['top'];
+      //   var imageTwoLeft = imageTwo['left'];
+      //   var imageTwoWidth = imageTwo['width'];
+      //   var imageTwoHeight = imageTwo['height'];
 
-        var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
-        console.log(imageTopPixAdjust);
-        var thisImageTop2 = Meteor.call('imageTopRenderFix', imageTwoTop, imageTopPixAdjust);
-        var thisImageLeft2 = Meteor.call('imageLeftRenderFix', imageTwoLeft, -371, imageTwoWidth);
+      //   var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
+      //   console.log(imageTopPixAdjust);
+      //   var thisImageTop2 = Meteor.call('imageTopRenderFix', imageTwoTop, imageTopPixAdjust);
+      //   var thisImageLeft2 = Meteor.call('imageLeftRenderFix', imageTwoLeft, -371, imageTwoWidth);
 
-        var countSlide = currentSlide + 1;
-        var imagesArray2 = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
-        console.log(imagesArray2);
-        var secondImage = imagesArray2[1]['file'];
+      //   var countSlide = currentSlide + 1;
+      //   var imagesArray2 = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
+      //   console.log(imagesArray2);
+      //   var secondImage = imagesArray2[1]['file'];
 
-        $('#slide-preview').append('<div id="image-two" style="position: relative; top:'+thisImageTop2+'; left:'+thisImageLeft2+';"><img id="thisImage" src="'+secondImage+'" alt="An awesome image" style="height:'+imageTwoHeight+'; width:'+imageTwoWidth+';" /></div>');
-      }
-      var imageThree = slideShowMap[currentSlide]['8']['images'][2];
-      if (imageThree['top']) {
-        var imageThreeTop = imageThree['top'];
-        var imageThreeLeft = imageThree['left'];
-        var imageThreeWidth = imageThree['width'];
-        var imageThreeHeight = imageThree['height'];
+      //   $('#slide-preview').append('<div id="image-two" style="position: relative; top:'+thisImageTop2+'; left:'+thisImageLeft2+';"><img id="thisImage" src="'+secondImage+'" alt="An awesome image" style="height:'+imageTwoHeight+'; width:'+imageTwoWidth+';" /></div>');
+      // }
+      // var imageThree = slideShowMap[currentSlide]['8']['images'][2];
+      // if (imageThree['top']) {
+      //   var imageThreeTop = imageThree['top'];
+      //   var imageThreeLeft = imageThree['left'];
+      //   var imageThreeWidth = imageThree['width'];
+      //   var imageThreeHeight = imageThree['height'];
 
-        var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
-        console.log(imageTopPixAdjust);
+      //   var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
+      //   console.log(imageTopPixAdjust);
 
-        var thisImageTop3 = Meteor.call('imageTopRenderFix', imageThreeTop, imageTopPixAdjust);
-        var thisImageLeft3 = Meteor.call('imageLeftRenderFix', imageThreeLeft, -371, imageThreeWidth);
+      //   var thisImageTop3 = Meteor.call('imageTopRenderFix', imageThreeTop, imageTopPixAdjust);
+      //   var thisImageLeft3 = Meteor.call('imageLeftRenderFix', imageThreeLeft, -371, imageThreeWidth);
 
-        var countSlide = currentSlide + 1;
-        var imagesArray3 = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
-        console.log(imagesArray3);
-        var thirdImage = imagesArray3[2]['file'];
+      //   var countSlide = currentSlide + 1;
+      //   var imagesArray3 = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
+      //   console.log(imagesArray3);
+      //   var thirdImage = imagesArray3[2]['file'];
 
-        $('#slide-preview').append('<div id="image-three" style="position: relative; top:'+thisImageTop3+'; left:'+thisImageLeft3+';"><img id="thisImage" src="'+thirdImage+'" alt="An awesome image" style="height:'+imageThreeHeight+'; width:'+imageThreeWidth+';" /></div>');
-      }
-      var imageFour = slideShowMap[currentSlide]['8']['images'][3];
-      if (imageFour['top']) {
-        var imageFourTop = imageFour['top'];
-        var imageFourLeft = imageFour['left'];
-        var imageFourWidth = imageFour['width'];
-        var imageFourHeight = imageFour['height'];
+      //   $('#slide-preview').append('<div id="image-three" style="position: relative; top:'+thisImageTop3+'; left:'+thisImageLeft3+';"><img id="thisImage" src="'+thirdImage+'" alt="An awesome image" style="height:'+imageThreeHeight+'; width:'+imageThreeWidth+';" /></div>');
+      // }
+      // var imageFour = slideShowMap[currentSlide]['8']['images'][3];
+      // if (imageFour['top']) {
+      //   var imageFourTop = imageFour['top'];
+      //   var imageFourLeft = imageFour['left'];
+      //   var imageFourWidth = imageFour['width'];
+      //   var imageFourHeight = imageFour['height'];
         
-        var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
-        console.log(imageTopPixAdjust);
+      //   var imageTopPixAdjust = Meteor.call('slideImageRender', slideShowMap, currentSlide);
+      //   console.log(imageTopPixAdjust);
 
-        var thisImageTop4 = Meteor.call('imageTopRenderFix', imageFourTop, imageTopPixAdjust);
-        var thisImageLeft4 = Meteor.call('imageLeftRenderFix', imageFourLeft, -371, imageFourWidth);
+      //   var thisImageTop4 = Meteor.call('imageTopRenderFix', imageFourTop, imageTopPixAdjust);
+      //   var thisImageLeft4 = Meteor.call('imageLeftRenderFix', imageFourLeft, -371, imageFourWidth);
 
-        var countSlide = currentSlide + 1;
-        var imagesArray4 = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
-        console.log(imagesArray4);
-        var fourthImage = imagesArray3[3]['file'];
+      //   var countSlide = currentSlide + 1;
+      //   var imagesArray4 = Images.find( { show: previewShowName, slide: countSlide } ).fetch();
+      //   console.log(imagesArray4);
+      //   var fourthImage = imagesArray3[3]['file'];
 
-        $('#slide-preview').append('<div id="image-four" style="position: relative; top:'+thisImageTop4+'; left:'+thisImageLeft4+';"><img id="thisImage" src="'+fourthImage+'" alt="An awesome image" style="height:'+imageFourHeight+'; width:'+imageFourWidth+';" /></div>');
-      }
-      //var chartType = slideShowMap[currentSlide]['7']['chartType'];
-      // $(function() {
-      //   $('#title-title').draggable();
-      //   $('#first-bullet').draggable();
-      //   $('#second-bullet').draggable();
-      // })
+      //   $('#slide-preview').append('<div id="image-four" style="position: relative; top:'+thisImageTop4+'; left:'+thisImageLeft4+';"><img id="thisImage" src="'+fourthImage+'" alt="An awesome image" style="height:'+imageFourHeight+'; width:'+imageFourWidth+';" /></div>');
+      // }
     }
   }
 })
