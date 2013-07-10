@@ -256,7 +256,6 @@ body {
 #inputs {
   background-color: rgba(213, 0, 101, 0.5);
   border-radius: 0.5em;
-/*  width: 375px;*/
   height: 30px;
 }
 
@@ -268,6 +267,7 @@ body {
 #user-bub-inputs {
   background-color: rgba(213, 0, 101, 0.5);
   border-radius: 0.5em; 
+  height: 30px;
 }
 
 #user-bub-inputs:hover {
@@ -1134,8 +1134,6 @@ div.bar {
       padding-top: 25px;
       font-size: 120px;
       text-shadow: 0 1px 1px rgba(0,0,0,.4);
-/*      background-color: rgba(255, 177, 0, .75);*/
-/*      background-color: rgba(20, 53, 173, .75);*/
       background-color: rgba(142, 235, 0, 0.75);
       color: black;
       border: 0;

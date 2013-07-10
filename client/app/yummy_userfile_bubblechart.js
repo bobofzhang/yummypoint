@@ -21,8 +21,13 @@ Meteor.methods({
 
 Template.yummy_coins.events({
   'click #user-bubble-chart-nav': function() {
-    $('#user-chart-options-row').append('<div id="user-bub-instruct" class="span12"><span class="user-bub-info"> Upload a CSV file to create a line graph slide </br> The first column is the Bubble radius </br> The second column is Bubble title </span></div>')
-    $('#user-chart-options-row').append('<div id="bub-cloak-inputs" class="span12"><div id="user-bub-inputs" class="clearfix" onclick="files.click()"><span class="input-text"> Upload file from computer </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>');
+    $('#modal-container').append('<div id="user-bub-modal" class="modal"></div>');
+    $('#user-bub-modal').append('<div class="modal-header"><button type="button" class="close user-bub-goodbye" data-dismiss="modal">×</button><h4 id="myModalLabel"> Bubble Graph User Data Upload </h4></div>');
+    $('#user-bub-modal').append('<div class="modal-body"><h4 id="user-bub-head" class="user-bub-msg-modal">Upload a CSV file to create a line graph slide </br> The first column is the Bubble radius </br> The second column is Bubble title </h4></div>');
+    $('#user-bub-modal').append('<div class="modal-footer bub-cloak-inputs"><div id="user-bub-inputs" class="span5 clearfix" onclick="files.click()"><span class="input-text"> Upload file from computer</span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div><button class="btn user-bub-goodbye" data-dismiss="modal">Close</button></div>');
+  },
+  'click .user-bub-goodbye': function () {
+    $('#user-bub-modal').remove();
   }
 })
 
@@ -37,6 +42,7 @@ Template.yummy_coins.events({
     $('#bitcoin-data-row').remove();
     $('#bitly-data-row').remove();
     $('.chart-data-sources-types').remove();
+    $('#user-bub-modal').remove();
     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
 
