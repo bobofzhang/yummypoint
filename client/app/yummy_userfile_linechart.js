@@ -21,8 +21,16 @@ Meteor.methods({
 
 Template.yummy_coins.events({
   'click #user-data-line-nav': function() {
-    $('#user-chart-options-row').append('<div id="user-line-instruct" class="span12"><span class="user-line-info"> Upload a CSV file to create a line graph slide </br> The first column is the y-axis </br> The second column is the time scale x-axis </br> The second column of your data file must be in date format </span></div>')
-    $('#user-chart-options-row').append('<div id="cloak-inputs" class="span12"><div id="inputs" class="clearfix" onclick="files.click()"><span class="input-text"> Upload file from computer </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>');
+    //$('#user-chart-options-row').append('<div id="user-line-instruct" class="span12"><span class="user-line-info"> Upload a CSV file to create a line graph slide </br> The first column is the y-axis </br> The second column is the time scale x-axis </br> The second column of your data file must be in date format </span></div>')
+    //$('#user-chart-options-row').append('<div id="cloak-inputs" class="span12"><div id="inputs" class="clearfix" onclick="files.click()"><span class="input-text"> Upload file from computer </span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div></div>');
+    $('#modal-container').append('<div id="user-line-modal" class="modal"></div>');
+    //$('#user-line-modal').append('<div class="modal-header"><button type="button" class="close user-line-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel"> Line Graph User Data Upload </h3></div>');
+    $('#user-line-modal').append('<div class="modal-header"><button type="button" class="close user-line-goodbye" data-dismiss="modal">×</button><h4 id="myModalLabel"> Line Graph User Data Upload </h4></div>');
+    $('#user-line-modal').append('<div class="modal-body"><h4 id="user-line-head" class="user-line-msg-modal">Upload a CSV file to create a line graph slide </br> The first column is the y-axis </br> The second column is the time scale x-axis </br> The second column of your data file must be in date format </h4></div>');
+    $('#user-line-modal').append('<div class="modal-footer cloak-inputs"><div id="inputs" class="span5 clearfix" onclick="files.click()"><span class="input-text"> Upload file from computer</span><input type="file" id="files" name="files[]" style="visibility:hidden;"/></div><button class="btn user-line-goodbye" data-dismiss="modal">Close</button></div>');
+  },
+  'click .user-line-goodbye': function () {
+    $('#user-line-modal').remove();
   }
 })
 
@@ -39,6 +47,7 @@ Template.yummy_coins.events({
     $('#bitcoin-data-row').remove();
     $('#bitly-data-row').remove();
     $('.chart-data-sources-types').remove();
+    $('#user-line-modal').remove();
     $('#slide-nav-row').append('<div id="create-text-sub" class="span6"> <span class="text-slide-sub"><p> Create a Text Slide </p></span></div>');
     $('#slide-nav-row').append('<div id="create-chart-sub" class="span6"> <span class="chart-slide-sub"><p> Chart Slide Home </p></span></div>');
 
