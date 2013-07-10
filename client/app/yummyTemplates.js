@@ -490,10 +490,6 @@ var titleSlideModalHeader = function () {
 Template.yummy_coins.events({
   'click .title-slide-goodbye': function () {
     $('#title-slide-modal').remove();
-    $('#modal-container').append('<div id="text-drag-modal" class="modal"></div>');
-    $('#text-drag-modal').append('<div class="modal-header"><button type="button" class="close text-drag-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel"> Reposition your text! </h3></div>');
-    $('#text-drag-modal').append('<div class="modal-body"><h4 id="make-title-slide-modal-head" class="title-slide-modal"> Simply CLICK the text you want to move </br></br> and DRAG it to your desired position </br></br> Text DRAG is functional on all slides </h4></div>');
-    $('#text-drag-modal').append('<div class="modal-footer"><button class="btn text-drag-goodbye" data-dismiss="modal">Close</button></div>');
   }
 })
 
@@ -502,7 +498,11 @@ Template.yummy_coins.events({
     $('#text-drag-modal').remove();
   },
   'click .slide-maker-goodbye': function () {
-    $('#slide-maker-modal').remove(); 
+    $('#slide-maker-modal').remove();
+    $('#modal-container').append('<div id="text-drag-modal" class="modal"></div>');
+    $('#text-drag-modal').append('<div class="modal-header"><button type="button" class="close text-drag-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel"> Reposition your text! </h3></div>');
+    $('#text-drag-modal').append('<div class="modal-body"><h4 id="make-title-slide-modal-head" class="title-slide-modal"> Simply CLICK the text you want to move </br></br> and DRAG it to your desired position </br></br> Text DRAG is functional on all slides </h4></div>');
+    $('#text-drag-modal').append('<div class="modal-footer"><button class="btn text-drag-goodbye" data-dismiss="modal">Close</button></div>'); 
   }
 })
 
@@ -574,7 +574,7 @@ Template.yummy_coins.events({
       $('#user-login-alert').remove();
       $('#homepage-mkt').hide();
       $('#slide-nav-row').append('<div id="slide-controls" class="span12"><span class="make-slide"><p class="make-first-slide"> Save This Slide and Continue </p></span></div>');
-      $('.title-slide-title').append('<div id="title-slideTitle" class="title-slideTitle"> <h1 id="`">' + slideOneTitleText +'</h1></div>');
+      $('.title-slide-title').append('<div id="title-slideTitle" class="title-slideTitle"> <h1 id="title-title">' + slideOneTitleText +'</h1></div>');
       $(function() {
         $('#title-title').draggable();
       });
