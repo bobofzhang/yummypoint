@@ -518,6 +518,12 @@ Template.yummy_coins.events({
         $('#mkt-text').remove();
         $('#create-show').append('<span class="create-show-input"></span>');
         $('.create-show-input').append('<input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a YummyShow by giving it a name here" autofocus />');
+        
+        $('#modal-container').append('<div id="nolog-deets-modal" class="modal"></div>');
+        $('#nolog-deets-modal').append('<div class="modal-header"><button type="button" class="close user-login-goodbye" data-dismiss="modal">×</button><h3 id="myModalLabel">Try Again</h3></div>');
+        $('#nolog-deets-modal').append('<div class="modal-body"><h4 id="msg-login-head" class="login-msg-modal"> You must be signed in to create a tasty yummy show </h4><p> FYI for now, login does not  </p></div>');
+        $('#nolog-deets-modal').append('<div class="modal-footer"><button class="btn user-login-goodbye" data-dismiss="modal">Close</button></div>');
+        
         $('#homepage-mkt').append('<div id="mkt-plug" class="row"><span id="user-login-alert" class="span12"> <h4> Try again. You must be signed in to create a tasty YummyShow </h4></span></div>')
       } else {
         currentUser = Meteor.userId();
