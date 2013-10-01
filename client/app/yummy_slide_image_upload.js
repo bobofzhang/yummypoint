@@ -42,7 +42,7 @@ Template.yummy_coins.events({
 
 Template.yummy_coins.events({
   'change #img-inputs': function (event, tmpl) {
-    $('#slide-img-row').append('<div id="render-slide-image" class="span5 see-userFile"> <span class="view-image"><p> preview image </p></span></div>'); 
+    $('#slide-img-row').append('<div id="render-slide-image" class="span5 see-userFile"> <span class="view-image"><p> preview image </p></span></div>');
     event.preventDefault();
     var files = event.target.files; // FileList object
     var file = files[0];
@@ -54,7 +54,7 @@ Template.yummy_coins.events({
       var img = event.target.result;
       Images.insert({
         name: file.name,
-        count: imgCount,  
+        count: imgCount,
         file: img,
         meteorUser: Meteor.userId(),
         show: imgShowName,
@@ -62,13 +62,13 @@ Template.yummy_coins.events({
       })
       imgCount++;
       Meteor.call('passImgCount', imgCount);
-      reader.onerror = function(){ 
-        alert('Unable to read ' + file.fileName); 
+      reader.onerror = function(){
+        alert('Unable to read ' + file.fileName);
       };
     }
     $('#add-image').remove();
     //$('.make-start').append('<div id="post-image-upload"><div id="upload-success-msg" class="span12"><span class="success-msg"><p> File Upload Success </p></span></div></div>');
-    //$('#post-image-upload').append('<div id="render-image" class="span8 see-userFile"> <span class="view-image"> <p> prview image</p></span></div>');    
+    //$('#post-image-upload').append('<div id="render-image" class="span8 see-userFile"> <span class="view-image"> <p> preview image</p></span></div>');
   },
   'click #render-slide-image': function () {
     $('#render-slide-image').remove();

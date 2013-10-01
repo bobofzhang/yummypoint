@@ -70,8 +70,17 @@
   <script src="../bootstrap/js/bootstrap-carousel.js"></script>
   <script src="./bootstrap/js/bootstrap-typeahead.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>
-  
-  <!--<script> $('#slide-inputs').tooltip(); </script>-->
+  <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Expletus+Sans:600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Stalinist+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Metrophobic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet' type='text/css'>
 </body>
 
 <template name="yummy_coins">
@@ -85,7 +94,7 @@
         {{> userShows}}
       </div>
       <div id="yummy-brand" class="span4">
-          <span class="brand"> Yummy Show </span> 
+          <span class="brand"> Yummy Show </span>
       </div>
     </div> <!-- USER ROW -->
   </div> <!-- USER CONTAINER -->
@@ -101,7 +110,7 @@
       <div id="make-new-show" class="span4">
       </div>
     </div> <!--USER SHOW ROW -->
-  </div><!-- USER SHOW CONTAINER --> 
+  </div><!-- USER SHOW CONTAINER -->
 
   <div id="homepage-mkt" class="container">
     <div id="mkt-plug" class="row">
@@ -114,7 +123,7 @@
   <div id="contant-div" class="freeze-reactive-changes">
 
     <div id="yummy-shows" class="container yummy-shows">
-      <div id="show-row" class="row"> 
+      <div id="show-row" class="row">
         <div id="create-show" class="span12 create-show">
           <span class="create-show-input">
             <input id="create-show-input" class="make-a-show" type="text" placeholder="Begin making a Yummy Show by naming it here" autofocus />
@@ -129,12 +138,12 @@
         <div class="carousel-inner">
           <div class="item active">
             <div class="container">
-              <div class="carousel-caption">
-                <h1> Win with Data... Not bullets and arrows </h1> 
-                <h3 class="lead"> 
+              <div id="carousel-title" class="carousel-caption">
+                <h1> Win with Data... Not bullets and arrows </h1>
+                <h3 class="lead">
                   <span id="simple" class="caro1-bullet"> simple </span>
-                  </br> 
-                  <span id="clear" class="caro1-bullet"> clear </span> 
+                  </br>
+                  <span id="clear" class="caro1-bullet"> clear </span>
                   </br>
                   <span id="data-plug" class="caro1-bullet"> data driven </span>
                 </h3>
@@ -143,25 +152,25 @@
           </div>
           <div class="item">
             <div class="container">
-              <div class="carousel-caption">
+              <div id="carousel-title" class="carousel-caption">
                 <h1> Data Visualization </h1>
-                <h3 class="lead"> 
+                <h3 class="lead">
                   <span id="data-vis-temp" class="data-vis-plug"> Innovative data visualization templates </span>
                   </br>
                   <span id="data-vis-com" class="data-vis-plug"> Active community of template creators </span>
                   </br>
-                  <span id="data-vis-react" class="data-vis-plug"> Data reactivity enabled </span> 
+                  <span id="data-vis-react" class="data-vis-plug"> Data reactivity enabled </span>
                 </h3>
               </div>
             </div>
           </div>
           <div class="item">
             <div class="container">
-              <div class="carousel-caption">
+              <div id="carousel-title" class="carousel-caption">
                 <h1> Data Sources </h1>
                 <h3 class="lead">
                   <span id="data-source-live" class="data-source-plug"> Integrate live data! Twitter, Bitly and Bitcoin </span>
-                  </br> 
+                  </br>
                   <span id="data-source-user" class="data-source-plug"> Use your own data files</span>
                 </h3>
               </div>
@@ -189,12 +198,12 @@
       </div>  <!-- BODY ROW -->
     </div><!--Body Container -->
 
-    <div id="modal-container"> 
+    <div id="modal-container">
     </div>
 
     <!-- ====================== FOOTER =========================== -->
     <hr>
-    
+
     <footer id="footer">
       <div id="footer-div">
         {{> footer}}
@@ -212,8 +221,12 @@
 </template>
 
 <template name="footer">
-  <p class="pull-left"> A Yummy Corp Invention</p>
-  <p class="pull-right">&copy; 2013 <a href="http://www.missionreds.com/"> Mission Reds </a>, LLC </p>
+  <div id="footer-div-row" class="row">
+    <div class="span12">
+      <p class="pull-left"> A <a href="http://www.yummycorp.co/"> Yummy Corp </a> Invention</p>
+      <p class="pull-right">&copy; 2013 <a href="http://www.missionreds.com/"> Mission Reds </a>, LLC </p>
+    </div>
+  </div>
 </template>
 
 <template name="showList">

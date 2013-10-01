@@ -69,6 +69,14 @@ body {
 
 /*>>>>>>>>>>>>>> HOMEPAGE <<<<<<<<<<<<<<<<<< */
 
+#footer-div-row {
+  margin-bottom: 3em;
+}
+
+#carousel-title h1 {
+  font-family: 'Anaheim', sans-serif;
+}
+
 #homepage-mkt {
   margin-bottom: 1em;
 }
@@ -77,6 +85,7 @@ body {
   text-align: center;
   background-color: rgba(255, 177, 0, .5);
   border-radius: 0.75em;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 #beta-band {
@@ -93,7 +102,7 @@ body {
 }
 #beta-span {
   float: left;
-} 
+}
 
 #user-login-alert h4 {
   text-align: center;
@@ -114,8 +123,8 @@ body {
   font-size: 2.25em;
 }
 
-#simple, 
-#clear, 
+#simple,
+#clear,
 #present {
   font-size: 1.5em;
   color: white;
@@ -185,7 +194,7 @@ body {
   font-size: 1.5em;
 }
 
-#bitly-data, 
+#bitly-data,
 #bitcoin-data,
 #user-data {
   background-color: rgba(192, 192, 192, 0.5);
@@ -266,7 +275,7 @@ body {
 
 #user-bub-inputs {
   background-color: rgba(213, 0, 101, 0.5);
-  border-radius: 0.5em; 
+  border-radius: 0.5em;
   height: 30px;
 }
 
@@ -298,14 +307,14 @@ body {
 
 #render-slide-image:hover {
   background-color: rgba(213, 0, 101, 1);
-  color: white; 
+  color: white;
 }
 
 #add-image {
   background-color: rgba(213, 0, 101, 0.5);
   margin-right: 0.5em;
   border-radius: 0.5em;
-  height: 2.25em; 
+  height: 2.25em;
   text-align: center;
 }
 
@@ -371,7 +380,7 @@ body {
   font-size: 1.5em;
   background-color: rgba(255, 177, 0, .5);
   border-radius: 0.5em;
-  height: 2.25em; 
+  height: 2.25em;
 }
 
 #render-userFile:hover {
@@ -387,7 +396,7 @@ body {
   font-size: 1.5em;
   background-color: rgba(255, 177, 0, .5);
   border-radius: 0.5em;
-  height: 2.25em; 
+  height: 2.25em;
 }
 
 #render-user-bub-file:hover {
@@ -507,7 +516,8 @@ margin-bottom: 1em;
 
 #yummy-brand {
   text-align: center;
-  font-family: 'Spin Cycle OT';
+/*  font-family: 'Spin Cycle OT';*/
+  font-family: 'Audiowide', cursive;
   font-size: 2em;
   float: right;
   margin-top: 0.15em;
@@ -546,8 +556,8 @@ margin-bottom: 1em;
   font-size: 3em;
 }
 
-#show-titleSlide-bullet-one, 
-#show-titleSlide-bullet-two, 
+#show-titleSlide-bullet-one,
+#show-titleSlide-bullet-two,
 #show-titleSlide-bullet-three {
   text-align: center;
 }
@@ -557,14 +567,14 @@ margin-bottom: 1em;
 }
 
 .title-slideTitle h1 {
-  font-size: 5em; 
+  font-size: 5em;
 }
 
 .preview-title-slideTitle h1 {
-  font-size: 5em; 
+  font-size: 5em;
 }
 
-.title-sub-title h2, 
+.title-sub-title h2,
 .title-sub-sub h2 {
   font-size: 3em;
 }
@@ -579,7 +589,7 @@ margin-bottom: 1em;
   margin-top: -25px;
   margin-bottom: 10px;
 /*  background-color: rgba(192, 192, 192, 0.5);*/
-  background-color: rgba(142, 235, 0, 0.25); 
+  background-color: rgba(142, 235, 0, 0.25);
   border-radius: .5em;
 }
 
@@ -593,8 +603,8 @@ margin-bottom: 1em;
   border-radius: 2em;
 }
 
-#slide-inputs-chart, 
-#slide-inputs-chart-bitly, 
+#slide-inputs-chart,
+#slide-inputs-chart-bitly,
 #slide-inputs-chart-bitcoin {
   height: 600px;
   background-color: rgba(192, 192, 192, 0.5);
@@ -630,7 +640,7 @@ margin-bottom: 1em;
 
 .current-show-plug {
   font-size: 1.5em;
-  color: purple; 
+  color: purple;
 }
 
 #show-row {
@@ -824,8 +834,8 @@ margin-bottom: 1em;
 /*  color: rgba(20, 53, 173, 0.5);*/
 /*  box-shadow: 8px 8px 60px;*/
 /*  box-shadow: -2px 2px 3px;*/
-  border-radius: 0.4em; 
-  border: 1px solid white; 
+  border-radius: 0.4em;
+  border: 1px solid white;
 }
 
 #create-show-input:hover {
@@ -840,7 +850,7 @@ margin-bottom: 1em;
 
 #slide-controls {
   text-align: center;
-  height: 2.25em;  
+  height: 2.25em;
   background-color: rgba(255, 177, 0, .5);
   font-size: 1.5em;
   margin-bottom: 0.5em;
@@ -858,7 +868,7 @@ margin-bottom: 1em;
 
 #create-chart-sub {
   text-align: center;
-  height: 2.25em;  
+  height: 2.25em;
   background-color: rgba(20, 53, 173, .5);
   font-size: 1.5em;
   margin-bottom: 0.5em;
@@ -876,7 +886,7 @@ margin-bottom: 1em;
 
 #create-text-sub {
   text-align: center;
-  height: 2.25em;  
+  height: 2.25em;
   background-color: rgba(142, 235, 0, 0.5);
   font-size: 1.5em;
   margin-bottom: 0.5em;
@@ -894,7 +904,7 @@ margin-bottom: 1em;
 
 #edit-current-slide {
   text-align: center;
-  height: 2.25em;  
+  height: 2.25em;
   background-color: mediumseagreen;
   font-size: 1.5em;
   color: white;
@@ -906,30 +916,30 @@ margin-bottom: 1em;
   margin-top: 0.6em;
 }
 
-#save-bitly-slide, 
-#save-bitcoin-slide, 
-#save-userfile-slide, 
+#save-bitly-slide,
+#save-bitcoin-slide,
+#save-userfile-slide,
 #save-bitly-slide-bubble,
 #save-user-bub-slide {
   text-align: center;
-  height: 2.25em;  
+  height: 2.25em;
   background-color: rgba(255, 177, 0, .5);
   font-size: 1.5em;
   margin-bottom: 0.5em;
   border-radius: 0.75em;
 }
 
-#save-bitly-slide:hover, 
-#save-bitcoin-slide:hover, 
-#save-userfile-slide:hover, 
+#save-bitly-slide:hover,
+#save-bitcoin-slide:hover,
+#save-userfile-slide:hover,
 #save-bitly-slide-bubble:hover,
 #save-user-bub-slide:hover {
   background-color: rgba(255, 177, 0, 1);
   color: white;
 }
 
-#save-bitly-slide p, 
-#save-bitcoin-slide p, 
+#save-bitly-slide p,
+#save-bitcoin-slide p,
 #save-userfile-slide p,
 #save-bitly-slide-bubble p,
 #save-user-bub-slide p {
@@ -959,7 +969,7 @@ margin-bottom: 1em;
 }
 
 .make-second-slide {
-  height: 1em;  
+  height: 1em;
   background-color: gray;
 }
 
@@ -996,9 +1006,9 @@ margin-bottom: 1em;
 /*  z-index: 100;*/
 }
 
-/*.slide-title, 
-.bullet-one, 
-.bullet-two, 
+/*.slide-title,
+.bullet-one,
+.bullet-two,
 .bullet-three {
   z-index: 100;
 }*/
@@ -1042,7 +1052,7 @@ div.bar {
 
 #container {
     width: 1000px;
-    margin: 0 auto;    
+    margin: 0 auto;
 }
 
 .price {
@@ -1182,7 +1192,7 @@ div.bar {
 
 
     .carousel-caption h1 {
-      font-family: arial; 
+      font-family: arial;
       /*font-family: 'Rock Salt', cursive;*/
       margin-bottom: 10px;
     }
